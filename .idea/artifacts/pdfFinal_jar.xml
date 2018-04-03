@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="pdfFinal:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/pdfFinal_jar</output-path>
+    <root id="archive" name="pdfFinal.jar">
+      <element id="module-output" name="pdfFinal" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/POI/lib/commons-logging-1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/PDFbox/commons-lang3-3.7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/POI/ooxml-lib/xmlbeans-2.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/POI/poi-scratchpad-3.17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/PDFbox/charm-glisten-4.4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/PDFbox/preflight-2.0.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/POI/poi-ooxml-schemas-3.17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/PDFbox/fontbox-2.0.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/POI/ooxml-lib/curvesapi-1.04.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/PDFbox/pdfbox-2.0.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/POI/poi-3.17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/POI/poi-ooxml-3.17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/PDFbox/xmpbox-2.0.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/POI/lib/junit-4.12.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Programs/Java Dependencies/PDFbox/pdfbox-tools-2.0.8.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

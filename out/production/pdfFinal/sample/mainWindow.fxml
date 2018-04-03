@@ -1,0 +1,1448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #1d7e6d;" stylesheets="@design.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Button fx:id="processButton" layoutX="340.0" layoutY="515.0" mnemonicParsing="false" onAction="#fillApp" prefHeight="30.0" prefWidth="120.0" styleClass="button" text="Complete Form" textFill="#515151">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <TabPane prefHeight="458.0" prefWidth="818.0" style="-fx-background-color: #30c1ae;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab style="-fx-background-color: #ffffff;" text="Main Options">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="857.0">
+                     <children>
+                        <Button fx:id="buttonI90" layoutX="160.0" layoutY="175.0" mnemonicParsing="false" onAction="#i90Select" prefHeight="102.0" prefWidth="116.0" styleClass="button" text="I-90" textFill="#868686">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonI485" layoutX="342.0" layoutY="175.0" mnemonicParsing="false" onAction="#i485Select" prefHeight="102.0" prefWidth="116.0" styleClass="button" text="I-485" textFill="#868686">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="buttonI765" layoutX="524.0" layoutY="175.0" mnemonicParsing="false" onAction="#i765Select" prefHeight="102.0" prefWidth="116.0" styleClass="button" text="I-765" textFill="#868686">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="todayDate" alignment="CENTER" layoutX="290.0" layoutY="350.0" prefHeight="30.0" prefWidth="220.0" promptText="Date of Second Apppointment" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab style="-fx-background-color: #ffffff;" text="Personal Information">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
+                     <children>
+                        <TextField fx:id="clientFamilyName" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's Family Name" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientFirstName" alignment="CENTER" layoutX="60.0" layoutY="100.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's First Name" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientMiddleName" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's Middle Name" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientANumber" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's Alien Number" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientPhoneNum" alignment="CENTER" layoutX="60.0" layoutY="280.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's Phone Number" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="additionalNamesButton" layoutX="87.0" layoutY="340.0" mnemonicParsing="false" onAction="#openAdditionalNamesWindow" styleClass="button" text="Additional Names?" textFill="#515151">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="clientBirthCountry" alignment="CENTER" layoutX="305.0" layoutY="40.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's Country of Birth" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientBirthCity" alignment="CENTER" layoutX="305.0" layoutY="100.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's City of Birth" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientDOB" alignment="CENTER" layoutX="305.0" layoutY="160.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's Date of Birthday" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientSocialSecurity" alignment="CENTER" layoutX="305.0" layoutY="220.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's Social Security" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientEmail" alignment="CENTER" layoutX="305.0" layoutY="280.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's Email" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <CheckBox fx:id="maleGender" layoutX="550.0" layoutY="45.0" mnemonicParsing="false" onAction="#uncheckFemaleGender" styleClass="checkbox" text="Male" textAlignment="JUSTIFY" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="femaleGender" layoutX="663.0" layoutY="45.0" mnemonicParsing="false" onAction="#uncheckMaleGender" styleClass="checkbox" text="Female" textAlignment="JUSTIFY" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </CheckBox>
+                        <MenuButton fx:id="immigrationStatus" layoutX="549.0" layoutY="100.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #ffffff;" text="Current Status" textFill="#515151">
+                          <items>
+                            <MenuItem fx:id="asyleeBox" mnemonicParsing="false" onAction="#asyleeSelect" text="Asylum Seeker" />
+                            <MenuItem fx:id="refugeeBox" mnemonicParsing="false" onAction="#refugeeSelect" text="Refugee" />
+                              <MenuItem fx:id="paroleeBox" mnemonicParsing="false" onAction="#paroleeSelect" text="Parolee" />
+                              <MenuItem fx:id="LPRBox" mnemonicParsing="false" text="LPR" />
+                          </items>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </MenuButton>
+                        <TextField fx:id="clientWeight" alignment="CENTER" layoutX="550.0" layoutY="160.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's Weight" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientHeight" alignment="CENTER" layoutX="550.0" layoutY="220.0" prefHeight="30.0" prefWidth="190.0" promptText="Client's Height" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <MenuButton fx:id="ethnicity" layoutX="550.0" layoutY="280.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Ethnicity" textFill="#515151" textOverrun="CLIP">
+                           <items>
+                              <MenuItem fx:id="latinoYes" mnemonicParsing="false" onAction="#yesLatinoSelect" text="Latino" />
+                              <MenuItem fx:id="latinoNo" mnemonicParsing="false" onAction="#noLatinoSelect" text="Not Latino" />
+                           </items>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </MenuButton>
+                        <MenuButton fx:id="race" layoutX="549.0" layoutY="340.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="93.0" style="-fx-background-color: #ffffff;" text="Race" textFill="#515151">
+                           <items>
+                              <MenuItem fx:id="white" mnemonicParsing="false" onAction="#whiteSelect" text="White" />
+                              <MenuItem fx:id="asian" mnemonicParsing="false" onAction="#asianSelect" text="Asian" />
+                              <MenuItem fx:id="black" mnemonicParsing="false" onAction="#blackSelect" text="Black" />
+                              <MenuItem fx:id="amerindian" mnemonicParsing="false" onAction="#amerindianSelect" text="Amerindian" />
+                              <MenuItem fx:id="pacific" mnemonicParsing="false" onAction="#pacificSelect" text="Pacific Islander" />
+                           </items>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </MenuButton>
+                        <MenuButton fx:id="eyeColor" layoutX="663.0" layoutY="280.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: #ffffff;" text="Eye" textFill="#515151">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#blackEyesSelect" text="Black" />
+                              <MenuItem mnemonicParsing="false" onAction="#grayEyesSelect" text="Gray" />
+                              <MenuItem mnemonicParsing="false" onAction="#maroonEyesSelect" text="Maroon" />
+                              <MenuItem mnemonicParsing="false" onAction="#blueEyesSelect" text="Blue" />
+                              <MenuItem mnemonicParsing="false" onAction="#greenEyesSelect" text="Green" />
+                              <MenuItem mnemonicParsing="false" onAction="#pinkEyesSelect" text="Pink" />
+                              <MenuItem mnemonicParsing="false" onAction="#brownEyesSelect" text="Brown" />
+                              <MenuItem mnemonicParsing="false" onAction="#hazelEyesSelect" text="Hazel" />
+                              <MenuItem mnemonicParsing="false" onAction="#unknownEyesSelect" text="Other" />
+                           </items>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </MenuButton>
+                        <MenuButton fx:id="hairColor" layoutX="663.0" layoutY="340.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: #ffffff;" text="Hair" textFill="#515151">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#baldHairSelect" text="Bald" />
+                              <MenuItem mnemonicParsing="false" onAction="#brownHairSelect" text="Brown" />
+                              <MenuItem mnemonicParsing="false" onAction="#sandyHairSelect" text="Sandy" />
+                              <MenuItem mnemonicParsing="false" onAction="#blackHairSelect" text="Black" />
+                              <MenuItem mnemonicParsing="false" onAction="#grayHairSelect" text="Gray" />
+                              <MenuItem mnemonicParsing="false" onAction="#whiteHairSelect" text="White" />
+                              <MenuItem mnemonicParsing="false" onAction="#blondHairSelect" text="Blond" />
+                              <MenuItem mnemonicParsing="false" onAction="#redHairSelect" text="Red" />
+                              <MenuItem mnemonicParsing="false" onAction="#unknownHairSelect" text="Other" />
+                           </items>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </MenuButton>
+                        <Text fill="WHITE" fontSmoothingType="LCD" layoutX="549.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to separate feet from inches" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab style="-fx-background-color: #ffffff;" text="Addresses">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="428.0" prefWidth="815.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab style="-fx-background-color: #ffffff;" text="Current Address">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0">
+                                       <children>
+                                          <TextField fx:id="AddressStreetName" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Street Number and Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="AddressApt" layoutX="60.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckOtherApt" styleClass="checkbox" text="APT" textFill="WHITE" />
+                                          <CheckBox fx:id="AddressSte" layoutX="113.0" layoutY="108.0" mnemonicParsing="false" onAction="#uncheckOtherSte" styleClass="checkbox" text="STE" textFill="WHITE" />
+                                          <CheckBox fx:id="AddressFlr" layoutX="164.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckOtherFlr" styleClass="checkbox" text="FLR" textFill="WHITE" />
+                                          <TextField fx:id="AddressNumber" alignment="CENTER" layoutX="220.0" layoutY="100.0" prefHeight="30.0" prefWidth="71.0" promptText="Number" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressCityTown" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="City or Town Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressState" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="State Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressZipcode" alignment="CENTER" layoutX="190.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressStartTime" alignment="CENTER" layoutX="390.0" layoutY="40.0" prefHeight="30.0" prefWidth="160.0" promptText="Start Time" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab style="-fx-background-color: #ffffff;" text="Second Address">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0">
+                                       <children>
+                                          <TextField fx:id="AddressStreetName1" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Street Number and Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="AddressApt1" layoutX="60.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckOtherApt1" styleClass="checkbox" text="APT" textFill="WHITE" />
+                                          <CheckBox fx:id="AddressSte1" layoutX="113.0" layoutY="108.0" mnemonicParsing="false" onAction="#uncheckOtherSte1" styleClass="checkbox" text="STE" textFill="WHITE" />
+                                          <CheckBox fx:id="AddressFlr1" layoutX="164.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckOtherFlr1" styleClass="checkbox" text="FLR" textFill="WHITE" />
+                                          <TextField fx:id="AddressNumber1" alignment="CENTER" layoutX="220.0" layoutY="100.0" prefHeight="30.0" prefWidth="71.0" promptText="Number" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressCityTown1" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="City or Town Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressState1" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="State Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressZipcode1" alignment="CENTER" layoutX="190.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressCountry1" alignment="CENTER" layoutX="60.0" layoutY="280.0" prefHeight="30.0" prefWidth="230.0" promptText="Country Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressStartTime1" alignment="CENTER" layoutX="390.0" layoutY="40.0" prefHeight="30.0" prefWidth="160.0" promptText="Start Time" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressEndTime1" alignment="CENTER" layoutX="580.0" layoutY="40.0" prefHeight="30.0" prefWidth="160.0" promptText="End Time" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #ffffff;" text="Third Address">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0">
+                                       <children>
+                                          <TextField fx:id="AddressStreetName2" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Street Number and Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="AddressApt2" layoutX="60.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckOtherApt2" styleClass="checkbox" text="APT" textFill="WHITE" />
+                                          <CheckBox fx:id="AddressSte2" layoutX="113.0" layoutY="108.0" mnemonicParsing="false" onAction="#uncheckOtherSte2" styleClass="checkbox" text="STE" textFill="WHITE" />
+                                          <CheckBox fx:id="AddressFlr2" layoutX="164.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckOtherFlr2" styleClass="checkbox" text="FLR" textFill="WHITE" />
+                                          <TextField fx:id="AddressNumber2" alignment="CENTER" layoutX="220.0" layoutY="100.0" prefHeight="30.0" prefWidth="71.0" promptText="Number" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressCityTown2" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="City or Town Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressState2" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="State Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressZipcode2" alignment="CENTER" layoutX="190.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressCountry2" alignment="CENTER" layoutX="60.0" layoutY="280.0" prefHeight="30.0" prefWidth="230.0" promptText="Country Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressStartTime2" alignment="CENTER" layoutX="390.0" layoutY="40.0" prefHeight="30.0" prefWidth="160.0" promptText="Start Time" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressEndTime2" alignment="CENTER" layoutX="580.0" layoutY="40.0" prefHeight="30.0" prefWidth="160.0" promptText="End Time" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #ffffff;" text="Additional Addresses">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0">
+                                       <children>
+                                          <TextField fx:id="Address3Info" alignment="CENTER" layoutX="58.0" layoutY="45.0" prefHeight="30.0" prefWidth="684.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Address4Info" alignment="CENTER" layoutX="58.0" layoutY="125.0" prefHeight="30.0" prefWidth="684.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Address5Info" alignment="CENTER" layoutX="58.0" layoutY="205.0" prefHeight="30.0" prefWidth="684.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Address6Info" alignment="CENTER" layoutX="58.0" layoutY="285.0" prefHeight="30.0" prefWidth="684.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressStartTime3" alignment="CENTER" layoutX="58.0" layoutY="85.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressEndTime3" alignment="CENTER" layoutX="442.0" layoutY="85.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressStartTime4" alignment="CENTER" layoutX="58.0" layoutY="165.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressEndTime4" alignment="CENTER" layoutX="442.0" layoutY="165.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressStartTime5" alignment="CENTER" layoutX="58.0" layoutY="245.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressEndTime5" alignment="CENTER" layoutX="442.0" layoutY="245.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressStartTime6" alignment="CENTER" layoutX="58.0" layoutY="325.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="AddressEndTime6" alignment="CENTER" layoutX="442.0" layoutY="325.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Text fill="WHITE" fontSmoothingType="LCD" layoutX="314.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to separate entries">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab style="-fx-background-color: #ffffff;" text="Employment">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="428.0" prefWidth="815.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab style="-fx-background-color: #ffffff;" text="Current job">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="399.0" prefWidth="879.0">
+                                       <children>
+                                          <TextField fx:id="jobAddressStreetName" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Street Number and Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="jobAddressApt" layoutX="60.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckJobOtherApt" styleClass="checkbox" text="APT" textFill="WHITE" />
+                                          <CheckBox fx:id="jobAddressSte" layoutX="113.0" layoutY="108.0" mnemonicParsing="false" onAction="#uncheckJobOtherSte" styleClass="checkbox" text="STE" textFill="WHITE" />
+                                          <CheckBox fx:id="jobAddressFlr" layoutX="164.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckJobOtherFlr" styleClass="checkbox" text="FLR" textFill="WHITE" />
+                                          <TextField fx:id="jobAddressNumber" alignment="CENTER" layoutX="220.0" layoutY="100.0" prefHeight="30.0" prefWidth="71.0" promptText="Number" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressCityTown" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="City or Town Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressState" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="State Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressZipcode" alignment="CENTER" layoutX="190.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressCountry" alignment="CENTER" layoutX="60.0" layoutY="280.0" prefHeight="30.0" prefWidth="230.0" promptText="Country Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressStartTime" alignment="CENTER" layoutX="390.0" layoutY="40.0" prefHeight="30.0" prefWidth="160.0" promptText="Start Time" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressEndTime" alignment="CENTER" layoutX="580.0" layoutY="40.0" prefHeight="30.0" prefWidth="160.0" promptText="End Time" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobEmployer" alignment="CENTER" layoutX="390.0" layoutY="100.0" prefHeight="30.0" prefWidth="350.0" promptText="Employer's Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobOccupation" alignment="CENTER" layoutX="390.0" layoutY="160.0" prefHeight="30.0" prefWidth="350.0" promptText="Occupation" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="jobUnemployed" layoutX="520.0" layoutY="210.0" mnemonicParsing="false" styleClass="checkbox" text="Unemployed?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #ffffff;" text="Second job">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0">
+                                       <children>
+                                          <TextField fx:id="jobAddressStreetName1" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Street Number and Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="jobAddressApt1" layoutX="60.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckJobOtherApt1" styleClass="checkbox" text="APT" textFill="WHITE" />
+                                          <CheckBox fx:id="jobAddressSte1" layoutX="113.0" layoutY="108.0" mnemonicParsing="false" onAction="#uncheckJobOtherSte1" styleClass="checkbox" text="STE" textFill="WHITE" />
+                                          <CheckBox fx:id="jobAddressFlr1" layoutX="164.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckJobOtherFlr1" styleClass="checkbox" text="FLR" textFill="WHITE" />
+                                          <TextField fx:id="jobAddressNumber1" alignment="CENTER" layoutX="220.0" layoutY="100.0" prefHeight="30.0" prefWidth="71.0" promptText="Number" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressCityTown1" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="City or Town Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressState1" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="State Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressZipcode1" alignment="CENTER" layoutX="190.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressCountry1" alignment="CENTER" layoutX="60.0" layoutY="280.0" prefHeight="30.0" prefWidth="230.0" promptText="Country Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressStartTime1" alignment="CENTER" layoutX="390.0" layoutY="40.0" prefHeight="30.0" prefWidth="160.0" promptText="Start Time" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressEndTime1" alignment="CENTER" layoutX="580.0" layoutY="40.0" prefHeight="30.0" prefWidth="160.0" promptText="End Time" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobEmployer1" alignment="CENTER" layoutX="390.0" layoutY="100.0" prefHeight="30.0" prefWidth="350.0" promptText="Employer's Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobOccupation1" alignment="CENTER" layoutX="390.0" layoutY="160.0" prefHeight="30.0" prefWidth="350.0" promptText="Occupation" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="jobUnemployed1" layoutX="520.0" layoutY="210.0" mnemonicParsing="false" styleClass="checkbox" text="Unemployed?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #ffffff;" text="Third job">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0">
+                                       <children>
+                                          <TextField fx:id="jobAddressStreetName2" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Street Number and Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="jobAddressApt2" layoutX="60.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckJobOtherApt2" styleClass="checkbox" text="APT" textFill="WHITE" />
+                                          <CheckBox fx:id="jobAddressSte2" layoutX="113.0" layoutY="108.0" mnemonicParsing="false" onAction="#uncheckJobOtherSte2" styleClass="checkbox" text="STE" textFill="WHITE" />
+                                          <CheckBox fx:id="jobAddressFlr2" layoutX="164.0" layoutY="107.0" mnemonicParsing="false" onAction="#uncheckJobOtherFlr2" styleClass="checkbox" text="FLR" textFill="WHITE" />
+                                          <TextField fx:id="jobAddressNumber2" alignment="CENTER" layoutX="220.0" layoutY="100.0" prefHeight="30.0" prefWidth="71.0" promptText="Number" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressCityTown2" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="City or Town Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressState2" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="State Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressZipcode2" alignment="CENTER" layoutX="190.0" layoutY="220.0" prefHeight="30.0" prefWidth="100.0" promptText="Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressCountry2" alignment="CENTER" layoutX="60.0" layoutY="280.0" prefHeight="30.0" prefWidth="230.0" promptText="Country Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressStartTime2" alignment="CENTER" layoutX="390.0" layoutY="40.0" prefHeight="30.0" prefWidth="160.0" promptText="Start Time" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressEndTime2" alignment="CENTER" layoutX="580.0" layoutY="40.0" prefHeight="30.0" prefWidth="160.0" promptText="End Time" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobEmployer2" alignment="CENTER" layoutX="390.0" layoutY="100.0" prefHeight="30.0" prefWidth="350.0" promptText="Employer's Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobOccupation2" alignment="CENTER" layoutX="390.0" layoutY="160.0" prefHeight="30.0" prefWidth="350.0" promptText="Occupation" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="jobUnemployed2" layoutX="520.0" layoutY="210.0" mnemonicParsing="false" styleClass="checkbox" text="Unemployed?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #ffffff;" text="Additional jobs">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="399.0" prefWidth="593.0">
+                                       <children>
+                                           <TextField fx:id="job3Info" alignment="CENTER" layoutX="58.0" layoutY="45.0" prefHeight="30.0" prefWidth="684.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" style="-fx-background-color: #ffffff;">
+                                               <font>
+                                                   <Font size="14.0" />
+                                               </font>
+                                           </TextField>
+                                          <TextField fx:id="Employer3" alignment="CENTER" layoutX="407.0" layoutY="85.0" prefHeight="30.0" prefWidth="160.0" promptText="Employer" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Occupation3" alignment="CENTER" layoutX="582.0" layoutY="85.0" prefHeight="30.0" prefWidth="160.0" promptText="Occupation" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="job4Info" alignment="CENTER" layoutX="58.0" layoutY="125.0" prefHeight="30.0" prefWidth="684.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="job5Info" alignment="CENTER" layoutX="58.0" layoutY="205.0" prefHeight="30.0" prefWidth="684.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="job6Info" alignment="CENTER" layoutX="58.0" layoutY="285.0" prefHeight="30.0" prefWidth="684.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressStartTime3" alignment="CENTER" layoutX="58.0" layoutY="85.0" prefHeight="30.0" prefWidth="160.0" promptText="Start Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressEndTime3" alignment="CENTER" layoutX="233.0" layoutY="85.0" prefHeight="30.0" prefWidth="160.0" promptText="End Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Employer4" alignment="CENTER" layoutX="407.0" layoutY="165.0" prefHeight="30.0" prefWidth="160.0" promptText="Employer" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Occupation4" alignment="CENTER" layoutX="582.0" layoutY="165.0" prefHeight="30.0" prefWidth="160.0" promptText="Occupation" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressStartTime4" alignment="CENTER" layoutX="58.0" layoutY="165.0" prefHeight="30.0" prefWidth="160.0" promptText="Start Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressEndTime4" alignment="CENTER" layoutX="233.0" layoutY="165.0" prefHeight="30.0" prefWidth="160.0" promptText="End Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Employer5" alignment="CENTER" layoutX="407.0" layoutY="245.0" prefHeight="30.0" prefWidth="160.0" promptText="Employer" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Occupation5" alignment="CENTER" layoutX="582.0" layoutY="245.0" prefHeight="30.0" prefWidth="160.0" promptText="Occupation" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressStartTime5" alignment="CENTER" layoutX="58.0" layoutY="245.0" prefHeight="30.0" prefWidth="160.0" promptText="Start Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressEndTime5" alignment="CENTER" layoutX="233.0" layoutY="245.0" prefHeight="30.0" prefWidth="160.0" promptText="End Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Employer6" alignment="CENTER" layoutX="407.0" layoutY="325.0" prefHeight="30.0" prefWidth="160.0" promptText="Employer" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Occupation6" alignment="CENTER" layoutX="582.0" layoutY="325.0" prefHeight="30.0" prefWidth="160.0" promptText="Occupation" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressStartTime6" alignment="CENTER" layoutX="58.0" layoutY="325.0" prefHeight="30.0" prefWidth="160.0" promptText="Start Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="jobAddressEndTime6" alignment="CENTER" layoutX="233.0" layoutY="325.0" prefHeight="30.0" prefWidth="160.0" promptText="End Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Text fill="WHITE" fontSmoothingType="LCD" layoutX="314.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to separate entries">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                       </children></AnchorPane>
+                                 </content>
+
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab style="-fx-background-color: #ffffff;" text="Children">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="427.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab style="-fx-background-color: #ffffff;" text="Child 1">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="835.0">
+                                       <children>
+                                          <TextField fx:id="child1FamilyName" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Family Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child1FirstName" alignment="CENTER" layoutX="60.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="First Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child1MiddleName" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="Middle Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child1ANum" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="230.0" promptText="Alien Number" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child1CityOfBirth" alignment="CENTER" layoutX="510.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="City of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child1CountryOfBirth" alignment="CENTER" layoutX="510.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="Country of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child1DOB" alignment="CENTER" layoutX="510.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="Date of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="child1Gender" layoutX="510.0" layoutY="225.0" mnemonicParsing="false" onAction="#uncheckC1FemaleGender" styleClass="checkbox" text="Male?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="C1Female" layoutX="658.0" layoutY="225.0" mnemonicParsing="false" onAction="#uncheckC1MaleGender" styleClass="checkbox" text="Female?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="child1Apply" layoutX="296.0" layoutY="280.0" mnemonicParsing="false" styleClass="checkbox" text="Is this child applying with you?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <Button fx:id="addInfoButton" layoutX="310.0" layoutY="330.0" mnemonicParsing="false" onAction="#openC1InfoWindow" prefWidth="180.0" styleClass="button" text="Additional Information">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #ffffff;" text="Child 2">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0">
+                                       <children>
+                                          <TextField fx:id="child2FamilyName" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Family Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child2FirstName" alignment="CENTER" layoutX="60.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="First Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child2MiddleName" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="Middle Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child2ANum" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="230.0" promptText="Alien Number" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child2CityOfBirth" alignment="CENTER" layoutX="510.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="City of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child2CountryOfBirth" alignment="CENTER" layoutX="510.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="Country of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child2DOB" alignment="CENTER" layoutX="510.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="Date of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="child2Gender" layoutX="510.0" layoutY="225.0" mnemonicParsing="false" onAction="#uncheckC2FemaleGender" styleClass="checkbox" text="Male?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="C2Female" layoutX="658.0" layoutY="225.0" mnemonicParsing="false" onAction="#uncheckC2MaleGender" styleClass="checkbox" text="Female?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="child2Apply" layoutX="296.0" layoutY="280.0" mnemonicParsing="false" styleClass="checkbox" text="Is this child applying with you?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                           <Button fx:id="addInfoButton1" layoutX="310.0" layoutY="330.0" mnemonicParsing="false" onAction="#openC2InfoWindow" prefWidth="180.0" styleClass="button" text="Additional Information">
+                                               <font>
+                                                   <Font size="14.0" />
+                                               </font>
+                                           </Button>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #ffffff;" text="Child 3">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0">
+                                       <children>
+                                          <TextField fx:id="child3FamilyName" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Family Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child3FirstName" alignment="CENTER" layoutX="60.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="First Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child3MiddleName" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="Middle Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child3ANum" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="230.0" promptText="Alien Number" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child3CityOfBirth" alignment="CENTER" layoutX="510.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="City of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child3CountryOfBirth" alignment="CENTER" layoutX="510.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="Country of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="child3DOB" alignment="CENTER" layoutX="510.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="Date of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="child3Gender" layoutX="510.0" layoutY="225.0" mnemonicParsing="false" onAction="#uncheckC3MaleGender" styleClass="checkbox" text="Male?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="C3Female" layoutX="658.0" layoutY="225.0" mnemonicParsing="false" onAction="#uncheckC3FemaleGender" styleClass="checkbox" text="Female?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="child3Apply" layoutX="296.0" layoutY="280.0" mnemonicParsing="false" styleClass="checkbox" text="Is this child applying with you?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                           <Button fx:id="addInfoButton2" layoutX="310.0" layoutY="330.0" mnemonicParsing="false" onAction="#openC3InfoWindow" prefWidth="180.0" styleClass="button" text="Additional Information">
+                                               <font>
+                                                   <Font size="14.0" />
+                                               </font>
+                                           </Button>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #ffffff;" text="Additional Children">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0">
+                                       <children>
+                                          <TextField fx:id="child4Info" alignment="CENTER" layoutX="58.0" layoutY="45.0" prefHeight="30.0" prefWidth="684.0" promptText="Family Name | Middle Name | First Name | A Number |  City of Birth | Country of Birth | Date of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="child4Gender" layoutX="309.0" layoutY="85.0" mnemonicParsing="false" onAction="#uncheckC4FemaleGender" prefWidth="70.0" styleClass="checkbox" text="Male?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="C4Female" layoutX="420.0" layoutY="85.0" mnemonicParsing="false" onAction="#uncheckC4MaleGender" styleClass="checkbox" text="Female?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <TextField fx:id="child5Info" alignment="CENTER" layoutX="58.0" layoutY="125.0" prefHeight="30.0" prefWidth="684.0" promptText="Family Name | Middle Name | First Name | A Number |  City of Birth | Country of Birth | Date of Birth" style="-fx-background-color: #ffffff;" styleClass="checkbox">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="child5Gender" layoutX="310.0" layoutY="165.0" mnemonicParsing="false" onAction="#uncheckC5FemaleGender" styleClass="checkbox" text="Male?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="C5Female" layoutX="420.0" layoutY="165.0" mnemonicParsing="false" onAction="#uncheckC5MaleGender" styleClass="checkbox" text="Female?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <TextField fx:id="child6Info" alignment="CENTER" layoutX="58.0" layoutY="205.0" prefHeight="30.0" prefWidth="684.0" promptText="Family Name | Middle Name | First Name | A Number |  City of Birth | Country of Birth | Date of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="child6Gender" layoutX="310.0" layoutY="245.0" mnemonicParsing="false" onAction="#uncheckC6FemaleGender" styleClass="checkbox" text="Male?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="C6Female" layoutX="420.0" layoutY="245.0" mnemonicParsing="false" onAction="#uncheckC6MaleGender" styleClass="checkbox" text="Female?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <TextField fx:id="child7Info" alignment="CENTER" layoutX="58.0" layoutY="285.0" prefHeight="30.0" prefWidth="684.0" promptText="Family Name | Middle Name | First Name | A Number |  City of Birth | Country of Birth | Date of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="child7Gender" layoutX="310.0" layoutY="325.0" mnemonicParsing="false" onAction="#uncheckC7FemaleGender" styleClass="checkbox" text="Male?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="C7Female" layoutX="420.0" layoutY="325.0" mnemonicParsing="false" onAction="#uncheckC7MaleGender" styleClass="checkbox" text="Female?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <Text fill="WHITE" fontSmoothingType="LCD" layoutX="314.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to separate entries">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab style="-fx-background-color: #ffffff;" text="Marriage">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="427.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab style="-fx-background-color: #ffffff;" text="Current Spouse">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="835.0">
+                                       <children>
+                                          <TextField fx:id="SpouseFamilyName" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Family Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="SpouseFirstName" alignment="CENTER" layoutX="60.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="First Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="SpouseMiddleName" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="Middle Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="SpouseANum" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="230.0" promptText="Alien Number" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="SpouseCityOfBirth" alignment="CENTER" layoutX="60.0" layoutY="280.0" prefHeight="30.0" prefWidth="230.0" promptText="City of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="SpouseApply" layoutX="60.0" layoutY="330.0" mnemonicParsing="false" styleClass="checkbox" text="Is your Spouse applying with you?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="SpouseCoastGuard" layoutX="60.0" layoutY="363.0" mnemonicParsing="false" styleClass="checkbox" text="Part of the Coast Guard?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <TextField fx:id="SpouseCountryOfBirth" alignment="CENTER" layoutX="510.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Country of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="SpouseDOB" alignment="CENTER" layoutX="510.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="Date of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="SpouseCityOfMarriage" alignment="CENTER" layoutX="510.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="City of Marriage" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="SpouseMarriageCountry" alignment="CENTER" layoutX="510.0" layoutY="220.0" prefHeight="30.0" prefWidth="230.0" promptText="Country of Marriage" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="SpouseMarriageDate" alignment="CENTER" layoutX="510.0" layoutY="280.0" prefHeight="30.0" prefWidth="230.0" promptText="Date of Marriage" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <CheckBox fx:id="SpouseGender" layoutX="504.0" layoutY="330.0" mnemonicParsing="false" onAction="#uncheckSpouseFemaleGender" styleClass="checkbox" text="Male?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="SpouseFemale" layoutX="658.0" layoutY="330.0" mnemonicParsing="false" onAction="#uncheckSpouseMaleGender" styleClass="checkbox" text="Female?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="Widow" layoutX="504.0" layoutY="363.0" mnemonicParsing="false" styleClass="checkbox" text="Widowed?" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #ffffff;" text="Former Marriages">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="835.0">
+                                       <children>
+                                          <TextField fx:id="Spouse1Info" alignment="CENTER" layoutX="58.0" layoutY="45.0" prefHeight="30.0" prefWidth="684.0" promptText="Family Name | First Name | Middle Name | Country of Birth | Date of Birth | Married City | Divorced City" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Spouse1MarriageDate" alignment="CENTER" layoutX="58.0" layoutY="85.0" prefHeight="30.0" prefWidth="300.0" promptText="Marriage Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Spouse1DivorceDate" alignment="CENTER" layoutX="442.0" layoutY="85.0" prefHeight="30.0" prefWidth="300.0" promptText="Divorced Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Spouse2Info" alignment="CENTER" layoutX="58.0" layoutY="125.0" prefHeight="30.0" prefWidth="684.0" promptText="Family Name | First Name | Middle Name | Country of Birth | Date of Birth | Married City | Divorced City" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Spouse2MarriageDate" alignment="CENTER" layoutX="58.0" layoutY="165.0" prefHeight="30.0" prefWidth="300.0" promptText="Marriage Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Spouse2DivorceDate" alignment="CENTER" layoutX="442.0" layoutY="165.0" prefHeight="30.0" prefWidth="300.0" promptText="Divorced Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Spouse3Info" alignment="CENTER" layoutX="58.0" layoutY="205.0" prefHeight="30.0" prefWidth="684.0" promptText="Family Name | First Name | Middle Name | Country of Birth | Date of Birth | Married City | Divorced City" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Spouse3MarriageDate" alignment="CENTER" layoutX="58.0" layoutY="245.0" prefHeight="30.0" prefWidth="300.0" promptText="Marriage Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Spouse3DivorceDate" alignment="CENTER" layoutX="442.0" layoutY="245.0" prefHeight="30.0" prefWidth="300.0" promptText="Divorced Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Spouse4Info" alignment="CENTER" layoutX="58.0" layoutY="285.0" prefHeight="30.0" prefWidth="684.0" promptText="Family Name | First Name | Middle Name | Country of Birth | Date of Birth | Married City | Divorced City" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Spouse4MarriageDate" alignment="CENTER" layoutX="58.0" layoutY="325.0" prefHeight="30.0" prefWidth="300.0" promptText="Marriage Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="Spouse4DivorceDate" alignment="CENTER" layoutX="442.0" layoutY="325.0" prefHeight="30.0" prefWidth="300.0" promptText="Divorced Date" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Text fill="WHITE" fontSmoothingType="LCD" layoutX="326.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to separate entries">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab style="-fx-background-color: #ffffff;" text="Parents">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="427.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab style="-fx-background-color: #ffffff;" text="Father">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="835.0">
+                                       <children>
+                                          <TextField fx:id="fatherFamilyName" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Family Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="fatherFirstName" alignment="CENTER" layoutX="60.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="First Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="fatherMiddleName" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="Middle Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="fatherCityOfBirth" alignment="CENTER" layoutX="510.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="City of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="fatherCountryOfBirth" alignment="CENTER" layoutX="510.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="Country of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="fatherDOB" alignment="CENTER" layoutX="510.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="Date of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="fatherCurrentCity" alignment="CENTER" layoutX="510.0" layoutY="220.0" prefHeight="30.0" prefWidth="230.0" promptText="Current City of Residency" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="fatherCurrentCountry" alignment="CENTER" layoutX="510.0" layoutY="280.0" prefHeight="30.0" prefWidth="230.0" promptText="Current Country of Residency" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-background-color: #ffffff;" text="Mother">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="835.0">
+                                       <children>
+                                          <TextField fx:id="motherFamilyName" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="Family Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="motherFirstName" alignment="CENTER" layoutX="60.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="First Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="motherMiddleName" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="Middle Name" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="motherCityOfBirth" alignment="CENTER" layoutX="510.0" layoutY="40.0" prefHeight="30.0" prefWidth="230.0" promptText="City of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="motherCountryOfBirth" alignment="CENTER" layoutX="510.0" layoutY="100.0" prefHeight="30.0" prefWidth="230.0" promptText="Country of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="motherDOB" alignment="CENTER" layoutX="510.0" layoutY="160.0" prefHeight="30.0" prefWidth="230.0" promptText="Date of Birth" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="motherCurrentCity" alignment="CENTER" layoutX="510.0" layoutY="220.0" prefHeight="30.0" prefWidth="230.0" promptText="Current City of Residency" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="motherCurrentCountry" alignment="CENTER" layoutX="510.0" layoutY="280.0" prefHeight="30.0" prefWidth="230.0" promptText="Current Country of Residency" style="-fx-background-color: #ffffff;">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab style="-fx-background-color: #ffffff;" text="Questions">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="countryMilitary" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="190.0" promptText="Country of Military Service" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="cityMilitary" alignment="CENTER" layoutX="60.0" layoutY="100.0" prefHeight="30.0" prefWidth="190.0" promptText="City" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="startDateMilitary" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="190.0" promptText="Start Date" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="endDateMilitary" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="190.0" promptText="End Date" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <CheckBox fx:id="welfarePast" layoutX="309.0" layoutY="45.0" mnemonicParsing="false" styleClass="checkbox" text="Received Welfare in the Past?" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="welfarePresent" layoutX="309.0" layoutY="105.0" mnemonicParsing="false" styleClass="checkbox" text="Still Receiving Welfare?" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </CheckBox>
+                        <Text fill="WHITE" fontSmoothingType="LCD" layoutX="105.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Military Service">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab style="-fx-background-color: #ffffff;" text="Additional Information">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="interpreterFamilyName" alignment="CENTER" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="190.0" promptText="Interpreter's Family Name" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="interpreterMiddleName" alignment="CENTER" layoutX="60.0" layoutY="100.0" prefHeight="30.0" prefWidth="190.0" promptText="Interpreter's Middle Name" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="interpreterFirstName" alignment="CENTER" layoutX="60.0" layoutY="160.0" prefHeight="30.0" prefWidth="190.0" promptText="Interpreter's First Name" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="interpreterPhoneNumber" alignment="CENTER" layoutX="60.0" layoutY="220.0" prefHeight="30.0" prefWidth="190.0" promptText="Interpreter's Phone Number" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="interpreterEmail" alignment="CENTER" layoutX="60.0" layoutY="280.0" prefHeight="30.0" prefWidth="190.0" promptText="Interpreter's Email" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="interpreterLanguage" alignment="CENTER" layoutX="60.0" layoutY="340.0" prefHeight="30.0" prefWidth="190.0" promptText="Language" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientPassport" alignment="CENTER" layoutX="305.0" layoutY="40.0" prefHeight="30.0" prefWidth="190.0" promptText="Passport Number" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientTravelDoc" alignment="CENTER" layoutX="305.0" layoutY="100.0" prefHeight="30.0" prefWidth="190.0" promptText="Travel Document Number" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="documentCountry" alignment="CENTER" layoutX="305.0" layoutY="160.0" prefHeight="30.0" prefWidth="190.0" promptText="Document Country" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="documentExpiration" alignment="CENTER" layoutX="305.0" layoutY="220.0" prefHeight="30.0" prefWidth="190.0" promptText="Expiration Date" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientI94Number" alignment="CENTER" layoutX="550.0" layoutY="40.0" prefHeight="30.0" prefWidth="190.0" promptText="I94 Number" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientI94Status" alignment="CENTER" layoutX="550.0" layoutY="100.0" prefHeight="30.0" prefWidth="190.0" promptText="I94 Status" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientI94Expiration" alignment="CENTER" layoutX="550.0" layoutY="160.0" prefHeight="30.0" prefWidth="190.0" promptText="I94's Expiration Date" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientPort" alignment="CENTER" layoutX="550.0" layoutY="220.0" prefHeight="30.0" prefWidth="190.0" promptText="Port of Entry" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientPortState" alignment="CENTER" layoutX="550.0" layoutY="280.0" prefHeight="30.0" prefWidth="190.0" promptText="State of Entry" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="clientPortDate" alignment="CENTER" layoutX="550.0" layoutY="340.0" prefHeight="30.0" prefWidth="190.0" promptText="Date of Entry" style="-fx-background-color: #ffffff;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab style="-fx-background-color: #ffffff;" text="About">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text fill="WHITE" fontSmoothingType="LCD" layoutX="190.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This project was created by Mithridates Eupator">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="340.0" layoutY="200.0" mnemonicParsing="false" onAction="#visitGithub" prefWidth="120.0" text="GitHub" textFill="#515151">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
