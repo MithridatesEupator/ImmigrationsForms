@@ -369,6 +369,7 @@ public class Controller implements Initializable {
     public CheckBox jobUnemployed;
     public CheckBox jobUnemployed1;
     public CheckBox jobUnemployed2;
+    public Button minimizeButton;
 
     private Stage stage;
 
@@ -650,6 +651,7 @@ public class Controller implements Initializable {
     String EntryInspectionStatus = new String();
     String EntryParoledStatus = new String();
     String OtherStatus = new String();
+    String EntryI765 = new String();
 
 
     String AGender = "";
@@ -682,6 +684,7 @@ public class Controller implements Initializable {
     String Q61 = "";
     String Q62 = "";
     String fileType = "";
+    String SocialSecurityBox = "";
 
     static String C1Gender = new String();
     static String C1FamilyName1 = new String();
@@ -844,35 +847,39 @@ public class Controller implements Initializable {
 
     public void i90Select(ActionEvent event) {
         fileType = "i-90";
-        buttonI90.setStyle("-fx-background-color: #f3afaf;");
-        buttonI485.setStyle("-fx-background-color: #ffffff;");
-        buttonI765.setStyle("-fx-background-color: #ffffff;");
+        buttonI90.setStyle("-fx-background-color: #ffffff;-fx-text-fill: #111111;");
+        buttonI485.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
+        buttonI765.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
     }
 
     public void i485Select(ActionEvent event) {
         fileType = "i-485";
-        buttonI90.setStyle("-fx-background-color: #ffffff;");
-        buttonI485.setStyle("-fx-background-color: #f3afaf;");
-        buttonI765.setStyle("-fx-background-color: #ffffff;");
+        buttonI90.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
+        buttonI485.setStyle("-fx-background-color: #ffffff;-fx-text-fill: #111111;");
+        buttonI765.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
     }
 
     public void i765Select(ActionEvent event) {
         fileType = "i-765";
-        buttonI90.setStyle("-fx-background-color: #ffffff;");
-        buttonI485.setStyle("-fx-background-color: #ffffff;");
-        buttonI765.setStyle("-fx-background-color: #f3afaf;");
+        buttonI90.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
+        buttonI485.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
+        buttonI765.setStyle("-fx-background-color: #ffffff;-fx-text-fill: #111111;");
     }
 
     public void asyleeSelect(ActionEvent event) {
         ImmigrationStatus = "Asylum";
         immigrationStatus.setText("Asylee");
-        lastArrived = "No Status";
+        lastArrived = "NoStatus";
+        EntryI765 = "Asylum Seeker";
     }
 
     public void refugeeSelect(ActionEvent event) {
         ImmigrationStatus = "Refugee";
         immigrationStatus.setText("Refugee");
+        EntryInspectionStatus = "";
+        EntryParoledStatus = "";
         OtherStatus = "Refugee";
+        EntryI765 = "Refugee";
         lastArrived = "Other";
     }
 
@@ -880,7 +887,10 @@ public class Controller implements Initializable {
         ImmigrationStatus = "Cuban1";
         immigrationStatus.setText("Parolee");
         lastArrived = "EntryParoled";
+        EntryInspectionStatus = "";
         EntryParoledStatus = "Cuban Parole";
+        EntryI765 = "Cuban Parole";
+        OtherStatus = "";
         I94Status = "Paroled";
     }
 
@@ -1439,6 +1449,9 @@ public class Controller implements Initializable {
         if (maleGender.isSelected()) {
             AGender = "Male";
         }
+        else if (femaleGender.isSelected()) {
+            AGender = "Female";
+        }
     }
 
     public void C1selectSpouse1(ActionEvent event) {
@@ -1646,6 +1659,17 @@ public class Controller implements Initializable {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
+
+    public void closeGeneralWindow(ActionEvent event) {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
+
+    public void minmizeGeneralWindow(ActionEvent event) {
+        Stage stage = (Stage) minimizeButton.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
 
     @FXML
     public void openAdditionalNamesWindow(ActionEvent event) throws IOException {
@@ -2045,6 +2069,12 @@ public class Controller implements Initializable {
                 SocialSecurity = SocialSecurityTMP;
             }
         }
+        if (clientSocialSecurity.getText().trim().isEmpty()) {
+            SocialSecurityBox = "SS-no";
+        }
+        else {
+            SocialSecurityBox = "SS-yes";
+        }
         if (clientPassport.getText() != null) {
             PassportNum = clientPassport.getText();
         }
@@ -2067,7 +2097,9 @@ public class Controller implements Initializable {
             I94Num = clientI94Number.getText();
         }
         if (clientI94Status.getText() != null) {
-            I94Status = clientI94Status.getText();
+            if (I94Status.trim().isEmpty()) {
+                I94Status = clientI94Status.getText();
+            }
         }
         if (clientPortDate.getText() != null) {
             LastArrivalDate = clientPortDate.getText();
@@ -3050,11 +3082,10 @@ public class Controller implements Initializable {
                 StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate, OrganizationEndDate, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1,
                 NatureOrganization1, OrganizationStartDate1, OrganizationEndDate1, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2,
                 OrganizationEndDate2, PreparerForm, ADayTimeNum, AMobNum, AEmail, SignatureDate, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState,
-                IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, PFamilyName, PFirstName, POrganizationName, PAddressStreet, PAddInfoAddress, PAddressCity, PState, PZipcode, PDayTimeNum, PMobNum,
-                PEmail, PN, PaN, IN, AddendumA, AddendumB, AddendumC, AddendumD, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, PN1, PaN1, IN1, Addendum1A, Addendum1B, Addendum1C, Addendum1D,
+                IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, PN, PaN, IN, AddendumA, AddendumB, AddendumC, AddendumD, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, PN1, PaN1, IN1, Addendum1A, Addendum1B, Addendum1C, Addendum1D,
                 Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, PN2, PaN2, IN2, Addendum2A, Addendum2B, Addendum2C, Addendum2D, Addendum2E, Addendum2F, Addendum2G, Addendum2J,
                 PN3, PaN3, IN3, Addendum3A, Addendum3B, Addendum3C, Addendum3D, Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, PN4, PaN4, IN4, Addendum4A, Addendum4B, Addendum4C, Addendum4D,
-                Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J};
+                Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765};
         String[] nameFieldArray = {"ANum", "FamilyName", "FirstName", "MiddleName", "FamilyName1", "MiddleName1", "FirstName1", "FamilyName2", "FirstName2", "MiddleName2", "FamilyName3", "MiddleName3",
                 "FirstName3", "Name", "DOBDate", "CityBirth", "CountryBirth", "Nationality", "SocialSecurity", "AddressStreet", "AddInfoAddress", "AddressCity", "State", "Zipcode", "PassportNum",
                 "TravelNum", "ExpirationDate", "PassportCountry", "EntryInspectionStatus", "EntryParoledStatus", "OtherStatus", "EntryCity", "EntryState", "LastArrivalDate", "I94Num", "ExpirationDate1",
@@ -3072,25 +3103,23 @@ public class Controller implements Initializable {
                 "NatureOrganization", "OrganizationStartDate", "OrganizationEndDate", "NameOrganization1", "CityOrganization1", "StateOrganization1", "CountryOrganization1", "NatureOrganization1",
                 "OrganizationStartDate1", "OrganizationEndDate1", "NameOrganization2", "CityOrganization2", "StateOrganization2", "CountryOrganization2", "NatureOrganization2", "OrganizationStartDate2",
                 "OrganizationEndDate2", "PreparerForm", "ADayTimeNum", "AMobNum", "AEmail", "SignatureDate", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress",
-                "IAddressCity", "IState", "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language", "PFamilyName", "PFirstName", "POrganizationName", "PAddressStreet", "PAddInfoAddress",
-                "PAddressCity", "PState", "PZipcode", "PDayTimeNum", "PMobNum", "PEmail", "PN", "PaN", "IN", "AddendumA", "AddendumB", "AddendumC", "AddendumD", "AddendumE", "AddendumF", "AddendumG",
+                "IAddressCity", "IState", "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language", "PN", "PaN", "IN", "AddendumA", "AddendumB", "AddendumC", "AddendumD", "AddendumE", "AddendumF", "AddendumG",
                 "AddendumH", "AddendumI", "AddendumJ", "PN1", "PaN1", "IN1", "Addendum1A", "Addendum1B", "Addendum1C", "Addendum1D", "Addendum1E", "Addendum1F", "Addendum1G", "Addendum1H", "Addendum1I",
                 "Addendum1J", "PN2", "PaN2", "IN2", "Addendum2A", "Addendum2B", "Addendum2C", "Addendum2D", "Addendum2E", "Addendum2F", "Addendum2G", "Addendum2J", "PN3", "PaN3", "IN3", "Addendum3A",
                 "Addendum3B", "Addendum3C", "Addendum3D", "Addendum3E", "Addendum3F", "Addendum3G", "Addendum3H", "Addendum3I", "PN4", "PaN4", "IN4", "Addendum4A", "Addendum4B", "Addendum4C", "Addendum4D",
-                "Addendum4E", "Addendum4F", "Addendum4G", "Addendum4H", "Addendum4I", "Addendum4J"};
+                "Addendum4E", "Addendum4F", "Addendum4G", "Addendum4H", "Addendum4I", "Addendum4J","EntryI765"};
         String[] checkArray = {AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo,
                 ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer,
-                DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62};
+                DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox};
 
         if (fileType == "") {
             fileType = "i-485";
         }
-        InputStream in = getClass().getResourceAsStream("resources/pdf/i-485.pdf");
+        InputStream in = getClass().getResourceAsStream("resources/pdf/" + fileType + ".pdf");
         PDDocument document = PDDocument.load(in); //.load(ClassLoader.getSystemResourceAsStream("i-485.pdf"));
         PDDocumentCatalog docCatalog = document.getDocumentCatalog();
         PDAcroForm acroForm = docCatalog.getAcroForm();
         for (int i = 0; i < fieldArray.length; i++) {
-
                 String entryFieldArray = fieldArray[i];
                 String entryNameArray = nameFieldArray[i];
                 try {
@@ -3579,23 +3608,29 @@ public class Controller implements Initializable {
         }
         public void addAddendums() throws Exception {
             System.out.println("Part 1 works");
-            FileInputStream fis = new FileInputStream("src/sample/resources/docx/test.docx");
-            XWPFDocument xdoc = new XWPFDocument(OPCPackage.open(fis));
-            XWPFWordExtractor extractor = new XWPFWordExtractor(xdoc);
-            for (XWPFParagraph p : xdoc.getParagraphs()) {
+            FileInputStream fis = new FileInputStream("C:\\Users\\Filip\\Downloads\\test.docx");
+            XWPFDocument docx = new XWPFDocument(OPCPackage.open(fis));
+            XWPFWordExtractor extractor = new XWPFWordExtractor(docx);
+            for (XWPFParagraph p : docx.getParagraphs()) {
                 List<XWPFRun> runs = p.getRuns();
                 if (runs != null) {
                     for (XWPFRun r : runs) {
                         String text = r.getText(0);
 
-                        if (text != null && text.contains("Current Legal Name")) {
-                            //text = text.replace("{City}", "New York");
+                        if (text != null && text.contains("dsa")) {
+                            //text = text.replace("dsa", "New York");
+                            docx.getTables().get(0);
                             r.setText(text, 0);
-                            System.out.println("SDASD");
+                            System.out.println("text recognized");
+                        }
+                        else {
+                            System.out.println("text not recognized");
                         }
                     }
                 }
             }
+            docx.write(new FileOutputStream("C:\\Users\\Filip\\Desktop\\output.docx"));
+            docx.close();
         }
         public void alertMessage() {
             Alert fileSaveError = new Alert(Alert.AlertType.WARNING);
