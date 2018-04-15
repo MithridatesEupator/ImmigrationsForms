@@ -6,11 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.StageStyle;
@@ -22,7 +25,6 @@ import javafx.application.HostServices;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -46,6 +48,8 @@ import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+
+import static javafx.scene.effect.BlurType.GAUSSIAN;
 
 
 public class Controller implements Initializable {
@@ -554,7 +558,6 @@ public class Controller implements Initializable {
     String NatureOrganization2 = new String();
     String OrganizationStartDate2 = new String();
     String OrganizationEndDate2 = new String();
-    String PreparerForm = new String();
     String ADayTimeNum = new String();
     String AMobNum = new String();
     String AEmail = new String();
@@ -1976,7 +1979,7 @@ public class Controller implements Initializable {
             String C3TMPheight = ClientC3Height.getText();
             C3Height = C3TMPheight;
             String C3Height = C3TMPheight.replace("0", "");
-            String[] C3HeightVar = C3Height.toString().split("|");
+            String[] C3HeightVar = C3Height.toString().split("\\|");
             int C3LenVar = C3HeightVar.length;
             C3Feet = C3HeightVar[0];
             if (C3LenVar == 4) {
@@ -2134,7 +2137,7 @@ public class Controller implements Initializable {
         if (clientHeight.getText() != null) {
             String TMPheight = clientHeight.getText().toString();
             String height = TMPheight.replace("0", "");
-            String[] heightVar = height.toString().split("|");
+            String[] heightVar = height.split("\\|");
             int lenVar = heightVar.length;
             Feet = heightVar[0];
             if (lenVar == 4) {
@@ -2169,9 +2172,24 @@ public class Controller implements Initializable {
         }
         if (Language.trim().isEmpty()) {
             InterpreterQuestion = "English";
+            IOrganizationName = "";
+            IAddressStreet = "";
+            ITenantInfo = "";
+            IAddInfoAddress = "";
+            IAddressCity = "";
+            IState = "";
+            IZipcode = "";
+            ICountry = "";
         } else {
             InterpreterQuestion = "Interpreter";
             IOrganizationName = "International Rescue Committee";
+            IAddressStreet = "208 Commerce Street";
+            ITenantInfo = "IFlr";
+            IAddInfoAddress = "4";
+            IAddressCity = "Elizabeth";
+            IState = "NJ";
+            IZipcode = "07201";
+            ICountry = "USA";
         }
         if (interpreterEmail.getText() != null) {
             IEmail = interpreterEmail.getText();
@@ -2348,7 +2366,7 @@ public class Controller implements Initializable {
         if (Address3Info.getText() != null) {
             try {
                 String TMPAddress4 = Address4Info.getText();
-                String[] TMPA3Info = TMPAddress4.split("|");
+                String[] TMPA3Info = TMPAddress4.split("\\|");
                 A3Info[0] = TMPA3Info[0];
                 A3Info[1] = TMPA3Info[1];
                 A3Info[2] = TMPA3Info[2];
@@ -2365,7 +2383,7 @@ public class Controller implements Initializable {
         if (Address4Info.getText() != null) {
             try {
                 String TMPAddress4 = Address4Info.getText();
-                String[] TMPA4Info = TMPAddress4.split("|");
+                String[] TMPA4Info = TMPAddress4.split("\\|");
                 A4Info[0] = TMPA4Info[0];
                 A4Info[1] = TMPA4Info[1];
                 A4Info[2] = TMPA4Info[2];
@@ -2382,7 +2400,7 @@ public class Controller implements Initializable {
         if (Address5Info.getText() != null) {
             try {
                 String TMPAddress5 = Address5Info.getText();
-                String[] TMPA5Info = TMPAddress5.split("|");
+                String[] TMPA5Info = TMPAddress5.split("\\|");
                 A5Info[0] = TMPA5Info[0];
                 A5Info[1] = TMPA5Info[1];
                 A5Info[2] = TMPA5Info[2];
@@ -2402,7 +2420,7 @@ public class Controller implements Initializable {
         if (Address6Info.getText() != null) {
             try {
                 String TMPAddress6 = Address6Info.getText();
-                String[] TMPA6Info = TMPAddress6.split("|");
+                String[] TMPA6Info = TMPAddress6.split("\\|");
                 A6Info[0] = TMPA6Info[0];
                 A6Info[1] = TMPA6Info[1];
                 A6Info[2] = TMPA6Info[2];
@@ -2521,7 +2539,7 @@ public class Controller implements Initializable {
         if (job3Info.getText() != null) {
             try {
                 String TMPEmployment3 = job3Info.getText();
-                String[] TMPE3Info = TMPEmployment3.split("|");
+                String[] TMPE3Info = TMPEmployment3.split("\\|");
                 E3Info[0] = TMPE3Info[0];
                 E3Info[1] = TMPE3Info[1];
                 E3Info[2] = TMPE3Info[2];
@@ -2539,7 +2557,7 @@ public class Controller implements Initializable {
         if (job4Info.getText() != null) {
             try {
                 String TMPEmployment4 = job4Info.getText();
-                String[] TMPE4Info = TMPEmployment4.split("|");
+                String[] TMPE4Info = TMPEmployment4.split("\\|");
                 E4Info[0] = TMPE4Info[0];
                 E4Info[1] = TMPE4Info[1];
                 E4Info[2] = TMPE4Info[2];
@@ -2557,7 +2575,7 @@ public class Controller implements Initializable {
         if (job6Info.getText() != null) {
             try {
                 String TMPEmployment6 = job6Info.getText();
-                String[] TMPE6Info = TMPEmployment6.split("|");
+                String[] TMPE6Info = TMPEmployment6.split("\\|");
                 E6Info[0] = TMPE6Info[0];
                 E6Info[1] = TMPE6Info[1];
                 E6Info[2] = TMPE6Info[2];
@@ -2575,7 +2593,7 @@ public class Controller implements Initializable {
         if (job6Info.getText() != null) {
             try {
                 String TMPEmployment6 = job6Info.getText();
-                String[] TMPE6Info = TMPEmployment6.split("|");
+                String[] TMPE6Info = TMPEmployment6.split("\\|");
                 E6Info[0] = TMPE6Info[0];
                 E6Info[1] = TMPE6Info[1];
                 E6Info[2] = TMPE6Info[2];
@@ -2625,7 +2643,7 @@ public class Controller implements Initializable {
         if (Spouse1Info.getText() != null) {
             try {
                 String TMPSpouse3 = Spouse3Info.getText();
-                String[] TMPS1Info = TMPSpouse3.split("|");
+                String[] TMPS1Info = TMPSpouse3.split("\\|");
                 S1Info[0] = TMPS1Info[0];
                 S1Info[1] = TMPS1Info[1];
                 S1Info[2] = TMPS1Info[2];
@@ -2643,7 +2661,7 @@ public class Controller implements Initializable {
         if (Spouse2Info.getText() != null) {
             try {
                 String TMPSpouse2 = Spouse2Info.getText();
-                String[] TMPS2Info = TMPSpouse2.split("|");
+                String[] TMPS2Info = TMPSpouse2.split("\\|");
                 S2Info[0] = TMPS2Info[0];
                 S2Info[1] = TMPS2Info[1];
                 S2Info[2] = TMPS2Info[2];
@@ -2661,7 +2679,7 @@ public class Controller implements Initializable {
         if (Spouse3Info.getText() != null) {
             try {
                 String TMPSpouse3 = Spouse3Info.getText();
-                String[] TMPS3Info = TMPSpouse3.split("|");
+                String[] TMPS3Info = TMPSpouse3.split("\\|");
                 S3Info[0] = TMPS3Info[0];
                 S3Info[1] = TMPS3Info[1];
                 S3Info[2] = TMPS3Info[2];
@@ -2679,7 +2697,7 @@ public class Controller implements Initializable {
         if (Spouse4Info.getText() != null) {
             try {
                 String TMPSpouse4 = Spouse4Info.getText();
-                String[] TMPS4Info = TMPSpouse4.split("|");
+                String[] TMPS4Info = TMPSpouse4.split("\\|");
                 S4Info[0] = TMPS4Info[0];
                 S4Info[1] = TMPS4Info[1];
                 S4Info[2] = TMPS4Info[2];
@@ -2769,15 +2787,15 @@ public class Controller implements Initializable {
         if (child4Info.getText() != null) {
             try {
                 String TMPchild4 = child4Info.getText();
-                String[] TMPC4Info = TMPchild4.split("|");
-                C4Info[0] = TMPC4Info[0];
-                C4Info[1] = TMPC4Info[1];
-                C4Info[2] = TMPC4Info[2];
-                C4Info[3] = TMPC4Info[3];
-                C4Info[4] = TMPC4Info[4];
-                C4Info[5] = TMPC4Info[5];
-                C4Info[6] = TMPC4Info[6];
-                C4Info[7] = TMPC4Info[7];
+                String[] TMPC4Info = TMPchild4.split("\\|");
+                C4Info[0] = TMPC4Info[0].trim();
+                C4Info[1] = TMPC4Info[1].trim();
+                C4Info[2] = TMPC4Info[2].trim();
+                C4Info[3] = TMPC4Info[3].trim();
+                C4Info[4] = TMPC4Info[4].trim();
+                C4Info[5] = TMPC4Info[5].trim();
+                C4Info[6] = TMPC4Info[6].trim();
+                C4Info[7] = TMPC4Info[7].trim();
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
             }
@@ -2785,15 +2803,15 @@ public class Controller implements Initializable {
         if (child5Info.getText() != null) {
             try {
                 String TMPchild5 = child5Info.getText();
-                String[] TMPC5Info = TMPchild5.split("|");
-                C5Info[0] = TMPC5Info[0];
-                C5Info[1] = TMPC5Info[1];
-                C5Info[2] = TMPC5Info[2];
-                C5Info[3] = TMPC5Info[3];
-                C5Info[4] = TMPC5Info[4];
-                C5Info[5] = TMPC5Info[5];
-                C5Info[6] = TMPC5Info[6];
-                C5Info[7] = TMPC5Info[7];
+                String[] TMPC5Info = TMPchild5.split("\\|");
+                C5Info[0] = TMPC5Info[0].trim();
+                C5Info[1] = TMPC5Info[1].trim();
+                C5Info[2] = TMPC5Info[2].trim();
+                C5Info[3] = TMPC5Info[3].trim();
+                C5Info[4] = TMPC5Info[4].trim();
+                C5Info[5] = TMPC5Info[5].trim();
+                C5Info[6] = TMPC5Info[6].trim();
+                C5Info[7] = TMPC5Info[7].trim();
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
             }
@@ -2801,15 +2819,15 @@ public class Controller implements Initializable {
         if (child6Info.getText() != null) {
             try {
                 String TMPchild6 = child6Info.getText();
-                String[] TMPC6Info = TMPchild6.split("|");
-                C6Info[0] = TMPC6Info[0];
-                C6Info[1] = TMPC6Info[1];
-                C6Info[2] = TMPC6Info[2];
-                C6Info[3] = TMPC6Info[3];
-                C6Info[4] = TMPC6Info[4];
-                C6Info[5] = TMPC6Info[5];
-                C6Info[6] = TMPC6Info[6];
-                C6Info[7] = TMPC6Info[7];
+                String[] TMPC6Info = TMPchild6.split("\\|");
+                C6Info[0] = TMPC6Info[0].trim();
+                C6Info[1] = TMPC6Info[1].trim();
+                C6Info[2] = TMPC6Info[2].trim();
+                C6Info[3] = TMPC6Info[3].trim();
+                C6Info[4] = TMPC6Info[4].trim();
+                C6Info[5] = TMPC6Info[5].trim();
+                C6Info[6] = TMPC6Info[6].trim();
+                C6Info[7] = TMPC6Info[7].trim();
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
             }
@@ -2817,15 +2835,15 @@ public class Controller implements Initializable {
         if (child7Info.getText() != null) {
             try {
                 String TMPchild7 = child7Info.getText();
-                String[] TMPC7Info = TMPchild7.split("|");
-                C7Info[0] = TMPC7Info[0];
-                C7Info[1] = TMPC7Info[1];
-                C7Info[2] = TMPC7Info[2];
-                C7Info[3] = TMPC7Info[3];
-                C7Info[4] = TMPC7Info[4];
-                C7Info[5] = TMPC7Info[5];
-                C7Info[6] = TMPC7Info[6];
-                C7Info[7] = TMPC7Info[7];
+                String[] TMPC7Info = TMPchild7.split("\\|");
+                C7Info[0] = TMPC7Info[0].trim();
+                C7Info[1] = TMPC7Info[1].trim();
+                C7Info[2] = TMPC7Info[2].trim();
+                C7Info[3] = TMPC7Info[3].trim();
+                C7Info[4] = TMPC7Info[4].trim();
+                C7Info[5] = TMPC7Info[5].trim();
+                C7Info[6] = TMPC7Info[6].trim();
+                C7Info[7] = TMPC7Info[7].trim();
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
             }
@@ -3051,18 +3069,62 @@ public class Controller implements Initializable {
         CApplyList[2] = C3Files;
     }
 
+    public Scene getShadowScene(Parent p) {
+        Scene scene;
+        VBox outer = new VBox();
+        outer.getChildren().add( p );
+        outer.setPadding(new javafx.geometry.Insets(20.0d));
+        outer.setBackground( new Background(new BackgroundFill( javafx.scene.paint.Color.rgb(0,0,0,0), new CornerRadii(0), new
+                javafx.geometry.Insets(0))));
 
+        p.setEffect(new DropShadow(GAUSSIAN, javafx.scene.paint.Color.rgb(0,0,0,.25), 15, 0, 0, 0));
+        ((VBox)p).setBackground( new Background(new BackgroundFill( javafx.scene.paint.Color.TRANSPARENT, new CornerRadii(0), new Insets(0)
+        )));
+
+        scene = new Scene( outer );
+        scene.setFill( Color.rgb(0,255,0,0) );
+        return scene;
+    }
 
 
 
     @FXML
     public void fillApp(ActionEvent event)  throws Exception {
-        //addAddendums();
-        //checkUnemployedBoxes();
         SaveVars();
-        checkBoxValue();
-        fillAppHelper();
+        addAddendums();
+        //checkUnemployedBoxes();
+        //resetVars();
+
+        //checkBoxValue();
+        //fillAppHelper();
     }
+    public void resetVars() throws Exception {
+        String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate, CityBirth, CountryBirth,
+                Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode, PassportNum, TravelNum, ExpirationDate, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate,
+                I94Num, ExpirationDate1, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, StartDate, EndDate, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1,
+                Country1, StartDate1, EndDate1, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2, EndDate2, Employer, WorkAddressStreet, WorkAddInfoAddress, WorkAddressCity,
+                WorkState, WorkZipcode, WorkCountry, WorkOccupation, WorkStartDate, WorkEndDate, Employer1, WorkAddressStreet1, WorkAddInfoAddress1, WorkAddressCity1, WorkState1, WorkZipcode1, WorkCountry1,
+                WorkOccupation1, WorkStartDate1, WorkEndDate1, Employer2, WorkAddressStreet2, WorkAddInfoAddress2, WorkAddressCity2, WorkState2, WorkZipcode2, WorkCountry2, WorkOccupation2, WorkStartDate2,
+                WorkEndDate2, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName,
+                MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate, SMarriageDate,
+                SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DDOBDate, DMarriageDate, DCityMarriage, DStateMarriage, DMarriageEndDate, SCityEnd, SStateEnd, SCountryEnd,  SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName,
+                C1MiddleName, C1FirstName, C1ANum, C1DOBDate, C1MarriageDate, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate, C2MarriageDate, C2CityBirth,
+                C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate, C3MarriageDate, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization,
+                StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate, OrganizationEndDate, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1,
+                NatureOrganization1, OrganizationStartDate1, OrganizationEndDate1, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2,
+                OrganizationEndDate2, ADayTimeNum, AMobNum, AEmail, SignatureDate, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState,
+                IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, PN, PaN, IN, AddendumA, AddendumB, AddendumC, AddendumD, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, PN1, PaN1, IN1, Addendum1A, Addendum1B, Addendum1C, Addendum1D,
+                Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, PN2, PaN2, IN2, Addendum2A, Addendum2B, Addendum2C, Addendum2D, Addendum2E, Addendum2F, Addendum2G, Addendum2J,
+                PN3, PaN3, IN3, Addendum3A, Addendum3B, Addendum3C, Addendum3D, Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, PN4, PaN4, IN4, Addendum4A, Addendum4B, Addendum4C, Addendum4D,
+                Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765};
+
+        for (int j = 0; j < resetArray.length; j++) {
+            resetArray[j] = "";
+        }
+
+
+    }
+
     public void fillAppHelper() throws IOException {
         String NameTitle = new String();
 
@@ -3081,7 +3143,7 @@ public class Controller implements Initializable {
                 C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate, C3MarriageDate, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization,
                 StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate, OrganizationEndDate, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1,
                 NatureOrganization1, OrganizationStartDate1, OrganizationEndDate1, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2,
-                OrganizationEndDate2, PreparerForm, ADayTimeNum, AMobNum, AEmail, SignatureDate, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState,
+                OrganizationEndDate2, ADayTimeNum, AMobNum, AEmail, SignatureDate, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState,
                 IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, PN, PaN, IN, AddendumA, AddendumB, AddendumC, AddendumD, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, PN1, PaN1, IN1, Addendum1A, Addendum1B, Addendum1C, Addendum1D,
                 Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, PN2, PaN2, IN2, Addendum2A, Addendum2B, Addendum2C, Addendum2D, Addendum2E, Addendum2F, Addendum2G, Addendum2J,
                 PN3, PaN3, IN3, Addendum3A, Addendum3B, Addendum3C, Addendum3D, Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, PN4, PaN4, IN4, Addendum4A, Addendum4B, Addendum4C, Addendum4D,
@@ -3102,7 +3164,7 @@ public class Controller implements Initializable {
                 "C3MarriageDate", "C3CityBirth", "C3CountryBirth", "Feet", "Inches", "PD1", "PD2", "PD3", "NameOrganization", "CityOrganization", "StateOrganization", "CountryOrganization",
                 "NatureOrganization", "OrganizationStartDate", "OrganizationEndDate", "NameOrganization1", "CityOrganization1", "StateOrganization1", "CountryOrganization1", "NatureOrganization1",
                 "OrganizationStartDate1", "OrganizationEndDate1", "NameOrganization2", "CityOrganization2", "StateOrganization2", "CountryOrganization2", "NatureOrganization2", "OrganizationStartDate2",
-                "OrganizationEndDate2", "PreparerForm", "ADayTimeNum", "AMobNum", "AEmail", "SignatureDate", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress",
+                "OrganizationEndDate2", "ADayTimeNum", "AMobNum", "AEmail", "SignatureDate", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress",
                 "IAddressCity", "IState", "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language", "PN", "PaN", "IN", "AddendumA", "AddendumB", "AddendumC", "AddendumD", "AddendumE", "AddendumF", "AddendumG",
                 "AddendumH", "AddendumI", "AddendumJ", "PN1", "PaN1", "IN1", "Addendum1A", "Addendum1B", "Addendum1C", "Addendum1D", "Addendum1E", "Addendum1F", "Addendum1G", "Addendum1H", "Addendum1I",
                 "Addendum1J", "PN2", "PaN2", "IN2", "Addendum2A", "Addendum2B", "Addendum2C", "Addendum2D", "Addendum2E", "Addendum2F", "Addendum2G", "Addendum2J", "PN3", "PaN3", "IN3", "Addendum3A",
@@ -3611,20 +3673,46 @@ public class Controller implements Initializable {
             FileInputStream fis = new FileInputStream("C:\\Users\\Filip\\Downloads\\test.docx");
             XWPFDocument docx = new XWPFDocument(OPCPackage.open(fis));
             XWPFWordExtractor extractor = new XWPFWordExtractor(docx);
+
+            String[] listAddendumC4 = {"<family_name_4>","<first_name_4>","<middle_name_4>","<alien_number_4>","<city_birth_4>","<country_birth_4>","<date_birth_4>"};
+            String[] listAddendumsC4Clear = {"Family Name: <family_name_4>","First Name: <first_name_4>","Middle Name: <middle_name_4>","Alien Number: <alien_number_4>","City of Birth: <city_birth_4>","Country of Birth: <country_birth_4>","Date of Birth: <date_birth_4>"};
+            String[] listAddendumC5 = {"<family_name_5>","<first_name_5>","<middle_name_5>","<alien_number_5>","<city_birth_5>","<country_birth_5>","<date_birth_5>"};
+            String[] listAddendumsC5Clear = {"Family Name: <family_name_5>","First Name: <first_name_5>","Middle Name: <middle_name_5>","Alien Number: <alien_number_5>","City of Birth: <city_birth_5>","Country of Birth: <country_birth_5>","Date of Birth: <date_birth_5>"};
+            String[] listAddendumC6 = {"<family_name_6>","<first_name_6>","<middle_name_6>","<alien_number_6>","<city_birth_6>","<country_birth_6>","<date_birth_6>"};
+            String[] listAddendumsC6Clear = {"Family Name: <family_name_6>","First Name: <first_name_6>","Middle Name: <middle_name_6>","Alien Number: <alien_number_6>","City of Birth: <city_birth_6>","Country of Birth: <country_birth_6>","Date of Birth: <date_birth_6>"};
+            String[] listAddendumC7 = {"<family_name_7>","<first_name_7>","<middle_name_7>","<alien_number_7>","<city_birth_7>","<country_birth_7>","<date_birth_7>"};
+            String[] listAddendumsC7Clear = {"Family Name: <family_name_7>","First Name: <first_name_7>","Middle Name: <middle_name_7>","Alien Number: <alien_number_7>","City of Birth: <city_birth_7>","Country of Birth: <country_birth_7>","Date of Birth: <date_birth_7>"};
+            String[][] listAddendumsChildren = {listAddendumC4, listAddendumC5, listAddendumC6, listAddendumC7};
+            String[][] listAddendumsChildrenValues = {C4Info, C5Info, C6Info, C7Info};
+            String[][] listAddendumsClear = {listAddendumsC4Clear, listAddendumsC5Clear, listAddendumsC6Clear, listAddendumsC7Clear};
+
             for (XWPFParagraph p : docx.getParagraphs()) {
                 List<XWPFRun> runs = p.getRuns();
                 if (runs != null) {
                     for (XWPFRun r : runs) {
                         String text = r.getText(0);
+                        for (int g = 0; g < listAddendumsChildren.length; g++) {
+                            for (int j = 0; j < listAddendumsChildren[g].length; j++) {
+                                try {
+                                    if (text != null && text.contains(listAddendumsChildren[g][j])) {
+                                        if (listAddendumsChildrenValues[g][j] == null || listAddendumsChildrenValues[g][j] == "") {
+                                            //System.out.println("null " + listAddendumsClear[g][j]);
+                                            int pPos = docx.getPosOfParagraph(p);
+                                            docx.getDocument().getBody().removeP(pPos);
+                                            //text = text.replace(listAddendumsClear[g][j], "");
+                                            //r.setText(text, 0);
+                                        } else {
+                                            System.out.println(C4Info[0]);
+                                            text = text.replace(listAddendumsChildren[g][j], listAddendumsChildrenValues[g][j]);
+                                            //docx.getTables().get(0);
+                                            r.setText(text, 0);
 
-                        if (text != null && text.contains("dsa")) {
-                            //text = text.replace("dsa", "New York");
-                            docx.getTables().get(0);
-                            r.setText(text, 0);
-                            System.out.println("text recognized");
-                        }
-                        else {
-                            System.out.println("text not recognized");
+                                        }
+                                    }
+                                }
+                                catch (Exception ex) {
+                                }
+                            }
                         }
                     }
                 }

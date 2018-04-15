@@ -8,16 +8,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #30c1ae;" stylesheets="@design.css" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #30c1ae;" styleClass="backAnchor" stylesheets="@design_add.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <TextField fx:id="ClientC1FamilyName1" alignment="CENTER" layoutX="20.0" layoutY="65.0" prefWidth="180.0" promptText="Family Name " style="-fx-background-color: #ffffff;">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <AnchorPane layoutY="280.0" prefHeight="120.0" prefWidth="600.0" style="-fx-background-color: #1d7e6d;">
+      <AnchorPane layoutY="280.0" prefHeight="120.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" styleClass="anchor">
          <children>
-            <Button fx:id="closeButton" layoutX="230.0" layoutY="50.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="140.0" styleClass="button" text="Close Window" textFill="#515151">
+            <Button fx:id="closeButton" layoutX="230.0" layoutY="37.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="140.0" styleClass="leaveButton" text="Close Window" textFill="#515151">
                <font>
                   <Font size="14.0" />
                </font>

@@ -13,7 +13,7 @@
 
 }
 
-.button {
+.buttonMain {
     -fx-background-color: transparent;
     -fx-border-color: #ffffff;
     -fx-border-width: 2px;
@@ -30,15 +30,19 @@
     -fx-border-radius: 4px;
     -fx-background-radius: 8px;
     -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,.5), 3, 0, 0, 0)
 }
 
 .buttonProcess: hover {
     -fx-background-color: #aeecf9;
     -fx-border-color: #aeecf9;
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 8px;
     -fx-text-fill: #ffffff;
 }
 
-.button: hover {
+.buttonMain: hover {
     -fx-background-color: #ffffff;
     -fx-text-fill: #111111;
 }
@@ -60,7 +64,7 @@
 
 
 .colorBackgroundBox {
-    -fx-background-image: url("https://i.imgur.com/IfgHI3G.png");
+    -fx-background-image: url("/sample/resources/images/background.png");
     -fx-background-repeat: no-repeat;
     -fx-background-size: 900px;
 }
@@ -104,21 +108,25 @@
 }
 
 .tab-pane .tab-header-area .tab-header-background {
+    -fx-alignment: CENTER;
     -fx-background-color: transparent;
     -fx-border-radius: 0px;
 }
 
 .tab-pane{
+    -fx-alignment: CENTER;
     -fx-tab-min-width:50px;
     -fx-border-radius: 0px;
 
 }
 
 .tab{
+    -fx-alignment: CENTER;
     -fx-background-insets: 0 1 0 1,0,0;
     -fx-border-radius: 0px;
 }
 .tab-pane .tab {
+    -fx-alignment: CENTER;
     -fx-background-color: #e6e6e6;
     -fx-border-radius: 0px;
     -fx-background-color: transparent;
@@ -126,6 +134,7 @@
 }
 
 .tab-pane .tab:selected {
+    -fx-alignment: CENTER;
     -fx-background-color: transparent;
     -fx-border-radius: 0px;
 
@@ -143,4 +152,8 @@
     -fx-alignment: CENTER;
     -fx-text-fill: #f3afaf;
     -fx-border-radius: 0px;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label {
+    -fx-alignment: CENTER;
 }

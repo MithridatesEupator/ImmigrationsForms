@@ -49,7 +49,7 @@ public class Main extends Application  {
 
         }
 
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 800, 650));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         //primaryStage.setPadding(new Insets(20,20,20,20));
         scene = (getShadowScene(root));
