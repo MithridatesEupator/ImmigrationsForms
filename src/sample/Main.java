@@ -38,7 +38,7 @@ public class Main extends Application  {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("mainApp.fxml"));
         primaryStage.setTitle("PDF Filler Application");
         primaryStage.setResizable(false);
         Scene scene = null;
@@ -82,7 +82,7 @@ public class Main extends Application  {
         outer.setBackground( new Background(new BackgroundFill( Color.rgb(0,0,0,0), new CornerRadii(0), new
                 Insets(0))));
 
-        p.setEffect(new DropShadow(GAUSSIAN, Color.rgb(0,0,0,.25), 15, 0, 0, 0));
+        p.setEffect(new DropShadow(GAUSSIAN, Color.rgb(0,0,0,.65), 15, 0, 0, 0));
         ((VBox)p).setBackground( new Background(new BackgroundFill( Color.TRANSPARENT, new CornerRadii(0), new Insets(0)
         )));
 

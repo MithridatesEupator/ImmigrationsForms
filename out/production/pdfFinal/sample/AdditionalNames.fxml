@@ -5,57 +5,57 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="backAnchor" stylesheets="@design_add.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;" styleClass="backAnchor" stylesheets="@design.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
 
-      <TextField fx:id="clientFamilyName1" alignment="CENTER" layoutX="25.0" layoutY="65.0" promptText="Family Name " style="-fx-background-color: #ffffff;">
+      <TextField fx:id="clientFamilyName1" alignment="CENTER" layoutX="16.0" layoutY="65.0" promptText="Family Name " styleClass="textField">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="clientFirstName1" alignment="CENTER" layoutX="213.0" layoutY="65.0" promptText="First Name " style="-fx-background-color: #ffffff;">
+      <TextField fx:id="clientFirstName1" alignment="CENTER" layoutX="205.0" layoutY="65.0" promptText="First Name " styleClass="textField">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="clientMiddleName1" alignment="CENTER" layoutX="400.0" layoutY="65.0" promptText="Middle Name " style="-fx-background-color: #ffffff;">
+      <TextField fx:id="clientMiddleName1" alignment="CENTER" layoutX="394.0" layoutY="65.0" promptText="Middle Name " styleClass="textField">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="clientFamilyName3" alignment="CENTER" layoutX="25.0" layoutY="185.0" promptText="Family Name " style="-fx-background-color: #ffffff;">
+      <TextField fx:id="clientFamilyName3" alignment="CENTER" layoutX="16.0" layoutY="185.0" promptText="Family Name " styleClass="textField">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="clientFirstName3" alignment="CENTER" layoutX="213.0" layoutY="185.0" promptText="First Name " style="-fx-background-color: #ffffff;">
+      <TextField fx:id="clientFirstName3" alignment="CENTER" layoutX="205.0" layoutY="185.0" promptText="First Name " styleClass="textField">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="clientMiddleName3" alignment="CENTER" layoutX="400.0" layoutY="185.0" promptText="Middle Name " style="-fx-background-color: #ffffff;">
+      <TextField fx:id="clientMiddleName3" alignment="CENTER" layoutX="394.0" layoutY="185.0" promptText="Middle Name " styleClass="textField">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="clientFamilyName2" alignment="CENTER" layoutX="26.0" layoutY="125.0" promptText="Family Name " style="-fx-background-color: #ffffff;">
+      <TextField fx:id="clientFamilyName2" alignment="CENTER" layoutX="16.0" layoutY="125.0" promptText="Family Name " styleClass="textField">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="clientFirstName2" alignment="CENTER" layoutX="214.0" layoutY="125.0" promptText="First Name " style="-fx-background-color: #ffffff;">
+      <TextField fx:id="clientFirstName2" alignment="CENTER" layoutX="205.0" layoutY="125.0" promptText="First Name " styleClass="textField">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="clientMiddleName2" alignment="CENTER" layoutX="401.0" layoutY="125.0" promptText="Middle Name " style="-fx-background-color: #ffffff;">
+      <TextField fx:id="clientMiddleName2" alignment="CENTER" layoutX="395.0" layoutY="125.0" promptText="Middle Name " styleClass="textField">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <AnchorPane layoutX="1.0" layoutY="260.0" prefHeight="140.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" styleClass="anchor">
+      <AnchorPane layoutY="260.0" prefHeight="140.0" prefWidth="600.0" style="-fx-background-color: #f5f5f5;" styleClass="bottom">
          <children>
-            <Button fx:id="closeButton" layoutX="238.0" layoutY="47.0" mnemonicParsing="false" onAction="#closeWindow" styleClass="leaveButton" text="Close Window" textFill="#515151">
+            <Button fx:id="closeButton" layoutX="220.0" layoutY="50.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="160.0" styleClass="redButton" text="Close Window" textFill="#575757">
                <font>
                   <Font size="14.0" />
                </font>

@@ -14,9 +14,11 @@ import javafx.scene.image.Image;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.StageStyle;
+import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
 import javafx.stage.Stage;
 import javafx.application.Application;
@@ -38,10 +40,11 @@ import java.awt.*;
 import java.io.*;
 import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.List;
-import java.util.ResourceBundle;
+
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
@@ -374,6 +377,27 @@ public class Controller implements Initializable {
     public CheckBox jobUnemployed1;
     public CheckBox jobUnemployed2;
     public Button minimizeButton;
+    public AnchorPane mainMenu;
+    public AnchorPane AddressMenu;
+    public AnchorPane topBar;
+    public Button addressButton;
+    public Button mainOptionsButton;
+    public MenuItem male;
+    public MenuItem female;
+    public MenuButton sex;
+    public Button miscButton;
+    public AnchorPane miscMenu;
+    public Button marriageButton;
+    public AnchorPane marriageMenu;
+    public Text fileShow;
+    public Button employmentButton;
+    public Button childrenButton;
+    public Button addButton;
+    public AnchorPane childrenMenu;
+    public AnchorPane employmentMenu;
+    public AnchorPane addMenu;
+    public AnchorPane parentsMenu;
+    public Button parentButton;
 
     private Stage stage;
 
@@ -797,7 +821,17 @@ public class Controller implements Initializable {
         catch (Exception ex) { }
         try { ShowC3InfoVars(); }
         catch (Exception ex) { }
-
+        try { mainOptionsButton.getStyleClass().add("menuButtonChangeSelected"); }
+        catch (Exception ex) { }
+        try { buttonI485.setStyle("-fx-background-color: " + pressedColor + ";"); }
+        catch (Exception ex) { }
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            Date date = new Date();
+            SignatureDate = dateFormat.format(date);
+            todayDate.setText(SignatureDate);
+        }
+        catch (Exception ex) { }
 
     }
 
@@ -847,28 +881,150 @@ public class Controller implements Initializable {
         }
         return finalBoolean;
     }
+    String pressedColor = "#1570c0";
+    String normalColor = "#2196f3";
 
     public void i90Select(ActionEvent event) {
         fileType = "i-90";
-        buttonI90.setStyle("-fx-background-color: #ffffff;-fx-text-fill: #111111;");
-        buttonI485.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
-        buttonI765.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
+        buttonI90.setStyle("-fx-background-color: " + pressedColor + ";");
+        buttonI485.setStyle("-fx-background-color: " + normalColor + ";");
+        buttonI765.setStyle("-fx-background-color: " + normalColor + ";");
+        fileShow.setText(" I-90");
     }
 
     public void i485Select(ActionEvent event) {
         fileType = "i-485";
-        buttonI90.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
-        buttonI485.setStyle("-fx-background-color: #ffffff;-fx-text-fill: #111111;");
-        buttonI765.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
+        buttonI90.setStyle("-fx-background-color: " + normalColor + ";");
+        buttonI485.setStyle("-fx-background-color: " + pressedColor + ";");
+        buttonI765.setStyle("-fx-background-color: " + normalColor + ";");
+        fileShow.setText("I-485");
     }
 
     public void i765Select(ActionEvent event) {
         fileType = "i-765";
-        buttonI90.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
-        buttonI485.setStyle("-fx-background-color: transparent;-fx-text-fill: #ffffff;");
-        buttonI765.setStyle("-fx-background-color: #ffffff;-fx-text-fill: #111111;");
+        buttonI90.setStyle("-fx-background-color: " + normalColor + ";");
+        buttonI485.setStyle("-fx-background-color: " + normalColor + ";");
+        buttonI765.setStyle("-fx-background-color: " + pressedColor + ";");
+        fileShow.setText("I-765");
     }
+    public void goMainMenu(ActionEvent event) {
+        addressButton.getStyleClass().remove("menuButtonChangeSelected");
+        miscButton.getStyleClass().remove("menuButtonChangeSelected");
+        childrenButton.getStyleClass().remove("menuButtonChangeSelected");
+        marriageButton.getStyleClass().remove("menuButtonChangeSelected");
+        addButton.getStyleClass().remove("menuButtonChangeSelected");
+        employmentButton.getStyleClass().remove("menuButtonChangeSelected");
+        parentButton.getStyleClass().remove("menuButtonChangeSelected");
+        if (!mainOptionsButton.getStyleClass().contains("menuButtonChangeSelected")) {
+            mainOptionsButton.getStyleClass().add("menuButtonChangeSelected");
+        }
+        mainMenu.toFront();
+        topBar.toFront();
 
+    }
+    public void goMarriageMenu(ActionEvent event) {
+        addressButton.getStyleClass().remove("menuButtonChangeSelected");
+        childrenButton.getStyleClass().remove("menuButtonChangeSelected");
+        mainOptionsButton.getStyleClass().remove("menuButtonChangeSelected");
+        employmentButton.getStyleClass().remove("menuButtonChangeSelected");
+        addButton.getStyleClass().remove("menuButtonChangeSelected");
+        parentButton.getStyleClass().remove("menuButtonChangeSelected");
+        if (!marriageButton.getStyleClass().contains("menuButtonChangeSelected")) {
+            marriageButton.getStyleClass().add("menuButtonChangeSelected");
+        }
+        miscButton.getStyleClass().remove("menuButtonChangeSelected");
+        marriageMenu.toFront();
+        topBar.toFront();
+
+    }
+    public void goMiscMenu(ActionEvent event) {
+        addressButton.getStyleClass().remove("menuButtonChangeSelected");
+        mainOptionsButton.getStyleClass().remove("menuButtonChangeSelected");
+        marriageButton.getStyleClass().remove("menuButtonChangeSelected");
+        childrenButton.getStyleClass().remove("menuButtonChangeSelected");
+        addButton.getStyleClass().remove("menuButtonChangeSelected");
+        employmentButton.getStyleClass().remove("menuButtonChangeSelected");
+        parentButton.getStyleClass().remove("menuButtonChangeSelected");
+        if (!miscButton.getStyleClass().contains("menuButtonChangeSelected")) {
+            miscButton.getStyleClass().add("menuButtonChangeSelected");
+        }
+        miscMenu.toFront();
+        topBar.toFront();
+
+    }
+    public void goAddressMenu(ActionEvent event) {
+        if (!addressButton.getStyleClass().contains("menuButtonChangeSelected")) {
+            addressButton.getStyleClass().add("menuButtonChangeSelected");
+        }
+        mainOptionsButton.getStyleClass().remove("menuButtonChangeSelected");
+        miscButton.getStyleClass().remove("menuButtonChangeSelected");
+        marriageButton.getStyleClass().remove("menuButtonChangeSelected");
+        childrenButton.getStyleClass().remove("menuButtonChangeSelected");
+        employmentButton.getStyleClass().remove("menuButtonChangeSelected");
+        addButton.getStyleClass().remove("menuButtonChangeSelected");
+        parentButton.getStyleClass().remove("menuButtonChangeSelected");
+        AddressMenu.toFront();
+        topBar.toFront();
+    }
+    public void goChildrenMenu(ActionEvent event) {
+        addressButton.getStyleClass().remove("menuButtonChangeSelected");
+        mainOptionsButton.getStyleClass().remove("menuButtonChangeSelected");
+        marriageButton.getStyleClass().remove("menuButtonChangeSelected");
+        employmentButton.getStyleClass().remove("menuButtonChangeSelected");
+        addButton.getStyleClass().remove("menuButtonChangeSelected");
+        parentButton.getStyleClass().remove("menuButtonChangeSelected");
+        if (!childrenButton.getStyleClass().contains("menuButtonChangeSelected")) {
+            childrenButton.getStyleClass().add("menuButtonChangeSelected");
+        }
+        childrenMenu.toFront();
+        topBar.toFront();
+
+    }
+    public void goEmploymentMenu(ActionEvent event) {
+        addressButton.getStyleClass().remove("menuButtonChangeSelected");
+        mainOptionsButton.getStyleClass().remove("menuButtonChangeSelected");
+        marriageButton.getStyleClass().remove("menuButtonChangeSelected");
+        childrenButton.getStyleClass().remove("menuButtonChangeSelected");
+        addButton.getStyleClass().remove("menuButtonChangeSelected");
+        miscButton.getStyleClass().remove("menuButtonChangeSelected");
+        parentButton.getStyleClass().remove("menuButtonChangeSelected");
+        if (!employmentButton.getStyleClass().contains("menuButtonChangeSelected")) {
+            employmentButton.getStyleClass().add("menuButtonChangeSelected");
+        }
+        employmentMenu.toFront();
+        topBar.toFront();
+
+    }
+    public void goAddMenu(ActionEvent event) {
+        addressButton.getStyleClass().remove("menuButtonChangeSelected");
+        mainOptionsButton.getStyleClass().remove("menuButtonChangeSelected");
+        marriageButton.getStyleClass().remove("menuButtonChangeSelected");
+        childrenButton.getStyleClass().remove("menuButtonChangeSelected");
+        employmentButton.getStyleClass().remove("menuButtonChangeSelected");
+        miscButton.getStyleClass().remove("menuButtonChangeSelected");
+        parentButton.getStyleClass().remove("menuButtonChangeSelected");
+        if (!addButton.getStyleClass().contains("menuButtonChangeSelected")) {
+            addButton.getStyleClass().add("menuButtonChangeSelected");
+        }
+        addMenu.toFront();
+        topBar.toFront();
+
+    }
+    public void goParentMenu(ActionEvent event) {
+        addressButton.getStyleClass().remove("menuButtonChangeSelected");
+        mainOptionsButton.getStyleClass().remove("menuButtonChangeSelected");
+        marriageButton.getStyleClass().remove("menuButtonChangeSelected");
+        childrenButton.getStyleClass().remove("menuButtonChangeSelected");
+        employmentButton.getStyleClass().remove("menuButtonChangeSelected");
+        miscButton.getStyleClass().remove("menuButtonChangeSelected");
+        addButton.getStyleClass().remove("menuButtonChangeSelected");
+        if (!parentButton.getStyleClass().contains("menuButtonChangeSelected")) {
+            parentButton.getStyleClass().add("menuButtonChangeSelected");
+        }
+        parentsMenu.toFront();
+        topBar.toFront();
+
+    }
     public void asyleeSelect(ActionEvent event) {
         ImmigrationStatus = "Asylum";
         immigrationStatus.setText("Asylee");
@@ -1441,22 +1597,11 @@ public class Controller implements Initializable {
         ClientC3EyeColor.setText("Hazel");
         eyeIdentifier = "Hazel";
     }
-
     public void C3unknownEyesSelect(ActionEvent event) {
         C3EyeColor = "UnknownEyes";
         ClientC3EyeColor.setText("Other");
         eyeIdentifier = "Other";
     }
-
-    public void checkBoxValue() {
-        if (maleGender.isSelected()) {
-            AGender = "Male";
-        }
-        else if (femaleGender.isSelected()) {
-            AGender = "Female";
-        }
-    }
-
     public void C1selectSpouse1(ActionEvent event) {
         C1SpouseNumber = "1";
         ClientC1Parent.setText("Spouse " + C1SpouseNumber);
@@ -1643,6 +1788,15 @@ public class Controller implements Initializable {
     public void uncheckSpouseFemaleGender(ActionEvent event) {
         SpouseFemale.setSelected(false);
     }
+    public void maleSelect(ActionEvent event) throws Exception {
+        AGender = "Male";
+        sex.setText(AGender);
+    }
+    public void femaleSelect(ActionEvent event) throws Exception {
+        AGender = "Female";
+        sex.setText(AGender);
+    }
+
     public void visitGithub(ActionEvent event) throws Exception {
         URI u = new URI("https://github.com/MithridatesEupator/ImmigrationsForms");
         java.awt.Desktop.getDesktop().browse(u);
@@ -1668,7 +1822,7 @@ public class Controller implements Initializable {
         stage.close();
     }
 
-    public void minmizeGeneralWindow(ActionEvent event) {
+    public void minimizeGeneralWindow(ActionEvent event) {
         Stage stage = (Stage) minimizeButton.getScene().getWindow();
         stage.setIconified(true);
     }
@@ -1700,7 +1854,7 @@ public class Controller implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdditionalC2Info.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Additional Information for Child #1");
+        stage.setTitle("Additional Information for Child #2");
         stage.setScene((new Scene(root1, 600, 400)));
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
@@ -1710,7 +1864,7 @@ public class Controller implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdditionalC3Info.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Additional Information for Child #1");
+        stage.setTitle("Additional Information for Child #3");
         stage.setScene((new Scene(root1, 600, 400)));
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
@@ -2031,7 +2185,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void SaveVars() {
+    public void SaveVars() throws Exception {
         fileIteration = 0;
         if (clientANumber.getText() != null) {
             String ANumTMP = clientANumber.getText().toString();
@@ -2204,7 +2358,7 @@ public class Controller implements Initializable {
             }
         }
         if (todayDate.getText() != null) {
-            SignatureDate = todayDate.getText();
+                SignatureDate = todayDate.getText();
         }
         if (countryMilitary.getText() != null) {
             CountryOrganization = countryMilitary.getText();
@@ -3091,12 +3245,10 @@ public class Controller implements Initializable {
     @FXML
     public void fillApp(ActionEvent event)  throws Exception {
         SaveVars();
-        addAddendums();
+        //addAddendums();
         //checkUnemployedBoxes();
         //resetVars();
-
-        //checkBoxValue();
-        //fillAppHelper();
+        fillAppHelper();
     }
     public void resetVars() throws Exception {
         String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate, CityBirth, CountryBirth,
@@ -3178,7 +3330,7 @@ public class Controller implements Initializable {
             fileType = "i-485";
         }
         InputStream in = getClass().getResourceAsStream("resources/pdf/" + fileType + ".pdf");
-        PDDocument document = PDDocument.load(in); //.load(ClassLoader.getSystemResourceAsStream("i-485.pdf"));
+        PDDocument document = PDDocument.load(in);
         PDDocumentCatalog docCatalog = document.getDocumentCatalog();
         PDAcroForm acroForm = docCatalog.getAcroForm();
         for (int i = 0; i < fieldArray.length; i++) {
@@ -3669,56 +3821,18 @@ public class Controller implements Initializable {
             }
         }
         public void addAddendums() throws Exception {
-            System.out.println("Part 1 works");
-            FileInputStream fis = new FileInputStream("C:\\Users\\Filip\\Downloads\\test.docx");
-            XWPFDocument docx = new XWPFDocument(OPCPackage.open(fis));
-            XWPFWordExtractor extractor = new XWPFWordExtractor(docx);
+            InputStream in = getClass().getResourceAsStream("resources/pdf/" + fileType + ".pdf");
+            InputStream ad = getClass().getResourceAsStream("resources/pdf/" + "addendum_children" + ".pdf");
+            PDDocument document = PDDocument.load(in);
+            PDDocumentCatalog docCatalog = document.getDocumentCatalog();
+            PDAcroForm acroForm = docCatalog.getAcroForm();
+            PDFMergerUtility PDFmerger = new PDFMergerUtility();
+            PDFmerger.setDestinationFileName(System.getProperty("user.home") + "/Desktop/test.pdf");
+            PDFmerger.addSource(in);
+            PDFmerger.addSource(ad);
+            PDFmerger.mergeDocuments();
+            document.close();
 
-            String[] listAddendumC4 = {"<family_name_4>","<first_name_4>","<middle_name_4>","<alien_number_4>","<city_birth_4>","<country_birth_4>","<date_birth_4>"};
-            String[] listAddendumsC4Clear = {"Family Name: <family_name_4>","First Name: <first_name_4>","Middle Name: <middle_name_4>","Alien Number: <alien_number_4>","City of Birth: <city_birth_4>","Country of Birth: <country_birth_4>","Date of Birth: <date_birth_4>"};
-            String[] listAddendumC5 = {"<family_name_5>","<first_name_5>","<middle_name_5>","<alien_number_5>","<city_birth_5>","<country_birth_5>","<date_birth_5>"};
-            String[] listAddendumsC5Clear = {"Family Name: <family_name_5>","First Name: <first_name_5>","Middle Name: <middle_name_5>","Alien Number: <alien_number_5>","City of Birth: <city_birth_5>","Country of Birth: <country_birth_5>","Date of Birth: <date_birth_5>"};
-            String[] listAddendumC6 = {"<family_name_6>","<first_name_6>","<middle_name_6>","<alien_number_6>","<city_birth_6>","<country_birth_6>","<date_birth_6>"};
-            String[] listAddendumsC6Clear = {"Family Name: <family_name_6>","First Name: <first_name_6>","Middle Name: <middle_name_6>","Alien Number: <alien_number_6>","City of Birth: <city_birth_6>","Country of Birth: <country_birth_6>","Date of Birth: <date_birth_6>"};
-            String[] listAddendumC7 = {"<family_name_7>","<first_name_7>","<middle_name_7>","<alien_number_7>","<city_birth_7>","<country_birth_7>","<date_birth_7>"};
-            String[] listAddendumsC7Clear = {"Family Name: <family_name_7>","First Name: <first_name_7>","Middle Name: <middle_name_7>","Alien Number: <alien_number_7>","City of Birth: <city_birth_7>","Country of Birth: <country_birth_7>","Date of Birth: <date_birth_7>"};
-            String[][] listAddendumsChildren = {listAddendumC4, listAddendumC5, listAddendumC6, listAddendumC7};
-            String[][] listAddendumsChildrenValues = {C4Info, C5Info, C6Info, C7Info};
-            String[][] listAddendumsClear = {listAddendumsC4Clear, listAddendumsC5Clear, listAddendumsC6Clear, listAddendumsC7Clear};
-
-            for (XWPFParagraph p : docx.getParagraphs()) {
-                List<XWPFRun> runs = p.getRuns();
-                if (runs != null) {
-                    for (XWPFRun r : runs) {
-                        String text = r.getText(0);
-                        for (int g = 0; g < listAddendumsChildren.length; g++) {
-                            for (int j = 0; j < listAddendumsChildren[g].length; j++) {
-                                try {
-                                    if (text != null && text.contains(listAddendumsChildren[g][j])) {
-                                        if (listAddendumsChildrenValues[g][j] == null || listAddendumsChildrenValues[g][j] == "") {
-                                            //System.out.println("null " + listAddendumsClear[g][j]);
-                                            int pPos = docx.getPosOfParagraph(p);
-                                            docx.getDocument().getBody().removeP(pPos);
-                                            //text = text.replace(listAddendumsClear[g][j], "");
-                                            //r.setText(text, 0);
-                                        } else {
-                                            System.out.println(C4Info[0]);
-                                            text = text.replace(listAddendumsChildren[g][j], listAddendumsChildrenValues[g][j]);
-                                            //docx.getTables().get(0);
-                                            r.setText(text, 0);
-
-                                        }
-                                    }
-                                }
-                                catch (Exception ex) {
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            docx.write(new FileOutputStream("C:\\Users\\Filip\\Desktop\\output.docx"));
-            docx.close();
         }
         public void alertMessage() {
             Alert fileSaveError = new Alert(Alert.AlertType.WARNING);
