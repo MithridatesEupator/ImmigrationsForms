@@ -852,7 +852,7 @@ public class Controller implements Initializable {
     static String EndDate3 = "";
 
     static Boolean waitVar = false;
-    
+
     @Override
 
     @FXML
@@ -1226,7 +1226,7 @@ public class Controller implements Initializable {
         C1Ethnicity = "Hispanic-yes";
         ClientC1Ethnicity.setText("Latino");
     }
-    
+
     public void C1noLatinoSelect(ActionEvent event) {
         C1Ethnicity = "Hispanic-no";
         ClientC1Ethnicity.setText("Not Latino");
@@ -2015,13 +2015,14 @@ public class Controller implements Initializable {
             C1Height = C1TMPheight;
             String C1Height = C1TMPheight.replace("0", "");
             String[] C1HeightVar = C1Height.toString().split("|");
-            int C1LenVar = C1HeightVar.length;
-            C1Feet = C1HeightVar[0];
-            if (C1LenVar == 4) {
-                C1Inches = C1HeightVar[2] + C1HeightVar[3];
-            } else if (C1LenVar == 3) {
-                C1Inches = "0" + C1HeightVar[2];
+            if (Character.toString(C1HeightVar[0].charAt(0)).equals("0")) {
+                C1HeightVar[0] = Character.toString(C1HeightVar[0].charAt(1));
             }
+            if (Character.toString(C1HeightVar[1].charAt(0)).equals("0")) {
+                C1HeightVar[1] = Character.toString(C1HeightVar[1].charAt(1));
+            }
+            C1Feet = C1HeightVar[0];
+            C2Inches = C1HeightVar[1];
         }
     }
 
@@ -2097,13 +2098,14 @@ public class Controller implements Initializable {
             C2Height = C2TMPheight;
             String C2Height = C2TMPheight.replace("0", "");
             String[] C2HeightVar = C2Height.toString().split("|");
-            int C2LenVar = C2HeightVar.length;
-            C2Feet = C2HeightVar[0];
-            if (C2LenVar == 4) {
-                C2Inches = C2HeightVar[2] + C2HeightVar[3];
-            } else if (C2LenVar == 3) {
-                C2Inches = "0" + C2HeightVar[2];
+            if (Character.toString(C2HeightVar[0].charAt(0)).equals("0")) {
+                C2HeightVar[0] = Character.toString(C2HeightVar[0].charAt(1));
             }
+            if (Character.toString(C2HeightVar[1].charAt(0)).equals("0")) {
+                C2HeightVar[1] = Character.toString(C2HeightVar[1].charAt(1));
+            }
+            C2Feet = C2HeightVar[0];
+            C2Inches = C2HeightVar[1];
         }
     }
     public void ShowC2InfoVars() {
@@ -2145,7 +2147,7 @@ public class Controller implements Initializable {
             ClientC2Parent.setText("Spouse " + C2SpouseNumber);
         }
     }
-    
+
     public void SaveC3InfoVars() {
         if (ClientC3FamilyName1.getText() != null) {
             C3FamilyName1 = ClientC3FamilyName1.getText();
@@ -2179,13 +2181,14 @@ public class Controller implements Initializable {
             C3Height = C3TMPheight;
             String C3Height = C3TMPheight.replace("0", "");
             String[] C3HeightVar = C3Height.toString().split("\\|");
-            int C3LenVar = C3HeightVar.length;
-            C3Feet = C3HeightVar[0];
-            if (C3LenVar == 4) {
-                C3Inches = C3HeightVar[2] + C3HeightVar[3];
-            } else if (C3LenVar == 3) {
-                C3Inches = "0" + C3HeightVar[2];
+            if (Character.toString(C3HeightVar[0].charAt(0)).equals("0")) {
+                C3HeightVar[0] = Character.toString(C3HeightVar[0].charAt(1));
             }
+            if (Character.toString(C3HeightVar[1].charAt(0)).equals("0")) {
+                C3HeightVar[1] = Character.toString(C3HeightVar[1].charAt(1));
+            }
+            C3Feet = C3HeightVar[0];
+            C3Inches = C3HeightVar[1];
         }
     }
 
@@ -2233,7 +2236,7 @@ public class Controller implements Initializable {
     public void SaveVars() throws Exception {
         fileIteration = 0;
         if (clientANumber.getText() != null) {
-            String ANumTMP = clientANumber.getText().toString();
+            String ANumTMP = clientANumber.getText();
             if (ANumTMP.length() > 9) {
                 ANum = ANumTMP.substring(0, 9);
             } else {
@@ -2241,30 +2244,30 @@ public class Controller implements Initializable {
             }
         }
         if (clientFamilyName.getText() != null) {
-            FamilyName = clientFamilyName.getText().toString();
+            FamilyName = clientFamilyName.getText().trim();
         }
         if (clientFirstName.getText() != null) {
-            FirstName = clientFirstName.getText().toString();
+            FirstName = clientFirstName.getText().trim();
         }
         if (clientMiddleName.getText() != null) {
-            MiddleName = clientMiddleName.getText().toString();
+            MiddleName = clientMiddleName.getText().trim();
         }
         if (FamilyName1.trim().isEmpty()) {
             FamilyName1 = "NONE";
         }
         if (clientBirthCity.getText() != null) {
-            CityBirth = clientBirthCity.getText().toString();
+            CityBirth = clientBirthCity.getText();
         }
         if (clientDOB.getText() != null) {
-            DOBDate = clientDOB.getText().toString();
+            DOBDate = clientDOB.getText();
         }
         if (clientBirthCountry.getText() != null) {
-            CountryBirth = clientBirthCountry.getText().toString();
+            CountryBirth = clientBirthCountry.getText();
             int ethnicityIndex = ArrayUtils.indexOf(ethnicityArray, CountryBirth.toUpperCase()) + 1;
             Nationality = ethnicityArray[ethnicityIndex];
         }
         if (clientSocialSecurity.getText() != null) {
-            String SocialSecurityTMP = clientSocialSecurity.getText().toString();
+            String SocialSecurityTMP = clientSocialSecurity.getText();
             if (SocialSecurityTMP.length() > 9) {
                 SocialSecurity = SocialSecurityTMP.substring(0, 9);
             } else {
@@ -2337,14 +2340,15 @@ public class Controller implements Initializable {
         if (clientHeight.getText() != null) {
             String TMPheight = clientHeight.getText().toString();
             String height = TMPheight.replace("0", "");
-            String[] heightVar = height.split("\\|");
-            int lenVar = heightVar.length;
-            Feet = heightVar[0];
-            if (lenVar == 4) {
-                Inches = heightVar[2] + heightVar[3];
-            } else if (lenVar == 3) {
-                Inches = "0" + heightVar[2];
+            String[] C1HeightVar = height.split("\\|");
+            if (Character.toString(C1HeightVar[0].charAt(0)).equals("0")) {
+                C1HeightVar[0] = Character.toString(C1HeightVar[0].charAt(1));
             }
+            if (Character.toString(C1HeightVar[1].charAt(0)).equals("0")) {
+                C1HeightVar[1] = Character.toString(C1HeightVar[1].charAt(1));
+            }
+            Feet = C1HeightVar[0];
+            Inches = C1HeightVar[1];
         }
         if (clientEmail.getText() != null) {
             AEmail = clientEmail.getText();
@@ -3043,7 +3047,7 @@ public class Controller implements Initializable {
                 C5DOBDate = C5Info[6];
                 C5CountryBirth = C5Info[5];
             }
-            
+
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
             }
         }
@@ -3339,10 +3343,11 @@ public class Controller implements Initializable {
 
     @FXML
     public void fillApp(ActionEvent event)  throws Exception {
-        waitVar = true;
+        resetVars();
         needAddendum = false;
         SaveVars();
         addAddendums();
+        fillAppHelper();
     }
     public void resetVars() throws Exception {
 
@@ -3363,16 +3368,23 @@ public class Controller implements Initializable {
                 IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, PN, PaN, IN, AddendumA, AddendumB, AddendumC, AddendumD, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, PN1, PaN1, IN1, Addendum1A, Addendum1B, Addendum1C, Addendum1D,
                 Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, PN2, PaN2, IN2, Addendum2A, Addendum2B, Addendum2C, Addendum2D, Addendum2E, Addendum2F, Addendum2G, Addendum2J,
                 PN3, PaN3, IN3, Addendum3A, Addendum3B, Addendum3C, Addendum3D, Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, PN4, PaN4, IN4, Addendum4A, Addendum4B, Addendum4C, Addendum4D,
-                Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765};
+                Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765,ANumChildren,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate,C4CountryBirth,C5FamilyName,C5FirstName,
+                C5MiddleName,C5ANum,C5DOBDate,C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate,C7CountryBirth,
+                AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3, EndDate3,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo,
+                ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer,
+                DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status};
 
         for (int j = 0; j < resetArray.length; j++) {
             resetArray[j] = "";
+        }
+        for (int b = 0; b < CApplyList.length; b++) {
+            CApplyList[b] = false;
         }
 
 
     }
 
-    public void fillAppHelper(PDDocument document) throws Exception {
+    public void fillAppHelper() throws Exception {
 
         String NameTitle = new String();
         NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
@@ -3424,19 +3436,23 @@ public class Controller implements Initializable {
         String[] checkArray = {AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo,
                 ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer,
                 DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status};
-        InputStream in;
+        if (fileType == "") {
+            fileType = "i-485";
+        }
+        InputStream in = getClass().getResourceAsStream("resources/pdf/" + fileType + ".pdf");
+        PDDocument document = PDDocument.load(in);
         PDDocumentCatalog docCatalog = document.getDocumentCatalog();
         PDAcroForm acroForm = docCatalog.getAcroForm();
         for (int i = 0; i < fieldArray.length; i++) {
-                String entryFieldArray = fieldArray[i];
-                String entryNameArray = nameFieldArray[i];
-                try {
-                    PDField fieldTemp = acroForm.getField(entryNameArray);
-                    if (fieldTemp != null) {
-                        fieldTemp.setValue(entryFieldArray.toUpperCase());
-                    }
+            String entryFieldArray = fieldArray[i];
+            String entryNameArray = nameFieldArray[i];
+            try {
+                PDField fieldTemp = acroForm.getField(entryNameArray);
+                if (fieldTemp != null) {
+                    fieldTemp.setValue(entryFieldArray.toUpperCase());
                 }
-                catch (Exception ex){ }
+            }
+            catch (Exception ex){ }
         }
         for (int b = 0; b < checkArray.length; b++) {
             String entryCheckArray = checkArray[b];
@@ -3466,10 +3482,10 @@ public class Controller implements Initializable {
                 }
             }
             document.close();
-            fileAddApplication(document);
+            fileAddApplication();
         }
 
-        public void fileAddApplication(PDDocument document) throws Exception {
+        public void fileAddApplication() throws Exception {
             if (C1SpouseNumber.trim().isEmpty()) {
                 C1SpouseNumber = "1";
             }
@@ -3634,7 +3650,7 @@ public class Controller implements Initializable {
                         MCountryCurrent = "";
                         MCityCurrent = "";
                     }
-                    
+
                 }
                 else if (AGender == "Female") {
                     MFamilyName = FamilyName;
@@ -3909,7 +3925,7 @@ public class Controller implements Initializable {
                 USGuard = "Guard-NA";
                 fileIteration += 1;
                 needAddendum = false;
-                fillAppHelper(document);
+                fillAppHelper();
             }
             else if (fileIteration < Integer.valueOf(ChildNum)){
                 CheckNum += 1;
@@ -3922,9 +3938,6 @@ public class Controller implements Initializable {
             }
             catch (Exception ex) {
                 System.out.println("file Error");
-            }
-            if (fileType == "") {
-                fileType = "i-485";
             }
             if (needAddendum) {
                 PDFMergerUtility mergerOfPDfs = new PDFMergerUtility();
@@ -3944,11 +3957,6 @@ public class Controller implements Initializable {
                 mergerOfPDfs.mergeDocuments(MemoryUsageSetting.setupTempFileOnly());
                 Thread.sleep(4000);
                 PDDocument document = PDDocument.load(getClass().getResourceAsStream("resources/pdf/temporary/work.pdf"));
-                fillAppHelper(document);
-            }
-            else {
-                PDDocument document = PDDocument.load(getClass().getResourceAsStream("resources/pdf/" + fileType + ".pdf"));
-                fillAppHelper(document);
             }
         }
         public void alertMessage() {
