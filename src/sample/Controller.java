@@ -819,7 +819,7 @@ public class Controller implements Initializable {
     static int CheckNum = 0;
     static int fileIteration = 0;
 
-    String[] ethnicityArray = {"","","IRAQ","IRAQI","SYRIA","SYRIAN","CUBA","CUBAN","TURKEY","TURKISH","DEM REP OF CONGO","CONGOLESE","DEMOCRATIC REPUBLIC OF CONGO","CONGOLESE","NIGER","NIGERIEN","NIGERIA","NIGERIAN","IRAN","IRANIAN","AFGHANISTAN","AFGHAN","PAKISTAN","PAKISTANI","LEBANON","LEBANESE","JORDAN","JORDANIAN","YEMEN","YEMENI","HONDURAS","HONDURAN","EL SALVADOR","SALVADORAN",};
+    String[] ethnicityArray = {"","","IRAQ","IRAQI","JORDAN","JORDANIAN","SYRIA","SYRIAN","CUBA","CUBAN","TURKEY","TURKISH","DEM REP OF CONGO","CONGOLESE","DEMOCRATIC REPUBLIC OF CONGO","CONGOLESE","NIGER","NIGERIEN","NIGERIA","NIGERIAN","IRAN","IRANIAN","AFGHANISTAN","AFGHAN","PAKISTAN","PAKISTANI","LEBANON","LEBANESE","JORDAN","JORDANIAN","YEMEN","YEMENI","HONDURAS","HONDURAN","EL SALVADOR","SALVADORAN",};
 
     static String C4FamilyName = "";
     static String C4FirstName = "";
@@ -855,7 +855,37 @@ public class Controller implements Initializable {
     static DateValue StartDate3 = new DateValue("");
     static DateValue EndDate3 = new DateValue("");
 
-    static Boolean waitVar = false;
+    static jobData WorkInfoEntry = new jobData();
+    static String methodAddressStreet = "";
+    static String methodAddressAddInfo = "";
+    static String methodAddressNumber = "";
+    static String methodAddressCity = "";
+    static String methodState = "";
+    static String methodZipcode = "";
+    static String methodCountry = "";
+    static String methodEmployer = "";
+    static String methodOccupation = "";
+    static String methodAddressStreet1 = "";
+    static String methodAddressAddInfo1 = "";
+    static String methodAddressNumber1 = "";
+    static String methodAddressCity1 = "";
+    static String methodState1 = "";
+    static String methodZipcode1 = "";
+    static String methodCountry1 = "";
+    static String methodEmployer1 = "";
+    static String methodOccupation1 = "";
+    static String methodAddressStreet2 = "";
+    static String methodAddressAddInfo2 = "";
+    static String methodAddressNumber2 = "";
+    static String methodAddressCity2 = "";
+    static String methodState2 = "";
+    static String methodZipcode2 = "";
+    static String methodCountry2 = "";
+    static String methodEmployer2 = "";
+    static String methodOccupation2 = "";
+
+
+
 
     @Override
 
@@ -981,6 +1011,7 @@ public class Controller implements Initializable {
         addressButton.getStyleClass().remove("menuButtonChangeSelected");
         mainOptionsButton.getStyleClass().remove("menuButtonChangeSelected");
         marriageButton.getStyleClass().remove("menuButtonChangeSelected");
+        miscButton.getStyleClass().remove("menuButtonChangeSelected");
         employmentButton.getStyleClass().remove("menuButtonChangeSelected");
         addButton.getStyleClass().remove("menuButtonChangeSelected");
         parentButton.getStyleClass().remove("menuButtonChangeSelected");
@@ -1038,7 +1069,7 @@ public class Controller implements Initializable {
     }
     public void asyleeSelect(ActionEvent event) {
         ImmigrationStatus = "Asylum";
-        immigrationStatus.setText("Asylee");
+        immigrationStatus.setText("Asylum Seeker");
         lastArrived = "NoStatus";
         EntryI765 = "Asylum Seeker";
     }
@@ -2651,59 +2682,124 @@ public class Controller implements Initializable {
         } else if (jobAddressFlr2.isSelected()) {
             ETenantInfo2 = "EFlr2";
         }
-        String dateJobEnd = jobAddressStartTime.getText().trim();
+        String dateJobEnd = jobAddressEndTime.getText().trim();
+        String dateJobStart = jobAddressStartTime.getText().trim();
+        String dateJobEnd1 = jobAddressEndTime1.getText().trim();
+        String dateJobStart1 = jobAddressStartTime1.getText().trim();
+        String dateJobEnd2 = jobAddressEndTime2.getText().trim();
+        String dateJobStart2 = jobAddressStartTime2.getText().trim();
         if (dateJobEnd.isEmpty()) {
             dateJobEnd = "PRESENT";
         }
-        jobData WorkInfoEntry;
-        jobData WorkInfoEntry1;
-        jobData WorkInfoEntry2;
 
-        if (jobAddressStreetName.getText().trim().isEmpty() && jobEmployer.getText().trim().isEmpty()) {
-            WorkInfoEntry = new jobData("", "", "","","",
-                    "","", "UNEMPLOYED","NONE",DOBDate, SignatureDate);
+        if (jobAddressStreetName.getText() != null) {
+            methodAddressStreet = jobAddressStreetName.getText().trim();
         }
-        else {
-            WorkInfoEntry = new jobData(jobAddressStreetName.getText().trim(), ETenantInfo, jobAddressNumber.getText().trim(), jobAddressNumber.getText().trim(), jobAddressState.getText().trim(),
-                    jobAddressZipcode.getText().trim(), jobAddressCountry.getText().trim(), jobEmployer.getText().trim(), jobOccupation.getText().trim(), new DateValue(dateJobEnd),
-                    new DateValue(jobAddressEndTime.getText().trim()));
+        if (jobAddressNumber.getText() != null) {
+            methodAddressNumber = jobAddressNumber.getText().trim();
         }
-        if (jobAddressStreetName1.getText().trim().isEmpty() && jobEmployer1.getText().trim().isEmpty() && !jobAddressStreetName.getText().trim().isEmpty() && !jobEmployer.getText().trim().isEmpty()) {
-            WorkInfoEntry1 = new jobData("", "", "","","",
-                    "","", "UNEMPLOYED","NONE",DOBDate, SignatureDate);
+        if (jobAddressCityTown.getText() != null) {
+            methodAddressCity = jobAddressCityTown.getText().trim();
         }
-        else {
-            WorkInfoEntry1 = new jobData(jobAddressStreetName1.getText().trim(), ETenantInfo1, jobAddressNumber1.getText().trim(),jobAddressNumber1.getText().trim(),jobAddressState1.getText().trim(),
-                    jobAddressZipcode1.getText().trim(),jobAddressCountry1.getText().trim(), jobEmployer1.getText().trim(),jobOccupation1.getText().trim(),new DateValue(jobAddressStartTime1.getText().trim()),
-                    new DateValue(jobAddressEndTime1.getText().trim()));
+        if (jobAddressState.getText() != null) {
+            methodState = jobAddressState.getText().trim();
         }
-        if (jobAddressStreetName2.getText().trim().isEmpty() && jobEmployer2.getText().trim().isEmpty() && !jobAddressStreetName1.getText().trim().isEmpty() && !jobEmployer1.getText().trim().isEmpty()) {
-            WorkInfoEntry2 = new jobData("", "", "","","",
-                    "","", "UNEMPLOYED","NONE",DOBDate, SignatureDate);
+        if (jobAddressZipcode.getText() != null) {
+            methodZipcode = jobAddressZipcode.getText().trim();
         }
-        else {
-            WorkInfoEntry2 = new jobData(jobAddressStreetName2.getText().trim(), ETenantInfo2, jobAddressNumber2.getText().trim(),jobAddressNumber2.getText().trim(),jobAddressState2.getText().trim(),
-                    jobAddressZipcode2.getText().trim(),jobAddressCountry2.getText().trim(), jobEmployer2.getText().trim(),jobOccupation2.getText().trim(),new DateValue(jobAddressStartTime2.getText().trim()),
-                    new DateValue(jobAddressEndTime2.getText().trim()));
+        if (jobAddressCountry.getText() != null) {
+            methodCountry = jobAddressCountry.getText().trim();
         }
-        //-----------------
-        jobData WorkInfoEntryInter;
-        jobData WorkInfoEntryInter1;
-        jobData WorkInfoEntryInter2;
-        if (WorkInfoEntry.EndDate != SignatureDate || WorkInfoEntry.EndDate.Value != "PRESENT") {
-            WorkInfoEntryInter1 = new jobData("", "", "","","",
-                    "","", "UNEMPLOYED","NONE",WorkInfoEntry.EndDate, new DateValue("PRESENT"));
+        if (jobOccupation.getText() != null) {
+            methodOccupation = jobOccupation.getText().trim();
         }
-        if (WorkInfoEntry.StartDate != WorkInfoEntry1.EndDate && !WorkInfoEntry1.EndDate.Value.isEmpty()) {
-            WorkInfoEntryInter1 = new jobData("", "", "","","",
-                    "","", "UNEMPLOYED","NONE",WorkInfoEntry1.EndDate, WorkInfoEntry.StartDate);
+        if (jobEmployer.getText() != null) {
+            methodEmployer = jobEmployer.getText().trim();
         }
-        if (WorkInfoEntry1.StartDate != WorkInfoEntry2.EndDate && !WorkInfoEntry2.EndDate.Value.isEmpty()) {
-            WorkInfoEntryInter2 = new jobData("", "", "","","",
-                    "","", "UNEMPLOYED","NONE",WorkInfoEntry2.EndDate, WorkInfoEntry1.StartDate);
+        if (jobAddressStreetName1.getText() != null) {
+            methodAddressStreet1 = jobAddressStreetName1.getText().trim();
+        }
+        if (jobAddressNumber1.getText() != null) {
+            methodAddressNumber1 = jobAddressNumber1.getText().trim();
+        }
+        if (jobAddressCityTown1.getText() != null) {
+            methodAddressCity1 = jobAddressCityTown1.getText().trim();
+        }
+        if (jobAddressState1.getText() != null) {
+            methodState1 = jobAddressState1.getText().trim();
+        }
+        if (jobAddressZipcode1.getText() != null) {
+            methodZipcode1 = jobAddressZipcode1.getText().trim();
+        }
+        if (jobAddressCountry1.getText() != null) {
+            methodCountry1 = jobAddressCountry1.getText().trim();
+        }
+        if (jobOccupation1.getText() != null) {
+            methodOccupation1 = jobOccupation1.getText().trim();
+        }
+        if (jobEmployer1.getText() != null) {
+            methodEmployer1 = jobEmployer1.getText().trim();
+        }
+        if (jobAddressStreetName2.getText() != null) {
+            methodAddressStreet2 = jobAddressStreetName2.getText().trim();
+        }
+        if (jobAddressNumber2.getText() != null) {
+            methodAddressNumber2 = jobAddressNumber2.getText().trim();
+        }
+        if (jobAddressCityTown2.getText() != null) {
+            methodAddressCity2 = jobAddressCityTown2.getText().trim();
+        }
+        if (jobAddressState2.getText() != null) {
+            methodState2 = jobAddressState2.getText().trim();
+        }
+        if (jobAddressZipcode2.getText() != null) {
+            methodZipcode2 = jobAddressZipcode2.getText().trim();
+        }
+        if (jobAddressCountry2.getText() != null) {
+            methodCountry2 = jobAddressCountry2.getText().trim();
+        }
+        if (jobOccupation2.getText() != null) {
+            methodOccupation2 = jobOccupation2.getText().trim();
+        }
+        if (jobOccupation2.getText() != null) {
+            methodOccupation2 = jobOccupation2.getText().trim();
+        }
+        if (jobEmployer2.getText() != null) {
+            methodEmployer2 = jobEmployer2.getText().trim();
+        }
+        //-------------------------------------------------------------------------
+        if (jobOccupation.getText().isEmpty()) {
+            methodOccupation = "NONE";
+            dateJobStart = DOBDate.Value;
+        }
+        if (jobEmployer.getText().trim().isEmpty()) {
+            methodEmployer = "UNEMPLOYED";
+        }
+        if (jobOccupation1.getText().trim().isEmpty() && !jobOccupation.getText().trim().isEmpty()) {
+            methodOccupation1 = "NONE";
+            dateJobEnd1 = dateJobStart;
+            dateJobStart1 = DOBDate.Value;
+            methodEmployer1 = "UNEMPLOYED";
+        }
+        if (jobOccupation2.getText().trim().isEmpty() && !jobOccupation1.getText().trim().isEmpty()) {
+            methodOccupation2 = "NONE";
+            dateJobEnd2 = dateJobStart1;
+            dateJobStart2 = DOBDate.Value;
+            methodEmployer2 = "UNEMPLOYED";
         }
 
-        //-----------------
+        WorkInfoEntry.addNode(methodAddressStreet, ETenantInfo, methodAddressNumber, methodAddressNumber, methodState,
+                methodZipcode, methodCountry, methodEmployer, methodOccupation, new DateValue(dateJobStart),
+                new DateValue(dateJobEnd));
+        WorkInfoEntry.addNode(methodAddressStreet1, ETenantInfo1, methodAddressNumber1, methodAddressNumber1, methodState1,
+                methodZipcode1, methodCountry1, methodEmployer1, methodOccupation1, new DateValue(dateJobStart1),
+                new DateValue(dateJobEnd1));
+        WorkInfoEntry.addNode(methodAddressStreet2, ETenantInfo2, methodAddressNumber2, methodAddressNumber2, methodState2,
+                methodZipcode2, methodCountry2, methodEmployer2, methodOccupation2, new DateValue(dateJobStart2),
+                new DateValue(dateJobEnd2));
+        System.out.println(WorkInfoEntry.Root.display());
+        System.out.println(WorkInfoEntry.Root.NextNode.display());
+        System.out.println(WorkInfoEntry.Root.NextNode.NextNode.display());
         //-----------------
         if (job3Info.getText() != null) {
             if (!job3Info.getText().trim().isEmpty()) {
@@ -3285,17 +3381,13 @@ public class Controller implements Initializable {
         fillAppHelper();
     }
     public void resetVars() throws Exception {
-
         String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3,
                 FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode,
                 PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState,
                 LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName,
                 StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value,
-                EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, Employer,
-                WorkAddressStreet, WorkAddInfoAddress, WorkAddressCity, WorkState, WorkZipcode, WorkCountry, WorkOccupation, WorkStartDate.Value, WorkEndDate.Value,
-                Employer1, WorkAddressStreet1, WorkAddInfoAddress1, WorkAddressCity1, WorkState1, WorkZipcode1, WorkCountry1, WorkOccupation1, WorkStartDate1.Value,
-                WorkEndDate1.Value, Employer2, WorkAddressStreet2, WorkAddInfoAddress2, WorkAddressCity2, WorkState2, WorkZipcode2, WorkCountry2, WorkOccupation2,
-                WorkStartDate2.Value, WorkEndDate2.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value,
+                EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value,
+                FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value,
                 FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value,
                 MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate,
                 SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value,
@@ -3322,7 +3414,7 @@ public class Controller implements Initializable {
         for (int b = 0; b < CApplyList.length; b++) {
             CApplyList[b] = false;
         }
-
+        WorkInfoEntry = new jobData();
 
     }
 
@@ -3336,11 +3428,15 @@ public class Controller implements Initializable {
                 PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState,
                 LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName,
                 StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value,
-                EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, Employer,
-                WorkAddressStreet, WorkAddInfoAddress, WorkAddressCity, WorkState, WorkZipcode, WorkCountry, WorkOccupation, WorkStartDate.Value, WorkEndDate.Value,
-                Employer1, WorkAddressStreet1, WorkAddInfoAddress1, WorkAddressCity1, WorkState1, WorkZipcode1, WorkCountry1, WorkOccupation1, WorkStartDate1.Value,
-                WorkEndDate1.Value, Employer2, WorkAddressStreet2, WorkAddInfoAddress2, WorkAddressCity2, WorkState2, WorkZipcode2, WorkCountry2, WorkOccupation2,
-                WorkStartDate2.Value, WorkEndDate2.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value,
+                EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, WorkInfoEntry.Root.Employer,
+                WorkInfoEntry.Root.AddressStreet, WorkInfoEntry.Root.AddressAddInfo, WorkInfoEntry.Root.AddressCity, WorkInfoEntry.Root.State, WorkInfoEntry.Root.Zipcode,
+                WorkInfoEntry.Root.Country, WorkInfoEntry.Root.Occupation, WorkInfoEntry.Root.StartDate.Value, WorkInfoEntry.Root.EndDate.Value,
+                WorkInfoEntry.Root.NextNode.Employer, WorkInfoEntry.Root.NextNode.AddressStreet, WorkInfoEntry.Root.NextNode.AddressAddInfo, WorkInfoEntry.Root.NextNode.AddressCity,
+                WorkInfoEntry.Root.NextNode.State, WorkInfoEntry.Root.NextNode.Zipcode, WorkInfoEntry.Root.NextNode.Country, WorkInfoEntry.Root.NextNode.Occupation, WorkInfoEntry.Root.NextNode.StartDate.Value,
+                WorkInfoEntry.Root.NextNode.EndDate.Value, WorkInfoEntry.Root.NextNode.NextNode.Employer, WorkInfoEntry.Root.NextNode.NextNode.AddressStreet, WorkInfoEntry.Root.NextNode.NextNode.AddressAddInfo,
+                WorkInfoEntry.Root.NextNode.NextNode.AddressCity, WorkInfoEntry.Root.NextNode.NextNode.State, WorkInfoEntry.Root.NextNode.NextNode.Zipcode, WorkInfoEntry.Root.NextNode.NextNode.Country,
+                WorkInfoEntry.Root.NextNode.NextNode.Occupation, WorkInfoEntry.Root.NextNode.NextNode.StartDate.Value, WorkInfoEntry.Root.NextNode.NextNode.EndDate.Value,
+                FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value,
                 FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value,
                 MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate,
                 SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value,
@@ -3364,10 +3460,9 @@ public class Controller implements Initializable {
                 "FirstName3", "Name", "DOBDate", "CityBirth", "CountryBirth", "Nationality", "SocialSecurity", "AddressStreet", "AddInfoAddress", "AddressCity", "State", "Zipcode",
                 "PassportNum", "TravelNum", "ExpirationDate", "PassportCountry", "EntryInspectionStatus", "EntryParoledStatus", "OtherStatus", "EntryCity", "EntryState",
                 "LastArrivalDate", "I94Num", "ExpirationDate1", "I94Status", "CurrentImmigrationStatus", "I94FamilyName", "I94FirstName", "I94MiddleName",
-                "StartDate", "EndDate", "AddressStreet1", "AddInfoAddress1", "AddressCity1", "State1", "Zipcode1", "Country1", "StartDate1",
-                "EndDate", "AddressStreet2", "AddInfoAddress2", "AddressCity2", "State2", "Zipcode2", "Country2", "StartDate2", "EndDate2", "Employer",
-                "WorkAddressStreet", "WorkAddInfoAddress", "WorkAddressCity", "WorkState", "WorkZipcode", "WorkCountry", "WorkOccupation", "WorkStartDate", "WorkEndDate",
-                "Employer1", "WorkAddressStreet1", "WorkAddInfoAddress1", "WorkAddressCity1", "WorkState1", "WorkZipcode1", "WorkCountry1", "WorkOccupation1", "WorkStartDate1",
+                "StartDate", "EndDate", "AddressStreet1", "AddInfoAddress1", "AddressCity1", "State1", "Zipcode1", "Country1", "StartDate1", "EndDate", "AddressStreet2",
+                "AddInfoAddress2", "AddressCity2", "State2", "Zipcode2", "Country2", "StartDate2", "EndDate2", "Employer", "WorkAddressStreet", "WorkAddInfoAddress", "WorkAddressCity",
+                "WorkState", "WorkZipcode", "WorkCountry", "WorkOccupation", "WorkStartDate", "WorkEndDate", "Employer1", "WorkAddressStreet1", "WorkAddInfoAddress1", "WorkAddressCity1", "WorkState1", "WorkZipcode1", "WorkCountry1", "WorkOccupation1", "WorkStartDate1",
                 "WorkEndDate1", "Employer2", "WorkAddressStreet2", "WorkAddInfoAddress2", "WorkAddressCity2", "WorkState2", "WorkZipcode2", "WorkCountry2", "WorkOccupation2",
                 "WorkStartDate2", "WorkEndDate2", "FFamilyName", "FFirstName", "FMiddleName", "FFamilyNameB", "FFirstNameB", "FMiddleNameB", "FDOB",
                 "FCityBirth", "FCountryBirth", "FCityCurrent", "FCountryCurrent", "MFamilyName", "MFirstName", "MMiddleName", "MFamilyNameB", "MFirstNameB", "MMiddleNameB", "MDOB",
@@ -3381,9 +3476,9 @@ public class Controller implements Initializable {
                 "NameOrganization2", "CityOrganization2", "StateOrganization2", "CountryOrganization2", "NatureOrganization2", "OrganizationStartDate2", "OrganizationEndDate2",
                 "ADayTimeNum", "AMobNum", "AEmail", "SignatureDate", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress", "IAddressCity", "IState",
                 "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language", "PN", "PaN", "IN", "AddendumA", "AddendumB", "AddendumC", "AddendumD", "AddendumE", "AddendumF", "AddendumG", "AddendumH", "AddendumI",
-                "AddendumJ", "PN1", "PaN1", "IN1", "Addendum1A", "Addendum1B", "Addendum1C", "Addendum1D", "Addendum1E", "Addendum1F", "Addendum1G", "Addendum1H", "Addendum1I", "Addendum1J", "PN2", "PaN2", "IN2", "Addendum2A",
-                "Addendum2B", "Addendum2C", "Addendum2D", "Addendum2E", "Addendum2F", "Addendum2G", "Addendum2J", "PN3", "PaN3", "IN3", "Addendum3A", "Addendum3B", "Addendum3C", "Addendum3D", "Addendum3E", "Addendum3F",
-                "Addendum3G", "Addendum3H", "Addendum3I", "PN4", "PaN4", "IN4", "Addendum4A", "Addendum4B", "Addendum4C", "Addendum4D", "Addendum4E", "Addendum4F", "Addendum4G", "Addendum4H", "Addendum4I", "Addendum4J",
+                "AddendumJ", "PN1", "PaN1", "IN1", "Addendum1A", "Addendum1B", "Addendum1C", "Addendum1D", "Addendum1E", "Addendum1F", "Addendum1G", "Addendum1H", "Addendum1I", "Addendum1J", "PN2",
+                "PaN2", "IN2", "Addendum2A", "Addendum2B", "Addendum2C", "Addendum2D", "Addendum2E", "Addendum2F", "Addendum2G", "Addendum2J", "PN3", "PaN3", "IN3", "Addendum3A", "Addendum3B", "Addendum3C", "Addendum3D", "Addendum3E", "Addendum3F",
+                "Addendum3G", "Addendum3H", "Addendum3I", "PN4", "PaN4", "IN4", "Addendum4A", "Addendum4B", "Addendum4C", "Addendum4D", "Addendum4E", "Addendum4F", "Addendum4G", "Addendum4H","Addendum4I", "Addendum4J",
                 "EntryI765","ANumChildren","C4FamilyName","C4FirstName","C4MiddleName","C4ANum","C4DOBDate","C4CountryBirth","C5FamilyName","C5FirstName", "C5MiddleName","C5ANum","C5DOBDate",
                 "C5CountryBirth","C6FamilyName","C6FirstName","C6MiddleName","C6ANum","C6DOBDate","C6CountryBirth","C7FamilyName","C7FirstName","C7MiddleName","C7ANum","C7DOBDate",
                 "C7CountryBirth", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3", "Zipcode3", "Country3", "StartDate3", "EndDate3","AGender", "TenantInfo", "AltTenantInfo",
@@ -3402,7 +3497,7 @@ public class Controller implements Initializable {
         for (int i = 0; i < fieldArray.length; i++) {
             String entryFieldArray = fieldArray[i];
             String entryNameArray = nameFieldArray[i];
-            System.out.println(entryFieldArray + " : " + entryNameArray);
+            //System.out.println(entryFieldArray + " : " + entryNameArray);
             try {
                 PDField fieldTemp = acroForm.getField(entryNameArray);
                 if (fieldTemp != null) {
