@@ -1,5 +1,9 @@
 package sample;
 
+import sample.jobData;
+import sample.DateValue;
+
+import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
 import javafx.event.ActionEvent;
@@ -422,7 +426,7 @@ public class Controller implements Initializable {
     static String MiddleName3 = new String();
     String Name = new String();
     String CityBirth = new String();
-    String DOBDate = new String();
+    DateValue DOBDate = new DateValue("");
     String CountryBirth = new String();
     String Nationality = new String();
     String SocialSecurity = new String();
@@ -433,36 +437,36 @@ public class Controller implements Initializable {
     String Zipcode = new String();
     String PassportNum = new String();
     String TravelNum = new String();
-    String ExpirationDate = new String();
+    DateValue ExpirationDate = new DateValue("");
     String PassportCountry = new String();
     String EntryCity = new String();
     String EntryState = new String();
-    String LastArrivalDate = new String();
+    DateValue LastArrivalDate = new DateValue("");
     String I94Num = new String();
-    String ExpirationDate1 = new String();
+    DateValue ExpirationDate1 = new DateValue("");
     String I94Status = new String();
     String CurrentImmigrationStatus = new String();
     String I94FamilyName = new String();
     String I94FirstName = new String();
     String I94MiddleName = new String();
-    String StartDate = new String();
-    String EndDate = new String();
+    DateValue StartDate = new DateValue("");
+    DateValue EndDate = new DateValue("");
     String AddressStreet1 = new String();
     String AddInfoAddress1 = new String();
     String AddressCity1 = new String();
     String State1 = new String();
     String Zipcode1 = new String();
     String Country1 = new String();
-    String StartDate1 = new String();
-    String EndDate1 = new String();
+    DateValue StartDate1 = new DateValue("");
+    DateValue EndDate1 = new DateValue("");
     String AddressStreet2 = new String();
     String AddInfoAddress2 = new String();
     String AddressCity2 = new String();
     String State2 = new String();
     String Zipcode2 = new String();
     String Country2 = new String();
-    String StartDate2 = new String();
-    String EndDate2 = new String();
+    DateValue StartDate2 = new DateValue("");
+    DateValue EndDate2 = new DateValue("");
     String Employer = new String();
     String WorkAddressStreet = new String();
     String WorkAddInfoAddress = new String();
@@ -471,8 +475,8 @@ public class Controller implements Initializable {
     String WorkZipcode = new String();
     String WorkCountry = new String();
     String WorkOccupation = new String();
-    String WorkStartDate = new String();
-    String WorkEndDate = new String();
+    DateValue WorkStartDate = new DateValue("");
+    DateValue WorkEndDate = new DateValue("");
     String Employer1 = new String();
     String WorkAddressStreet1 = new String();
     String WorkAddInfoAddress1 = new String();
@@ -481,8 +485,8 @@ public class Controller implements Initializable {
     String WorkZipcode1 = new String();
     String WorkCountry1 = new String();
     String WorkOccupation1 = new String();
-    String WorkStartDate1 = new String();
-    String WorkEndDate1 = new String();
+    DateValue WorkStartDate1 = new DateValue("");
+    DateValue WorkEndDate1 = new DateValue("");
     String Employer2 = new String();
     String WorkAddressStreet2 = new String();
     String WorkAddInfoAddress2 = new String();
@@ -491,15 +495,15 @@ public class Controller implements Initializable {
     String WorkZipcode2 = new String();
     String WorkCountry2 = new String();
     String WorkOccupation2 = new String();
-    String WorkStartDate2 = new String();
-    String WorkEndDate2 = new String();
+    DateValue WorkStartDate2 = new DateValue("");
+    DateValue WorkEndDate2 = new DateValue("");
     String FFamilyName = new String();
     String FFirstName = new String();
     String FMiddleName = new String();
     String FFamilyNameB = new String();
     String FFirstNameB = new String();
     String FMiddleNameB = new String();
-    String FDOB = new String();
+    DateValue FDOB = new DateValue("");
     String FCityBirth = new String();
     String FCountryBirth = new String();
     String FCityCurrent = new String();
@@ -510,7 +514,7 @@ public class Controller implements Initializable {
     String MFamilyNameB = new String();
     String MFirstNameB = new String();
     String MMiddleNameB = new String();
-    String MDOB = new String();
+    DateValue MDOB = new DateValue("");
     String MCityBirth = new String();
     String MCountryBirth = new String();
     String MCityCurrent = new String();
@@ -520,18 +524,18 @@ public class Controller implements Initializable {
     String SMiddleName = new String();
     String SFirstName = new String();
     String SANum = new String();
-    String SDOBDate = new String();
+    DateValue SDOBDate = new DateValue("");
     String SMarriageDate = new String();
     String SCityBirth = new String();
     String SCountryBirth = new String();
     String DFamilyName = new String();
     String DFirstName = new String();
     String DMiddleName = new String();
-    String DDOBDate = new String();
-    String DMarriageDate = new String();
+    DateValue DDOBDate = new DateValue("");
+    DateValue DMarriageDate = new DateValue("");
     String DCityMarriage = new String();
     String DStateMarriage = new String();
-    String DMarriageEndDate = new String();
+    DateValue DMarriageEndDate = new DateValue("");
     String SCityEnd = new String();
     String SStateEnd = new String();
     String SCountryEnd = new String();
@@ -542,24 +546,24 @@ public class Controller implements Initializable {
     String C1MiddleName = new String();
     String C1FirstName = new String();
     String C1ANum = new String();
-    String C1DOBDate = new String();
-    String C1MarriageDate = new String();
+    DateValue C1DOBDate = new DateValue("");
+    DateValue C1MarriageDate = new DateValue("");
     String C1CityBirth = new String();
     String C1CountryBirth = new String();
     String C2FamilyName = new String();
     String C2MiddleName = new String();
     String C2FirstName = new String();
     String C2ANum = new String();
-    String C2DOBDate = new String();
-    String C2MarriageDate = new String();
+    DateValue C2DOBDate = new DateValue("");
+    DateValue C2MarriageDate = new DateValue("");
     String C2CityBirth = new String();
     String C2CountryBirth = new String();
     String C3FamilyName = new String();
     String C3MiddleName = new String();
     String C3FirstName = new String();
     String C3ANum = new String();
-    String C3DOBDate = new String();
-    String C3MarriageDate = new String();
+    DateValue C3DOBDate = new DateValue("");
+    DateValue C3MarriageDate = new DateValue("");
     String C3CityBirth = new String();
     String C3CountryBirth = new String();
     String Feet = new String();
@@ -572,26 +576,26 @@ public class Controller implements Initializable {
     String StateOrganization = new String();
     String CountryOrganization = new String();
     String NatureOrganization = new String();
-    String OrganizationStartDate = new String();
-    String OrganizationEndDate = new String();
+    DateValue OrganizationStartDate = new DateValue("");
+    DateValue OrganizationEndDate = new DateValue("");
     String NameOrganization1 = new String();
     String CityOrganization1 = new String();
     String StateOrganization1 = new String();
     String CountryOrganization1 = new String();
     String NatureOrganization1 = new String();
-    String OrganizationStartDate1 = new String();
-    String OrganizationEndDate1 = new String();
+    DateValue OrganizationStartDate1 = new DateValue("");
+    DateValue OrganizationEndDate1 = new DateValue("");
     String NameOrganization2 = new String();
     String CityOrganization2 = new String();
     String StateOrganization2 = new String();
     String CountryOrganization2 = new String();
     String NatureOrganization2 = new String();
-    String OrganizationStartDate2 = new String();
-    String OrganizationEndDate2 = new String();
+    DateValue OrganizationStartDate2 = new DateValue("");
+    DateValue OrganizationEndDate2 = new DateValue("");
     String ADayTimeNum = new String();
     String AMobNum = new String();
     String AEmail = new String();
-    String SignatureDate = new String();
+    DateValue SignatureDate = new DateValue("");
     String IFamilyName = new String();
     String IMiddleName = new String();
     String IFirstName = new String();
@@ -821,25 +825,25 @@ public class Controller implements Initializable {
     static String C4FirstName = "";
     static String C4MiddleName = "";
     static String C4ANum = "";
-    static String C4DOBDate = "";
-    static String C4CountryBirth = "";
+    static DateValue C4DOBDate = new DateValue("");
+    static String C4CountryBirth;
     static String C5FamilyName = "";
     static String C5FirstName = "";
     static String C5MiddleName = "";
     static String C5ANum = "";
-    static String C5DOBDate = "";
+    static DateValue C5DOBDate = new DateValue("");
     static String C5CountryBirth = "";
     static String C6FamilyName = "";
     static String C6FirstName = "";
     static String C6MiddleName = "";
     static String C6ANum = "";
-    static String C6DOBDate = "";
+    static DateValue C6DOBDate = new DateValue("");
     static String C6CountryBirth = "";
     static String C7FamilyName = "";
     static String C7FirstName = "";
     static String C7MiddleName = "";
     static String C7ANum = "";
-    static String C7DOBDate = "";
+    static DateValue C7DOBDate = new DateValue("");
     static String C7CountryBirth = "";
 
     static String AddressStreet3 = "";
@@ -848,8 +852,8 @@ public class Controller implements Initializable {
     static String State3 = "";
     static String Zipcode3 = "";
     static String Country3 = "";
-    static String StartDate3 = "";
-    static String EndDate3 = "";
+    static DateValue StartDate3 = new DateValue("");
+    static DateValue EndDate3 = new DateValue("");
 
     static Boolean waitVar = false;
 
@@ -873,8 +877,8 @@ public class Controller implements Initializable {
         try {
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
             Date date = new Date();
-            SignatureDate = dateFormat.format(date);
-            todayDate.setText(SignatureDate);
+            String TEMPORARYDATE = dateFormat.format(date);
+            todayDate.setText(TEMPORARYDATE);
         }
         catch (Exception ex) { }
 
@@ -887,45 +891,7 @@ public class Controller implements Initializable {
     public void main(String[] args) {
     }
 
-    public static Boolean compareDates(String Date1, String Date2, int Iterate) {
-        String[] Date1ArrayTMP = Date1.split("/");
-        String[] Date1Array = {Date1ArrayTMP[1],Date1ArrayTMP[0],Date1ArrayTMP[2]};
-        String[] Date2ArrayTMP = Date2.split("/");
-        String[] Date2Array = {Date2ArrayTMP[1],Date2ArrayTMP[0],Date2ArrayTMP[2]};
-        Boolean finalBoolean = false;
-        ArrayList<Boolean> bogBoolean = new ArrayList<Boolean>();
-        if (Integer.valueOf(Date1Array[Iterate]) < Integer.valueOf(Date2Array[Iterate])) {
-            finalBoolean = true;
-            Iterate = 0;
-        }
-        else if (Integer.valueOf(Date1Array[Iterate]) > Integer.valueOf(Date2Array[Iterate])) {
-            finalBoolean = false;
-            Iterate = 0;
-        }
-        else {
-            Iterate -= 1;
-            if (Integer.valueOf(Date1Array[Iterate]) < Integer.valueOf(Date2Array[Iterate])) {
-                finalBoolean = true;
-                Iterate = 0;
-            }
-            else if (Integer.valueOf(Date1Array[Iterate]) > Integer.valueOf(Date2Array[Iterate])) {
-                finalBoolean = false;
-                Iterate = 0;
-            }
-            else {
-                Iterate -= 1;
-                if (Integer.valueOf(Date1Array[Iterate]) < Integer.valueOf(Date2Array[Iterate])) {
-                    finalBoolean = true;
-                    Iterate = 0;
-                }
-                else if (Integer.valueOf(Date1Array[Iterate]) > Integer.valueOf(Date2Array[Iterate])) {
-                    finalBoolean = false;
-                    Iterate = 0;
-                }
-            }
-        }
-        return finalBoolean;
-    }
+
     String pressedColor = "#1570c0";
     String normalColor = "#2196f3";
 
@@ -2011,18 +1977,21 @@ public class Controller implements Initializable {
             }
         }
         if (ClientC1Height.getText() != null) {
-            String C1TMPheight = ClientC1Height.getText();
-            C1Height = C1TMPheight;
-            String C1Height = C1TMPheight.replace("0", "");
-            String[] C1HeightVar = C1Height.toString().split("|");
-            if (Character.toString(C1HeightVar[0].charAt(0)).equals("0")) {
-                C1HeightVar[0] = Character.toString(C1HeightVar[0].charAt(1));
+            try {
+                String C1TMPheight = ClientC1Height.getText();
+                C1Height = C1TMPheight;
+                String C1Height = C1TMPheight.replace("0", "");
+                String[] C1HeightVar = C1Height.toString().split("\\|");
+                if (Character.toString(C1HeightVar[0].charAt(0)).equals("0")) {
+                    C1HeightVar[0] = Character.toString(C1HeightVar[0].charAt(1));
+                }
+                if (Character.toString(C1HeightVar[1].charAt(0)).equals("0")) {
+                    C1HeightVar[1] = Character.toString(C1HeightVar[1].charAt(1));
+                }
+                C1Feet = C1HeightVar[0];
+                C2Inches = C1HeightVar[1];
             }
-            if (Character.toString(C1HeightVar[1].charAt(0)).equals("0")) {
-                C1HeightVar[1] = Character.toString(C1HeightVar[1].charAt(1));
-            }
-            C1Feet = C1HeightVar[0];
-            C2Inches = C1HeightVar[1];
+            catch (Exception ex) {}
         }
     }
 
@@ -2094,18 +2063,21 @@ public class Controller implements Initializable {
             }
         }
         if (ClientC2Height.getText() != null) {
-            String C2TMPheight = ClientC2Height.getText();
-            C2Height = C2TMPheight;
-            String C2Height = C2TMPheight.replace("0", "");
-            String[] C2HeightVar = C2Height.toString().split("|");
-            if (Character.toString(C2HeightVar[0].charAt(0)).equals("0")) {
-                C2HeightVar[0] = Character.toString(C2HeightVar[0].charAt(1));
+            try {
+                String C2TMPheight = ClientC2Height.getText();
+                C2Height = C2TMPheight;
+                String C2Height = C2TMPheight.replace("0", "");
+                String[] C2HeightVar = C2Height.toString().split("\\|");
+                if (Character.toString(C2HeightVar[0].charAt(0)).equals("0")) {
+                    C2HeightVar[0] = Character.toString(C2HeightVar[0].charAt(1));
+                }
+                if (Character.toString(C2HeightVar[1].charAt(0)).equals("0")) {
+                    C2HeightVar[1] = Character.toString(C2HeightVar[1].charAt(1));
+                }
+                C2Feet = C2HeightVar[0];
+                C2Inches = C2HeightVar[1];
             }
-            if (Character.toString(C2HeightVar[1].charAt(0)).equals("0")) {
-                C2HeightVar[1] = Character.toString(C2HeightVar[1].charAt(1));
-            }
-            C2Feet = C2HeightVar[0];
-            C2Inches = C2HeightVar[1];
+            catch (Exception ex) {}
         }
     }
     public void ShowC2InfoVars() {
@@ -2177,19 +2149,23 @@ public class Controller implements Initializable {
             }
         }
         if (ClientC3Height.getText() != null) {
-            String C3TMPheight = ClientC3Height.getText();
-            C3Height = C3TMPheight;
-            String C3Height = C3TMPheight.replace("0", "");
-            String[] C3HeightVar = C3Height.toString().split("\\|");
-            if (Character.toString(C3HeightVar[0].charAt(0)).equals("0")) {
-                C3HeightVar[0] = Character.toString(C3HeightVar[0].charAt(1));
+            try {
+                String C3TMPheight = ClientC3Height.getText();
+                C3Height = C3TMPheight;
+                String C3Height = C3TMPheight.replace("0", "");
+                String[] C3HeightVar = C3Height.toString().split("\\|");
+                if (Character.toString(C3HeightVar[0].charAt(0)).equals("0")) {
+                    C3HeightVar[0] = Character.toString(C3HeightVar[0].charAt(1));
+                }
+                if (Character.toString(C3HeightVar[1].charAt(0)).equals("0")) {
+                    C3HeightVar[1] = Character.toString(C3HeightVar[1].charAt(1));
+                }
+                C3Feet = C3HeightVar[0];
+                C3Inches = C3HeightVar[1];
             }
-            if (Character.toString(C3HeightVar[1].charAt(0)).equals("0")) {
-                C3HeightVar[1] = Character.toString(C3HeightVar[1].charAt(1));
-            }
-            C3Feet = C3HeightVar[0];
-            C3Inches = C3HeightVar[1];
+            catch (Exception ex) {}
         }
+
     }
 
     public void ShowC3InfoVars() {
@@ -2259,7 +2235,8 @@ public class Controller implements Initializable {
             CityBirth = clientBirthCity.getText();
         }
         if (clientDOB.getText() != null) {
-            DOBDate = clientDOB.getText();
+            String TEMPORARY = clientDOB.getText();
+            DOBDate = new DateValue(TEMPORARY);
         }
         if (clientBirthCountry.getText() != null) {
             CountryBirth = clientBirthCountry.getText();
@@ -2308,13 +2285,13 @@ public class Controller implements Initializable {
             }
         }
         if (clientPortDate.getText() != null) {
-            LastArrivalDate = clientPortDate.getText();
+            LastArrivalDate = new DateValue(clientPortDate.getText());
         }
         if (documentExpiration.getText() != null) {
-            ExpirationDate = documentExpiration.getText();
+            ExpirationDate = new DateValue(documentExpiration.getText());
         }
         if (clientI94Expiration.getText() != null) {
-            ExpirationDate1 = clientI94Expiration.getText();
+            ExpirationDate1 = new DateValue(clientI94Expiration.getText());
         }
         if (documentCountry.getText() != null) {
             PassportCountry = documentCountry.getText();
@@ -2341,14 +2318,18 @@ public class Controller implements Initializable {
             String TMPheight = clientHeight.getText().toString();
             String height = TMPheight.replace("0", "");
             String[] C1HeightVar = height.split("\\|");
-            if (Character.toString(C1HeightVar[0].charAt(0)).equals("0")) {
-                C1HeightVar[0] = Character.toString(C1HeightVar[0].charAt(1));
+            try {
+                if (Character.toString(C1HeightVar[0].charAt(0)).equals("0")) {
+                    C1HeightVar[0] = Character.toString(C1HeightVar[0].charAt(1));
+                }
+                if (Character.toString(C1HeightVar[1].charAt(0)).equals("0")) {
+                    C1HeightVar[1] = Character.toString(C1HeightVar[1].charAt(1));
+                }
+
+                Feet = C1HeightVar[0];
+                Inches = C1HeightVar[1];
             }
-            if (Character.toString(C1HeightVar[1].charAt(0)).equals("0")) {
-                C1HeightVar[1] = Character.toString(C1HeightVar[1].charAt(1));
-            }
-            Feet = C1HeightVar[0];
-            Inches = C1HeightVar[1];
+            catch (Exception ex) {}
         }
         if (clientEmail.getText() != null) {
             AEmail = clientEmail.getText();
@@ -2408,7 +2389,8 @@ public class Controller implements Initializable {
             }
         }
         if (todayDate.getText() != null) {
-                SignatureDate = todayDate.getText();
+            String TEMPORARY = todayDate.getText();
+            SignatureDate = new DateValue(TEMPORARY);
         }
         if (countryMilitary.getText() != null) {
             CountryOrganization = countryMilitary.getText();
@@ -2495,10 +2477,10 @@ public class Controller implements Initializable {
             CityOrganization = countryMilitary.getText();
         }
         if (startDateMilitary.getText() != null) {
-            OrganizationStartDate = startDateMilitary.getText();
+            OrganizationStartDate = new DateValue(startDateMilitary.getText());
         }
         if (endDateMilitary.getText() != null) {
-            OrganizationEndDate = endDateMilitary.getText();
+            OrganizationEndDate = new DateValue(endDateMilitary.getText());
         }
         if (AddressStreetName.getText() != null) {
             AddressStreet = AddressStreetName.getText();
@@ -2516,9 +2498,9 @@ public class Controller implements Initializable {
             Zipcode = AddressZipcode.getText();
         }
         if (AddressStartTime.getText() != null) {
-            StartDate = AddressStartTime.getText();
+            StartDate = new DateValue(AddressStartTime.getText());
         }
-        EndDate = "PRESENT";
+        EndDate = new DateValue("PRESENT");
         if (AddressStreetName1.getText() != null) {
             AddressStreet1 = AddressStreetName1.getText();
         }
@@ -2538,10 +2520,10 @@ public class Controller implements Initializable {
             Country1 = AddressCountry1.getText();
         }
         if (AddressStartTime1.getText() != null) {
-            StartDate1 = AddressStartTime1.getText();
+            StartDate1 = new DateValue(AddressStartTime1.getText());
         }
         if (AddressEndTime1.getText() != null ) {
-            EndDate1 = AddressEndTime1.getText();
+            EndDate1 = new DateValue(AddressEndTime1.getText());
         }
         if (AddressStreetName2.getText() != null) {
             AddressStreet2 = AddressStreetName2.getText();
@@ -2562,10 +2544,10 @@ public class Controller implements Initializable {
             Country2 = AddressCountry2.getText();
         }
         if (AddressStartTime2.getText() != null) {
-            StartDate2 = AddressStartTime2.getText();
+            StartDate2 = new DateValue(AddressStartTime2.getText());
         }
         if (AddressEndTime2.getText() != null ) {
-            EndDate2 = AddressEndTime2.getText();
+            EndDate2 = new DateValue(AddressEndTime2.getText());
         }
         if (Address3Info.getText() != null) {
             if (!Address3Info.getText().trim().isEmpty()) {
@@ -2582,7 +2564,6 @@ public class Controller implements Initializable {
                 A3Info[4] = TMPA3Info[4].trim();
                 A3Info[5] = TMPA3Info[5].trim();
                 A3Info[6] = TMPA3Info[6].trim();
-                System.out.println(Arrays.toString(A3Info));
                 AddressStreet3 = A3Info[0];
                 AddInfoAddress3 = A3Info[2];
                 AddressCity3 = A3Info[3];
@@ -2590,10 +2571,10 @@ public class Controller implements Initializable {
                 Country3 = A3Info[5];
                 Zipcode3 = A3Info[6];
                 if (AddressStartTime3.getText() != null) {
-                    StartDate3 = AddressStartTime3.getText();
+                    StartDate3 = new DateValue(AddressEndTime2.getText());
                 }
                 if (AddressEndTime3.getText() != null) {
-                    EndDate3 = AddressEndTime3.getText();
+                    EndDate3 = new DateValue(AddressEndTime3.getText());
                 }
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
@@ -2649,107 +2630,81 @@ public class Controller implements Initializable {
 
             }
         }
-        Boolean checkJob2 = false;
+        if (jobAddressApt.isSelected()) {
+            ETenantInfo = "EApt";
+        } else if (jobAddressSte.isSelected()) {
+            ETenantInfo = "ESte";
+        } else if (jobAddressFlr.isSelected()) {
+            ETenantInfo = "EFlr";
+        }
+        if (jobAddressApt1.isSelected()) {
+            ETenantInfo1 = "EApt1";
+        } else if (jobAddressSte1.isSelected()) {
+            ETenantInfo1 = "ESte1";
+        } else if (jobAddressFlr1.isSelected()) {
+            ETenantInfo1 = "EFlr1";
+        }
+        if (jobAddressApt2.isSelected()) {
+            ETenantInfo2 = "EApt2";
+        } else if (jobAddressSte2.isSelected()) {
+            ETenantInfo2 = "ESte2";
+        } else if (jobAddressFlr2.isSelected()) {
+            ETenantInfo2 = "EFlr2";
+        }
+        String dateJobEnd = jobAddressStartTime.getText().trim();
+        if (dateJobEnd.isEmpty()) {
+            dateJobEnd = "PRESENT";
+        }
+        jobData WorkInfoEntry;
+        jobData WorkInfoEntry1;
+        jobData WorkInfoEntry2;
 
-        if (jobAddressStartTime.getText() != null) {
-            WorkStartDate = jobAddressStartTime.getText();
-        }
-        if (jobAddressEndTime.getText() != null) {
-            WorkEndDate = jobAddressEndTime.getText();
-        }
-        if (jobAddressStreetName.getText() != null) {
-            WorkAddressStreet = jobAddressStreetName.getText();
-        }
-        if (jobAddressCityTown.getText() != null) {
-            WorkAddressCity = jobAddressCityTown.getText();
-        }
-        if (jobAddressZipcode.getText() != null) {
-            WorkZipcode = jobAddressZipcode.getText();
-        }
-        if (jobAddressState.getText() != null) {
-            WorkState = jobAddressState.getText();
-        }
-        if (jobUnemployed.isSelected()) {
-            WorkOccupation = "NONE";
-            Employer = "UNEMPLOYED";
+        if (jobAddressStreetName.getText().trim().isEmpty() && jobEmployer.getText().trim().isEmpty()) {
+            WorkInfoEntry = new jobData("", "", "","","",
+                    "","", "UNEMPLOYED","NONE",DOBDate, SignatureDate);
         }
         else {
-            if (jobEmployer.getText() != null) {
-                Employer = jobEmployer.getText();
-            }
-            if (jobOccupation.getText() != null) {
-                WorkOccupation = jobOccupation.getText();
-            }
+            WorkInfoEntry = new jobData(jobAddressStreetName.getText().trim(), ETenantInfo, jobAddressNumber.getText().trim(), jobAddressNumber.getText().trim(), jobAddressState.getText().trim(),
+                    jobAddressZipcode.getText().trim(), jobAddressCountry.getText().trim(), jobEmployer.getText().trim(), jobOccupation.getText().trim(), new DateValue(dateJobEnd),
+                    new DateValue(jobAddressEndTime.getText().trim()));
         }
-        if (jobAddressEndTime1.getText() != null) {
-            WorkEndDate1 = jobAddressEndTime1.getText();
+        if (jobAddressStreetName1.getText().trim().isEmpty() && jobEmployer1.getText().trim().isEmpty() && !jobAddressStreetName.getText().trim().isEmpty() && !jobEmployer.getText().trim().isEmpty()) {
+            WorkInfoEntry1 = new jobData("", "", "","","",
+                    "","", "UNEMPLOYED","NONE",DOBDate, SignatureDate);
         }
-        if (WorkStartDate.trim().equals(WorkEndDate1.trim())) {
-            if (jobAddressStreetName1.getText() != null) {
-                WorkAddressStreet = jobAddressStreetName.getText();
-            }
-            if (jobAddressCityTown1.getText() != null) {
-                WorkAddressCity1 = jobAddressCityTown1.getText();
-            }
-            if (jobAddressZipcode1.getText() != null) {
-                WorkZipcode1 = jobAddressZipcode1.getText();
-            }
-            if (jobAddressState1.getText() != null) {
-                WorkState1 = jobAddressState1.getText();
-            }
-            if (jobUnemployed1.isSelected()) {
-                WorkOccupation1 = "NONE";
-                Employer1 = "UNEMPLOYED";
-            }
-            if (jobAddressStartTime1.getText() != null) {
-                WorkStartDate1 = jobAddressStartTime1.getText();
-            }
-            if (jobAddressStartTime1.getText() != null) {
-                WorkEndDate1 = jobAddressEndTime1.getText();
-            }
-            else {
-                if (jobEmployer1.getText() != null) {
-                    Employer1 = jobEmployer1.getText();
-                }
-                if (jobOccupation1.getText() != null) {
-                    WorkOccupation1 = jobOccupation1.getText();
-                }
-            }
+        else {
+            WorkInfoEntry1 = new jobData(jobAddressStreetName1.getText().trim(), ETenantInfo1, jobAddressNumber1.getText().trim(),jobAddressNumber1.getText().trim(),jobAddressState1.getText().trim(),
+                    jobAddressZipcode1.getText().trim(),jobAddressCountry1.getText().trim(), jobEmployer1.getText().trim(),jobOccupation1.getText().trim(),new DateValue(jobAddressStartTime1.getText().trim()),
+                    new DateValue(jobAddressEndTime1.getText().trim()));
         }
-        else if (WorkStartDate.trim() != WorkEndDate1.trim()) {
-            WorkOccupation1 = "NONE";
-            Employer1 = "UNEMPLOYED";
-            String TMP = WorkEndDate1;
-            WorkStartDate1 = TMP;
-            WorkEndDate1 = WorkStartDate;
-            checkJob2 = true;
+        if (jobAddressStreetName2.getText().trim().isEmpty() && jobEmployer2.getText().trim().isEmpty() && !jobAddressStreetName1.getText().trim().isEmpty() && !jobEmployer1.getText().trim().isEmpty()) {
+            WorkInfoEntry2 = new jobData("", "", "","","",
+                    "","", "UNEMPLOYED","NONE",DOBDate, SignatureDate);
         }
-        if (!checkJob2) {
-            if (jobAddressStreetName2.getText() != null) {
-                WorkAddressStreet = jobAddressStreetName.getText();
-            }
-            if (jobAddressCityTown2.getText() != null) {
-                WorkAddressCity2 = jobAddressCityTown2.getText();
-            }
-            if (jobAddressZipcode2.getText() != null) {
-                WorkZipcode2 = jobAddressZipcode2.getText();
-            }
-            if (jobAddressState2.getText() != null) {
-                WorkState2 = jobAddressState2.getText();
-            }
-            if (jobUnemployed2.isSelected()) {
-                WorkOccupation = "NONE";
-                Employer = "UNEMPLOYED";
-            } else {
-                if (jobEmployer2.getText() != null) {
-                    Employer = jobEmployer2.getText();
-                }
-                if (jobOccupation2.getText() != null) {
-                    WorkOccupation2 = jobOccupation2.getText();
-                }
-            }
+        else {
+            WorkInfoEntry2 = new jobData(jobAddressStreetName2.getText().trim(), ETenantInfo2, jobAddressNumber2.getText().trim(),jobAddressNumber2.getText().trim(),jobAddressState2.getText().trim(),
+                    jobAddressZipcode2.getText().trim(),jobAddressCountry2.getText().trim(), jobEmployer2.getText().trim(),jobOccupation2.getText().trim(),new DateValue(jobAddressStartTime2.getText().trim()),
+                    new DateValue(jobAddressEndTime2.getText().trim()));
+        }
+        //-----------------
+        jobData WorkInfoEntryInter;
+        jobData WorkInfoEntryInter1;
+        jobData WorkInfoEntryInter2;
+        if (WorkInfoEntry.EndDate != SignatureDate || WorkInfoEntry.EndDate.Value != "PRESENT") {
+            WorkInfoEntryInter1 = new jobData("", "", "","","",
+                    "","", "UNEMPLOYED","NONE",WorkInfoEntry.EndDate, new DateValue("PRESENT"));
+        }
+        if (WorkInfoEntry.StartDate != WorkInfoEntry1.EndDate && !WorkInfoEntry1.EndDate.Value.isEmpty()) {
+            WorkInfoEntryInter1 = new jobData("", "", "","","",
+                    "","", "UNEMPLOYED","NONE",WorkInfoEntry1.EndDate, WorkInfoEntry.StartDate);
+        }
+        if (WorkInfoEntry1.StartDate != WorkInfoEntry2.EndDate && !WorkInfoEntry2.EndDate.Value.isEmpty()) {
+            WorkInfoEntryInter2 = new jobData("", "", "","","",
+                    "","", "UNEMPLOYED","NONE",WorkInfoEntry2.EndDate, WorkInfoEntry1.StartDate);
         }
 
+        //-----------------
+        //-----------------
         if (job3Info.getText() != null) {
             if (!job3Info.getText().trim().isEmpty()) {
                 needAddendum = true;
@@ -2839,7 +2794,8 @@ public class Controller implements Initializable {
             SANum = SpouseANum.getText();
         }
         if (SpouseDOB.getText() != null) {
-            SDOBDate = SpouseDOB.getText();
+            String TEMPORARY = SpouseDOB.getText();
+            SDOBDate = new DateValue(TEMPORARY);
         }
         if (SpouseCountryOfBirth.getText() != null) {
             SCountryBirth = SpouseCountryOfBirth.getText();
@@ -2954,7 +2910,7 @@ public class Controller implements Initializable {
             C1MiddleName = child1MiddleName.getText();
         }
         if (child1DOB.getText() != null) {
-            C1DOBDate = child1DOB.getText();
+            C1DOBDate = new DateValue(child1DOB.getText());
         }
         if (child1CityOfBirth.getText() != null) {
             C1CityBirth = child1CityOfBirth.getText();
@@ -2976,7 +2932,7 @@ public class Controller implements Initializable {
             C2ANum = child2ANum.getText();
         }
         if (child2DOB.getText() != null) {
-            C2DOBDate = child2DOB.getText();
+            C2DOBDate = new DateValue(child2DOB.getText());
         }
         if (child2CityOfBirth.getText() != null) {
             C2CityBirth = child2CityOfBirth.getText();
@@ -2997,7 +2953,7 @@ public class Controller implements Initializable {
             C3ANum = child3ANum.getText();
         }
         if (child3DOB.getText() != null) {
-            C3DOBDate = child3DOB.getText();
+            C3DOBDate = new DateValue(child3DOB.getText());
         }
         if (child3CityOfBirth.getText() != null) {
             C3CityBirth = child3CityOfBirth.getText();
@@ -3023,7 +2979,7 @@ public class Controller implements Initializable {
                 C4FirstName = C4Info[1];
                 C4MiddleName = C4Info[2];
                 C4ANum = C4Info[3];
-                C4DOBDate = C4Info[6];
+                C4DOBDate = new DateValue(C4Info[6]);
                 C4CountryBirth = C4Info[5];
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
@@ -3044,7 +3000,7 @@ public class Controller implements Initializable {
                 C5FirstName = C5Info[1];
                 C5MiddleName = C5Info[2];
                 C5ANum = C5Info[3];
-                C5DOBDate = C5Info[6];
+                C5DOBDate = new DateValue(C5Info[6]);
                 C5CountryBirth = C5Info[5];
             }
 
@@ -3066,7 +3022,7 @@ public class Controller implements Initializable {
                 C6FirstName = C6Info[1];
                 C6MiddleName = C6Info[2];
                 C6ANum = C6Info[3];
-                C6DOBDate = C6Info[6];
+                C6DOBDate = new DateValue(C6Info[6]);
                 C6CountryBirth = C6Info[5];
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
@@ -3087,8 +3043,8 @@ public class Controller implements Initializable {
                 C7FirstName = C7Info[1];
                 C7MiddleName = C7Info[2];
                 C7ANum = C7Info[3];
-                C7DOBDate = C7Info[6];
-                C7CountryBirth = C7Info[5];
+                //C7DOBDate = C7Info[6];
+                //C7CountryBirth = C7Info[5];
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
             }
@@ -3192,27 +3148,6 @@ public class Controller implements Initializable {
         } else if (AddressFlr2.isSelected()) {
             TenantInfo2 = "Flr2";
         }
-        if (jobAddressApt.isSelected()) {
-            ETenantInfo = "EApt";
-        } else if (jobAddressSte.isSelected()) {
-            ETenantInfo = "ESte";
-        } else if (jobAddressFlr.isSelected()) {
-            ETenantInfo = "EFlr";
-        }
-        if (jobAddressApt1.isSelected()) {
-            ETenantInfo1 = "EApt1";
-        } else if (jobAddressSte1.isSelected()) {
-            ETenantInfo1 = "ESte1";
-        } else if (jobAddressFlr1.isSelected()) {
-            ETenantInfo1 = "EFlr1";
-        }
-        if (jobAddressApt2.isSelected()) {
-            ETenantInfo2 = "EApt2";
-        } else if (jobAddressSte2.isSelected()) {
-            ETenantInfo2 = "ESte2";
-        } else if (jobAddressFlr2.isSelected()) {
-            ETenantInfo2 = "EFlr2";
-        }
         if (SpouseGender.isSelected()) {
             SGender = "Male";
         }
@@ -3311,9 +3246,9 @@ public class Controller implements Initializable {
         CGenderList[0] = C1Gender;
         CGenderList[1] = C2Gender;
         CGenderList[2] = C3Gender;
-        CDOBList[0] = C1DOBDate;
-        CDOBList[1] = C2DOBDate;
-        CDOBList[2] = C3DOBDate;
+        //CDOBList[0] = C1DOBDate = new DateValue("");
+        //CDOBList[1] = C2DOBDate = new DateValue("");
+        //CDOBList[2] = C3DOBDate = new DateValue("");
         CCountryList[0] = C1CountryBirth;
         CCountryList[1] = C2CountryBirth;
         CCountryList[2] = C3CountryBirth;
@@ -3351,28 +3286,35 @@ public class Controller implements Initializable {
     }
     public void resetVars() throws Exception {
 
-        String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate, CityBirth, CountryBirth,
-                Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode, PassportNum, TravelNum, ExpirationDate, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate,
-                I94Num, ExpirationDate1, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, StartDate, EndDate, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1,
-                Country1, StartDate1, EndDate1, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2, EndDate2, Employer, WorkAddressStreet, WorkAddInfoAddress, WorkAddressCity,
-                WorkState, WorkZipcode, WorkCountry, WorkOccupation, WorkStartDate, WorkEndDate, Employer1, WorkAddressStreet1, WorkAddInfoAddress1, WorkAddressCity1, WorkState1, WorkZipcode1, WorkCountry1,
-                WorkOccupation1, WorkStartDate1, WorkEndDate1, Employer2, WorkAddressStreet2, WorkAddInfoAddress2, WorkAddressCity2, WorkState2, WorkZipcode2, WorkCountry2, WorkOccupation2, WorkStartDate2,
-                WorkEndDate2, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName,
-                MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate, SMarriageDate,
-                SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DDOBDate, DMarriageDate, DCityMarriage, DStateMarriage, DMarriageEndDate, SCityEnd, SStateEnd, SCountryEnd,  SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName,
-                C1MiddleName, C1FirstName, C1ANum, C1DOBDate, C1MarriageDate, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate, C2MarriageDate, C2CityBirth,
-                C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate, C3MarriageDate, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization,
-                StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate, OrganizationEndDate, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1,
-                NatureOrganization1, OrganizationStartDate1, OrganizationEndDate1, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2,
-                OrganizationEndDate2, ADayTimeNum, AMobNum, AEmail, SignatureDate, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState,
-                IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, PN, PaN, IN, AddendumA, AddendumB, AddendumC, AddendumD, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, PN1, PaN1, IN1, Addendum1A, Addendum1B, Addendum1C, Addendum1D,
-                Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, PN2, PaN2, IN2, Addendum2A, Addendum2B, Addendum2C, Addendum2D, Addendum2E, Addendum2F, Addendum2G, Addendum2J,
-                PN3, PaN3, IN3, Addendum3A, Addendum3B, Addendum3C, Addendum3D, Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, PN4, PaN4, IN4, Addendum4A, Addendum4B, Addendum4C, Addendum4D,
-                Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765,ANumChildren,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate,C4CountryBirth,C5FamilyName,C5FirstName,
-                C5MiddleName,C5ANum,C5DOBDate,C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate,C7CountryBirth,
-                AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3, EndDate3,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo,
-                ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer,
-                DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status};
+        String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3,
+                FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode,
+                PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState,
+                LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName,
+                StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value,
+                EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, Employer,
+                WorkAddressStreet, WorkAddInfoAddress, WorkAddressCity, WorkState, WorkZipcode, WorkCountry, WorkOccupation, WorkStartDate.Value, WorkEndDate.Value,
+                Employer1, WorkAddressStreet1, WorkAddInfoAddress1, WorkAddressCity1, WorkState1, WorkZipcode1, WorkCountry1, WorkOccupation1, WorkStartDate1.Value,
+                WorkEndDate1.Value, Employer2, WorkAddressStreet2, WorkAddInfoAddress2, WorkAddressCity2, WorkState2, WorkZipcode2, WorkCountry2, WorkOccupation2,
+                WorkStartDate2.Value, WorkEndDate2.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value,
+                FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value,
+                MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate,
+                SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value,
+                SCityEnd, SStateEnd, SCountryEnd,  SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value,
+                C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth,
+                C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3,
+                NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value,
+                NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value,
+                NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value,
+                ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState,
+                IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, PN, PaN, IN, AddendumA, AddendumB, AddendumC, AddendumD, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI,
+                AddendumJ, PN1, PaN1, IN1, Addendum1A, Addendum1B, Addendum1C, Addendum1D, Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, PN2, PaN2, IN2, Addendum2A,
+                Addendum2B, Addendum2C, Addendum2D, Addendum2E, Addendum2F, Addendum2G, Addendum2J, PN3, PaN3, IN3, Addendum3A, Addendum3B, Addendum3C, Addendum3D, Addendum3E, Addendum3F,
+                Addendum3G, Addendum3H, Addendum3I, PN4, PaN4, IN4, Addendum4A, Addendum4B, Addendum4C, Addendum4D, Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J,
+                EntryI765,ANumChildren,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value,
+                C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value,
+                C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo,
+                lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race,
+                EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status};
 
         for (int j = 0; j < resetArray.length; j++) {
             resetArray[j] = "";
@@ -3389,50 +3331,64 @@ public class Controller implements Initializable {
         String NameTitle = new String();
         NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
         Name = NameTitle.replace("_"," ");
-        String[] fieldArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate, CityBirth, CountryBirth,
-                Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode, PassportNum, TravelNum, ExpirationDate, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate,
-                I94Num, ExpirationDate1, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, StartDate, EndDate, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1,
-                Country1, StartDate1, EndDate1, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2, EndDate2, Employer, WorkAddressStreet, WorkAddInfoAddress, WorkAddressCity,
-                WorkState, WorkZipcode, WorkCountry, WorkOccupation, WorkStartDate, WorkEndDate, Employer1, WorkAddressStreet1, WorkAddInfoAddress1, WorkAddressCity1, WorkState1, WorkZipcode1, WorkCountry1,
-                WorkOccupation1, WorkStartDate1, WorkEndDate1, Employer2, WorkAddressStreet2, WorkAddInfoAddress2, WorkAddressCity2, WorkState2, WorkZipcode2, WorkCountry2, WorkOccupation2, WorkStartDate2,
-                WorkEndDate2, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName,
-                MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate, SMarriageDate,
-                SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DDOBDate, DMarriageDate, DCityMarriage, DStateMarriage, DMarriageEndDate, SCityEnd, SStateEnd, SCountryEnd,  SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName,
-                C1MiddleName, C1FirstName, C1ANum, C1DOBDate, C1MarriageDate, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate, C2MarriageDate, C2CityBirth,
-                C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate, C3MarriageDate, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization,
-                StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate, OrganizationEndDate, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1,
-                NatureOrganization1, OrganizationStartDate1, OrganizationEndDate1, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2,
-                OrganizationEndDate2, ADayTimeNum, AMobNum, AEmail, SignatureDate, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState,
-                IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, PN, PaN, IN, AddendumA, AddendumB, AddendumC, AddendumD, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, PN1, PaN1, IN1, Addendum1A, Addendum1B, Addendum1C, Addendum1D,
-                Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, PN2, PaN2, IN2, Addendum2A, Addendum2B, Addendum2C, Addendum2D, Addendum2E, Addendum2F, Addendum2G, Addendum2J,
-                PN3, PaN3, IN3, Addendum3A, Addendum3B, Addendum3C, Addendum3D, Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, PN4, PaN4, IN4, Addendum4A, Addendum4B, Addendum4C, Addendum4D,
-                Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765,ANumChildren,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate,C4CountryBirth,C5FamilyName,C5FirstName,
-                C5MiddleName,C5ANum,C5DOBDate,C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate,C7CountryBirth,
-                AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3, EndDate3};
+        String[] fieldArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3,
+                FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode,
+                PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState,
+                LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName,
+                StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value,
+                EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, Employer,
+                WorkAddressStreet, WorkAddInfoAddress, WorkAddressCity, WorkState, WorkZipcode, WorkCountry, WorkOccupation, WorkStartDate.Value, WorkEndDate.Value,
+                Employer1, WorkAddressStreet1, WorkAddInfoAddress1, WorkAddressCity1, WorkState1, WorkZipcode1, WorkCountry1, WorkOccupation1, WorkStartDate1.Value,
+                WorkEndDate1.Value, Employer2, WorkAddressStreet2, WorkAddInfoAddress2, WorkAddressCity2, WorkState2, WorkZipcode2, WorkCountry2, WorkOccupation2,
+                WorkStartDate2.Value, WorkEndDate2.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value,
+                FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value,
+                MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate,
+                SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value,
+                SCityEnd, SStateEnd, SCountryEnd,  SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value,
+                C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth,
+                C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3,
+                NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value,
+                NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value,
+                NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value,
+                ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState,
+                IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, PN, PaN, IN, AddendumA, AddendumB, AddendumC, AddendumD, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI,
+                AddendumJ, PN1, PaN1, IN1, Addendum1A, Addendum1B, Addendum1C, Addendum1D, Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, PN2, PaN2, IN2, Addendum2A,
+                Addendum2B, Addendum2C, Addendum2D, Addendum2E, Addendum2F, Addendum2G, Addendum2J, PN3, PaN3, IN3, Addendum3A, Addendum3B, Addendum3C, Addendum3D, Addendum3E, Addendum3F,
+                Addendum3G, Addendum3H, Addendum3I, PN4, PaN4, IN4, Addendum4A, Addendum4B, Addendum4C, Addendum4D, Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J,
+                EntryI765,ANumChildren,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value,
+                C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value,
+                C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo,
+                lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race,
+                EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status};
         String[] nameFieldArray = {"ANum", "FamilyName", "FirstName", "MiddleName", "FamilyName1", "MiddleName1", "FirstName1", "FamilyName2", "FirstName2", "MiddleName2", "FamilyName3", "MiddleName3",
-                "FirstName3", "Name", "DOBDate", "CityBirth", "CountryBirth", "Nationality", "SocialSecurity", "AddressStreet", "AddInfoAddress", "AddressCity", "State", "Zipcode", "PassportNum",
-                "TravelNum", "ExpirationDate", "PassportCountry", "EntryInspectionStatus", "EntryParoledStatus", "OtherStatus", "EntryCity", "EntryState", "LastArrivalDate", "I94Num", "ExpirationDate1",
-                "I94Status", "CurrentImmigrationStatus", "I94FamilyName", "I94FirstName", "I94MiddleName", "StartDate", "EndDate", "AddressStreet1", "AddInfoAddress1", "AddressCity1", "State1", "Zipcode1",
-                "Country1", "StartDate1", "EndDate1", "AddressStreet2", "AddInfoAddress2", "AddressCity2", "State2", "Zipcode2", "Country2", "StartDate2", "EndDate2", "Employer", "WorkAddressStreet",
-                "WorkAddInfoAddress", "WorkAddressCity", "WorkState", "WorkZipcode", "WorkCountry", "WorkOccupation", "WorkStartDate", "WorkEndDate", "Employer1", "WorkAddressStreet1", "WorkAddInfoAddress1",
-                "WorkAddressCity1", "WorkState1", "WorkZipcode1", "WorkCountry1", "WorkOccupation1", "WorkStartDate1", "WorkEndDate1", "Employer2", "WorkAddressStreet2", "WorkAddInfoAddress2",
-                "WorkAddressCity2", "WorkState2", "WorkZipcode2", "WorkCountry2", "WorkOccupation2", "WorkStartDate2", "WorkEndDate2", "FFamilyName", "FFirstName", "FMiddleName", "FFamilyNameB",
-                "FFirstNameB", "FMiddleNameB", "FDOB", "FCityBirth", "FCountryBirth", "FCityCurrent", "FCountryCurrent", "MFamilyName", "MFirstName", "MMiddleName", "MFamilyNameB", "MFirstNameB",
-                "MMiddleNameB", "MDOB", "MCityBirth", "MCountryBirth", "MCityCurrent", "MCountryCurrent", "MarriageNum", "SFamilyName", "SMiddleName", "SFirstName", "SANum", "SDOBDate", "SMarriageDate",
-                "SCityBirth", "SCountryBirth", "DFamilyName", "DFirstName", "DMiddleName", "DDOBDate", "DMarriageDate", "DCityMarriage", "DStateMarriage", "DMarriageEndDate", "SCityEnd", "SStateEnd",
-                "SCountryEnd", "SCityMarriage", "SCountryMarriage", "ChildNum", "C1FamilyName", "C1MiddleName", "C1FirstName", "C1ANum", "C1DOBDate", "C1MarriageDate", "C1CityBirth", "C1CountryBirth",
-                "C2FamilyName", "C2MiddleName", "C2FirstName", "C2ANum", "C2DOBDate", "C2MarriageDate", "C2CityBirth", "C2CountryBirth", "C3FamilyName", "C3MiddleName", "C3FirstName", "C3ANum", "C3DOBDate",
-                "C3MarriageDate", "C3CityBirth", "C3CountryBirth", "Feet", "Inches", "PD1", "PD2", "PD3", "NameOrganization", "CityOrganization", "StateOrganization", "CountryOrganization",
-                "NatureOrganization", "OrganizationStartDate", "OrganizationEndDate", "NameOrganization1", "CityOrganization1", "StateOrganization1", "CountryOrganization1", "NatureOrganization1",
-                "OrganizationStartDate1", "OrganizationEndDate1", "NameOrganization2", "CityOrganization2", "StateOrganization2", "CountryOrganization2", "NatureOrganization2", "OrganizationStartDate2",
-                "OrganizationEndDate2", "ADayTimeNum", "AMobNum", "AEmail", "SignatureDate", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress",
-                "IAddressCity", "IState", "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language", "PN", "PaN", "IN", "AddendumA", "AddendumB", "AddendumC", "AddendumD", "AddendumE", "AddendumF", "AddendumG",
-                "AddendumH", "AddendumI", "AddendumJ", "PN1", "PaN1", "IN1", "Addendum1A", "Addendum1B", "Addendum1C", "Addendum1D", "Addendum1E", "Addendum1F", "Addendum1G", "Addendum1H", "Addendum1I",
-                "Addendum1J", "PN2", "PaN2", "IN2", "Addendum2A", "Addendum2B", "Addendum2C", "Addendum2D", "Addendum2E", "Addendum2F", "Addendum2G", "Addendum2J", "PN3", "PaN3", "IN3", "Addendum3A",
-                "Addendum3B", "Addendum3C", "Addendum3D", "Addendum3E", "Addendum3F", "Addendum3G", "Addendum3H", "Addendum3I", "PN4", "PaN4", "IN4", "Addendum4A", "Addendum4B", "Addendum4C", "Addendum4D",
-                "Addendum4E", "Addendum4F", "Addendum4G", "Addendum4H", "Addendum4I", "Addendum4J","EntryI765","ANumChildren","C4FamilyName","C4FirstName","C4MiddleName","C4ANum","C4DOBDate","C4CountryBirth",
-                "C5FamilyName","C5FirstName","C5MiddleName","C5ANum","C5DOBDate","C5CountryBirth","C6FamilyName","C6FirstName","C6MiddleName","C6ANum","C6DOBDate","C6CountryBirth",
-                "C7FamilyName","C7FirstName","C7MiddleName","C7ANum","C7DOBDate","C7CountryBirth","AddressStreet3","AddInfoAddress3","AddressCity3","State3","Zipcode3","Country3","StartDate3","EndDate3"};
+                "FirstName3", "Name", "DOBDate", "CityBirth", "CountryBirth", "Nationality", "SocialSecurity", "AddressStreet", "AddInfoAddress", "AddressCity", "State", "Zipcode",
+                "PassportNum", "TravelNum", "ExpirationDate", "PassportCountry", "EntryInspectionStatus", "EntryParoledStatus", "OtherStatus", "EntryCity", "EntryState",
+                "LastArrivalDate", "I94Num", "ExpirationDate1", "I94Status", "CurrentImmigrationStatus", "I94FamilyName", "I94FirstName", "I94MiddleName",
+                "StartDate", "EndDate", "AddressStreet1", "AddInfoAddress1", "AddressCity1", "State1", "Zipcode1", "Country1", "StartDate1",
+                "EndDate", "AddressStreet2", "AddInfoAddress2", "AddressCity2", "State2", "Zipcode2", "Country2", "StartDate2", "EndDate2", "Employer",
+                "WorkAddressStreet", "WorkAddInfoAddress", "WorkAddressCity", "WorkState", "WorkZipcode", "WorkCountry", "WorkOccupation", "WorkStartDate", "WorkEndDate",
+                "Employer1", "WorkAddressStreet1", "WorkAddInfoAddress1", "WorkAddressCity1", "WorkState1", "WorkZipcode1", "WorkCountry1", "WorkOccupation1", "WorkStartDate1",
+                "WorkEndDate1", "Employer2", "WorkAddressStreet2", "WorkAddInfoAddress2", "WorkAddressCity2", "WorkState2", "WorkZipcode2", "WorkCountry2", "WorkOccupation2",
+                "WorkStartDate2", "WorkEndDate2", "FFamilyName", "FFirstName", "FMiddleName", "FFamilyNameB", "FFirstNameB", "FMiddleNameB", "FDOB",
+                "FCityBirth", "FCountryBirth", "FCityCurrent", "FCountryCurrent", "MFamilyName", "MFirstName", "MMiddleName", "MFamilyNameB", "MFirstNameB", "MMiddleNameB", "MDOB",
+                "MCityBirth", "MCountryBirth", "MCityCurrent", "MCountryCurrent", "MarriageNum", "SFamilyName", "SMiddleName", "SFirstName", "SANum", "SDOBDate", "SMarriageDate",
+                "SCityBirth", "SCountryBirth", "DFamilyName", "DFirstName", "DMiddleName", "DDOBDate", "DMarriageDate", "DCityMarriage", "DStateMarriage", "DMarriageEndDate",
+                "SCityEnd", "SStateEnd", "SCountryEnd", " SCityMarriage", "SCountryMarriage", "ChildNum", "C1FamilyName", "C1MiddleName", "C1FirstName", "C1ANum", "C1DOBDate", "C1MarriageDate",
+                "C1CityBirth", "C1CountryBirth", "C2FamilyName", "C2MiddleName", "C2FirstName", "C2ANum", "C2DOBDate", "C2MarriageDate", "C2CityBirth", "C2CountryBirth",
+                "C3FamilyName", "C3MiddleName", "C3FirstName", "C3ANum", "C3DOBDate", "C3MarriageDate", "C3CityBirth", "C3CountryBirth", "Feet", "Inches", "PD1", "PD2", "PD3",
+                "NameOrganization", "CityOrganization", "StateOrganization", "CountryOrganization", "NatureOrganization", "OrganizationStartDate", "OrganizationEndDate",
+                "NameOrganization1", "CityOrganization1", "StateOrganization1", "CountryOrganization1", "NatureOrganization1", "OrganizationStartDate1", "OrganizationEndDate1",
+                "NameOrganization2", "CityOrganization2", "StateOrganization2", "CountryOrganization2", "NatureOrganization2", "OrganizationStartDate2", "OrganizationEndDate2",
+                "ADayTimeNum", "AMobNum", "AEmail", "SignatureDate", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress", "IAddressCity", "IState",
+                "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language", "PN", "PaN", "IN", "AddendumA", "AddendumB", "AddendumC", "AddendumD", "AddendumE", "AddendumF", "AddendumG", "AddendumH", "AddendumI",
+                "AddendumJ", "PN1", "PaN1", "IN1", "Addendum1A", "Addendum1B", "Addendum1C", "Addendum1D", "Addendum1E", "Addendum1F", "Addendum1G", "Addendum1H", "Addendum1I", "Addendum1J", "PN2", "PaN2", "IN2", "Addendum2A",
+                "Addendum2B", "Addendum2C", "Addendum2D", "Addendum2E", "Addendum2F", "Addendum2G", "Addendum2J", "PN3", "PaN3", "IN3", "Addendum3A", "Addendum3B", "Addendum3C", "Addendum3D", "Addendum3E", "Addendum3F",
+                "Addendum3G", "Addendum3H", "Addendum3I", "PN4", "PaN4", "IN4", "Addendum4A", "Addendum4B", "Addendum4C", "Addendum4D", "Addendum4E", "Addendum4F", "Addendum4G", "Addendum4H", "Addendum4I", "Addendum4J",
+                "EntryI765","ANumChildren","C4FamilyName","C4FirstName","C4MiddleName","C4ANum","C4DOBDate","C4CountryBirth","C5FamilyName","C5FirstName", "C5MiddleName","C5ANum","C5DOBDate",
+                "C5CountryBirth","C6FamilyName","C6FirstName","C6MiddleName","C6ANum","C6DOBDate","C6CountryBirth","C7FamilyName","C7FirstName","C7MiddleName","C7ANum","C7DOBDate",
+                "C7CountryBirth", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3", "Zipcode3", "Country3", "StartDate3", "EndDate3","AGender", "TenantInfo", "AltTenantInfo",
+                "lastArrived", "ImmigrationStatus", "TenantInfo1", "TenantInfo2", "ETenantInfo", "ETenantInfo1", "ETenantInfo2", "MaritalStatus", "USGuard", "SApply", "C1status", "C2status", "C3status", "Ethnicity", "Race",
+                "EyeColor", "HairColor", "OrgAnswer", "DisabilityAnswer", "InterpreterQuestion", "ITenantInfo", "PTenantInfo", "Q49", "Q55", "Q61", "Q62", "SocialSecurityBox","C4status","C5status","C6status","C7status"};
         String[] checkArray = {AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo,
                 ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer,
                 DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status};
@@ -3446,6 +3402,7 @@ public class Controller implements Initializable {
         for (int i = 0; i < fieldArray.length; i++) {
             String entryFieldArray = fieldArray[i];
             String entryNameArray = nameFieldArray[i];
+            System.out.println(entryFieldArray + " : " + entryNameArray);
             try {
                 PDField fieldTemp = acroForm.getField(entryNameArray);
                 if (fieldTemp != null) {
@@ -3465,508 +3422,507 @@ public class Controller implements Initializable {
                 }
             }
         }
-            FileChooser pdfFile = new FileChooser();
-            pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
-            pdfFile.setTitle("Save " + fileType.toUpperCase());
-            pdfFile.setInitialFileName(fileType + "-" + NameTitle + ".pdf");
-            File dest = pdfFile.showSaveDialog(null);
-            String pathFile = new String();
-            if (dest != null) {
-                try {
-                    pathFile = dest.getAbsolutePath();
-                    document.save(pathFile);
-                    document.close();
-                } catch (IOException ex) {
-                    alertMessage();
-                    document.close();
-                }
+        FileChooser pdfFile = new FileChooser();
+        pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+        pdfFile.setTitle("Save " + fileType.toUpperCase());
+        pdfFile.setInitialFileName(fileType + "-" + NameTitle + ".pdf");
+        File dest = pdfFile.showSaveDialog(null);
+        String pathFile = new String();
+        if (dest != null) {
+            try {
+                pathFile = dest.getAbsolutePath();
+                document.save(pathFile);
+                document.close();
+            } catch (IOException ex) {
+                alertMessage();
+                document.close();
             }
-            document.close();
-            fileAddApplication();
         }
+        document.close();
+        fileAddApplication();
+    }
 
-        public void fileAddApplication() throws Exception {
-            if (C1SpouseNumber.trim().isEmpty()) {
-                C1SpouseNumber = "1";
-            }
-            if (fileIteration < Integer.valueOf(ChildNum) && CApplyList[fileIteration]) {
-                if (AGender == "Male") {
-                    FFamilyName = FamilyName;
-                    FFirstName = FirstName;
-                    FMiddleName = MiddleName;
-                    FDOB = DOBDate;
-                    FCountryBirth = CountryBirth;
-                    FCityBirth = CityBirth;
-                    FCountryCurrent = "USA";
-                    FCityBirth = CityBirth;
-                    FCityCurrent = AddressCity;
-                    if (C1SpouseNumber.equals("1")) {
-                        MFamilyName = SFamilyName;
-                        MFirstName = SFirstName;
-                        MMiddleName = SMiddleName;
-                        MDOB = SDOBDate;
-                        MCountryBirth = SCountryBirth;
-                        MCityBirth = SCityBirth;
-                        MCountryCurrent = "USA";
-                        MCityCurrent = AddressCity;
-                    }
-                    else if (C1SpouseNumber.equals("2")) {
-                        MFamilyName = S1Info[0];
-                        MFirstName = S1Info[1];
-                        MMiddleName = S1Info[2];
-                        MCountryBirth = S1Info[3];
-                        MDOB = S1Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-                    else if (C1SpouseNumber.equals("3")) {
-                        MFamilyName = S2Info[0];
-                        MFirstName = S2Info[1];
-                        MMiddleName = S2Info[2];
-                        MCountryBirth = S2Info[3];
-                        MDOB = S2Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-                    else if (C1SpouseNumber.equals("4")) {
-                        MFamilyName = S3Info[0];
-                        MFirstName = S3Info[1];
-                        MMiddleName = S3Info[2];
-                        MCountryBirth = S3Info[3];
-                        MDOB = S3Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-                    else if (C1SpouseNumber.equals("5")) {
-                        MFamilyName = S4Info[0];
-                        MFirstName = S4Info[1];
-                        MMiddleName = S4Info[2];
-                        MCountryBirth = S4Info[3];
-                        MDOB = S4Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-                    if (C2SpouseNumber.equals("1")) {
-                        MFamilyName = SFamilyName;
-                        MFirstName = SFirstName;
-                        MMiddleName = SMiddleName;
-                        MDOB = SDOBDate;
-                        MCountryBirth = SCountryBirth;
-                        MCityBirth = SCityBirth;
-                        MCountryCurrent = "USA";
-                        MCityCurrent = AddressCity;
-                    }
-                    else if (C2SpouseNumber.equals("2")) {
-                        MFamilyName = S1Info[0];
-                        MFirstName = S1Info[1];
-                        MMiddleName = S1Info[2];
-                        MCountryBirth = S1Info[3];
-                        MDOB = S1Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-                    else if (C2SpouseNumber.equals("3")) {
-                        MFamilyName = S2Info[0];
-                        MFirstName = S2Info[1];
-                        MMiddleName = S2Info[2];
-                        MCountryBirth = S2Info[3];
-                        MDOB = S2Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-                    else if (C2SpouseNumber.equals("4")) {
-                        MFamilyName = S3Info[0];
-                        MFirstName = S3Info[1];
-                        MMiddleName = S3Info[2];
-                        MCountryBirth = S3Info[3];
-                        MDOB = S3Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-                    else if (C2SpouseNumber.equals("5")) {
-                        MFamilyName = S4Info[0];
-                        MFirstName = S4Info[1];
-                        MMiddleName = S4Info[2];
-                        MCountryBirth = S4Info[3];
-                        MDOB = S4Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-                    if (C3SpouseNumber.equals("1")) {
-                        MFamilyName = SFamilyName;
-                        MFirstName = SFirstName;
-                        MMiddleName = SMiddleName;
-                        MDOB = SDOBDate;
-                        MCountryBirth = SCountryBirth;
-                        MCityBirth = SCityBirth;
-                        MCountryCurrent = "USA";
-                        MCityCurrent = AddressCity;
-                    }
-                    else if (C3SpouseNumber.equals("2")) {
-                        MFamilyName = S1Info[0];
-                        MFirstName = S1Info[1];
-                        MMiddleName = S1Info[2];
-                        MCountryBirth = S1Info[3];
-                        MDOB = S1Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-                    else if (C3SpouseNumber.equals("3")) {
-                        MFamilyName = S2Info[0];
-                        MFirstName = S2Info[1];
-                        MMiddleName = S2Info[2];
-                        MCountryBirth = S2Info[3];
-                        MDOB = S2Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-                    else if (C3SpouseNumber.equals("4")) {
-                        MFamilyName = S3Info[0];
-                        MFirstName = S3Info[1];
-                        MMiddleName = S3Info[2];
-                        MCountryBirth = S3Info[3];
-                        MDOB = S3Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-                    else if (C3SpouseNumber.equals("5")) {
-                        MFamilyName = S4Info[0];
-                        MFirstName = S4Info[1];
-                        MMiddleName = S4Info[2];
-                        MCountryBirth = S4Info[3];
-                        MDOB = S4Info[4];
-                        MCityBirth = "";
-                        MCountryCurrent = "";
-                        MCityCurrent = "";
-                    }
-
-                }
-                else if (AGender == "Female") {
-                    MFamilyName = FamilyName;
-                    MFirstName = FirstName;
-                    MMiddleName = MiddleName;
-                    MDOB = DOBDate;
-                    MCountryBirth = CountryBirth;
-                    MCityBirth = CityBirth;
+    public void fileAddApplication() throws Exception {
+        if (C1SpouseNumber.trim().isEmpty()) {
+            C1SpouseNumber = "1";
+        }
+        if (fileIteration < Integer.valueOf(ChildNum) && CApplyList[fileIteration]) {
+            if (AGender == "Male") {
+                FFamilyName = FamilyName;
+                FFirstName = FirstName;
+                FMiddleName = MiddleName;
+                FDOB = DOBDate = new DateValue("");
+                FCountryBirth = CountryBirth;
+                FCityBirth = CityBirth;
+                FCountryCurrent = "USA";
+                FCityBirth = CityBirth;
+                FCityCurrent = AddressCity;
+                if (C1SpouseNumber.equals("1")) {
+                    MFamilyName = SFamilyName;
+                    MFirstName = SFirstName;
+                    MMiddleName = SMiddleName;
+                    MDOB = SDOBDate = new DateValue("");
+                    MCountryBirth = SCountryBirth;
+                    MCityBirth = SCityBirth;
                     MCountryCurrent = "USA";
                     MCityCurrent = AddressCity;
-                    if (C1SpouseNumber.equals("1")) {
-                        FFamilyName = SFamilyName;
-                        FFirstName = SFirstName;
-                        FMiddleName = SMiddleName;
-                        FDOB = SDOBDate;
-                        FCountryBirth = SCountryBirth;
-                        FCityBirth = SCityBirth;
-                        FCountryCurrent = "USA";
-                        FCityCurrent = AddressCity;
-                    }
-                    else if (C1SpouseNumber.equals("2")) {
-                        FFamilyName = S1Info[0];
-                        FFirstName = S1Info[1];
-                        FMiddleName = S1Info[2];
-                        FCountryBirth = S1Info[3];
-                        FDOB = S1Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
-                    else if (C1SpouseNumber.equals("3")) {
-                        FFamilyName = S2Info[0];
-                        FFirstName = S2Info[1];
-                        FMiddleName = S2Info[2];
-                        FCountryBirth = S2Info[3];
-                        FDOB = S2Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
-                    else if (C1SpouseNumber.equals("4")) {
-                        FFamilyName = S3Info[0];
-                        FFirstName = S4Info[1];
-                        FMiddleName = S4Info[2];
-                        FCountryBirth = S4Info[3];
-                        FDOB = S4Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
-                    else if (C1SpouseNumber.equals("5")) {
-                        FFamilyName = S4Info[0];
-                        FFirstName = S4Info[1];
-                        FMiddleName = S4Info[2];
-                        FCountryBirth = S4Info[3];
-                        FDOB = S4Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
-                    if (C2SpouseNumber.equals("1")) {
-                        FFamilyName = SFamilyName;
-                        FFirstName = SFirstName;
-                        FMiddleName = SMiddleName;
-                        FDOB = SDOBDate;
-                        FCountryBirth = SCountryBirth;
-                        FCityBirth = SCityBirth;
-                        FCountryCurrent = "USA";
-                        FCityCurrent = AddressCity;
-                    }
-                    else if (C2SpouseNumber.equals("2")) {
-                        FFamilyName = S1Info[0];
-                        FFirstName = S1Info[1];
-                        FMiddleName = S1Info[2];
-                        FCountryBirth = S1Info[3];
-                        FDOB = S1Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
-                    else if (C2SpouseNumber.equals("3")) {
-                        FFamilyName = S2Info[0];
-                        FFirstName = S2Info[1];
-                        FMiddleName = S2Info[2];
-                        FCountryBirth = S2Info[3];
-                        FDOB = S2Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
-                    else if (C2SpouseNumber.equals("4")) {
-                        FFamilyName = S3Info[0];
-                        FFirstName = S4Info[1];
-                        FMiddleName = S4Info[2];
-                        FCountryBirth = S4Info[3];
-                        FDOB = S4Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
-                    else if (C2SpouseNumber.equals("5")) {
-                        FFamilyName = S4Info[0];
-                        FFirstName = S4Info[1];
-                        FMiddleName = S4Info[2];
-                        FCountryBirth = S4Info[3];
-                        FDOB = S4Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
-                    if (C3SpouseNumber.equals("1")) {
-                        FFamilyName = SFamilyName;
-                        FFirstName = SFirstName;
-                        FMiddleName = SMiddleName;
-                        FDOB = SDOBDate;
-                        FCountryBirth = SCountryBirth;
-                        FCityBirth = SCityBirth;
-                        FCountryCurrent = "USA";
-                        FCityCurrent = AddressCity;
-                    }
-                    else if (C3SpouseNumber.equals("2")) {
-                        FFamilyName = S1Info[0];
-                        FFirstName = S1Info[1];
-                        FMiddleName = S1Info[2];
-                        FCountryBirth = S1Info[3];
-                        FDOB = S1Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
-                    else if (C3SpouseNumber.equals("3")) {
-                        FFamilyName = S2Info[0];
-                        FFirstName = S2Info[1];
-                        FMiddleName = S2Info[2];
-                        FCountryBirth = S2Info[3];
-                        FDOB = S2Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
-                    else if (C3SpouseNumber.equals("4")) {
-                        FFamilyName = S3Info[0];
-                        FFirstName = S4Info[1];
-                        FMiddleName = S4Info[2];
-                        FCountryBirth = S4Info[3];
-                        FDOB = S4Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
-                    else if (C3SpouseNumber.equals("5")) {
-                        FFamilyName = S4Info[0];
-                        FFirstName = S4Info[1];
-                        FMiddleName = S4Info[2];
-                        FCountryBirth = S4Info[3];
-                        FDOB = S4Info[4];
-                        FCityBirth = "";
-                        FCountryCurrent = "";
-                        FCityCurrent = "";
-                    }
+                }
+                else if (C1SpouseNumber.equals("2")) {
+                    MFamilyName = S1Info[0];
+                    MFirstName = S1Info[1];
+                    MMiddleName = S1Info[2];
+                    MCountryBirth = S1Info[3];
+                    MDOB = new DateValue(S1Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
+                }
+                else if (C1SpouseNumber.equals("3")) {
+                    MFamilyName = S2Info[0];
+                    MFirstName = S2Info[1];
+                    MMiddleName = S2Info[2];
+                    MCountryBirth = S2Info[3];
+                    MDOB = new DateValue(S2Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
+                }
+                else if (C1SpouseNumber.equals("4")) {
+                    MFamilyName = S3Info[0];
+                    MFirstName = S3Info[1];
+                    MMiddleName = S3Info[2];
+                    MCountryBirth = S3Info[3];
+                    MDOB = new DateValue(S3Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
+                }
+                else if (C1SpouseNumber.equals("5")) {
+                    MFamilyName = S4Info[0];
+                    MFirstName = S4Info[1];
+                    MMiddleName = S4Info[2];
+                    MCountryBirth = S4Info[3];
+                    MDOB = new DateValue(S4Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
+                }
+                if (C2SpouseNumber.equals("1")) {
+                    MFamilyName = SFamilyName;
+                    MFirstName = SFirstName;
+                    MMiddleName = SMiddleName;
+                    MDOB = SDOBDate = new DateValue("");
+                    MCountryBirth = SCountryBirth;
+                    MCityBirth = SCityBirth;
+                    MCountryCurrent = "USA";
+                    MCityCurrent = AddressCity;
+                }
+                else if (C2SpouseNumber.equals("2")) {
+                    MFamilyName = S1Info[0];
+                    MFirstName = S1Info[1];
+                    MMiddleName = S1Info[2];
+                    MCountryBirth = S1Info[3];
+                    MDOB = new DateValue(S1Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
+                }
+                else if (C2SpouseNumber.equals("3")) {
+                    MFamilyName = S2Info[0];
+                    MFirstName = S2Info[1];
+                    MMiddleName = S2Info[2];
+                    MCountryBirth = S2Info[3];
+                    MDOB = new DateValue(S2Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
+                }
+                else if (C2SpouseNumber.equals("4")) {
+                    MFamilyName = S3Info[0];
+                    MFirstName = S3Info[1];
+                    MMiddleName = S3Info[2];
+                    MCountryBirth = S3Info[3];
+                    MDOB = new DateValue(S3Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
+                }
+                else if (C2SpouseNumber.equals("5")) {
+                    MFamilyName = S4Info[0];
+                    MFirstName = S4Info[1];
+                    MMiddleName = S4Info[2];
+                    MCountryBirth = S4Info[3];
+                    MDOB = new DateValue(S4Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
+                }
+                if (C3SpouseNumber.equals("1")) {
+                    MFamilyName = SFamilyName;
+                    MFirstName = SFirstName;
+                    MMiddleName = SMiddleName;
+                    MDOB = SDOBDate = new DateValue("");
+                    MCountryBirth = SCountryBirth;
+                    MCityBirth = SCityBirth;
+                    MCountryCurrent = "USA";
+                    MCityCurrent = AddressCity;
+                }
+                else if (C3SpouseNumber.equals("2")) {
+                    MFamilyName = S1Info[0];
+                    MFirstName = S1Info[1];
+                    MMiddleName = S1Info[2];
+                    MCountryBirth = S1Info[3];
+                    MDOB = new DateValue(S1Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
+                }
+                else if (C3SpouseNumber.equals("3")) {
+                    MFamilyName = S2Info[0];
+                    MFirstName = S2Info[1];
+                    MMiddleName = S2Info[2];
+                    MCountryBirth = S2Info[3];
+                    MDOB = new DateValue(S2Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
+                }
+                else if (C3SpouseNumber.equals("4")) {
+                    MFamilyName = S3Info[0];
+                    MFirstName = S3Info[1];
+                    MMiddleName = S3Info[2];
+                    MCountryBirth = S3Info[3];
+                    MDOB = new DateValue(S3Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
+                }
+                else if (C3SpouseNumber.equals("5")) {
+                    MFamilyName = S4Info[0];
+                    MFirstName = S4Info[1];
+                    MMiddleName = S4Info[2];
+                    MCountryBirth = S4Info[3];
+                    MDOB = new DateValue(S4Info[4]);
+                    MCityBirth = "";
+                    MCountryCurrent = "";
+                    MCityCurrent = "";
                 }
 
-                FamilyName = CNameList[3 * fileIteration];
-                FirstName = CNameList[3 * fileIteration + 1];
-                MiddleName = CNameList[3 * fileIteration + 2];
-                if (C1FamilyName1.trim().isEmpty()) {
-                    FamilyName1 = "NONE";
-                }
-                else {
-                    FamilyName1 = C1FamilyName1;
-                    FirstName1 = C1FirstName1;
-                    MiddleName1 = C1MiddleName1;
-                }
-                ANum = CANumList[fileIteration];
-                Feet = C1Feet;
-                Inches = C1Inches;
-                Ethnicity = C1Ethnicity;
-                Race = C1Race;
-                SFamilyName = "";
-                SFirstName = "";
-                SMiddleName = "";
-                SDOBDate = "";
-                SApply = "";
-                C1FamilyName = "";
-                C1FirstName = "";
-                C1MiddleName = "";
-                C2FamilyName = "";
-                C2FirstName = "";
-                C2MiddleName = "";
-                C3FamilyName = "";
-                C3FirstName = "";
-                C3MiddleName = "";
-                C1CountryBirth = "";
-                C2CountryBirth = "";
-                C3CountryBirth = "";
-                Q49 = "49-no";
-                Q55 = "55-no";
-                Q61 = "61-no";
-                Q62 = "62-no";
-                if (!protectAdd) {
-                    AddendumA = "";
-                    AddendumB = "";
-                    AddendumC = "";
-                    AddendumD = "";
-                    AddendumE = "";
-                    AddendumF = "";
-                    AddendumG = "";
-                    AddendumH = "";
-                    AddendumI = "";
-                }
-                if (!protectAdd1) {
-                    Addendum1A = "";
-                    Addendum1B = "";
-                    Addendum1C = "";
-                    Addendum1D = "";
-                    Addendum1E = "";
-                    Addendum1F = "";
-                    Addendum1G = "";
-                    Addendum1H = "";
-                    Addendum1I = "";
-                }
-                Addendum2A = "";
-                Addendum2B = "";
-                Addendum2C = "";
-                Addendum2D = "";
-                Addendum2E = "";
-                Addendum2F = "";
-                Addendum2G = "";
-                Addendum2H = "";
-                Addendum2I = "";
-                Addendum3A = "";
-                Addendum3B = "";
-                Addendum3C = "";
-                Addendum3D = "";
-                Addendum3E = "";
-                Addendum3F = "";
-                Addendum3G = "";
-                Addendum3H = "";
-                Addendum3I = "";
-                Addendum4A = "";
-                Addendum4B = "";
-                Addendum4C = "";
-                Addendum4D = "";
-                Addendum4E = "";
-                Addendum4F = "";
-                Addendum4G = "";
-                Addendum4H = "";
-                Addendum4I = "";
-                CheckNum += 1;
-                NameOrganization = "";
-                CityOrganization = "";
-                StateOrganization = "";
-                CountryOrganization = "";
-                NatureOrganization = "";
-                OrganizationStartDate = "";
-                OrganizationEndDate = "";
-                NameOrganization1 = "";
-                CityOrganization1 = "";
-                StateOrganization1 = "";
-                CountryOrganization1 = "";
-                NatureOrganization1 = "";
-                OrganizationStartDate1 = "";
-                OrganizationEndDate1 = "";
-                NameOrganization2 = "";
-                CityOrganization2 = "";
-                StateOrganization2 = "";
-                CountryOrganization2 = "";
-                NatureOrganization2 = "";
-                OrganizationStartDate2 = "";
-                OrganizationEndDate2 = "";
-                MaritalStatus = "Single";
-                USGuard = "Guard-NA";
-                fileIteration += 1;
-                needAddendum = false;
-                fillAppHelper();
             }
-            else if (fileIteration < Integer.valueOf(ChildNum)){
-                CheckNum += 1;
-                fileIteration += 1;
+            else if (AGender == "Female") {
+                MFamilyName = FamilyName;
+                MFirstName = FirstName;
+                MMiddleName = MiddleName;
+                MDOB = DOBDate = new DateValue("");
+                MCountryBirth = CountryBirth;
+                MCityBirth = CityBirth;
+                MCountryCurrent = "USA";
+                MCityCurrent = AddressCity;
+                if (C1SpouseNumber.equals("1")) {
+                    FFamilyName = SFamilyName;
+                    FFirstName = SFirstName;
+                    FMiddleName = SMiddleName;
+                    FDOB = SDOBDate = new DateValue("");
+                    FCountryBirth = SCountryBirth;
+                    FCityBirth = SCityBirth;
+                    FCountryCurrent = "USA";
+                    FCityCurrent = AddressCity;
+                }
+                else if (C1SpouseNumber.equals("2")) {
+                    FFamilyName = S1Info[0];
+                    FFirstName = S1Info[1];
+                    FMiddleName = S1Info[2];
+                    FCountryBirth = S1Info[3];
+                    FDOB = new DateValue(S1Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
+                else if (C1SpouseNumber.equals("3")) {
+                    FFamilyName = S2Info[0];
+                    FFirstName = S2Info[1];
+                    FMiddleName = S2Info[2];
+                    FCountryBirth = S2Info[3];
+                    FDOB = new DateValue(S2Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
+                else if (C1SpouseNumber.equals("4")) {
+                    FFamilyName = S3Info[0];
+                    FFirstName = S4Info[1];
+                    FMiddleName = S4Info[2];
+                    FCountryBirth = S4Info[3];
+                    FDOB = new DateValue(S4Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
+                else if (C1SpouseNumber.equals("5")) {
+                    FFamilyName = S4Info[0];
+                    FFirstName = S4Info[1];
+                    FMiddleName = S4Info[2];
+                    FCountryBirth = S4Info[3];
+                    FDOB = new DateValue(S4Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
+                if (C2SpouseNumber.equals("1")) {
+                    FFamilyName = SFamilyName;
+                    FFirstName = SFirstName;
+                    FMiddleName = SMiddleName;
+                    FDOB = SDOBDate = new DateValue("");
+                    FCountryBirth = SCountryBirth;
+                    FCityBirth = SCityBirth;
+                    FCountryCurrent = "USA";
+                    FCityCurrent = AddressCity;
+                }
+                else if (C2SpouseNumber.equals("2")) {
+                    FFamilyName = S1Info[0];
+                    FFirstName = S1Info[1];
+                    FMiddleName = S1Info[2];
+                    FCountryBirth = S1Info[3];
+                    FDOB = new DateValue(S1Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
+                else if (C2SpouseNumber.equals("3")) {
+                    FFamilyName = S2Info[0];
+                    FFirstName = S2Info[1];
+                    FMiddleName = S2Info[2];
+                    FCountryBirth = S2Info[3];
+                    FDOB = new DateValue(S2Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
+                else if (C2SpouseNumber.equals("4")) {
+                    FFamilyName = S3Info[0];
+                    FFirstName = S4Info[1];
+                    FMiddleName = S4Info[2];
+                    FCountryBirth = S4Info[3];
+                    FDOB = new DateValue(S4Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
+                else if (C2SpouseNumber.equals("5")) {
+                    FFamilyName = S4Info[0];
+                    FFirstName = S4Info[1];
+                    FMiddleName = S4Info[2];
+                    FCountryBirth = S4Info[3];
+                    FDOB = new DateValue(S4Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
+                if (C3SpouseNumber.equals("1")) {
+                    FFamilyName = SFamilyName;
+                    FFirstName = SFirstName;
+                    FMiddleName = SMiddleName;
+                    FDOB = SDOBDate = new DateValue("");
+                    FCountryBirth = SCountryBirth;
+                    FCityBirth = SCityBirth;
+                    FCountryCurrent = "USA";
+                    FCityCurrent = AddressCity;
+                }
+                else if (C3SpouseNumber.equals("2")) {
+                    FFamilyName = S1Info[0];
+                    FFirstName = S1Info[1];
+                    FMiddleName = S1Info[2];
+                    FCountryBirth = S1Info[3];
+                    FDOB = new DateValue(S1Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
+                else if (C3SpouseNumber.equals("3")) {
+                    FFamilyName = S2Info[0];
+                    FFirstName = S2Info[1];
+                    FMiddleName = S2Info[2];
+                    FCountryBirth = S2Info[3];
+                    FDOB = new DateValue(S2Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
+                else if (C3SpouseNumber.equals("4")) {
+                    FFamilyName = S3Info[0];
+                    FFirstName = S4Info[1];
+                    FMiddleName = S4Info[2];
+                    FCountryBirth = S4Info[3];
+                    FDOB = new DateValue(S4Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
+                else if (C3SpouseNumber.equals("5")) {
+                    FFamilyName = S4Info[0];
+                    FFirstName = S4Info[1];
+                    FMiddleName = S4Info[2];
+                    FCountryBirth = S4Info[3];
+                    FDOB = new DateValue(S4Info[4]);
+                    FCityBirth = "";
+                    FCountryCurrent = "";
+                    FCityCurrent = "";
+                }
             }
+
+            FamilyName = CNameList[3 * fileIteration];
+            FirstName = CNameList[3 * fileIteration + 1];
+            MiddleName = CNameList[3 * fileIteration + 2];
+            if (C1FamilyName1.trim().isEmpty()) {
+                FamilyName1 = "NONE";
+            }
+            else {
+                FamilyName1 = C1FamilyName1;
+                FirstName1 = C1FirstName1;
+                MiddleName1 = C1MiddleName1;
+            }
+            ANum = CANumList[fileIteration];
+            Feet = C1Feet;
+            Inches = C1Inches;
+            Ethnicity = C1Ethnicity;
+            Race = C1Race;
+            SFamilyName = "";
+            SFirstName = "";
+            SMiddleName = "";
+            SDOBDate = new DateValue(null);
+            SApply = "";
+            C1FamilyName = "";
+            C1FirstName = "";
+            C1MiddleName = "";
+            C2FamilyName = "";
+            C2FirstName = "";
+            C2MiddleName = "";
+            C3FamilyName = "";
+            C3FirstName = "";
+            C3MiddleName = "";
+            C1CountryBirth = "";
+            C2CountryBirth = "";
+            C3CountryBirth = "";
+            Q49 = "49-no";
+            Q55 = "55-no";
+            Q61 = "61-no";
+            Q62 = "62-no";
+            if (!protectAdd) {
+                AddendumA = "";
+                AddendumB = "";
+                AddendumC = "";
+                AddendumD = "";
+                AddendumE = "";
+                AddendumF = "";
+                AddendumG = "";
+                AddendumH = "";
+                AddendumI = "";
+            }
+            if (!protectAdd1) {
+                Addendum1A = "";
+                Addendum1B = "";
+                Addendum1C = "";
+                Addendum1D = "";
+                Addendum1E = "";
+                Addendum1F = "";
+                Addendum1G = "";
+                Addendum1H = "";
+                Addendum1I = "";
+            }
+            Addendum2A = "";
+            Addendum2B = "";
+            Addendum2C = "";
+            Addendum2D = "";
+            Addendum2E = "";
+            Addendum2F = "";
+            Addendum2G = "";
+            Addendum2H = "";
+            Addendum2I = "";
+            Addendum3A = "";
+            Addendum3B = "";
+            Addendum3C = "";
+            Addendum3D = "";
+            Addendum3E = "";
+            Addendum3F = "";
+            Addendum3G = "";
+            Addendum3H = "";
+            Addendum3I = "";
+            Addendum4A = "";
+            Addendum4B = "";
+            Addendum4C = "";
+            Addendum4D = "";
+            Addendum4E = "";
+            Addendum4F = "";
+            Addendum4G = "";
+            Addendum4H = "";
+            Addendum4I = "";
+            CheckNum += 1;
+            NameOrganization = "";
+            CityOrganization = "";
+            StateOrganization = "";
+            CountryOrganization = "";
+            NatureOrganization = "";
+            OrganizationStartDate = new DateValue(null);
+            OrganizationEndDate = new DateValue(null);
+            NameOrganization1 = "";
+            CityOrganization1 = "";
+            StateOrganization1 = "";
+            CountryOrganization1 = "";
+            NatureOrganization1 = "";
+            OrganizationStartDate1 = new DateValue(null);
+            OrganizationEndDate1 = new DateValue(null);
+            NameOrganization2 = "";
+            CityOrganization2 = "";
+            StateOrganization2 = "";
+            CountryOrganization2 = "";
+            NatureOrganization2 = "";
+            OrganizationStartDate2 = new DateValue(null);
+            OrganizationEndDate2 = new DateValue(null);
+            MaritalStatus = "Single";
+            USGuard = "Guard-NA";
+            fileIteration += 1;
+            needAddendum = false;
+            fillAppHelper();
         }
-        public void addAddendums() throws Exception {
-            try {
-                Files.deleteIfExists(Paths.get("src/sample/resources/pdf/temporary/work.pdf"));
-            }
-            catch (Exception ex) {
-                System.out.println("file Error");
-            }
-            if (needAddendum) {
-                PDFMergerUtility mergerOfPDfs = new PDFMergerUtility();
-                InputStream mainFile = getClass().getResourceAsStream("resources/pdf/" + fileType + ".pdf");
-                InputStream children = getClass().getResourceAsStream("resources/pdf/addendum_children.pdf");
-                InputStream address = getClass().getResourceAsStream("resources/pdf/addendum_addresses.pdf");
-                mergerOfPDfs.addSource(mainFile);
-                if (!Address3Info.getText().trim().isEmpty()) {
-                    mergerOfPDfs.addSource(address);
-                }
-                if (!child4Info.getText().trim().isEmpty()) {
-                    System.out.println("SDASDASD");
-                    mergerOfPDfs.addSource(children);
-                }
-                OutputStream dest = new FileOutputStream("src/sample/resources/pdf/temporary/work.pdf");
-                mergerOfPDfs.setDestinationStream(dest);
-                mergerOfPDfs.mergeDocuments(MemoryUsageSetting.setupTempFileOnly());
-                Thread.sleep(4000);
-                PDDocument document = PDDocument.load(getClass().getResourceAsStream("resources/pdf/temporary/work.pdf"));
-            }
-        }
-        public void alertMessage() {
-            Alert fileSaveError = new Alert(Alert.AlertType.WARNING);
-            stage = (Stage) fileSaveError.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image(ClassLoader.getSystemResourceAsStream("sample/resources/images/error.png")));
-            fileSaveError.setResizable(false);
-            fileSaveError.setTitle("Error Message");
-            fileSaveError.setHeaderText("Overwrite Failed");
-            fileSaveError.setContentText("Your file failed to save. Please try again.");
-            fileSaveError.showAndWait();
+        else if (fileIteration < Integer.valueOf(ChildNum)){
+            CheckNum += 1;
+            fileIteration += 1;
         }
     }
+    public void addAddendums() throws Exception {
+        try {
+            Files.deleteIfExists(Paths.get("src/sample/resources/pdf/temporary/work.pdf"));
+        }
+        catch (Exception ex) {
+            System.out.println("file Error");
+        }
+        if (needAddendum) {
+            PDFMergerUtility mergerOfPDfs = new PDFMergerUtility();
+            InputStream mainFile = getClass().getResourceAsStream("resources/pdf/" + fileType + ".pdf");
+            InputStream children = getClass().getResourceAsStream("resources/pdf/addendum_children.pdf");
+            InputStream address = getClass().getResourceAsStream("resources/pdf/addendum_addresses.pdf");
+            mergerOfPDfs.addSource(mainFile);
+            if (!Address3Info.getText().trim().isEmpty()) {
+                mergerOfPDfs.addSource(address);
+            }
+            if (!child4Info.getText().trim().isEmpty()) {
+                mergerOfPDfs.addSource(children);
+            }
+            OutputStream dest = new FileOutputStream("src/sample/resources/pdf/temporary/work.pdf");
+            mergerOfPDfs.setDestinationStream(dest);
+            mergerOfPDfs.mergeDocuments(MemoryUsageSetting.setupTempFileOnly());
+            Thread.sleep(4000);
+            PDDocument document = PDDocument.load(getClass().getResourceAsStream("resources/pdf/temporary/work.pdf"));
+        }
+    }
+    public void alertMessage() {
+        Alert fileSaveError = new Alert(Alert.AlertType.WARNING);
+        stage = (Stage) fileSaveError.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(ClassLoader.getSystemResourceAsStream("sample/resources/images/error.png")));
+        fileSaveError.setResizable(false);
+        fileSaveError.setTitle("Error Message");
+        fileSaveError.setHeaderText("Overwrite Failed");
+        fileSaveError.setContentText("Your file failed to save. Please try again.");
+        fileSaveError.showAndWait();
+    }
+}

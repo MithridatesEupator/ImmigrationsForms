@@ -220,326 +220,6 @@
                    </TabPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="employmentMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #d6d6d6;">
-                <children>
-                    <TabPane layoutY="10.0" prefHeight="490.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
-                        <tabs>
-                            <Tab style="-fx-background-color: #ffffff;" text="Current job">
-                                <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="600.0" style="-fx-background-color: #eee;">
-                                        <children>
-                                            <TextField fx:id="jobAddressStreetName" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <CheckBox fx:id="jobAddressApt" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherApt" styleClass="checkBox" text="APT" textFill="WHITE" />
-                                            <CheckBox fx:id="jobAddressSte" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherSte" styleClass="checkBox" text="STE" textFill="WHITE" />
-                                            <CheckBox fx:id="jobAddressFlr" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherFlr" styleClass="checkBox" text="FLR" textFill="WHITE" />
-                                            <TextField fx:id="jobAddressNumber" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressCityTown" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressState" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressZipcode" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressCountry" alignment="CENTER" layoutX="15.0" layoutY="280.0" prefHeight="30.0" prefWidth="260.0" promptText="Country Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressStartTime" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressEndTime" alignment="CENTER" layoutX="445.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="End Time" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobEmployer" alignment="CENTER" layoutX="290.0" layoutY="100.0" prefHeight="30.0" prefWidth="295.0" promptText="Employer's Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobOccupation" alignment="CENTER" layoutX="290.0" layoutY="160.0" prefHeight="30.0" prefWidth="295.0" promptText="Occupation" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <CheckBox fx:id="jobUnemployed" layoutX="377.0" layoutY="230.0" mnemonicParsing="false" styleClass="checkBox" text="Unemployed?" textFill="WHITE">
-                                                <font>
-                                                    <Font size="15.0" />
-                                                </font>
-                                            </CheckBox>
-                                        </children>
-                                    </AnchorPane>
-                                </content>
-                            </Tab>
-                            <Tab style="-fx-background-color: #ffffff;" text="Second job">
-                                <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0" style="-fx-background-color: #eee;">
-                                        <children>
-                                            <TextField fx:id="jobAddressStreetName1" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <CheckBox fx:id="jobAddressApt1" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherApt" styleClass="checkBox" text="APT" textFill="WHITE" />
-                                            <CheckBox fx:id="jobAddressSte1" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherSte" styleClass="checkBox" text="STE" textFill="WHITE" />
-                                            <CheckBox fx:id="jobAddressFlr1" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherFlr" styleClass="checkBox" text="FLR" textFill="WHITE" />
-                                            <TextField fx:id="jobAddressNumber1" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressCityTown1" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressState1" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressZipcode1" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressCountry1" alignment="CENTER" layoutX="15.0" layoutY="280.0" prefHeight="30.0" prefWidth="260.0" promptText="Country Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressStartTime1" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressEndTime1" alignment="CENTER" layoutX="445.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="End Time" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobEmployer1" alignment="CENTER" layoutX="290.0" layoutY="100.0" prefHeight="30.0" prefWidth="295.0" promptText="Employer's Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobOccupation1" alignment="CENTER" layoutX="290.0" layoutY="160.0" prefHeight="30.0" prefWidth="295.0" promptText="Occupation" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <CheckBox fx:id="jobUnemployed1" layoutX="377.0" layoutY="230.0" mnemonicParsing="false" styleClass="checkBox" text="Unemployed?" textFill="WHITE">
-                                                <font>
-                                                    <Font size="15.0" />
-                                                </font>
-                                            </CheckBox>
-                                        </children>
-                                    </AnchorPane>
-                                </content>
-                            </Tab>
-                            <Tab style="-fx-background-color: #ffffff;" text="Third job">
-                                <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0" style="-fx-background-color: #eee;">
-                                        <children>
-                                            <TextField fx:id="jobAddressStreetName2" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <CheckBox fx:id="jobAddressApt2" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherApt" styleClass="checkBox" text="APT" textFill="WHITE" />
-                                            <CheckBox fx:id="jobAddressSte2" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherSte" styleClass="checkBox" text="STE" textFill="WHITE" />
-                                            <CheckBox fx:id="jobAddressFlr2" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherFlr" styleClass="checkBox" text="FLR" textFill="WHITE" />
-                                            <TextField fx:id="jobAddressNumber2" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressCityTown2" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressState2" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressZipcode2" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressCountry2" alignment="CENTER" layoutX="15.0" layoutY="280.0" prefHeight="30.0" prefWidth="260.0" promptText="Country Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressStartTime2" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressEndTime2" alignment="CENTER" layoutX="445.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="End Time" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobEmployer2" alignment="CENTER" layoutX="290.0" layoutY="100.0" prefHeight="30.0" prefWidth="295.0" promptText="Employer's Name" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobOccupation2" alignment="CENTER" layoutX="290.0" layoutY="160.0" prefHeight="30.0" prefWidth="295.0" promptText="Occupation" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <CheckBox fx:id="jobUnemployed2" layoutX="377.0" layoutY="230.0" mnemonicParsing="false" styleClass="checkBox" text="Unemployed?" textFill="WHITE">
-                                                <font>
-                                                    <Font size="15.0" />
-                                                </font>
-                                            </CheckBox>
-                                        </children>
-                                    </AnchorPane>
-                                </content>
-                            </Tab>
-                            <Tab style="-fx-background-color: #ffffff;" text="Additional jobs">
-                                <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="399.0" prefWidth="593.0" style="-fx-background-color: #eee;">
-                                        <children>
-                                            <TextField fx:id="job3Info" alignment="CENTER" layoutX="15.0" layoutY="45.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressStartTime3" alignment="CENTER" layoutX="15.0" layoutY="95.0" prefHeight="30.0" prefWidth="131.0" promptText="Start Date" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressEndTime3" alignment="CENTER" layoutX="161.0" layoutY="95.0" prefHeight="30.0" prefWidth="131.0" promptText="End Date" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="Employer3" alignment="CENTER" layoutX="308.0" layoutY="95.0" prefHeight="30.0" prefWidth="131.0" promptText="Employer" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="Occupation3" alignment="CENTER" layoutX="454.0" layoutY="95.0" prefHeight="30.0" prefWidth="131.0" promptText="Occupation" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="job4Info" alignment="CENTER" layoutX="15.0" layoutY="145.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressStartTime4" alignment="CENTER" layoutX="15.0" layoutY="195.0" prefHeight="30.0" prefWidth="120.0" promptText="Start Date" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressEndTime4" alignment="CENTER" layoutX="161.0" layoutY="195.0" prefHeight="30.0" prefWidth="131.0" promptText="End Date" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="Employer4" alignment="CENTER" layoutX="308.0" layoutY="195.0" prefHeight="30.0" prefWidth="131.0" promptText="Employer" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="Occupation4" alignment="CENTER" layoutX="454.0" layoutY="195.0" prefHeight="30.0" prefWidth="131.0" promptText="Occupation" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="job5Info" alignment="CENTER" layoutX="15.0" layoutY="245.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressStartTime5" alignment="CENTER" layoutX="15.0" layoutY="295.0" prefHeight="30.0" prefWidth="131.0" promptText="Start Date" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressEndTime5" alignment="CENTER" layoutX="161.0" layoutY="295.0" prefHeight="30.0" prefWidth="131.0" promptText="End Date" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="Employer5" alignment="CENTER" layoutX="308.0" layoutY="295.0" prefHeight="30.0" prefWidth="131.0" promptText="Employer" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="Occupation5" alignment="CENTER" layoutX="454.0" layoutY="295.0" prefHeight="30.0" prefWidth="131.0" promptText="Occupation" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="job6Info" alignment="CENTER" layoutX="15.0" layoutY="345.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressStartTime6" alignment="CENTER" layoutX="15.0" layoutY="395.0" prefHeight="30.0" prefWidth="131.0" promptText="Start Date" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="jobAddressEndTime6" alignment="CENTER" layoutX="161.0" layoutY="395.0" prefHeight="30.0" prefWidth="131.0" promptText="End Date" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="Employer6" alignment="CENTER" layoutX="308.0" layoutY="395.0" prefHeight="30.0" prefWidth="131.0" promptText="Employer" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <TextField fx:id="Occupation6" alignment="CENTER" layoutX="454.0" layoutY="395.0" prefHeight="30.0" prefWidth="131.0" promptText="Occupation" styleClass="textFieldLoose">
-                                                <font>
-                                                    <Font size="14.0" />
-                                                </font>
-                                            </TextField>
-                                            <Text fill="#636363" fontSmoothingType="LCD" layoutX="214.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to separate entries">
-                                                <font>
-                                                    <Font name="Ubuntu" size="15.0" />
-                                                </font>
-                                            </Text>
-                                        </children>
-                              </AnchorPane>
-                                </content>
-
-                                        </Tab>
-                        </tabs>
-                    </TabPane>
-                </children>
-            </AnchorPane>
             <AnchorPane fx:id="marriageMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #d3d3d3;">
                 <children>
                     <TabPane layoutY="10.0" prefHeight="490.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
@@ -1492,6 +1172,311 @@
                      </font>
                   </MenuButton>
                </children>
+            </AnchorPane>
+            <AnchorPane fx:id="employmentMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #d6d6d6;">
+                <children>
+                    <TabPane layoutY="10.0" prefHeight="490.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+                        <tabs>
+                            <Tab style="-fx-background-color: #ffffff;" text="Current job">
+                                <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="600.0" style="-fx-background-color: #eee;">
+                                        <children>
+                                            <TextField fx:id="jobAddressStreetName" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <CheckBox fx:id="jobAddressApt" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherApt" styleClass="checkBox" text="APT" textFill="WHITE" />
+                                            <CheckBox fx:id="jobAddressSte" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherSte" styleClass="checkBox" text="STE" textFill="WHITE" />
+                                            <CheckBox fx:id="jobAddressFlr" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherFlr" styleClass="checkBox" text="FLR" textFill="WHITE" />
+                                            <TextField fx:id="jobAddressNumber" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressCityTown" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressState" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressZipcode" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressCountry" alignment="CENTER" layoutX="15.0" layoutY="280.0" prefHeight="30.0" prefWidth="260.0" promptText="Country Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressStartTime" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressEndTime" alignment="CENTER" layoutX="445.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="End Time" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobEmployer" alignment="CENTER" layoutX="290.0" layoutY="100.0" prefHeight="30.0" prefWidth="295.0" promptText="Employer's Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobOccupation" alignment="CENTER" layoutX="290.0" layoutY="160.0" prefHeight="30.0" prefWidth="295.0" promptText="Occupation" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                        </children>
+                                    </AnchorPane>
+                                </content>
+                            </Tab>
+                            <Tab style="-fx-background-color: #ffffff;" text="Second job">
+                                <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0" style="-fx-background-color: #eee;">
+                                        <children>
+                                            <TextField fx:id="jobAddressStreetName1" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <CheckBox fx:id="jobAddressApt1" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherApt" styleClass="checkBox" text="APT" textFill="WHITE" />
+                                            <CheckBox fx:id="jobAddressSte1" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherSte" styleClass="checkBox" text="STE" textFill="WHITE" />
+                                            <CheckBox fx:id="jobAddressFlr1" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherFlr" styleClass="checkBox" text="FLR" textFill="WHITE" />
+                                            <TextField fx:id="jobAddressNumber1" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressCityTown1" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressState1" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressZipcode1" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressCountry1" alignment="CENTER" layoutX="15.0" layoutY="280.0" prefHeight="30.0" prefWidth="260.0" promptText="Country Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressStartTime1" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressEndTime1" alignment="CENTER" layoutX="445.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="End Time" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobEmployer1" alignment="CENTER" layoutX="290.0" layoutY="100.0" prefHeight="30.0" prefWidth="295.0" promptText="Employer's Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobOccupation1" alignment="CENTER" layoutX="290.0" layoutY="160.0" prefHeight="30.0" prefWidth="295.0" promptText="Occupation" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                        </children>
+                                    </AnchorPane>
+                                </content>
+                            </Tab>
+                            <Tab style="-fx-background-color: #ffffff;" text="Third job">
+                                <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0" style="-fx-background-color: #eee;">
+                                        <children>
+                                            <TextField fx:id="jobAddressStreetName2" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <CheckBox fx:id="jobAddressApt2" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherApt" styleClass="checkBox" text="APT" textFill="WHITE" />
+                                            <CheckBox fx:id="jobAddressSte2" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherSte" styleClass="checkBox" text="STE" textFill="WHITE" />
+                                            <CheckBox fx:id="jobAddressFlr2" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckJobOtherFlr" styleClass="checkBox" text="FLR" textFill="WHITE" />
+                                            <TextField fx:id="jobAddressNumber2" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressCityTown2" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressState2" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressZipcode2" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressCountry2" alignment="CENTER" layoutX="15.0" layoutY="280.0" prefHeight="30.0" prefWidth="260.0" promptText="Country Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressStartTime2" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressEndTime2" alignment="CENTER" layoutX="445.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="End Time" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobEmployer2" alignment="CENTER" layoutX="290.0" layoutY="100.0" prefHeight="30.0" prefWidth="295.0" promptText="Employer's Name" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobOccupation2" alignment="CENTER" layoutX="290.0" layoutY="160.0" prefHeight="30.0" prefWidth="295.0" promptText="Occupation" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                        </children>
+                                    </AnchorPane>
+                                </content>
+                            </Tab>
+                            <Tab style="-fx-background-color: #ffffff;" text="Additional jobs">
+                                <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="399.0" prefWidth="593.0" style="-fx-background-color: #eee;">
+                                        <children>
+                                            <TextField fx:id="job3Info" alignment="CENTER" layoutX="15.0" layoutY="45.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressStartTime3" alignment="CENTER" layoutX="15.0" layoutY="95.0" prefHeight="30.0" prefWidth="131.0" promptText="Start Date" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressEndTime3" alignment="CENTER" layoutX="161.0" layoutY="95.0" prefHeight="30.0" prefWidth="131.0" promptText="End Date" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="Employer3" alignment="CENTER" layoutX="308.0" layoutY="95.0" prefHeight="30.0" prefWidth="131.0" promptText="Employer" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="Occupation3" alignment="CENTER" layoutX="454.0" layoutY="95.0" prefHeight="30.0" prefWidth="131.0" promptText="Occupation" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="job4Info" alignment="CENTER" layoutX="15.0" layoutY="145.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressStartTime4" alignment="CENTER" layoutX="15.0" layoutY="195.0" prefHeight="30.0" prefWidth="120.0" promptText="Start Date" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressEndTime4" alignment="CENTER" layoutX="161.0" layoutY="195.0" prefHeight="30.0" prefWidth="131.0" promptText="End Date" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="Employer4" alignment="CENTER" layoutX="308.0" layoutY="195.0" prefHeight="30.0" prefWidth="131.0" promptText="Employer" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="Occupation4" alignment="CENTER" layoutX="454.0" layoutY="195.0" prefHeight="30.0" prefWidth="131.0" promptText="Occupation" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="job5Info" alignment="CENTER" layoutX="15.0" layoutY="245.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressStartTime5" alignment="CENTER" layoutX="15.0" layoutY="295.0" prefHeight="30.0" prefWidth="131.0" promptText="Start Date" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressEndTime5" alignment="CENTER" layoutX="161.0" layoutY="295.0" prefHeight="30.0" prefWidth="131.0" promptText="End Date" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="Employer5" alignment="CENTER" layoutX="308.0" layoutY="295.0" prefHeight="30.0" prefWidth="131.0" promptText="Employer" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="Occupation5" alignment="CENTER" layoutX="454.0" layoutY="295.0" prefHeight="30.0" prefWidth="131.0" promptText="Occupation" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="job6Info" alignment="CENTER" layoutX="15.0" layoutY="345.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Tenant Info | City Name | State Name | Country Name | Zipcode" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressStartTime6" alignment="CENTER" layoutX="15.0" layoutY="395.0" prefHeight="30.0" prefWidth="131.0" promptText="Start Date" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="jobAddressEndTime6" alignment="CENTER" layoutX="161.0" layoutY="395.0" prefHeight="30.0" prefWidth="131.0" promptText="End Date" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="Employer6" alignment="CENTER" layoutX="308.0" layoutY="395.0" prefHeight="30.0" prefWidth="131.0" promptText="Employer" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <TextField fx:id="Occupation6" alignment="CENTER" layoutX="454.0" layoutY="395.0" prefHeight="30.0" prefWidth="131.0" promptText="Occupation" styleClass="textFieldLoose">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                            <Text fill="#636363" fontSmoothingType="LCD" layoutX="214.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to separate entries">
+                                                <font>
+                                                    <Font name="Ubuntu" size="15.0" />
+                                                </font>
+                                            </Text>
+                                        </children>
+                              </AnchorPane>
+                                </content>
+
+                                        </Tab>
+                        </tabs>
+                    </TabPane>
+                </children>
             </AnchorPane>
             <AnchorPane fx:id="topBar" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #364e68;" styleClass="anchor">
                <children>
