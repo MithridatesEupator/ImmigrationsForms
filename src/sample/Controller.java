@@ -412,6 +412,7 @@ public class Controller implements Initializable {
 
     static String ANum = new String();
     static String ANumChildren = ANum;
+    static String ANumAddress = ANum;
     String FamilyName = new String();
     String FirstName = new String();
     String MiddleName = new String();
@@ -847,6 +848,7 @@ public class Controller implements Initializable {
     static String C7CountryBirth = "";
 
     static String AddressStreet3 = "";
+    static String TenantSelection3 = "";
     static String AddInfoAddress3 = "";
     static String AddressCity3 = "";
     static String State3 = "";
@@ -854,6 +856,36 @@ public class Controller implements Initializable {
     static String Country3 = "";
     static DateValue StartDate3 = new DateValue("");
     static DateValue EndDate3 = new DateValue("");
+
+    static String AddressStreet4 = "";
+    static String TenantSelection4 = "";
+    static String AddInfoAddress4 = "";
+    static String AddressCity4 = "";
+    static String State4 = "";
+    static String Zipcode4 = "";
+    static String Country4 = "";
+    static DateValue StartDate4 = new DateValue("");
+    static DateValue EndDate4 = new DateValue("");
+
+    static String AddressStreet5 = "";
+    static String TenantSelection5 = "";
+    static String AddInfoAddress5 = "";
+    static String AddressCity5 = "";
+    static String State5 = "";
+    static String Zipcode5 = "";
+    static String Country5 = "";
+    static DateValue StartDate5 = new DateValue("");
+    static DateValue EndDate5 = new DateValue("");
+
+    static String AddressStreet6 = "";
+    static String TenantSelection6 = "";
+    static String AddInfoAddress6 = "";
+    static String AddressCity6 = "";
+    static String State6 = "";
+    static String Zipcode6 = "";
+    static String Country6 = "";
+    static DateValue StartDate6 = new DateValue("");
+    static DateValue EndDate6 = new DateValue("");
 
     static jobData WorkInfoEntry = new jobData();
     static String methodAddressStreet = "";
@@ -2587,7 +2619,6 @@ public class Controller implements Initializable {
             try {
                 String TMPAddress3 = Address3Info.getText();
                 String[] TMPA3Info = TMPAddress3.split("\\|");
-
                 A3Info[0] = TMPA3Info[0].trim();
                 A3Info[1] = TMPA3Info[1].trim();
                 A3Info[2] = TMPA3Info[2].trim();
@@ -2596,6 +2627,15 @@ public class Controller implements Initializable {
                 A3Info[5] = TMPA3Info[5].trim();
                 A3Info[6] = TMPA3Info[6].trim();
                 AddressStreet3 = A3Info[0];
+                if (A3Info[1].toUpperCase().equals("APT")) {
+                    TenantSelection3 = "Apt3";
+                }
+                else if (A3Info[1].toUpperCase().equals("STE")) {
+                    TenantSelection3 = "Ste3";
+                }
+                else if (A3Info[1].toUpperCase().equals("FLR")) {
+                    TenantSelection3 = "Flr3";
+                }
                 AddInfoAddress3 = A3Info[2];
                 AddressCity3 = A3Info[3];
                 State3 = A3Info[4];
@@ -2622,6 +2662,27 @@ public class Controller implements Initializable {
                 A4Info[4] = TMPA4Info[4];
                 A4Info[5] = TMPA4Info[5];
                 A4Info[6] = TMPA4Info[6];
+                AddressStreet4 = A4Info[0];
+                if (A4Info[1].toUpperCase().equals("APT")) {
+                    TenantSelection4 = "Apt4";
+                }
+                else if (A4Info[1].toUpperCase().equals("STE")) {
+                    TenantSelection4 = "Ste4";
+                }
+                else if (A4Info[1].toUpperCase().equals("FLR")) {
+                    TenantSelection4 = "Flr4";
+                }
+                AddInfoAddress4 = A4Info[2];
+                AddressCity4 = A4Info[3];
+                State4 = A4Info[4];
+                Country4 = A4Info[5];
+                Zipcode4 = A4Info[6];
+                if (AddressStartTime4.getText() != null) {
+                    StartDate4 = new DateValue(AddressEndTime2.getText());
+                }
+                if (AddressEndTime4.getText() != null) {
+                    EndDate4 = new DateValue(AddressEndTime4.getText());
+                }
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
 
@@ -2638,6 +2699,27 @@ public class Controller implements Initializable {
                 A5Info[4] = TMPA5Info[4];
                 A5Info[5] = TMPA5Info[5];
                 A5Info[6] = TMPA5Info[6];
+                AddressStreet5 = A5Info[0];
+                if (A5Info[1].toUpperCase().equals("APT")) {
+                    TenantSelection5 = "Apt5";
+                }
+                else if (A5Info[1].toUpperCase().equals("STE")) {
+                    TenantSelection5 = "Ste5";
+                }
+                else if (A5Info[1].toUpperCase().equals("FLR")) {
+                    TenantSelection5 = "Flr5";
+                }
+                AddInfoAddress5 = A5Info[2];
+                AddressCity5 = A5Info[3];
+                State5 = A5Info[4];
+                Country5 = A5Info[5];
+                Zipcode5 = A5Info[6];
+                if (AddressStartTime5.getText() != null) {
+                    StartDate5 = new DateValue(AddressEndTime2.getText());
+                }
+                if (AddressEndTime5.getText() != null) {
+                    EndDate5 = new DateValue(AddressEndTime5.getText());
+                }
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
 
@@ -2656,6 +2738,27 @@ public class Controller implements Initializable {
                 A6Info[6] = TMPA6Info[6];
                 A6Info[7] = AddressStartTime6.getText();
                 A6Info[8] = AddressEndTime6.getText();
+                AddressStreet6 = A6Info[0];
+                if (A6Info[1].toUpperCase().equals("APT")) {
+                    TenantSelection6 = "Apt6";
+                }
+                else if (A6Info[1].toUpperCase().equals("STE")) {
+                    TenantSelection6 = "Ste6";
+                }
+                else if (A6Info[1].toUpperCase().equals("FLR")) {
+                    TenantSelection6 = "Flr6";
+                }
+                AddInfoAddress6 = A6Info[2];
+                AddressCity6 = A6Info[3];
+                State6 = A6Info[4];
+                Country6 = A6Info[5];
+                Zipcode6 = A6Info[6];
+                if (AddressStartTime6.getText() != null) {
+                    StartDate6 = new DateValue(AddressEndTime2.getText());
+                }
+                if (AddressEndTime6.getText() != null) {
+                    EndDate6 = new DateValue(AddressEndTime6.getText());
+                }
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
 
@@ -2797,9 +2900,6 @@ public class Controller implements Initializable {
         WorkInfoEntry.addNode(methodAddressStreet2, ETenantInfo2, methodAddressNumber2, methodAddressNumber2, methodState2,
                 methodZipcode2, methodCountry2, methodEmployer2, methodOccupation2, new DateValue(dateJobStart2),
                 new DateValue(dateJobEnd2));
-        System.out.println(WorkInfoEntry.Root.display());
-        System.out.println(WorkInfoEntry.Root.NextNode.display());
-        System.out.println(WorkInfoEntry.Root.NextNode.NextNode.display());
         //-----------------
         if (job3Info.getText() != null) {
             if (!job3Info.getText().trim().isEmpty()) {
@@ -3139,8 +3239,8 @@ public class Controller implements Initializable {
                 C7FirstName = C7Info[1];
                 C7MiddleName = C7Info[2];
                 C7ANum = C7Info[3];
-                //C7DOBDate = C7Info[6];
-                //C7CountryBirth = C7Info[5];
+                C7DOBDate.Value = C7Info[6];
+                C7CountryBirth = C7Info[5];
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
             }
@@ -3259,16 +3359,16 @@ public class Controller implements Initializable {
         else if (!SFamilyName.trim().isEmpty()) {
             USGuard = "Guard-no";
         }
-        if (child1Apply.isSelected()) {
-            C1status = "C1-yes";
-        } else if (child1FamilyName.getText() != null) {
-            C1status = "C1-no";
-        }
         if (SpouseApply.isSelected()) {
             SApply = "SApply-yes";
         }
         else {
             SApply = "SApply-no";
+        }
+        if (child1Apply.isSelected()) {
+            C1status = "C1-yes";
+        } else if (child1FamilyName.getText() != null) {
+            C1status = "C1-no";
         }
         if (child2Apply.isSelected()) {
             C2status = "C2-yes";
@@ -3277,16 +3377,33 @@ public class Controller implements Initializable {
         }
         if (child3Apply.isSelected()) {
             C3status = "C3-yes";
-            C4status = "C4-yes";
-            C5status = "C5-yes";
-            C6status = "C6-yes";
-            C7status = "C7-yes";
-        } else if (child3FamilyName.getText() != null) {
+            if(!child4Info.getText().trim().isEmpty()) {
+                C4status = "C4-yes";
+                if (!child5Info.getText().trim().isEmpty()) {
+                    C5status = "C5-yes";
+                    if (!child6Info.getText().trim().isEmpty()) {
+                        C6status = "C6-yes";
+                        if (!child7Info.getText().trim().isEmpty()) {
+                            C7status = "C7-yes";
+                        }
+                    }
+                }
+            }
+        }
+        else if (child3FamilyName.getText() != null) {
             C3status = "C3-no";
-            C4status = "C4-no";
-            C5status = "C5-no";
-            C6status = "C6-no";
-            C7status = "C7-no";
+            if(!child4Info.getText().trim().isEmpty()) {
+                C4status = "C4-no";
+                if (!child5Info.getText().trim().isEmpty()) {
+                    C5status = "C5-no";
+                    if (!child6Info.getText().trim().isEmpty()) {
+                        C6status = "C6-no";
+                        if (!child7Info.getText().trim().isEmpty()) {
+                            C7status = "C7-no";
+                        }
+                    }
+                }
+            }
         }
         if (child1Gender.isSelected()) {
             C1Gender = "Male";
@@ -3374,6 +3491,21 @@ public class Controller implements Initializable {
 
     @FXML
     public void fillApp(ActionEvent event)  throws Exception {
+        try {
+            Files.deleteIfExists(Paths.get("src/sample/resources/pdf/temporary/work.pdf"));
+        } catch (Exception ex) {
+            System.out.println("file Error");
+        }
+        try {
+            Files.deleteIfExists(Paths.get("src/sample/resources/pdf/temporary/addendum_children.pdf"));
+        } catch (Exception ex) {
+            System.out.println("file Error");
+        }
+        try {
+            Files.deleteIfExists(Paths.get("src/sample/resources/pdf/temporary/addendum_addresses.pdf"));
+        } catch (Exception ex) {
+            System.out.println("file Error");
+        }
         resetVars();
         needAddendum = false;
         SaveVars();
@@ -3484,8 +3616,8 @@ public class Controller implements Initializable {
                 "C7CountryBirth", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3", "Zipcode3", "Country3", "StartDate3", "EndDate3","AGender", "TenantInfo", "AltTenantInfo",
                 "lastArrived", "ImmigrationStatus", "TenantInfo1", "TenantInfo2", "ETenantInfo", "ETenantInfo1", "ETenantInfo2", "MaritalStatus", "USGuard", "SApply", "C1status", "C2status", "C3status", "Ethnicity", "Race",
                 "EyeColor", "HairColor", "OrgAnswer", "DisabilityAnswer", "InterpreterQuestion", "ITenantInfo", "PTenantInfo", "Q49", "Q55", "Q61", "Q62", "SocialSecurityBox","C4status","C5status","C6status","C7status"};
-        String[] checkArray = {AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo,
-                ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer,
+        String[] checkArray = {AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, WorkInfoEntry.Root.AddressAddInfo,
+                WorkInfoEntry.Root.NextNode.AddressAddInfo, WorkInfoEntry.Root.NextNode.NextNode.AddressAddInfo, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer,
                 DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status};
         if (fileType == "") {
             fileType = "i-485";
@@ -3526,8 +3658,24 @@ public class Controller implements Initializable {
         if (dest != null) {
             try {
                 pathFile = dest.getAbsolutePath();
-                document.save(pathFile);
-                document.close();
+                if(needAddendum) {
+                    if (!child4Info.getText().trim().isEmpty()) {
+                        document.save("src/sample/resources/pdf/temporary/work.pdf");
+                        document.close();
+                        PDFMergerUtility pdfMerger = new PDFMergerUtility();
+                        InputStream base = getClass().getResourceAsStream("resources/pdf/temporary/work.pdf");
+                        InputStream childAdd = getClass().getResourceAsStream("resources/pdf/temporary/addendum_children.pdf");
+                        pdfMerger.addSource(base);
+                        pdfMerger.addSource(childAdd);
+                        OutputStream destination = new FileOutputStream(pathFile);
+                        pdfMerger.setDestinationStream(destination);
+                        pdfMerger.mergeDocuments(MemoryUsageSetting.setupTempFileOnly());
+                    }
+                }
+                else {
+                    document.save(pathFile);
+                    document.close();
+                }
             } catch (IOException ex) {
                 alertMessage();
                 document.close();
@@ -3983,31 +4131,96 @@ public class Controller implements Initializable {
             CheckNum += 1;
             fileIteration += 1;
         }
+
     }
     public void addAddendums() throws Exception {
-        try {
-            Files.deleteIfExists(Paths.get("src/sample/resources/pdf/temporary/work.pdf"));
-        }
-        catch (Exception ex) {
-            System.out.println("file Error");
-        }
         if (needAddendum) {
-            PDFMergerUtility mergerOfPDfs = new PDFMergerUtility();
-            InputStream mainFile = getClass().getResourceAsStream("resources/pdf/" + fileType + ".pdf");
-            InputStream children = getClass().getResourceAsStream("resources/pdf/addendum_children.pdf");
-            InputStream address = getClass().getResourceAsStream("resources/pdf/addendum_addresses.pdf");
-            mergerOfPDfs.addSource(mainFile);
-            if (!Address3Info.getText().trim().isEmpty()) {
-                mergerOfPDfs.addSource(address);
-            }
             if (!child4Info.getText().trim().isEmpty()) {
-                mergerOfPDfs.addSource(children);
+                InputStream ChildAdd = getClass().getResourceAsStream("resources/pdf/addendum_children.pdf");
+                PDDocument childAddendum = PDDocument.load(ChildAdd);
+                PDDocumentCatalog docCatalog = childAddendum.getDocumentCatalog();
+                PDAcroForm acroForm = docCatalog.getAcroForm();
+                ANumChildren = ANum;
+                String[] fieldArray = {ANumChildren, C4FamilyName, C4FirstName, C4MiddleName,
+                C4ANum, C4DOBDate.Value, C4CountryBirth, C5FamilyName, C5FirstName, C5MiddleName,
+                        C5ANum, C5DOBDate.Value, C5CountryBirth, C6FamilyName, C6FirstName, C6MiddleName,
+                        C6ANum, C6DOBDate.Value, C6CountryBirth, C7FamilyName, C7FirstName, C7MiddleName,
+                        C7ANum, C7DOBDate.Value, C7CountryBirth};
+                String[] nameFieldArray = {"ANumChildren", "C4FamilyName", "C4FirstName", "C4MiddleName",
+                        "C4ANum", "C4DOBDate", "C4CountryBirth", "C5FamilyName", "C5FirstName", "C5MiddleName",
+                        "C5ANum", "C5DOBDate", "C5CountryBirth", "C6FamilyName", "C6FirstName", "C6MiddleName",
+                        "C6ANum", "C6DOBDate", "C6CountryBirth", "C7FamilyName", "C7FirstName", "C7MiddleName",
+                        "C7ANum", "C7DOBDate", "C7CountryBirth"};
+                String[] checkArray = {C4status,C5status,C6status,C7status};
+                for (int i = 0; i < fieldArray.length; i++) {
+                    String entryFieldArray = fieldArray[i];
+                    String entryNameArray = nameFieldArray[i];
+                    //System.out.println(entryFieldArray + " : " + entryNameArray);
+                    try {
+                        PDField fieldTemp = acroForm.getField(entryNameArray);
+                        if (fieldTemp != null) {
+                            fieldTemp.setValue(entryFieldArray.toUpperCase());
+                        }
+                    }
+                    catch (Exception ex){ }
+                }
+                for (int b = 0; b < checkArray.length; b++) {
+                    String entryCheckArray = checkArray[b];
+                    if (entryCheckArray.trim() != "") {
+                        PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
+                        try {
+                            boxTemp.check();
+                        }
+                        catch (NullPointerException problem) {
+                        }
+                    }
+                }
+                childAddendum.save("src/sample/resources/pdf/temporary/addendum_children.pdf");
+                childAddendum.close();
             }
-            OutputStream dest = new FileOutputStream("src/sample/resources/pdf/temporary/work.pdf");
-            mergerOfPDfs.setDestinationStream(dest);
-            mergerOfPDfs.mergeDocuments(MemoryUsageSetting.setupTempFileOnly());
-            Thread.sleep(4000);
-            PDDocument document = PDDocument.load(getClass().getResourceAsStream("resources/pdf/temporary/work.pdf"));
+            if (Address3Info.getText().trim().isEmpty()) {
+                InputStream ChildAdd = getClass().getResourceAsStream("resources/pdf/addendum_addresses.pdf");
+                PDDocument addressAddendum = PDDocument.load(ChildAdd);
+                PDDocumentCatalog docCatalog = addressAddendum.getDocumentCatalog();
+                PDAcroForm acroForm = docCatalog.getAcroForm();
+                ANumAddress = ANum;
+                String[] fieldArray = {ANumAddress, AddressStreet3, AddInfoAddress3, AddressCity3, State3,
+                        Zipcode3, Country3, StartDate3.Value, EndDate3.Value, AddressStreet4, AddInfoAddress4, AddressCity4, State4,
+                        Zipcode4, Country4, StartDate4.Value, EndDate4.Value, AddressStreet5, AddInfoAddress5, AddressCity5, State5,
+                        Zipcode5, Country5, StartDate5.Value, EndDate5.Value, AddressStreet6, AddInfoAddress6, AddressCity6, State6,
+                        Zipcode6, Country6, StartDate6.Value, EndDate6.Value};
+                String[] nameFieldArray = {"ANumAddress", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3",
+                        "Zipcode3", "Country3", "StartDate3", "EndDate3", "AddressStreet4", "AddInfoAddress4", "AddressCity4", "State4",
+                        "Zipcode4", "Country4", "StartDate4", "EndDate4", "AddressStreet5", "AddInfoAddress5", "AddressCity5", "State5",
+                        "Zipcode5", "Country5", "StartDate5", "EndDate5", "AddressStreet6", "AddInfoAddress6", "AddressCity6", "State6",
+                        "Zipcode6", "Country6", "StartDate6", "EndDate6"};
+                String[] checkArray = {TenantSelection3,TenantSelection4,TenantSelection5,TenantSelection6};
+                for (int i = 0; i < fieldArray.length; i++) {
+                    String entryFieldArray = fieldArray[i];
+                    String entryNameArray = nameFieldArray[i];
+                    //System.out.println(entryFieldArray + " : " + entryNameArray);
+                    try {
+                        PDField fieldTemp = acroForm.getField(entryNameArray);
+                        if (fieldTemp != null) {
+                            fieldTemp.setValue(entryFieldArray.toUpperCase());
+                        }
+                    }
+                    catch (Exception ex){ }
+                }
+                for (int b = 0; b < checkArray.length; b++) {
+                    String entryCheckArray = checkArray[b];
+                    if (entryCheckArray.trim() != "") {
+                        PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
+                        try {
+                            boxTemp.check();
+                        }
+                        catch (NullPointerException problem) {
+                        }
+                    }
+                }
+                addressAddendum.save("src/sample/resources/pdf/temporary/addendum_addresses.pdf");
+                addressAddendum.close();
+            }
         }
     }
     public void alertMessage() {

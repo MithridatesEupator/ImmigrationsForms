@@ -9,23 +9,29 @@ public class jobData {
     Integer NumLevels = 0;
     DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
     Date date = new Date();
-    String TEMPORARYDATE = dateFormat.format(date);
+    DateValue TEMPORARYDATE = new DateValue(dateFormat.format(date));
     public jobData() {
         this.Root = null;
     }
     public void addNode(String AddressStreet, String AddressAddInfo, String AddressNumber, String AddressCity, String State,
                         String Zipcode, String Country, String Employer, String Occupation, DateValue StartDate, DateValue EndDate) {
         if (this.Root == null) {
-            if (EndDate.Value.equals(TEMPORARYDATE)||EndDate.Value.equals("PRESENT")) {
+            if (EndDate.Value.equals(TEMPORARYDATE.Value)||EndDate.Value.equals("PRESENT")) {
                 Root = new jobNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, 0, null);
                 NumLevels = 1;
             }
             else {
-                Root = new jobNode("", "", "", "", "",
-                        "", "", "UNEMPLOYED", "NONE", EndDate, new DateValue("PRESENT"), 0, null);
-                Root.NextNode = new jobNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation,
-                        StartDate, EndDate, 1, null);
-                NumLevels = 2;
+                if (TEMPORARYDATE.IntMinusFiveValue > EndDate.IntValue) {
+                    Root.NextNode = new jobNode("", "", "", "", "", "", "", "", "",
+                            new DateValue(""), new DateValue(""), 1, null);
+                }
+                else {
+                    Root = new jobNode("", "", "", "", "",
+                            "", "", "UNEMPLOYED", "NONE", EndDate, new DateValue("PRESENT"), 0, null);
+                    Root.NextNode = new jobNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation,
+                            StartDate, EndDate, 1, null);
+                    NumLevels = 2;
+                }
             }
         } else {
             this.addNodeHelper(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State,
@@ -36,15 +42,21 @@ public class jobData {
                               String Zipcode, String Country, String Employer, String Occupation, DateValue StartDate, DateValue EndDate, Integer Level, jobNode Node) {
         if (Node.NextNode == null) {
             NumLevels = Level + 1;
-            if (Node.StartDate.Value.equals(EndDate.Value)||EndDate.Value.equals("")) {
-                Node.NextNode = new jobNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State,
-                        Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level, null);
+            if (TEMPORARYDATE.IntMinusFiveValue > EndDate.IntValue) {
+                Node.NextNode = new jobNode("", "", "", "", "", "", "", "", "",
+                        new DateValue(""), new DateValue(""), 1, null);
             }
             else {
-                Node.NextNode = new jobNode("", "", "", "", "",
-                        "", "", "UNEMPLOYED", "NONE", EndDate, Node.StartDate, Level, null);
-                this.addNodeHelper(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State,
-                        Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level + 1, Node.NextNode);
+                if (Node.StartDate.Value.equals(EndDate.Value)||EndDate.Value.equals("")) {
+                    Node.NextNode = new jobNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State,
+                            Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level, null);
+                }
+                else {
+                    Node.NextNode = new jobNode("", "", "", "", "",
+                            "", "", "UNEMPLOYED", "NONE", EndDate, Node.StartDate, Level, null);
+                    this.addNodeHelper(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State,
+                            Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level + 1, Node.NextNode);
+                }
             }
         }
         else {

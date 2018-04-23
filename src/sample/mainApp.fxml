@@ -18,7 +18,7 @@
          <children>
             <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="200.0" styleClass="sideBar">
                <children>
-                  <Button fx:id="mainOptionsButton" mnemonicParsing="false" onAction="#goMainMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange">
+                  <Button fx:id="mainOptionsButton" layoutY="10.0" mnemonicParsing="false" onAction="#goMainMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange">
                      <font>
                         <Font name="Symbol" size="14.0" />
                      </font>
@@ -30,7 +30,7 @@
                         </Text>
                      </graphic>
                   </Button>
-                  <Button fx:id="addressButton" layoutY="60.0" mnemonicParsing="false" onAction="#goAddressMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
+                  <Button fx:id="addressButton" layoutY="70.0" mnemonicParsing="false" onAction="#goAddressMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
                      <font>
                         <Font name="Symbol" size="14.0" />
                      </font>
@@ -42,7 +42,7 @@
                         </Text>
                      </graphic>
                   </Button>
-                  <Button fx:id="employmentButton" layoutY="120.0" mnemonicParsing="false" onAction="#goEmploymentMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
+                  <Button fx:id="employmentButton" layoutY="130.0" mnemonicParsing="false" onAction="#goEmploymentMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
                      <font>
                         <Font name="Symbol" size="14.0" />
                      </font>
@@ -54,7 +54,7 @@
                         </Text>
                      </graphic>
                   </Button>
-                  <Button fx:id="childrenButton" layoutY="180.0" mnemonicParsing="false" onAction="#goChildrenMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
+                  <Button fx:id="childrenButton" layoutY="190.0" mnemonicParsing="false" onAction="#goChildrenMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
                      <font>
                         <Font name="Symbol" size="14.0" />
                      </font>
@@ -66,7 +66,7 @@
                         </Text>
                      </graphic>
                   </Button>
-                  <Button fx:id="marriageButton" layoutY="240.0" mnemonicParsing="false" onAction="#goMarriageMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
+                  <Button fx:id="marriageButton" layoutY="250.0" mnemonicParsing="false" onAction="#goMarriageMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
                      <font>
                         <Font name="Symbol" size="14.0" />
                      </font>
@@ -78,7 +78,7 @@
                         </Text>
                      </graphic>
                   </Button>
-                  <Button fx:id="addButton" layoutY="366.0" mnemonicParsing="false" onAction="#goAddMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
+                  <Button fx:id="addButton" layoutY="370.0" mnemonicParsing="false" onAction="#goAddMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
                      <font>
                         <Font name="Symbol" size="14.0" />
                      </font>
@@ -90,7 +90,7 @@
                         </Text>
                      </graphic>
                   </Button>
-                  <Button fx:id="miscButton" layoutY="426.0" mnemonicParsing="false" onAction="#goMiscMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
+                  <Button fx:id="miscButton" layoutY="430.0" mnemonicParsing="false" onAction="#goMiscMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
                      <font>
                         <Font name="Symbol" size="14.0" />
                      </font>
@@ -102,7 +102,7 @@
                         </Text>
                      </graphic>
                   </Button>
-                  <Button fx:id="parentButton" layoutY="300.0" mnemonicParsing="false" onAction="#goParentMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
+                  <Button fx:id="parentButton" layoutY="310.0" mnemonicParsing="false" onAction="#goParentMenu" prefHeight="22.0" prefWidth="200.0" styleClass="menuButtonChange" textFill="#6e6e6e">
                      <font>
                         <Font name="Symbol" size="14.0" />
                      </font>
@@ -191,242 +191,6 @@
                   </Text>
                 </children>
             </AnchorPane>
-             <AnchorPane fx:id="AddressMenu" layoutX="200.0" layoutY="100.0" prefHeight="428.0" prefWidth="600.0" style="-fx-background-color: #d3d3d3;" styleClass="majorBar">
-                 <children>
-                     <TabPane layoutY="10.0" prefHeight="490.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
-                         <tabs>
-                             <Tab text="Current Address">
-                                 <content>
-                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;">
-                                         <children>
-                                             <TextField fx:id="AddressStreetName" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <CheckBox fx:id="AddressApt" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherApt" styleClass="checkBox" text="APT" textFill="#0a0a0a" />
-                                             <CheckBox fx:id="AddressSte" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherSte" styleClass="checkBox" text="STE">
-                                                 <font>
-                                                     <Font size="1.0" />
-                                                 </font>
-                                    </CheckBox>
-                                             <CheckBox fx:id="AddressFlr" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherFlr" styleClass="checkBox" text="FLR" />
-                                             <TextField fx:id="AddressNumber" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressCityTown" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressState" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressZipcode" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressStartTime" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                         </children>
-                                     </AnchorPane>
-                                 </content>
-                             </Tab>
-                             <Tab text="Second Address">
-                                 <content>
-                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;">
-                                         <children>
-                                             <TextField fx:id="AddressStreetName1" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <CheckBox fx:id="AddressApt1" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherApt" styleClass="checkBox" text="APT" textFill="#0a0a0a" />
-                                             <CheckBox fx:id="AddressSte1" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherSte" styleClass="checkBox" text="STE">
-                                                 <font>
-                                                     <Font size="1.0" />
-                                                 </font>
-                                    </CheckBox>
-                                             <CheckBox fx:id="AddressFlr1" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherFlr" styleClass="checkBox" text="FLR" />
-                                             <TextField fx:id="AddressNumber1" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressCityTown1" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressState1" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressZipcode1" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                    <TextField fx:id="AddressCountry1" alignment="CENTER" layoutX="15.0" layoutY="280.0" prefHeight="30.0" prefWidth="260.0" promptText="Country Name" styleClass="textFieldLoose">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                             <TextField fx:id="AddressStartTime1" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressEndTime1" alignment="CENTER" layoutX="445.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="End Time" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                         </children>
-                                     </AnchorPane>
-                                 </content>
-                             </Tab>
-                             <Tab text="Third Address">
-                                 <content>
-                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;">
-                                         <children>
-                                             <TextField fx:id="AddressStreetName2" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <CheckBox fx:id="AddressApt2" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherApt" styleClass="checkBox" text="APT" textFill="#0a0a0a" />
-                                             <CheckBox fx:id="AddressSte2" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherSte" styleClass="checkBox" text="STE">
-                                                 <font>
-                                                     <Font size="1.0" />
-                                                 </font>
-                                    </CheckBox>
-                                             <CheckBox fx:id="AddressFlr2" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherFlr" styleClass="checkBox" text="FLR" />
-                                             <TextField fx:id="AddressNumber2" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressCityTown2" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressState2" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressZipcode2" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                    <TextField fx:id="AddressCountry2" alignment="CENTER" layoutX="15.0" layoutY="280.0" prefHeight="30.0" prefWidth="260.0" promptText="Country Name" styleClass="textFieldLoose">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                             <TextField fx:id="AddressStartTime2" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressEndTime2" alignment="CENTER" layoutX="445.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="End Time" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                         </children>
-                                     </AnchorPane>
-                                 </content>
-                             </Tab>
-                             <Tab text="Additional Addresses">
-                                 <content>
-                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0" style="-fx-background-color: #eeeeee;">
-                                         <children>
-                                             <TextField fx:id="Address3Info" alignment="CENTER" layoutX="15.0" layoutY="45.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Apt | Apt Number | City | State | Country | Zipcode" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressStartTime3" alignment="CENTER" layoutX="15.0" layoutY="95.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" styleClass="textField">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressEndTime3" alignment="CENTER" layoutX="406.0" layoutY="95.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" styleClass="textField">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="Address4Info" alignment="CENTER" layoutX="15.0" layoutY="145.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Apt | Apt Number | City | State | Country | Zipcode" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressStartTime4" alignment="CENTER" layoutX="15.0" layoutY="195.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" styleClass="textField">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressEndTime4" alignment="CENTER" layoutX="406.0" layoutY="195.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" styleClass="textField">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="Address5Info" alignment="CENTER" layoutX="15.0" layoutY="245.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Apt | Apt Number | City | State | Country | Zipcode" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressStartTime5" alignment="CENTER" layoutX="15.0" layoutY="295.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" styleClass="textField">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressEndTime5" alignment="CENTER" layoutX="406.0" layoutY="295.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" styleClass="textField">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="Address6Info" alignment="CENTER" layoutX="15.0" layoutY="345.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Apt | Apt Number | City | State | Country | Zipcode" styleClass="textFieldLoose">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressStartTime6" alignment="CENTER" layoutX="15.0" layoutY="395.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" styleClass="textField">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <TextField fx:id="AddressEndTime6" alignment="CENTER" layoutX="406.0" layoutY="395.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" styleClass="textField">
-                                                 <font>
-                                                     <Font size="14.0" />
-                                                 </font>
-                                             </TextField>
-                                             <Text fill="#686868" fontSmoothingType="LCD" layoutX="214.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to separate entries">
-                                                 <font>
-                                                     <Font name="Ubuntu" size="15.0" />
-                                                 </font>
-                                             </Text>
-                                         </children>
-                                     </AnchorPane>
-                                 </content>
-                             </Tab>
-                         </tabs>
-                     </TabPane>
-                 </children>
-             </AnchorPane>
             <AnchorPane fx:id="parentsMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #d3d3d3;">
                <children>
                    <TabPane layoutY="10.0" prefHeight="490.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
@@ -1359,6 +1123,242 @@
                     </TabPane>
                 </children>
             </AnchorPane>
+             <AnchorPane fx:id="AddressMenu" layoutX="200.0" layoutY="100.0" prefHeight="428.0" prefWidth="600.0" style="-fx-background-color: #d3d3d3;" styleClass="majorBar">
+                 <children>
+                     <TabPane layoutY="10.0" prefHeight="490.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+                         <tabs>
+                             <Tab text="Current Address">
+                                 <content>
+                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;">
+                                         <children>
+                                             <TextField fx:id="AddressStreetName" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <CheckBox fx:id="AddressApt" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherApt" styleClass="checkBox" text="APT" textFill="#0a0a0a" />
+                                             <CheckBox fx:id="AddressSte" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherSte" styleClass="checkBox" text="STE">
+                                                 <font>
+                                                     <Font size="1.0" />
+                                                 </font>
+                                    </CheckBox>
+                                             <CheckBox fx:id="AddressFlr" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherFlr" styleClass="checkBox" text="FLR" />
+                                             <TextField fx:id="AddressNumber" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressCityTown" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressState" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressZipcode" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressStartTime" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                         </children>
+                                     </AnchorPane>
+                                 </content>
+                             </Tab>
+                             <Tab text="Second Address">
+                                 <content>
+                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;">
+                                         <children>
+                                             <TextField fx:id="AddressStreetName1" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <CheckBox fx:id="AddressApt1" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherApt" styleClass="checkBox" text="APT" textFill="#0a0a0a" />
+                                             <CheckBox fx:id="AddressSte1" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherSte" styleClass="checkBox" text="STE">
+                                                 <font>
+                                                     <Font size="1.0" />
+                                                 </font>
+                                    </CheckBox>
+                                             <CheckBox fx:id="AddressFlr1" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherFlr" styleClass="checkBox" text="FLR" />
+                                             <TextField fx:id="AddressNumber1" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressCityTown1" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressState1" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressZipcode1" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                    <TextField fx:id="AddressCountry1" alignment="CENTER" layoutX="15.0" layoutY="280.0" prefHeight="30.0" prefWidth="260.0" promptText="Country Name" styleClass="textFieldLoose">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                             <TextField fx:id="AddressStartTime1" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressEndTime1" alignment="CENTER" layoutX="445.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="End Time" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                         </children>
+                                     </AnchorPane>
+                                 </content>
+                             </Tab>
+                             <Tab text="Third Address">
+                                 <content>
+                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;">
+                                         <children>
+                                             <TextField fx:id="AddressStreetName2" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="260.0" promptText="Street Number and Name" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <CheckBox fx:id="AddressApt2" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherApt" styleClass="checkBox" text="APT" textFill="#0a0a0a" />
+                                             <CheckBox fx:id="AddressSte2" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherSte" styleClass="checkBox" text="STE">
+                                                 <font>
+                                                     <Font size="1.0" />
+                                                 </font>
+                                    </CheckBox>
+                                             <CheckBox fx:id="AddressFlr2" layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#uncheckOtherFlr" styleClass="checkBox" text="FLR" />
+                                             <TextField fx:id="AddressNumber2" alignment="CENTER" layoutX="209.0" layoutY="100.0" prefHeight="30.0" prefWidth="66.0" promptText="#" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressCityTown2" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="260.0" promptText="City or Town Name" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressState2" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="State Name" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressZipcode2" alignment="CENTER" layoutX="155.0" layoutY="220.0" prefHeight="30.0" prefWidth="120.0" promptText="Zipcode" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                    <TextField fx:id="AddressCountry2" alignment="CENTER" layoutX="15.0" layoutY="280.0" prefHeight="30.0" prefWidth="260.0" promptText="Country Name" styleClass="textFieldLoose">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                             <TextField fx:id="AddressStartTime2" alignment="CENTER" layoutX="290.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="Start Time" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressEndTime2" alignment="CENTER" layoutX="445.0" layoutY="40.0" prefHeight="30.0" prefWidth="140.0" promptText="End Time" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                         </children>
+                                     </AnchorPane>
+                                 </content>
+                             </Tab>
+                             <Tab text="Additional Addresses">
+                                 <content>
+                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="808.0" style="-fx-background-color: #eeeeee;">
+                                         <children>
+                                             <TextField fx:id="Address3Info" alignment="CENTER" layoutX="15.0" layoutY="45.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Apt | Apt Number | City | State | Country | Zipcode" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressStartTime3" alignment="CENTER" layoutX="15.0" layoutY="95.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" styleClass="textField">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressEndTime3" alignment="CENTER" layoutX="406.0" layoutY="95.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" styleClass="textField">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="Address4Info" alignment="CENTER" layoutX="15.0" layoutY="145.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Apt | Apt Number | City | State | Country | Zipcode" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressStartTime4" alignment="CENTER" layoutX="15.0" layoutY="195.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" styleClass="textField">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressEndTime4" alignment="CENTER" layoutX="406.0" layoutY="195.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" styleClass="textField">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="Address5Info" alignment="CENTER" layoutX="15.0" layoutY="245.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Apt | Apt Number | City | State | Country | Zipcode" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressStartTime5" alignment="CENTER" layoutX="15.0" layoutY="295.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" styleClass="textField">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressEndTime5" alignment="CENTER" layoutX="406.0" layoutY="295.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" styleClass="textField">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="Address6Info" alignment="CENTER" layoutX="15.0" layoutY="345.0" prefHeight="30.0" prefWidth="570.0" promptText="Street Name and Number | Apt | Apt Number | City | State | Country | Zipcode" styleClass="textFieldLoose">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressStartTime6" alignment="CENTER" layoutX="15.0" layoutY="395.0" prefHeight="30.0" prefWidth="300.0" promptText="Start Date" styleClass="textField">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <TextField fx:id="AddressEndTime6" alignment="CENTER" layoutX="406.0" layoutY="395.0" prefHeight="30.0" prefWidth="300.0" promptText="End Date" styleClass="textField">
+                                                 <font>
+                                                     <Font size="14.0" />
+                                                 </font>
+                                             </TextField>
+                                             <Text fill="#686868" fontSmoothingType="LCD" layoutX="214.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to separate entries">
+                                                 <font>
+                                                     <Font name="Ubuntu" size="15.0" />
+                                                 </font>
+                                             </Text>
+                                         </children>
+                                     </AnchorPane>
+                                 </content>
+                             </Tab>
+                         </tabs>
+                     </TabPane>
+                 </children>
+             </AnchorPane>
             <AnchorPane fx:id="mainMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;" styleClass="majorBar">
                <children>
                   <Button fx:id="buttonI90" layoutX="80.0" layoutY="32.0" mnemonicParsing="false" onAction="#i90Select" prefHeight="60.0" prefWidth="110.0" styleClass="buttonMain" textFill="WHITE">

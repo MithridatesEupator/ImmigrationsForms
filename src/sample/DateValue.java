@@ -8,6 +8,8 @@ public class DateValue {
     int Month;
     int Day;
     int Year;
+    int IntValue;
+    int IntMinusFiveValue;
     String Value;
 
     DateValue(String DateVar) {
@@ -16,6 +18,8 @@ public class DateValue {
             this.Month = DateArray[0];
             this.Day = DateArray[1];
             this.Year = DateArray[2];
+            this.IntValue = Day + (Month * 100) +  + (Year * 10000);
+            this.IntMinusFiveValue = this.IntValue - 50000;
             if (0 < this.Month && this.Month < 10) {
 
                 if (0 < this.Day && this.Day < 10) {
@@ -32,7 +36,7 @@ public class DateValue {
             }
         }
         catch (ArrayIndexOutOfBoundsException | NumberFormatException ex) {
-            this.Value = DateVar;
+            this.Value = DateVar.trim();
         }
     }
     public void PrintMonth() {
@@ -47,7 +51,7 @@ public class DateValue {
     }
     public static void main(String[] args) {
         DateValue v = new DateValue("12/20/2013");
-        String[] b = {"a","b",v.Value};
+        String[] b = {"a", "b", v.Value};
         System.out.println(Arrays.toString(b));
     }
 
