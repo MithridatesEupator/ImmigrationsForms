@@ -1,11 +1,20 @@
 package sample;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import sample.jobData;
 import sample.DateValue;
 
 import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
+import org.json.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -407,6 +416,7 @@ public class Controller implements Initializable {
     public AnchorPane addMenu;
     public AnchorPane parentsMenu;
     public Button parentButton;
+    public Button JSONButton;
 
     private Stage stage;
 
@@ -820,7 +830,12 @@ public class Controller implements Initializable {
     static int CheckNum = 0;
     static int fileIteration = 0;
 
-    String[] ethnicityArray = {"","","IRAQ","IRAQI","JORDAN","JORDANIAN","SYRIA","SYRIAN","CUBA","CUBAN","TURKEY","TURKISH","DEM REP OF CONGO","CONGOLESE","DEMOCRATIC REPUBLIC OF CONGO","CONGOLESE","NIGER","NIGERIEN","NIGERIA","NIGERIAN","IRAN","IRANIAN","AFGHANISTAN","AFGHAN","PAKISTAN","PAKISTANI","LEBANON","LEBANESE","JORDAN","JORDANIAN","YEMEN","YEMENI","HONDURAS","HONDURAN","EL SALVADOR","SALVADORAN",};
+    String[] ethnicityArray = {"","","ARGENTINA","ARGENTINIAN","URUGUAY","URUGUAYANS","PARAGUAY","PARAGUAYANS","TUNIS","TUNISIAN","IRAQ","IRAQI","JORDAN","JORDANIAN","SYRIA","SYRIAN","CUBA","CUBAN",
+            "TURKEY","TURKISH","DEM REP OF CONGO","CONGOLESE","DEMOCRATIC REPUBLIC OF CONGO","CONGOLESE","NIGER","NIGERIEN","NIGERIA","NIGERIAN","IRAN","IRANIAN",
+            "AFGHANISTAN","AFGHAN","PAKISTAN","PAKISTANI","LEBANON","LEBANESE","JORDAN","JORDANIAN","YEMEN","YEMENI","HONDURAS","HONDURAN","EL SALVADOR","SALVADORAN","GUATEMALAN","GUATEMALAN",
+            "BRAZIL","BRAZILIAN","EGYPT","EGYPTIAN","BELIZE","BELIZEAN","NICARAGUA","NICARAGUAN","PANAMA","PANAMAN","ROMANIA","ROMANIAN","GREECE","GREEK","ALGERIA","ALGERIAN","LIBYA","LIBYAN",
+            "ETHIOPIA","ETHIOPIAN","MYANMAR","MYANMARESE","VIETNAM","VIETNAMESE","LAOS","LAO","SOUTH AFRICA","SOUTH AFRICAN","COSTA RICA","COSTA RICAN","HAITI","HAITIAN","DOMINICAN REPUBLIC",
+            "DOMINICAN","ARMENIA","ARMENIAN","AZERBAIJAN","AZEBERBAIJANIS","KAZAKHISTAN","KAZAKHISTANI"};
 
     static String C4FamilyName = "";
     static String C4FirstName = "";
@@ -923,7 +938,6 @@ public class Controller implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-
         try { ShowNameVars(); }
         catch (Exception ex) { }
         try { ShowC1InfoVars(); }
@@ -1900,48 +1914,125 @@ public class Controller implements Initializable {
         Stage stage = (Stage) minimizeButton.getScene().getWindow();
         stage.setIconified(true);
     }
-
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @FXML
     public void openAdditionalNamesWindow(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdditionalNames.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Additional Names");
-        stage.setScene((new Scene(root1, 600, 400)));
-        stage.initStyle(StageStyle.UTILITY);
+        Parent root = FXMLLoader.load(getClass().getResource("AdditionalNames.fxml"));
+        stage.setTitle("Former Names");
+        stage.setResizable(false);
+        Scene scene = null;
+        stage.setScene(new Scene(root, 600, 400));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene = (getShadowScene(root));
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene( scene );
         stage.show();
+
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
+        });
     }
 
     @FXML
     public void openC1InfoWindow(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdditionalC1Info.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Additional Information for Child #1");
-        stage.setScene((new Scene(root1, 600, 400)));
-        stage.initStyle(StageStyle.UTILITY);
+        Parent root = FXMLLoader.load(getClass().getResource("AdditionalC1Info.fxml"));
+        stage.setTitle("Former Names");
+        stage.setResizable(false);
+        Scene scene = null;
+        stage.setScene(new Scene(root, 600, 400));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene = (getShadowScene(root));
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene( scene );
         stage.show();
+
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
+        });
     }
 
     public void openC2InfoWindow(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdditionalC2Info.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Additional Information for Child #2");
-        stage.setScene((new Scene(root1, 600, 400)));
-        stage.initStyle(StageStyle.UTILITY);
+        Parent root = FXMLLoader.load(getClass().getResource("AdditionalC2Info.fxml"));
+        stage.setTitle("Former Names");
+        stage.setResizable(false);
+        Scene scene = null;
+        stage.setScene(new Scene(root, 600, 400));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene = (getShadowScene(root));
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene( scene );
         stage.show();
+
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
+        });
     }
 
     public void openC3InfoWindow(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdditionalC3Info.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Additional Information for Child #3");
-        stage.setScene((new Scene(root1, 600, 400)));
-        stage.initStyle(StageStyle.UTILITY);
+        Parent root = FXMLLoader.load(getClass().getResource("AdditionalC3Info.fxml"));
+        stage.setTitle("Former Names");
+        stage.setResizable(false);
+        Scene scene = null;
+        stage.setScene(new Scene(root, 600, 400));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene = (getShadowScene(root));
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene( scene );
         stage.show();
+
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
+        });
     }
 
     @FXML
@@ -3551,9 +3642,7 @@ public class Controller implements Initializable {
     }
 
     public void fillAppHelper() throws Exception {
-
-        String NameTitle = new String();
-        NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
+        String NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
         Name = NameTitle.replace("_"," ");
         String[] fieldArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3,
                 FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode,
@@ -3669,7 +3758,7 @@ public class Controller implements Initializable {
                         pdfMerger.addSource(childAdd);
                         OutputStream destination = new FileOutputStream(pathFile);
                         pdfMerger.setDestinationStream(destination);
-                        pdfMerger.mergeDocuments(MemoryUsageSetting.setupTempFileOnly());
+                        pdfMerger.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
                     }
                 }
                 else {
@@ -4133,51 +4222,91 @@ public class Controller implements Initializable {
         }
 
     }
+    public void childAddendumFiller() throws Exception {
+        if (!child4Info.getText().trim().isEmpty()) {
+            InputStream ChildAdd = getClass().getResourceAsStream("resources/pdf/addendum_children.pdf");
+            PDDocument childAddendum = PDDocument.load(ChildAdd);
+            PDDocumentCatalog docCatalog = childAddendum.getDocumentCatalog();
+            PDAcroForm acroForm = docCatalog.getAcroForm();
+            ANumChildren = ANum;
+            String[] fieldArray = {ANumChildren, C4FamilyName, C4FirstName, C4MiddleName,
+                    C4ANum, C4DOBDate.Value, C4CountryBirth, C5FamilyName, C5FirstName, C5MiddleName,
+                    C5ANum, C5DOBDate.Value, C5CountryBirth, C6FamilyName, C6FirstName, C6MiddleName,
+                    C6ANum, C6DOBDate.Value, C6CountryBirth, C7FamilyName, C7FirstName, C7MiddleName,
+                    C7ANum, C7DOBDate.Value, C7CountryBirth};
+            String[] nameFieldArray = {"ANumChildren", "C4FamilyName", "C4FirstName", "C4MiddleName",
+                    "C4ANum", "C4DOBDate", "C4CountryBirth", "C5FamilyName", "C5FirstName", "C5MiddleName",
+                    "C5ANum", "C5DOBDate", "C5CountryBirth", "C6FamilyName", "C6FirstName", "C6MiddleName",
+                    "C6ANum", "C6DOBDate", "C6CountryBirth", "C7FamilyName", "C7FirstName", "C7MiddleName",
+                    "C7ANum", "C7DOBDate", "C7CountryBirth"};
+            String[] checkArray = {C4status, C5status, C6status, C7status};
+            for (int i = 0; i < fieldArray.length; i++) {
+                String entryFieldArray = fieldArray[i];
+                String entryNameArray = nameFieldArray[i];
+                try {
+                    PDField fieldTemp = acroForm.getField(entryNameArray);
+                    if (fieldTemp != null) {
+                        fieldTemp.setValue(entryFieldArray.toUpperCase());
+                    }
+                } catch (Exception ex) {
+                }
+            }
+            for (int b = 0; b < checkArray.length; b++) {
+                String entryCheckArray = checkArray[b];
+                if (entryCheckArray.trim() != "") {
+                    PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
+                    try {
+                        boxTemp.check();
+                    } catch (NullPointerException problem) {
+                    }
+                }
+            }
+            childAddendum.save("src/sample/resources/pdf/temporary/addendum_children.pdf");
+            childAddendum.close();
+        }
+    }
+    public void LoadJsonData(ActionEvent event) throws Exception {
+        FileChooser openJSON = new FileChooser();
+        openJSON.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+        openJSON.setTitle("Select the Appropriate JSON file");
+        File jsondest = openJSON.showOpenDialog(null);
+        String pathFile = new String();
+        JSONParser parser = new JSONParser();
+
+        try {
+            pathFile = jsondest.getAbsolutePath();
+            Object obj = parser.parse(new FileReader(pathFile));
+            String[] JSONStringArray = {"ApplicantAlienNumber","FamilyName","FirstName","MiddleName","CityBirth","DOBDate","CountryBirth","SocialSecurity"}; /*"AddressStreet","AddInfoAddress","AddressCity",
+                    "State","Zipcode","PassportNum","TravelNum","ExpirationDate","PassportCountry","EntryCity","EntryState","LastArrivalDate","I94Num","ExpirationDate1","I94Status","CurrentImmigrationStatus",
+                    "I94FamilyName","I94FirstName","I94MiddleName","StartDate","EndDate","AddressStreet1","AddInfoAddress1","AddressCity1","State1","Zipcode1","Country1","StartDate1","EndDate1","AddressStreet2",
+                    "AddInfoAddress2","AddressCity2","State2","Zipcode2","Country2","StartDate2","EndDate2","Employer","WorkAddressStreet","WorkAddInfoAddress","WorkAddressCity","WorkState","WorkZipcode",
+                    "WorkCountry","WorkOccupation","WorkStartDate","WorkEndDate","Employer1","WorkAddressStreet1","WorkAddInfoAddress1","WorkAddressCity1","WorkState1","WorkZipcode1","WorkCountry1",
+                    "WorkOccupation1","WorkStartDate1","WorkEndDate1","Employer2","WorkAddressStreet2","WorkAddInfoAddress2","WorkAddressCity2","WorkState2","WorkZipcode2","WorkCountry2","WorkOccupation2",
+                    "WorkStartDate2","WorkEndDate2","FatherFamilyName","FatherFirstName","FatherMiddleName","FatherFamilyNameB","FatherFirstNameB","FatherMiddleNameB","FatherDOB","FatherCityBirth",
+                    "FatherCountryBirth","FatherCityCurrent","FatherCountryCurrent","MotherFamilyName","MotherFirstName","MotherMiddleName","MotherFamilyNameB","MotherFirstNameB","MotherMiddleNameB",
+                    "MotherDOB","MotherCityBirth","MotherCountryBirth","MotherCityCurrent","MotherCountryCurrent","MarriageNum","SFamilyName","SMiddleName","SFirstName","SANum","SDOBDate",
+                    "SMarriageDate","SCityBirth","SCountryBirth","DFamilyName","DFirstName","DMiddleName","DDOBDate","DMarriageDate","DCityMarriage","DStateMarriage","DMarriageEndDate","SCityEnd",
+                    "SStateEnd","SCountryEnd","SCityMarriage","SCountryMarriage","ChildNum","C1FamilyName","C1MiddleName","C1FirstName","C1ANum","C1DOBDate","C1MarriageDate","C1CityBirth","C1CountryBirth",
+                    "C2FamilyName","C2MiddleName","C2FirstName","C2ANum","C2DOBDate","C2MarriageDate","C2CityBirth","C2CountryBirth","C3FamilyName","C3MiddleName","C3FirstName","C3ANum","C3DOBDate",
+                    "C3MarriageDate","C3CityBirth","C3CountryBirth","Feet","Inches","PD1","PD2","PD3","NameOrganization","CityOrganization","StateOrganization","CountryOrganization",
+                    "NatureOrganization","OrganizationStartDate","OrganizationEndDate","NameOrganization1","CityOrganization1","StateOrganization1","CountryOrganization1","NatureOrganization1",
+                    "OrganizationStartDate1","OrganizationEndDate1","NameOrganization2","CityOrganization2","StateOrganization2","CountryOrganization2","NatureOrganization2","OrganizationStartDate2",
+                    "OrganizationEndDate2","ADayTimeNum","AMobNum","AEmail","SignatureDate","InterpreterFamilyName","InterpreterMiddleName","InterpreterFirstName","InterpreterOrganizationName",
+                    "InterpreterAddressStreet","InterpreterAddInfoAddress","InterpreterAddressCity","InterpreterState","InterpreterZipcode","InterpreterCountry","InterpreterDayTimeNum","InterpreterMobNum",
+                    "InterpreterEmail","Language","EntryInspectionStatus","EntryParoledStatus","OtherStatus","EntryI765"}; */
+            TextField[] TextFieldArray = {clientANumber, clientFamilyName, clientFirstName, clientMiddleName, clientBirthCity, clientDOB, clientBirthCountry,clientSocialSecurity};
+            JSONObject jsonObject = (JSONObject) obj;
+            for (int i = 0; i < JSONStringArray.length; i++) {
+                String TemporaryString = (String) jsonObject.get(JSONStringArray[i]);
+                System.out.println(TemporaryString);
+                TextFieldArray[i].setText(TemporaryString);
+            }
+        } catch (Exception ex) { }
+
+    }
     public void addAddendums() throws Exception {
         if (needAddendum) {
-            if (!child4Info.getText().trim().isEmpty()) {
-                InputStream ChildAdd = getClass().getResourceAsStream("resources/pdf/addendum_children.pdf");
-                PDDocument childAddendum = PDDocument.load(ChildAdd);
-                PDDocumentCatalog docCatalog = childAddendum.getDocumentCatalog();
-                PDAcroForm acroForm = docCatalog.getAcroForm();
-                ANumChildren = ANum;
-                String[] fieldArray = {ANumChildren, C4FamilyName, C4FirstName, C4MiddleName,
-                C4ANum, C4DOBDate.Value, C4CountryBirth, C5FamilyName, C5FirstName, C5MiddleName,
-                        C5ANum, C5DOBDate.Value, C5CountryBirth, C6FamilyName, C6FirstName, C6MiddleName,
-                        C6ANum, C6DOBDate.Value, C6CountryBirth, C7FamilyName, C7FirstName, C7MiddleName,
-                        C7ANum, C7DOBDate.Value, C7CountryBirth};
-                String[] nameFieldArray = {"ANumChildren", "C4FamilyName", "C4FirstName", "C4MiddleName",
-                        "C4ANum", "C4DOBDate", "C4CountryBirth", "C5FamilyName", "C5FirstName", "C5MiddleName",
-                        "C5ANum", "C5DOBDate", "C5CountryBirth", "C6FamilyName", "C6FirstName", "C6MiddleName",
-                        "C6ANum", "C6DOBDate", "C6CountryBirth", "C7FamilyName", "C7FirstName", "C7MiddleName",
-                        "C7ANum", "C7DOBDate", "C7CountryBirth"};
-                String[] checkArray = {C4status,C5status,C6status,C7status};
-                for (int i = 0; i < fieldArray.length; i++) {
-                    String entryFieldArray = fieldArray[i];
-                    String entryNameArray = nameFieldArray[i];
-                    //System.out.println(entryFieldArray + " : " + entryNameArray);
-                    try {
-                        PDField fieldTemp = acroForm.getField(entryNameArray);
-                        if (fieldTemp != null) {
-                            fieldTemp.setValue(entryFieldArray.toUpperCase());
-                        }
-                    }
-                    catch (Exception ex){ }
-                }
-                for (int b = 0; b < checkArray.length; b++) {
-                    String entryCheckArray = checkArray[b];
-                    if (entryCheckArray.trim() != "") {
-                        PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
-                        try {
-                            boxTemp.check();
-                        }
-                        catch (NullPointerException problem) {
-                        }
-                    }
-                }
-                childAddendum.save("src/sample/resources/pdf/temporary/addendum_children.pdf");
-                childAddendum.close();
-            }
+            childAddendumFiller();
             if (Address3Info.getText().trim().isEmpty()) {
                 InputStream ChildAdd = getClass().getResourceAsStream("resources/pdf/addendum_addresses.pdf");
                 PDDocument addressAddendum = PDDocument.load(ChildAdd);
@@ -4194,18 +4323,17 @@ public class Controller implements Initializable {
                         "Zipcode4", "Country4", "StartDate4", "EndDate4", "AddressStreet5", "AddInfoAddress5", "AddressCity5", "State5",
                         "Zipcode5", "Country5", "StartDate5", "EndDate5", "AddressStreet6", "AddInfoAddress6", "AddressCity6", "State6",
                         "Zipcode6", "Country6", "StartDate6", "EndDate6"};
-                String[] checkArray = {TenantSelection3,TenantSelection4,TenantSelection5,TenantSelection6};
+                String[] checkArray = {TenantSelection3, TenantSelection4, TenantSelection5, TenantSelection6};
                 for (int i = 0; i < fieldArray.length; i++) {
                     String entryFieldArray = fieldArray[i];
                     String entryNameArray = nameFieldArray[i];
-                    //System.out.println(entryFieldArray + " : " + entryNameArray);
                     try {
                         PDField fieldTemp = acroForm.getField(entryNameArray);
                         if (fieldTemp != null) {
                             fieldTemp.setValue(entryFieldArray.toUpperCase());
                         }
+                    } catch (Exception ex) {
                     }
-                    catch (Exception ex){ }
                 }
                 for (int b = 0; b < checkArray.length; b++) {
                     String entryCheckArray = checkArray[b];
@@ -4213,8 +4341,7 @@ public class Controller implements Initializable {
                         PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
                         try {
                             boxTemp.check();
-                        }
-                        catch (NullPointerException problem) {
+                        } catch (NullPointerException problem) {
                         }
                     }
                 }
