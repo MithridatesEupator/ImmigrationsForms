@@ -116,81 +116,6 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="addMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #eee;">
-                <children>
-                    <TextField fx:id="countryMilitary" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="190.0" promptText="Country of Military Service" styleClass="textFieldLoose">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="cityMilitary" alignment="CENTER" layoutX="15.0" layoutY="100.0" prefHeight="30.0" prefWidth="190.0" promptText="City" styleClass="textFieldLoose">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="startDateMilitary" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="190.0" promptText="Start Date" styleClass="textFieldLoose">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="endDateMilitary" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="190.0" promptText="End Date" styleClass="textFieldLoose">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <CheckBox fx:id="welfarePast" layoutX="309.0" layoutY="45.0" mnemonicParsing="false" styleClass="checkBox" text="Received Welfare in the Past?" textFill="WHITE">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                    </CheckBox>
-                    <CheckBox fx:id="welfarePresent" layoutX="309.0" layoutY="105.0" mnemonicParsing="false" styleClass="checkBox" text="Still Receiving Welfare?" textFill="WHITE">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                    </CheckBox>
-                    <Text fill="#535353" fontSmoothingType="LCD" layoutX="54.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Military Service">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                    </Text>
-                  <TextField fx:id="clientSocialSecurity" alignment="CENTER" layoutX="15.0" layoutY="356.0" prefHeight="30.0" prefWidth="190.0" promptText="Social Security" styleClass="textField">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="clientDOB" alignment="CENTER" layoutX="15.0" layoutY="411.0" prefHeight="30.0" prefWidth="190.0" promptText="Date of Birth" styleClass="textField">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="clientBirthCity" alignment="CENTER" layoutX="210.0" layoutY="356.0" prefHeight="30.0" prefWidth="160.0" promptText="City of Birth" styleClass="textField">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="clientBirthCountry" alignment="CENTER" layoutX="210.0" layoutY="411.0" prefHeight="30.0" prefWidth="160.0" promptText="Country of Birth" styleClass="textField">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="clientHeight" alignment="CENTER" layoutX="405.0" layoutY="356.0" prefHeight="30.0" prefWidth="190.0" promptText="Height" styleClass="textField">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="clientWeight" alignment="CENTER" layoutX="405.0" layoutY="411.0" prefHeight="30.0" prefWidth="190.0" promptText="Weight" styleClass="textField">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <AnchorPane layoutX="14.0" layoutY="295.0" prefHeight="2.0" prefWidth="570.0" style="-fx-background-color: #b2b2b2;" />
-                  <Text fill="#686868" fontSmoothingType="LCD" layoutX="404.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to divide feet from inches">
-                     <font>
-                        <Font name="Ubuntu" size="12.0" />
-                     </font>
-                  </Text>
-                </children>
-            </AnchorPane>
             <AnchorPane fx:id="parentsMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #d3d3d3;">
                <children>
                    <TabPane layoutY="10.0" prefHeight="490.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
@@ -294,91 +219,6 @@
                        </tabs>
                    </TabPane>
                </children>
-            </AnchorPane>
-            <AnchorPane fx:id="miscMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;">
-                <children>
-                    <TextField fx:id="interpreterFamilyName" alignment="CENTER" layoutX="15.0" layoutY="60.0" prefHeight="30.0" prefWidth="190.0" promptText="Family Name" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="interpreterMiddleName" alignment="CENTER" layoutX="15.0" layoutY="120.0" prefHeight="30.0" prefWidth="190.0" promptText="Middle Name" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="interpreterFirstName" alignment="CENTER" layoutX="15.0" layoutY="180.0" prefHeight="30.0" prefWidth="190.0" promptText="First Name" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="interpreterPhoneNumber" alignment="CENTER" layoutX="15.0" layoutY="240.0" prefHeight="30.0" prefWidth="190.0" promptText="Phone Number" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="interpreterEmail" alignment="CENTER" layoutX="15.0" layoutY="300.0" prefHeight="30.0" prefWidth="190.0" promptText="Email" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="interpreterLanguage" alignment="CENTER" layoutX="15.0" layoutY="360.0" prefHeight="30.0" prefWidth="190.0" promptText="Language" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="clientPassport" alignment="CENTER" layoutX="210.0" layoutY="60.0" prefHeight="30.0" prefWidth="190.0" promptText="Passport Number" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="clientTravelDoc" alignment="CENTER" layoutX="210.0" layoutY="120.0" prefHeight="30.0" prefWidth="190.0" promptText="Travel Document Number" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="documentCountry" alignment="CENTER" layoutX="210.0" layoutY="180.0" prefHeight="30.0" prefWidth="190.0" promptText="Document Country" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="documentExpiration" alignment="CENTER" layoutX="210.0" layoutY="240.0" prefHeight="30.0" prefWidth="190.0" promptText="Expiration Date" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="clientI94Number" alignment="CENTER" layoutX="405.0" layoutY="60.0" prefHeight="30.0" prefWidth="190.0" promptText="I94 Number" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="clientI94Status" alignment="CENTER" layoutX="405.0" layoutY="120.0" prefHeight="30.0" prefWidth="190.0" promptText="I94 Status" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="clientI94Expiration" alignment="CENTER" layoutX="407.0" layoutY="180.0" prefHeight="30.0" prefWidth="190.0" promptText="I94's Expiration Date" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="clientPort" alignment="CENTER" layoutX="405.0" layoutY="240.0" prefHeight="30.0" prefWidth="190.0" promptText="Port of Entry" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="clientPortState" alignment="CENTER" layoutX="405.0" layoutY="300.0" prefHeight="30.0" prefWidth="190.0" promptText="State of Entry" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <TextField fx:id="clientPortDate" alignment="CENTER" layoutX="405.0" layoutY="360.0" prefHeight="30.0" prefWidth="190.0" promptText="Date of Entry" styleClass="textField">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </TextField>
-                    <Text fill="#575757" layoutX="48.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Interpreter Info" />
-                </children>
             </AnchorPane>
             <AnchorPane fx:id="employmentMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #d6d6d6;">
                 <children>
@@ -1359,6 +1199,161 @@
                      </TabPane>
                  </children>
              </AnchorPane>
+            <AnchorPane fx:id="addMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #eee;">
+                <children>
+                    <TextField fx:id="countryMilitary" alignment="CENTER" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="190.0" promptText="Country of Military Service" styleClass="textFieldLoose">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="cityMilitary" alignment="CENTER" layoutX="15.0" layoutY="100.0" prefHeight="30.0" prefWidth="190.0" promptText="City" styleClass="textFieldLoose">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="startDateMilitary" alignment="CENTER" layoutX="15.0" layoutY="160.0" prefHeight="30.0" prefWidth="190.0" promptText="Start Date" styleClass="textFieldLoose">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="endDateMilitary" alignment="CENTER" layoutX="15.0" layoutY="220.0" prefHeight="30.0" prefWidth="190.0" promptText="End Date" styleClass="textFieldLoose">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <CheckBox fx:id="welfarePast" layoutX="309.0" layoutY="45.0" mnemonicParsing="false" styleClass="checkBox" text="Received Welfare in the Past?" textFill="WHITE">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </CheckBox>
+                    <CheckBox fx:id="welfarePresent" layoutX="309.0" layoutY="105.0" mnemonicParsing="false" styleClass="checkBox" text="Still Receiving Welfare?" textFill="WHITE">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </CheckBox>
+                    <Text fill="#535353" fontSmoothingType="LCD" layoutX="54.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Military Service">
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Text>
+                  <TextField fx:id="clientSocialSecurity" alignment="CENTER" layoutX="15.0" layoutY="356.0" prefHeight="30.0" prefWidth="190.0" promptText="Social Security" styleClass="textField">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="clientDOB" alignment="CENTER" layoutX="15.0" layoutY="411.0" prefHeight="30.0" prefWidth="190.0" promptText="Date of Birth" styleClass="textField">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="clientBirthCity" alignment="CENTER" layoutX="210.0" layoutY="356.0" prefHeight="30.0" prefWidth="160.0" promptText="City of Birth" styleClass="textField">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="clientBirthCountry" alignment="CENTER" layoutX="210.0" layoutY="411.0" prefHeight="30.0" prefWidth="160.0" promptText="Country of Birth" styleClass="textField">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="clientHeight" alignment="CENTER" layoutX="405.0" layoutY="356.0" prefHeight="30.0" prefWidth="190.0" promptText="Height" styleClass="textField">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="clientWeight" alignment="CENTER" layoutX="405.0" layoutY="411.0" prefHeight="30.0" prefWidth="190.0" promptText="Weight" styleClass="textField">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <AnchorPane layoutX="14.0" layoutY="295.0" prefHeight="2.0" prefWidth="570.0" style="-fx-background-color: #b2b2b2;" />
+                  <Text fill="#686868" fontSmoothingType="LCD" layoutX="404.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to divide feet from inches">
+                     <font>
+                        <Font name="Ubuntu" size="12.0" />
+                     </font>
+                  </Text>
+                </children>
+            </AnchorPane>
+            <AnchorPane fx:id="miscMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;">
+                <children>
+                    <TextField fx:id="interpreterFamilyName" alignment="CENTER" layoutX="15.0" layoutY="60.0" prefHeight="30.0" prefWidth="190.0" promptText="Family Name" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="interpreterMiddleName" alignment="CENTER" layoutX="15.0" layoutY="120.0" prefHeight="30.0" prefWidth="190.0" promptText="Middle Name" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="interpreterFirstName" alignment="CENTER" layoutX="15.0" layoutY="180.0" prefHeight="30.0" prefWidth="190.0" promptText="First Name" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="interpreterEmail" alignment="CENTER" layoutX="15.0" layoutY="240.0" prefHeight="30.0" prefWidth="190.0" promptText="Email" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="interpreterLanguage" alignment="CENTER" layoutX="15.0" layoutY="300.0" prefHeight="30.0" prefWidth="190.0" promptText="Language" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="clientPassport" alignment="CENTER" layoutX="210.0" layoutY="60.0" prefHeight="30.0" prefWidth="190.0" promptText="Passport Number" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="clientTravelDoc" alignment="CENTER" layoutX="210.0" layoutY="120.0" prefHeight="30.0" prefWidth="190.0" promptText="Travel Document Number" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="documentCountry" alignment="CENTER" layoutX="210.0" layoutY="180.0" prefHeight="30.0" prefWidth="190.0" promptText="Document Country" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="documentExpiration" alignment="CENTER" layoutX="210.0" layoutY="240.0" prefHeight="30.0" prefWidth="190.0" promptText="Expiration Date" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="clientI94Number" alignment="CENTER" layoutX="210.0" layoutY="300.0" prefHeight="30.0" prefWidth="190.0" promptText="I94 Number" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="clientI94Status" alignment="CENTER" layoutX="405.0" layoutY="60.0" prefHeight="30.0" prefWidth="190.0" promptText="I94 Status" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="clientI94Expiration" alignment="CENTER" layoutX="405.0" layoutY="120.0" prefHeight="30.0" prefWidth="190.0" promptText="I94's Expiration Date" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="clientPort" alignment="CENTER" layoutX="405.0" layoutY="180.0" prefHeight="30.0" prefWidth="190.0" promptText="Port of Entry" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="clientPortState" alignment="CENTER" layoutX="405.0" layoutY="240.0" prefHeight="30.0" prefWidth="190.0" promptText="State of Entry" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <TextField fx:id="clientPortDate" alignment="CENTER" layoutX="405.0" layoutY="300.0" prefHeight="30.0" prefWidth="190.0" promptText="Date of Entry" styleClass="textField">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </TextField>
+                    <Text fill="#575757" layoutX="48.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Interpreter Info" />
+                </children>
+            </AnchorPane>
             <AnchorPane fx:id="mainMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;" styleClass="majorBar">
                <children>
                   <Button fx:id="buttonI90" layoutX="80.0" layoutY="32.0" mnemonicParsing="false" onAction="#i90Select" prefHeight="60.0" prefWidth="110.0" styleClass="buttonMain" textFill="WHITE">
@@ -1507,6 +1502,7 @@
                         </Text>
                      </children>
                   </AnchorPane>
+                  <Button fx:id="bugButton" layoutX="369.0" layoutY="31.0" minWidth="15.0" mnemonicParsing="false" onAction="#openBugReportingMenu" prefWidth="15.0" styleClass="bugButton" />
                </children>
             </AnchorPane>
          </children>

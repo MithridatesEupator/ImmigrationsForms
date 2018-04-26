@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.event.EventHandler;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -69,6 +70,11 @@ import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
 
 import static javafx.scene.effect.BlurType.GAUSSIAN;
 
@@ -417,6 +423,7 @@ public class Controller implements Initializable {
     public AnchorPane parentsMenu;
     public Button parentButton;
     public Button JSONButton;
+    public TextArea bugText;
 
     private Stage stage;
 
@@ -967,6 +974,74 @@ public class Controller implements Initializable {
     public void main(String[] args) {
     }
 
+    public void openBugReportingMenu(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("BugReportingMenu.fxml"));
+        stage.setTitle("Bug Reporting");
+        stage.setResizable(false);
+        Scene scene = null;
+        stage.setScene(new Scene(root, 600, 400));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene = (getShadowScene(root));
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene( scene );
+        stage.show();
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
+        });
+    }
+    public void sendBugReport(ActionEvent event) throws Exception {
+        try {
+            String host = "smtp.gmail.com";
+            String user = "bugreportingircapp@gmail.com";
+            String pass = "AppianShallParthia222";
+            String to = "fsaulean@gmail.com";
+            String from = user;
+            String subject = "Bug Report";
+            String bugMessage = bugText.getText();
+            boolean sessionDebug = false;
+
+            Properties properties = System.getProperties();
+
+            properties.put("mail.smtp.starttls.enable","true");
+            properties.put("mail.smtp.host",host);
+            properties.put("mail.smtp.port","587");
+            properties.put("mail.smtp.auth","true");
+            properties.put("mail.smtp.starttls.required","true");
+
+            java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+
+            Session session = Session.getDefaultInstance(properties,null);
+            session.setDebug(sessionDebug);
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            InternetAddress[] address = {new InternetAddress(to)};
+            message.setRecipients(Message.RecipientType.TO, address);
+            message.setSubject(subject);
+            message.setSentDate(new Date());
+            message.setText(bugMessage);
+
+            Transport transport = session.getTransport("smtp");
+            transport.connect(host, user, pass);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+            System.out.println("Sent the fucker out");
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     String pressedColor = "#1570c0";
     String normalColor = "#2196f3";
@@ -1022,6 +1097,7 @@ public class Controller implements Initializable {
         miscButton.getStyleClass().remove("menuButtonChangeSelected");
         marriageMenu.toFront();
         topBar.toFront();
+
 
     }
     public void goMiscMenu(ActionEvent event) {
@@ -2510,6 +2586,8 @@ public class Controller implements Initializable {
             Language = interpreterLanguage.getText();
         }
         if (Language.trim().isEmpty()) {
+            IDayTimeNum = "";
+            IMobNum = IDayTimeNum;
             InterpreterQuestion = "English";
             IOrganizationName = "";
             IAddressStreet = "";
@@ -2520,6 +2598,8 @@ public class Controller implements Initializable {
             IZipcode = "";
             ICountry = "";
         } else {
+            IDayTimeNum = "9083515116";
+            IMobNum = IDayTimeNum;
             InterpreterQuestion = "Interpreter";
             IOrganizationName = "International Rescue Committee";
             IAddressStreet = "208 Commerce Street";
@@ -2533,15 +2613,7 @@ public class Controller implements Initializable {
         if (interpreterEmail.getText() != null) {
             IEmail = interpreterEmail.getText();
         }
-        if (interpreterPhoneNumber.getText() != null) {
-            if (clientPhoneNum.getText().length() > 10) {
-                IDayTimeNum = clientPhoneNum.getText().substring(0, 10);
-                IMobNum = IDayTimeNum;
-            } else {
-                IDayTimeNum = clientPhoneNum.getText();
-                IMobNum = IDayTimeNum;
-            }
-        }
+
         if (todayDate.getText() != null) {
             String TEMPORARY = todayDate.getText();
             SignatureDate = new DateValue(TEMPORARY);

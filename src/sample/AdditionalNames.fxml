@@ -25,21 +25,6 @@
                <Font size="14.0" />
             </font>
          </TextField>
-         <TextField fx:id="clientFamilyName3" alignment="CENTER" layoutX="21.0" layoutY="240.0" promptText="Family Name " styleClass="textField">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </TextField>
-         <TextField fx:id="clientFirstName3" alignment="CENTER" layoutX="210.0" layoutY="240.0" promptText="First Name " styleClass="textField">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </TextField>
-         <TextField fx:id="clientMiddleName3" alignment="CENTER" layoutX="399.0" layoutY="240.0" promptText="Middle Name " styleClass="textField">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </TextField>
          <TextField fx:id="clientFamilyName2" alignment="CENTER" layoutX="21.0" layoutY="180.0" promptText="Family Name " styleClass="textField">
             <font>
                <Font size="14.0" />
@@ -51,6 +36,21 @@
             </font>
          </TextField>
          <TextField fx:id="clientMiddleName2" alignment="CENTER" layoutX="400.0" layoutY="180.0" promptText="Middle Name " styleClass="textField">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </TextField>
+         <TextField fx:id="clientFamilyName3" alignment="CENTER" layoutX="21.0" layoutY="240.0" promptText="Family Name " styleClass="textField">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </TextField>
+         <TextField fx:id="clientFirstName3" alignment="CENTER" layoutX="210.0" layoutY="240.0" promptText="First Name " styleClass="textField">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </TextField>
+         <TextField fx:id="clientMiddleName3" alignment="CENTER" layoutX="399.0" layoutY="240.0" promptText="Middle Name " styleClass="textField">
             <font>
                <Font size="14.0" />
             </font>
