@@ -429,8 +429,6 @@ public class Controller implements Initializable {
     private Stage stage;
 
     static String ANum = new String();
-    static String ANumChildren = ANum;
-    static String ANumAddress = ANum;
     String FamilyName = new String();
     String FirstName = new String();
     String MiddleName = new String();
@@ -939,7 +937,9 @@ public class Controller implements Initializable {
     static String methodEmployer2 = "";
     static String methodOccupation2 = "";
 
-
+    String ETenantInfo3 = "";
+    String ETenantInfo4 = "";
+    String ETenantInfo5 = "";
 
 
     @Override
@@ -3632,6 +3632,9 @@ public class Controller implements Initializable {
         CApplyList[0] = C1Files;
         CApplyList[1] = C2Files;
         CApplyList[2] = C3Files;
+        if (WorkInfoEntry.Root.NextNode.NextNode.NextNode != null) {
+            needAddendum = true;
+        }
     }
 
     public Scene getShadowScene(Parent p) {
@@ -3698,7 +3701,7 @@ public class Controller implements Initializable {
                 AddendumJ, PN1, PaN1, IN1, Addendum1A, Addendum1B, Addendum1C, Addendum1D, Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, PN2, PaN2, IN2, Addendum2A,
                 Addendum2B, Addendum2C, Addendum2D, Addendum2E, Addendum2F, Addendum2G, Addendum2J, PN3, PaN3, IN3, Addendum3A, Addendum3B, Addendum3C, Addendum3D, Addendum3E, Addendum3F,
                 Addendum3G, Addendum3H, Addendum3I, PN4, PaN4, IN4, Addendum4A, Addendum4B, Addendum4C, Addendum4D, Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J,
-                EntryI765,ANumChildren,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value,
+                EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value,
                 C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value,
                 C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo,
                 lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race,
@@ -3746,7 +3749,7 @@ public class Controller implements Initializable {
                 AddendumJ, PN1, PaN1, IN1, Addendum1A, Addendum1B, Addendum1C, Addendum1D, Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, PN2, PaN2, IN2, Addendum2A,
                 Addendum2B, Addendum2C, Addendum2D, Addendum2E, Addendum2F, Addendum2G, Addendum2J, PN3, PaN3, IN3, Addendum3A, Addendum3B, Addendum3C, Addendum3D, Addendum3E, Addendum3F,
                 Addendum3G, Addendum3H, Addendum3I, PN4, PaN4, IN4, Addendum4A, Addendum4B, Addendum4C, Addendum4D, Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J,
-                EntryI765,ANumChildren,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value,
+                EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value,
                 C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value,
                 C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo,
                 lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race,
@@ -3774,7 +3777,7 @@ public class Controller implements Initializable {
                 "AddendumJ", "PN1", "PaN1", "IN1", "Addendum1A", "Addendum1B", "Addendum1C", "Addendum1D", "Addendum1E", "Addendum1F", "Addendum1G", "Addendum1H", "Addendum1I", "Addendum1J", "PN2",
                 "PaN2", "IN2", "Addendum2A", "Addendum2B", "Addendum2C", "Addendum2D", "Addendum2E", "Addendum2F", "Addendum2G", "Addendum2J", "PN3", "PaN3", "IN3", "Addendum3A", "Addendum3B", "Addendum3C", "Addendum3D", "Addendum3E", "Addendum3F",
                 "Addendum3G", "Addendum3H", "Addendum3I", "PN4", "PaN4", "IN4", "Addendum4A", "Addendum4B", "Addendum4C", "Addendum4D", "Addendum4E", "Addendum4F", "Addendum4G", "Addendum4H","Addendum4I", "Addendum4J",
-                "EntryI765","ANumChildren","C4FamilyName","C4FirstName","C4MiddleName","C4ANum","C4DOBDate","C4CountryBirth","C5FamilyName","C5FirstName", "C5MiddleName","C5ANum","C5DOBDate",
+                "EntryI765","C4FamilyName","C4FirstName","C4MiddleName","C4ANum","C4DOBDate","C4CountryBirth","C5FamilyName","C5FirstName", "C5MiddleName","C5ANum","C5DOBDate",
                 "C5CountryBirth","C6FamilyName","C6FirstName","C6MiddleName","C6ANum","C6DOBDate","C6CountryBirth","C7FamilyName","C7FirstName","C7MiddleName","C7ANum","C7DOBDate",
                 "C7CountryBirth", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3", "Zipcode3", "Country3", "StartDate3", "EndDate3","AGender", "TenantInfo", "AltTenantInfo",
                 "lastArrived", "ImmigrationStatus", "TenantInfo1", "TenantInfo2", "ETenantInfo", "ETenantInfo1", "ETenantInfo2", "MaritalStatus", "USGuard", "SApply", "C1status", "C2status", "C3status", "Ethnicity", "Race",
@@ -4283,18 +4286,16 @@ public class Controller implements Initializable {
     }
     public void childAddendumFiller() throws Exception {
         if (!child4Info.getText().trim().isEmpty()) {
-
             InputStream ChildAdd = getClass().getResourceAsStream("resources/pdf/addendum_children.pdf");
             PDDocument childAddendum = PDDocument.load(ChildAdd);
             PDDocumentCatalog docCatalog = childAddendum.getDocumentCatalog();
             PDAcroForm acroForm = docCatalog.getAcroForm();
-            ANumChildren = ANum;
-            String[] fieldArray = {ANumChildren, C4FamilyName, C4FirstName, C4MiddleName,
+            String[] fieldArray = {ANum, C4FamilyName, C4FirstName, C4MiddleName,
                     C4ANum, C4DOBDate.Value, C4CountryBirth, C5FamilyName, C5FirstName, C5MiddleName,
                     C5ANum, C5DOBDate.Value, C5CountryBirth, C6FamilyName, C6FirstName, C6MiddleName,
                     C6ANum, C6DOBDate.Value, C6CountryBirth, C7FamilyName, C7FirstName, C7MiddleName,
                     C7ANum, C7DOBDate.Value, C7CountryBirth};
-            String[] nameFieldArray = {"ANumChildren", "C4FamilyName", "C4FirstName", "C4MiddleName",
+            String[] nameFieldArray = {"ANum", "C4FamilyName", "C4FirstName", "C4MiddleName",
                     "C4ANum", "C4DOBDate", "C4CountryBirth", "C5FamilyName", "C5FirstName", "C5MiddleName",
                     "C5ANum", "C5DOBDate", "C5CountryBirth", "C6FamilyName", "C6FirstName", "C6MiddleName",
                     "C6ANum", "C6DOBDate", "C6CountryBirth", "C7FamilyName", "C7FirstName", "C7MiddleName",
@@ -4382,18 +4383,16 @@ public class Controller implements Initializable {
     }
     public void addressAddendumFiller() throws Exception {
         if (!Address3Info.getText().trim().isEmpty()) {
-            System.out.println("SDASD");
-            InputStream ChildAdd = getClass().getResourceAsStream("resources/pdf/addendum_addresses.pdf");
-            PDDocument addressAddendum = PDDocument.load(ChildAdd);
+            InputStream addressAdd = getClass().getResourceAsStream("resources/pdf/addendum_addresses.pdf");
+            PDDocument addressAddendum = PDDocument.load(addressAdd);
             PDDocumentCatalog docCatalog = addressAddendum.getDocumentCatalog();
             PDAcroForm acroForm = docCatalog.getAcroForm();
-            ANumAddress = ANum;
-            String[] fieldArray = {ANumAddress, AddressStreet3, AddInfoAddress3, AddressCity3, State3,
+            String[] fieldArray = {ANum, AddressStreet3, AddInfoAddress3, AddressCity3, State3,
                     Zipcode3, Country3, StartDate3.Value, EndDate3.Value, AddressStreet4, AddInfoAddress4, AddressCity4, State4,
                     Zipcode4, Country4, StartDate4.Value, EndDate4.Value, AddressStreet5, AddInfoAddress5, AddressCity5, State5,
                     Zipcode5, Country5, StartDate5.Value, EndDate5.Value, AddressStreet6, AddInfoAddress6, AddressCity6, State6,
                     Zipcode6, Country6, StartDate6.Value, EndDate6.Value};
-            String[] nameFieldArray = {"ANumAddress", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3",
+            String[] nameFieldArray = {"ANum", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3",
                     "Zipcode3", "Country3", "StartDate3", "EndDate3", "AddressStreet4", "AddInfoAddress4", "AddressCity4", "State4",
                     "Zipcode4", "Country4", "StartDate4", "EndDate4", "AddressStreet5", "AddInfoAddress5", "AddressCity5", "State5",
                     "Zipcode5", "Country5", "StartDate5", "EndDate5", "AddressStreet6", "AddInfoAddress6", "AddressCity6", "State6",
@@ -4439,10 +4438,154 @@ public class Controller implements Initializable {
             }
         }
     }
+    public void employmentAddendumFiller() throws Exception {
+        if (WorkInfoEntry.Root.NextNode.NextNode.NextNode != null) {
+            //1
+            InputStream employmentAdd = getClass().getResourceAsStream("resources/pdf/addendum_employment.pdf");
+            PDDocument employmentAddendum = PDDocument.load(employmentAdd);
+            PDDocumentCatalog docCatalog = employmentAddendum.getDocumentCatalog();
+            PDAcroForm acroForm = docCatalog.getAcroForm();
+            String ETenantInfo3 = "";
+            if (WorkInfoEntry.Root.NextNode.NextNode.NextNode.AddressAddInfo.trim().toUpperCase() == "APT") {
+                ETenantInfo3 = "EApt3";
+            } else if (WorkInfoEntry.Root.NextNode.NextNode.NextNode.AddressAddInfo.trim().toUpperCase() == "STE") {
+                ETenantInfo3 = "ESte3";
+            } else if (WorkInfoEntry.Root.NextNode.NextNode.NextNode.AddressAddInfo.trim().toUpperCase() == "Flr") {
+                ETenantInfo3 = "EFlr3";
+            }
+            String[] fieldArray = {ANum, WorkInfoEntry.Root.NextNode.NextNode.NextNode.Employer, WorkInfoEntry.Root.NextNode.NextNode.NextNode.AddressStreet,
+                    WorkInfoEntry.Root.NextNode.NextNode.NextNode.AddressNumber, WorkInfoEntry.Root.NextNode.NextNode.NextNode.AddressCity,
+                    WorkInfoEntry.Root.NextNode.NextNode.NextNode.State, WorkInfoEntry.Root.NextNode.NextNode.NextNode.Zipcode, WorkInfoEntry.Root.NextNode.NextNode.NextNode.Country,
+                    WorkInfoEntry.Root.NextNode.NextNode.NextNode.Occupation, WorkInfoEntry.Root.NextNode.NextNode.NextNode.StartDate.Value,
+                    WorkInfoEntry.Root.NextNode.NextNode.NextNode.EndDate.Value};
+            String[] nameFieldArray = {"ANum", "Employer3", "WorkAddressStreet3", "WorkAddInfoAddress3", "WorkAddressCity3", "WorkState3", "WorkZipcode3", "WorkCountry3",
+                    "WorkOccupation3", "WorkStartDate3", "WorkEndDate3"};
+            String[] checkArray = {ETenantInfo3};
+            for (int i = 0; i < fieldArray.length; i++) {
+                String entryFieldArray = fieldArray[i];
+                String entryNameArray = nameFieldArray[i];
+                try {
+                    PDField fieldTemp = acroForm.getField(entryNameArray);
+                    if (fieldTemp != null) {
+                        fieldTemp.setValue(entryFieldArray.toUpperCase());
+                    }
+                } catch (Exception ex) {
+                }
+            }
+            for (int b = 0; b < checkArray.length; b++) {
+                String entryCheckArray = checkArray[b];
+                if (entryCheckArray.trim() != "") {
+                    PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
+                    try {
+                        boxTemp.check();
+                    } catch (NullPointerException ex) {
+                    }
+                }
+                if (WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode != null) {
+                    //2
+                    String ETenantInfo4 = "";
+                    if (WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.AddressAddInfo.trim().toUpperCase() == "APT") {
+                        ETenantInfo4 = "EApt4";
+                    } else if (WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.AddressAddInfo.trim().toUpperCase() == "STE") {
+                        ETenantInfo4 = "ESte4";
+                    } else if (WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.AddressAddInfo.trim().toUpperCase() == "Flr") {
+                        ETenantInfo4 = "EFlr4";
+                    }
+                    String[] fieldArray1 = {WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.Employer, WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.AddressStreet,
+                            WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.AddressNumber, WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.AddressCity,
+                            WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.State, WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.Zipcode, WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.Country,
+                            WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.Occupation, WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.StartDate.Value,
+                            WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.EndDate.Value};
+                    String[] nameFieldArray1 = {"Employer4", "WorkAddressStreet4", "WorkAddInfoAddress4", "WorkAddressCity4", "WorkState4", "WorkZipcode4", "WorkCountry4",
+                            "WorkOccupation4", "WorkStartDate4", "WorkEndDate4"};
+                    String[] checkArray1 = {ETenantInfo4};
+                    for (int i = 0; i < fieldArray1.length; i++) {
+                        String entryFieldArray1 = fieldArray1[i];
+                        String entryNameArray1 = nameFieldArray1[i];
+                        try {
+                            PDField fieldTemp = acroForm.getField(entryNameArray1);
+                            if (fieldTemp != null) {
+                                fieldTemp.setValue(entryFieldArray1.toUpperCase());
+                            }
+                        } catch (Exception ex) {
+                        }
+                    }
+                    for (int c = 0; c < checkArray1.length; c++) {
+                        String entryCheckArray1 = checkArray[c];
+                        if (entryCheckArray1.trim() != "") {
+                            PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray1);
+                            try {
+                                boxTemp.check();
+                            } catch (NullPointerException ex) {
+                            }
+                        }
+                    }
+                    if (WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode != null) {
+                        //3
+                        String ETenantInfo5 = "";
+                        if (WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.AddressAddInfo.trim().toUpperCase() == "APT") {
+                            ETenantInfo5 = "EApt5";
+                        } else if (WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.AddressAddInfo.trim().toUpperCase() == "STE") {
+                            ETenantInfo5 = "ESte5";
+                        } else if (WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.AddressAddInfo.trim().toUpperCase() == "Flr") {
+                            ETenantInfo5 = "EFlr5";
+                        }
+                        String[] fieldArray2 = {WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.Employer, WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.AddressStreet,
+                                WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.AddressNumber, WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.AddressCity,
+                                WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.State, WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.Zipcode, WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.Country,
+                                WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.Occupation, WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.StartDate.Value,
+                                WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.EndDate.Value};
+                        String[] nameFieldArray2 = {"Employer5", "WorkAddressStreet5", "WorkAddInfoAddress5", "WorkAddressCity5", "WorkState5", "WorkZipcode5", "WorkCountry5",
+                                "WorkOccupation5", "WorkStartDate5", "WorkEndDate5"};
+                        String[] checkArray2 = {ETenantInfo5};
+                        for (int i = 0; i < fieldArray2.length; i++) {
+                            String entryFieldArray2 = fieldArray2[i];
+                            String entryNameArray2 = nameFieldArray2[i];
+                            try {
+                                PDField fieldTemp = acroForm.getField(entryNameArray2);
+                                if (fieldTemp != null) {
+                                    fieldTemp.setValue(entryFieldArray2.toUpperCase());
+                                }
+                            } catch (Exception ex) {
+                            }
+                        }
+                        for (int c = 0; c < checkArray2.length; c++) {
+                            String entryCheckArray2 = checkArray[c];
+                            if (entryCheckArray2.trim() != "") {
+                                PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray2);
+                                try {
+                                    boxTemp.check();
+                                } catch (NullPointerException ex) {
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            FileChooser pdfFile = new FileChooser();
+            pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+            pdfFile.setTitle("Save Addendum?");
+            pdfFile.setInitialFileName(fileType + "-" + NameTitle + "_address_addendum.pdf");
+            File dest = pdfFile.showSaveDialog(null);
+            String pathFile = new String();
+            if (dest != null) {
+                try {
+                    pathFile = dest.getAbsolutePath();
+                    employmentAddendum.save(pathFile);
+                    employmentAddendum.close();
+                }
+                catch (IOException ex) {
+                    alertMessage();
+                    employmentAddendum.close();
+                }
+            }
+        }
+    }
     public void addAddendums() throws Exception {
         if (needAddendum) {
             childAddendumFiller();
             addressAddendumFiller();
+            employmentAddendumFiller();
             }
     }
     public void alertMessage() {
