@@ -424,6 +424,7 @@ public class Controller implements Initializable {
     public Button parentButton;
     public Button JSONButton;
     public TextArea bugText;
+    public Text sentText;
 
     private Stage stage;
 
@@ -1036,7 +1037,7 @@ public class Controller implements Initializable {
             transport.connect(host, user, pass);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-            System.out.println("Sent the fucker out");
+            sentText.setText("Sent!");
         }
         catch (Exception ex) {
             ex.printStackTrace();
@@ -3672,8 +3673,8 @@ public class Controller implements Initializable {
         resetVars();
         needAddendum = false;
         SaveVars();
-        addAddendums();
         fillAppHelper();
+        addAddendums();
     }
     public void resetVars() throws Exception {
         String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3,
@@ -3712,9 +3713,10 @@ public class Controller implements Initializable {
         WorkInfoEntry = new jobData();
 
     }
+    String NameTitle;
 
     public void fillAppHelper() throws Exception {
-        String NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
+        NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
         Name = NameTitle.replace("_"," ");
         String[] fieldArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3,
                 FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode,
@@ -3819,25 +3821,10 @@ public class Controller implements Initializable {
         if (dest != null) {
             try {
                 pathFile = dest.getAbsolutePath();
-                if(needAddendum) {
-                    if (!child4Info.getText().trim().isEmpty()) {
-                        document.save("src/sample/resources/pdf/temporary/work.pdf");
-                        document.close();
-                        PDFMergerUtility pdfMerger = new PDFMergerUtility();
-                        InputStream base = getClass().getResourceAsStream("resources/pdf/temporary/work.pdf");
-                        InputStream childAdd = getClass().getResourceAsStream("resources/pdf/temporary/addendum_children.pdf");
-                        pdfMerger.addSource(base);
-                        pdfMerger.addSource(childAdd);
-                        OutputStream destination = new FileOutputStream(pathFile);
-                        pdfMerger.setDestinationStream(destination);
-                        pdfMerger.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
-                    }
-                }
-                else {
-                    document.save(pathFile);
-                    document.close();
-                }
-            } catch (IOException ex) {
+                document.save(pathFile);
+                document.close();
+            }
+            catch (IOException ex) {
                 alertMessage();
                 document.close();
             }
@@ -4296,6 +4283,7 @@ public class Controller implements Initializable {
     }
     public void childAddendumFiller() throws Exception {
         if (!child4Info.getText().trim().isEmpty()) {
+
             InputStream ChildAdd = getClass().getResourceAsStream("resources/pdf/addendum_children.pdf");
             PDDocument childAddendum = PDDocument.load(ChildAdd);
             PDDocumentCatalog docCatalog = childAddendum.getDocumentCatalog();
@@ -4329,13 +4317,29 @@ public class Controller implements Initializable {
                     PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
                     try {
                         boxTemp.check();
-                    } catch (NullPointerException problem) {
+                    } catch (NullPointerException ex) {
                     }
                 }
             }
-            childAddendum.save("src/sample/resources/pdf/temporary/addendum_children.pdf");
-            childAddendum.close();
+            FileChooser pdfFile = new FileChooser();
+            pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+            pdfFile.setTitle("Save Addendum?");
+            pdfFile.setInitialFileName(fileType + "-" + NameTitle + "_children_addendum.pdf");
+            File dest = pdfFile.showSaveDialog(null);
+            String pathFile = new String();
+            if (dest != null) {
+                try {
+                    pathFile = dest.getAbsolutePath();
+                    childAddendum.save(pathFile);
+                    childAddendum.close();
+                }
+                catch (IOException ex) {
+                    alertMessage();
+                    childAddendum.close();
+                }
+            }
         }
+
     }
     public void LoadJsonData(ActionEvent event) throws Exception {
         FileChooser openJSON = new FileChooser();
@@ -4376,51 +4380,70 @@ public class Controller implements Initializable {
         } catch (Exception ex) { }
 
     }
+    public void addressAddendumFiller() throws Exception {
+        if (!Address3Info.getText().trim().isEmpty()) {
+            System.out.println("SDASD");
+            InputStream ChildAdd = getClass().getResourceAsStream("resources/pdf/addendum_addresses.pdf");
+            PDDocument addressAddendum = PDDocument.load(ChildAdd);
+            PDDocumentCatalog docCatalog = addressAddendum.getDocumentCatalog();
+            PDAcroForm acroForm = docCatalog.getAcroForm();
+            ANumAddress = ANum;
+            String[] fieldArray = {ANumAddress, AddressStreet3, AddInfoAddress3, AddressCity3, State3,
+                    Zipcode3, Country3, StartDate3.Value, EndDate3.Value, AddressStreet4, AddInfoAddress4, AddressCity4, State4,
+                    Zipcode4, Country4, StartDate4.Value, EndDate4.Value, AddressStreet5, AddInfoAddress5, AddressCity5, State5,
+                    Zipcode5, Country5, StartDate5.Value, EndDate5.Value, AddressStreet6, AddInfoAddress6, AddressCity6, State6,
+                    Zipcode6, Country6, StartDate6.Value, EndDate6.Value};
+            String[] nameFieldArray = {"ANumAddress", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3",
+                    "Zipcode3", "Country3", "StartDate3", "EndDate3", "AddressStreet4", "AddInfoAddress4", "AddressCity4", "State4",
+                    "Zipcode4", "Country4", "StartDate4", "EndDate4", "AddressStreet5", "AddInfoAddress5", "AddressCity5", "State5",
+                    "Zipcode5", "Country5", "StartDate5", "EndDate5", "AddressStreet6", "AddInfoAddress6", "AddressCity6", "State6",
+                    "Zipcode6", "Country6", "StartDate6", "EndDate6"};
+            String[] checkArray = {TenantSelection3, TenantSelection4, TenantSelection5, TenantSelection6};
+            for (int i = 0; i < fieldArray.length; i++) {
+                String entryFieldArray = fieldArray[i];
+                String entryNameArray = nameFieldArray[i];
+                try {
+                    PDField fieldTemp = acroForm.getField(entryNameArray);
+                    if (fieldTemp != null) {
+                        fieldTemp.setValue(entryFieldArray.toUpperCase());
+                    }
+                } catch (Exception ex) {
+                }
+            }
+            for (int b = 0; b < checkArray.length; b++) {
+                String entryCheckArray = checkArray[b];
+                if (entryCheckArray.trim() != "") {
+                    PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
+                    try {
+                        boxTemp.check();
+                    } catch (NullPointerException ex) {
+                    }
+                }
+            }
+            FileChooser pdfFile = new FileChooser();
+            pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+            pdfFile.setTitle("Save Addendum?");
+            pdfFile.setInitialFileName(fileType + "-" + NameTitle + "_address_addendum.pdf");
+            File dest = pdfFile.showSaveDialog(null);
+            String pathFile = new String();
+            if (dest != null) {
+                try {
+                    pathFile = dest.getAbsolutePath();
+                    addressAddendum.save(pathFile);
+                    addressAddendum.close();
+                }
+                catch (IOException ex) {
+                    alertMessage();
+                    addressAddendum.close();
+                }
+            }
+        }
+    }
     public void addAddendums() throws Exception {
         if (needAddendum) {
             childAddendumFiller();
-            if (Address3Info.getText().trim().isEmpty()) {
-                InputStream ChildAdd = getClass().getResourceAsStream("resources/pdf/addendum_addresses.pdf");
-                PDDocument addressAddendum = PDDocument.load(ChildAdd);
-                PDDocumentCatalog docCatalog = addressAddendum.getDocumentCatalog();
-                PDAcroForm acroForm = docCatalog.getAcroForm();
-                ANumAddress = ANum;
-                String[] fieldArray = {ANumAddress, AddressStreet3, AddInfoAddress3, AddressCity3, State3,
-                        Zipcode3, Country3, StartDate3.Value, EndDate3.Value, AddressStreet4, AddInfoAddress4, AddressCity4, State4,
-                        Zipcode4, Country4, StartDate4.Value, EndDate4.Value, AddressStreet5, AddInfoAddress5, AddressCity5, State5,
-                        Zipcode5, Country5, StartDate5.Value, EndDate5.Value, AddressStreet6, AddInfoAddress6, AddressCity6, State6,
-                        Zipcode6, Country6, StartDate6.Value, EndDate6.Value};
-                String[] nameFieldArray = {"ANumAddress", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3",
-                        "Zipcode3", "Country3", "StartDate3", "EndDate3", "AddressStreet4", "AddInfoAddress4", "AddressCity4", "State4",
-                        "Zipcode4", "Country4", "StartDate4", "EndDate4", "AddressStreet5", "AddInfoAddress5", "AddressCity5", "State5",
-                        "Zipcode5", "Country5", "StartDate5", "EndDate5", "AddressStreet6", "AddInfoAddress6", "AddressCity6", "State6",
-                        "Zipcode6", "Country6", "StartDate6", "EndDate6"};
-                String[] checkArray = {TenantSelection3, TenantSelection4, TenantSelection5, TenantSelection6};
-                for (int i = 0; i < fieldArray.length; i++) {
-                    String entryFieldArray = fieldArray[i];
-                    String entryNameArray = nameFieldArray[i];
-                    try {
-                        PDField fieldTemp = acroForm.getField(entryNameArray);
-                        if (fieldTemp != null) {
-                            fieldTemp.setValue(entryFieldArray.toUpperCase());
-                        }
-                    } catch (Exception ex) {
-                    }
-                }
-                for (int b = 0; b < checkArray.length; b++) {
-                    String entryCheckArray = checkArray[b];
-                    if (entryCheckArray.trim() != "") {
-                        PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
-                        try {
-                            boxTemp.check();
-                        } catch (NullPointerException problem) {
-                        }
-                    }
-                }
-                addressAddendum.save("src/sample/resources/pdf/temporary/addendum_addresses.pdf");
-                addressAddendum.close();
+            addressAddendumFiller();
             }
-        }
     }
     public void alertMessage() {
         Alert fileSaveError = new Alert(Alert.AlertType.WARNING);
