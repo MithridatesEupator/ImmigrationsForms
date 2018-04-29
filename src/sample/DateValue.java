@@ -11,6 +11,7 @@ public class DateValue {
     int IntValue;
     int IntMinusFiveValue;
     String Value;
+    String StringMinusFiveValue;
 
     DateValue(String DateVar) {
         try {
@@ -20,6 +21,20 @@ public class DateValue {
             this.Year = DateArray[2];
             this.IntValue = Day + (Month * 100) +  + (Year * 10000);
             this.IntMinusFiveValue = this.IntValue - 50000;
+            if (0 < this.Month && this.Month < 10) {
+
+                if (0 < this.Day && this.Day < 10) {
+                    this.StringMinusFiveValue = ("0" + this.Month + "/" + "0" + this.Day + "/" + (this.Year - 5));
+                } else {
+                    this.StringMinusFiveValue = ("0" + this.Month + "/" + this.Day + "/" + (this.Year - 5));
+                }
+            } else {
+                if (0 < this.Day && this.Day < 10) {
+                    this.StringMinusFiveValue = (this.Month + "/" + "0" + this.Day + "/" + (this.Year - 5));
+                } else {
+                    this.StringMinusFiveValue = (this.Month + "/" + this.Day + "/" + (this.Year - 5));
+                }
+            }
             if (0 < this.Month && this.Month < 10) {
 
                 if (0 < this.Day && this.Day < 10) {
@@ -54,5 +69,4 @@ public class DateValue {
         String[] b = {"a", "b", v.Value};
         System.out.println(Arrays.toString(b));
     }
-
 }
