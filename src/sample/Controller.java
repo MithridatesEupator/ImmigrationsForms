@@ -3048,16 +3048,16 @@ public class Controller implements Initializable {
         if (jobOccupation1.getText().trim().isEmpty() && !jobOccupation.getText().trim().isEmpty()) {
             methodOccupation1 = "NONE";
             dateJobEnd1 = dateJobStart;
-            dateJobStart1 = DOBDate.Value;
+            dateJobStart1 = SignatureDate.StringMinusFiveValue;
             methodEmployer1 = "UNEMPLOYED";
         }
         if (jobOccupation2.getText().trim().isEmpty() && !jobOccupation1.getText().trim().isEmpty()) {
             methodOccupation2 = "NONE";
             dateJobEnd2 = dateJobStart1;
-            dateJobStart2 = DOBDate.Value;
+            dateJobStart2 = SignatureDate.StringMinusFiveValue;
             methodEmployer2 = "UNEMPLOYED";
         }
-        /*
+
         WorkInfoEntry.addNode(methodAddressStreet, ETenantInfo, methodAddressNumber, methodAddressNumber, methodState,
                 methodZipcode, methodCountry, methodEmployer, methodOccupation, new DateValue(dateJobStart),
                 new DateValue(dateJobEnd));
@@ -3067,25 +3067,17 @@ public class Controller implements Initializable {
         WorkInfoEntry.addNode(methodAddressStreet2, ETenantInfo2, methodAddressNumber2, methodAddressNumber2, methodState2,
                 methodZipcode2, methodCountry2, methodEmployer2, methodOccupation2, new DateValue(dateJobStart2),
                 new DateValue(dateJobEnd2));
-        System.out.println(WorkInfoEntry.getFirstForeignLevel());
-        System.out.println(WorkInfoEntry.getNode(WorkInfoEntry.getFirstForeignLevel()).display());
-        */
-        WorkInfoEntry.addNode("36 Burnett Street","Apt","2","Maplewood",
-                "NJ","07040",methodCountry,"Myself","Programmer",new DateValue("12/20/2016"),
-                new DateValue("4/28/2018"));
-        WorkInfoEntry.addNode("1 Vern Street","","","Orange",
-                "NJ","07040",methodCountry1,"Myself","Programmer",new DateValue("12/20/2015"),
-                new DateValue("12/20/2016"));
-        WorkInfoEntry.addNode("142 Bas Ave","","","Orange",
-                "NJ","07040",methodCountry2,"Myself","Programmer",new DateValue("12/20/2011"),
-                new DateValue("12/20/2014"));
+
         if (WorkInfoEntry.getFirstForeignLevel() > 2) {
             jobForeign = WorkInfoEntry.getNode(WorkInfoEntry.getFirstForeignLevel());
         }
-        else {
-            jobForeign = WorkInfoEntry.getNode(2);
+        else if (WorkInfoEntry.getLastNode().Level == 2) {
+            jobForeign = WorkInfoEntry.Root.NextNode.NextNode;
         }
-        System.out.println(WorkInfoEntry.getNode(WorkInfoEntry.getFirstForeignLevel()).display());
+        else {
+            jobForeign = new jobNode("","","","","","","",
+                    "","",new DateValue(""), new DateValue(""), 0, null);
+        }
         //-----------------
         if (job3Info.getText() != null) {
             if (!job3Info.getText().trim().isEmpty()) {
@@ -4379,9 +4371,6 @@ public class Controller implements Initializable {
                     "WorkAddressStreet","WorkAddressCity","WorkState","WorkZipcode"};
 
 
-
-
-
             TextField[] TextFieldArray = {clientANumber, clientFamilyName, clientFirstName, clientMiddleName, clientBirthCity, clientDOB, clientBirthCountry,clientSocialSecurity};
             JSONObject jsonObject = (JSONObject) obj;
             for (int i = 0; i < JSONStringArray.length; i++) {
@@ -4449,28 +4438,98 @@ public class Controller implements Initializable {
             }
         }
     }
+    jobNode[] jobExtraEntry = {new jobNode("","","","","","","",
+            "","",new DateValue(""), new DateValue(""), 0, null),
+            new jobNode("","","","","","","",
+                    "","",new DateValue(""), new DateValue(""), 0, null),
+            new jobNode("","","","","","","",
+                    "","",new DateValue(""), new DateValue(""), 0, null)};
     public void employmentAddendumFiller() throws Exception {
-        jobNode[] jobExtraEntry = {new jobNode("","","","","","","",
-                "","",new DateValue(""), new DateValue(""), 0, null),
-                new jobNode("","","","","","","",
-                        "","",new DateValue(""), new DateValue(""), 0, null),
-                new jobNode("","","","","","","",
-                        "","",new DateValue(""), new DateValue(""), 0, null)};
-
         if (jobForeign.Level <= 2) {
+
             jobExtraEntry = new jobNode[]{WorkInfoEntry.Root.NextNode.NextNode.NextNode,WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode,
                     WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode};
         }
         else {
-            employmentAddendumHelper(jobExtraEntry, WorkInfoEntry.Root.NextNode.NextNode, 0);
+            employmentAddendumHelper(WorkInfoEntry.Root.NextNode.NextNode, 0);
+        }
+
+
+        ETenantInfo3 = "E" + jobExtraEntry[0].AddressAddInfo.trim().toUpperCase() + "1";
+        ETenantInfo4 = "E" + jobExtraEntry[1].AddressAddInfo.trim().toUpperCase() + "2";
+        ETenantInfo5 = "E" + jobExtraEntry[2].AddressAddInfo.trim().toUpperCase() + "3";
+
+        InputStream employmentAdd = getClass().getResourceAsStream("resources/pdf/addendum_employment.pdf");
+        PDDocument employmentAddendum = PDDocument.load(employmentAdd);
+        PDDocumentCatalog docCatalog = employmentAddendum.getDocumentCatalog();
+        PDAcroForm acroForm = docCatalog.getAcroForm();
+        String[] fieldArray = {ANum, jobExtraEntry[0].AddressStreet, jobExtraEntry[0].AddressNumber, jobExtraEntry[0].AddressCity, jobExtraEntry[0].State,
+                jobExtraEntry[0].Zipcode, jobExtraEntry[0].Country, jobExtraEntry[0].Employer, jobExtraEntry[0].Occupation, jobExtraEntry[0].StartDate.Value,
+                jobExtraEntry[0].EndDate.Value, jobExtraEntry[1].AddressStreet, jobExtraEntry[1].AddressNumber, jobExtraEntry[1].AddressCity, jobExtraEntry[1].State,
+                jobExtraEntry[1].Zipcode, jobExtraEntry[1].Country, jobExtraEntry[1].Employer, jobExtraEntry[1].Occupation, jobExtraEntry[1].StartDate.Value,
+                jobExtraEntry[1].EndDate.Value, jobExtraEntry[2].AddressStreet, jobExtraEntry[2].AddressNumber, jobExtraEntry[2].AddressCity, jobExtraEntry[2].State,
+                jobExtraEntry[2].Zipcode, jobExtraEntry[2].Country, jobExtraEntry[2].Employer, jobExtraEntry[2].Occupation, jobExtraEntry[2].StartDate.Value,
+                jobExtraEntry[2].EndDate.Value};
+        String[] nameFieldArray = {"ANum", "WorkAddressStreet3", "WorkAddInfoAddress3", "WorkAddressCity3",
+                "WorkState3", "WorkZipcode3", "WorkCountry3", "Employer3", "WorkOccupation3", "WorkStartDate3",
+                "WorkEndDate3", "WorkAddressStreet4", "WorkAddInfoAddress4", "WorkAddressCity4",
+                "WorkState4", "WorkZipcode4", "WorkCountry4", "Employer4", "WorkOccupation4", "WorkStartDate4",
+                "WorkEndDate4", "WorkAddressStreet5", "WorkAddInfoAddress5", "WorkAddressCity5",
+                "WorkState5", "WorkZipcode5", "WorkCountry5", "Employer5", "WorkOccupation5", "WorkStartDate5",
+                "WorkEndDate5"};
+        String[] checkArray = {ETenantInfo3,ETenantInfo4,ETenantInfo5};
+        for (int i = 0; i < fieldArray.length; i++) {
+            String entryFieldArray = fieldArray[i];
+            String entryNameArray = nameFieldArray[i];
+            try {
+                PDField fieldTemp = acroForm.getField(entryNameArray);
+                if (fieldTemp != null) {
+                    fieldTemp.setValue(entryFieldArray.toUpperCase());
+                }
+            } catch (Exception ex) {
+            }
+        }
+        for (int b = 0; b < checkArray.length; b++) {
+            String entryCheckArray = checkArray[b];
+            if (entryCheckArray.trim() != "") {
+                PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
+                try {
+                    boxTemp.check();
+                } catch (NullPointerException ex) {
+                }
+            }
+        }
+        FileChooser pdfFile = new FileChooser();
+        pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+        pdfFile.setTitle("Save Addendum?");
+        pdfFile.setInitialFileName(fileType + "-" + NameTitle + "_employment_addendum.pdf");
+        File dest = pdfFile.showSaveDialog(null);
+        String pathFile = new String();
+        if (dest != null) {
+            try {
+                pathFile = dest.getAbsolutePath();
+                employmentAddendum.save(pathFile);
+                employmentAddendum.close();
+            }
+            catch (IOException ex) {
+                alertMessage();
+                employmentAddendum.close();
+            }
         }
     }
-    public void employmentAddendumHelper(jobNode[] listNode, jobNode Node, int increment) throws Exception {
-        if (Node.Level == jobForeign.Level && increment != 2) {
-            listNode[increment] = Node;
+
+    public void employmentAddendumHelper(jobNode Node, int increment) throws Exception {
+        if (Node.Level != jobForeign.Level && increment != 2) {
+            jobExtraEntry[increment] = Node;
             increment += 1;
         }
+        if(Node.NextNode != null && increment != 2) {
+            employmentAddendumHelper(Node.NextNode, increment);
+        }
     }
+
+
+
     public void addAddendums() throws Exception {
         if (needAddendum) {
             childAddendumFiller();

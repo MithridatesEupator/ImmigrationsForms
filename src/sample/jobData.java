@@ -18,6 +18,10 @@ public class jobData {
 
     public void addNode(String AddressStreet, String AddressAddInfo, String AddressNumber, String AddressCity, String State,
                         String Zipcode, String Country, String Employer, String Occupation, DateValue StartDate, DateValue EndDate) {
+        jobNode check = this.getLastNode();
+        if (this.getLastNode().Level != 0 && this.getLastNode().Employer.toUpperCase().trim().equals("UNEMPLOYED")) {
+            check = null;
+        }
         if (this.Root == null) {
             if (EndDate.Value.equals(TEMPORARYDATE.Value) || EndDate.Value.equals("PRESENT")) {
                 Root = new jobNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, 0, null);
@@ -52,6 +56,10 @@ public class jobData {
                 if (Node.StartDate.Value.equals(EndDate.Value) || EndDate.Value.equals("")) {
                     Node.NextNode = new jobNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State,
                             Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level, null);
+                    if(StartDate.IntValue > TEMPORARYDATE.IntMinusFiveValue) {
+                        Node.NextNode.NextNode = new jobNode("", "", "", "", "",
+                                "", "", "UNEMPLOYED", "NONE", new DateValue(TEMPORARYDATE.StringMinusFiveValue), StartDate, Level + 1, null);
+                    }
                 } else {
                     Node.NextNode = new jobNode("", "", "", "", "",
                             "", "", "UNEMPLOYED", "NONE", EndDate, Node.StartDate, Level, null);
@@ -67,7 +75,7 @@ public class jobData {
     }
 
     public Integer getFirstForeignLevel() {
-        if (!Root.Country.toUpperCase().equals("USA") && !Root.Country.isEmpty()) {
+        if (Root.Country != "USA" && !Root.Country.isEmpty()) {
             return 0;
         } else {
             return this.getFirstForeignLevelHelper(Root);
@@ -75,10 +83,15 @@ public class jobData {
     }
 
     private Integer getFirstForeignLevelHelper(jobNode Node) {
-        if (Node.NextNode != null && !Node.NextNode.Country.toUpperCase().equals("USA") && !Node.NextNode.Country.isEmpty()) {
+        if (Node.NextNode != null && Node.NextNode.Country != "USA" && !Node.NextNode.Country.isEmpty()) {
             return Node.NextNode.Level;
         } else {
-            return this.getFirstForeignLevelHelper(Node.NextNode);
+            if (Node.NextNode != null) {
+                return this.getFirstForeignLevelHelper(Node.NextNode);
+            }
+            else {
+                return -1;
+            }
         }
     }
 
@@ -97,6 +110,24 @@ public class jobData {
         }
         else {
             return this.getNodeHelper(levelValue, Node.NextNode);
+        }
+    }
+    public jobNode getLastNode() {
+        if (Root == null) {
+            return new jobNode("", "", "", "", "",
+                    "", "", "", "", new DateValue(""), new
+                    DateValue(""), -1, null);
+        } else {
+            return getLastNodeHelper(Root);
+        }
+
+    }
+    private jobNode getLastNodeHelper(jobNode Node) {
+        if (Node.NextNode != null) {
+            return getLastNodeHelper(Node.NextNode);
+        }
+        else {
+            return Node;
         }
     }
 }
