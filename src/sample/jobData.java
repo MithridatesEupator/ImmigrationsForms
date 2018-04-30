@@ -75,7 +75,7 @@ public class jobData {
     }
 
     public Integer getFirstForeignLevel() {
-        if (Root.Country != "USA" && !Root.Country.isEmpty()) {
+        if (!Root.Country.toUpperCase().trim().equals("USA") && !Root.Country.isEmpty()) {
             return 0;
         } else {
             return this.getFirstForeignLevelHelper(Root);
@@ -83,7 +83,7 @@ public class jobData {
     }
 
     private Integer getFirstForeignLevelHelper(jobNode Node) {
-        if (Node.NextNode != null && Node.NextNode.Country != "USA" && !Node.NextNode.Country.isEmpty()) {
+        if (Node.NextNode != null && !Node.NextNode.Country.toUpperCase().trim().equals("USA") && !Node.NextNode.Country.isEmpty()) {
             return Node.NextNode.Level;
         } else {
             if (Node.NextNode != null) {

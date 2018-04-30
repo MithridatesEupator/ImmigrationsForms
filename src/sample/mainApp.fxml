@@ -1306,7 +1306,7 @@
                             <Font size="14.0" />
                         </font>
                     </TextField>
-                    <TextField fx:id="clientTravelDoc" alignment="CENTER" layoutX="210.0" layoutY="120.0" prefHeight="30.0" prefWidth="190.0" promptText="Travel Document Number" styleClass="textField">
+                    <TextField fx:id="clientTravelDoc" alignment="CENTER" layoutX="210.0" layoutY="120.0" prefHeight="30.0" prefWidth="190.0" promptText="Travel Doc Number" styleClass="textField">
                         <font>
                             <Font size="14.0" />
                         </font>
@@ -1352,6 +1352,7 @@
                         </font>
                     </TextField>
                     <Text fill="#575757" layoutX="48.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Interpreter Info" />
+                  <Button fx:id="specialMenu" layoutX="284.0" layoutY="373.0" mnemonicParsing="false" onAction="#openSpecialMenu" styleClass="plusButton" />
                 </children>
             </AnchorPane>
             <AnchorPane fx:id="mainMenu" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;" styleClass="majorBar">

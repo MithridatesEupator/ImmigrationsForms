@@ -425,6 +425,9 @@ public class Controller implements Initializable {
     public Button JSONButton;
     public TextArea bugText;
     public Text sentText;
+    public CheckBox Permission;
+    public CheckBox Replacement;
+    public CheckBox Renewal;
 
     private Stage stage;
 
@@ -707,7 +710,6 @@ public class Controller implements Initializable {
     String OtherStatus = new String();
     String EntryI765 = new String();
 
-
     String AGender = "";
     String TenantInfo = "";
     String AltTenantInfo = "";
@@ -743,6 +745,8 @@ public class Controller implements Initializable {
     String Q62 = "";
     String fileType = "i-485";
     String SocialSecurityBox = "";
+    static String applyI765 = "";
+    static String nameChange = "Name-NA";
 
     static String C1Gender = new String();
     static String C1FamilyName1 = new String();
@@ -841,7 +845,7 @@ public class Controller implements Initializable {
             "AFGHANISTAN","AFGHAN","PAKISTAN","PAKISTANI","LEBANON","LEBANESE","JORDAN","JORDANIAN","YEMEN","YEMENI","HONDURAS","HONDURAN","EL SALVADOR","SALVADORAN","GUATEMALAN","GUATEMALAN",
             "BRAZIL","BRAZILIAN","EGYPT","EGYPTIAN","BELIZE","BELIZEAN","NICARAGUA","NICARAGUAN","PANAMA","PANAMAN","ROMANIA","ROMANIAN","GREECE","GREEK","ALGERIA","ALGERIAN","LIBYA","LIBYAN",
             "ETHIOPIA","ETHIOPIAN","MYANMAR","MYANMARESE","VIETNAM","VIETNAMESE","LAOS","LAO","SOUTH AFRICA","SOUTH AFRICAN","COSTA RICA","COSTA RICAN","HAITI","HAITIAN","DOMINICAN REPUBLIC",
-            "DOMINICAN","ARMENIA","ARMENIAN","AZERBAIJAN","AZEBERBAIJANIS","KAZAKHISTAN","KAZAKHISTANI"};
+            "DOMINICAN","ARMENIA","ARMENIAN","AZERBAIJAN","AZEBERBAIJANI","KAZAKHISTAN","KAZAKHISTANI"};
 
     static String C4FamilyName = "";
     static String C4FirstName = "";
@@ -951,6 +955,8 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try { ShowNameVars(); }
         catch (Exception ex) { }
+        try { ShowI765Vars(); }
+        catch (Exception ex) { }
         try { ShowC1InfoVars(); }
         catch (Exception ex) { }
         try { ShowC2InfoVars(); }
@@ -973,7 +979,6 @@ public class Controller implements Initializable {
 
     private BorderPane mainLayout;
 
-    //private Stage primaryStage;
     @FXML
     public void main(String[] args) {
     }
@@ -1005,6 +1010,35 @@ public class Controller implements Initializable {
             }
         });
     }
+
+    public void openSpecialMenu(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource(fileType + ".fxml"));
+        stage.setTitle(fileType + " Unique Options");
+        stage.setResizable(false);
+        Scene scene = null;
+        stage.setScene(new Scene(root, 600, 400));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene = (getShadowScene(root));
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene( scene );
+        stage.show();
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
+        });
+    }
+
     public void sendBugReport(ActionEvent event) throws Exception {
         try {
             String host = "smtp.gmail.com";
@@ -1830,6 +1864,18 @@ public class Controller implements Initializable {
         C3SpouseNumber = "5";
         ClientC3Parent.setText("Spouse " + C3SpouseNumber);
     }
+    public void uncheckPermission(ActionEvent event) {
+        Replacement.setSelected(false);
+        Renewal.setSelected(false);
+    }
+    public void uncheckReplacement(ActionEvent event) {
+        Permission.setSelected(false);
+        Renewal.setSelected(false);
+    }
+    public void uncheckRenewal(ActionEvent event) {
+        Permission.setSelected(false);
+        Replacement.setSelected(false);
+    }
     public void uncheckMaleGender(ActionEvent event) {
         maleGender.setSelected(false);
     }
@@ -1981,6 +2027,8 @@ public class Controller implements Initializable {
         catch (Exception ex) { }
         try { SaveC3InfoVars(); }
         catch (Exception ex) { }
+        try { SaveI765InfoVars(); }
+        catch (Exception ex) { }
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
@@ -2120,6 +2168,7 @@ public class Controller implements Initializable {
 
         if (clientFamilyName1.getText() != null) {
             FamilyName1 = clientFamilyName1.getText().trim();
+            nameChange = "Name-yes";
         }
         if (clientFirstName1.getText() != null) {
             FirstName1 = clientFirstName1.getText().trim();
@@ -2180,6 +2229,18 @@ public class Controller implements Initializable {
             clientMiddleName3.setText(MiddleName3);
         }
     }
+    @FXML
+    public void ShowI765Vars() {
+        if (applyI765.equals("Employment")) {
+            Permission.setSelected(true);
+        }
+        else if (applyI765.equals("Replacement")) {
+            Replacement.setSelected(true);
+        }
+        else if (applyI765.equals("Renewal")) {
+            Renewal.setSelected(true);
+        }
+    }
 
     @FXML
     public void SaveC1InfoVars() {
@@ -2229,6 +2290,19 @@ public class Controller implements Initializable {
         }
     }
 
+    public void SaveI765InfoVars() {
+        if (Permission.isSelected()) {
+            applyI765 = "Employment";
+        }
+        else if (Replacement.isSelected()) {
+            applyI765 = "Replacement";
+        }
+        else if (Renewal.isSelected()) {
+            applyI765 = "Renewal";
+        }
+    }
+
+    @FXML
     public void ShowC1InfoVars() {
         if (!C1Ethnicity.trim().isEmpty()) {
             if (C1Ethnicity == "Hispanic-yes") {
@@ -2464,6 +2538,7 @@ public class Controller implements Initializable {
         }
         if (FamilyName1.trim().isEmpty()) {
             FamilyName1 = "NONE";
+            nameChange = "Name-no";
         }
         if (clientBirthCity.getText() != null) {
             CityBirth = clientBirthCity.getText().trim();
@@ -3067,7 +3142,6 @@ public class Controller implements Initializable {
         WorkInfoEntry.addNode(methodAddressStreet2, ETenantInfo2, methodAddressNumber2, methodAddressNumber2, methodState2,
                 methodZipcode2, methodCountry2, methodEmployer2, methodOccupation2, new DateValue(dateJobStart2),
                 new DateValue(dateJobEnd2));
-
         if (WorkInfoEntry.getFirstForeignLevel() > 2) {
             jobForeign = WorkInfoEntry.getNode(WorkInfoEntry.getFirstForeignLevel());
         }
@@ -3728,6 +3802,7 @@ public class Controller implements Initializable {
             CApplyList[b] = false;
         }
         WorkInfoEntry = new jobData();
+        nameChange = "Name-NA";
 
     }
     String NameTitle;
@@ -3798,7 +3873,7 @@ public class Controller implements Initializable {
                 "EyeColor", "HairColor", "OrgAnswer", "DisabilityAnswer", "InterpreterQuestion", "ITenantInfo", "PTenantInfo", "Q49", "Q55", "Q61", "Q62", "SocialSecurityBox","C4status","C5status","C6status","C7status"};
         String[] checkArray = {AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, WorkInfoEntry.Root.AddressAddInfo,
                 WorkInfoEntry.Root.NextNode.AddressAddInfo, WorkInfoEntry.Root.NextNode.NextNode.AddressAddInfo, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer,
-                DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status};
+                DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status, applyI765, nameChange};
         if (fileType == "") {
             fileType = "i-485";
         }
@@ -4375,7 +4450,6 @@ public class Controller implements Initializable {
             JSONObject jsonObject = (JSONObject) obj;
             for (int i = 0; i < JSONStringArray.length; i++) {
                 String TemporaryString = (String) jsonObject.get(JSONStringArray[i]);
-                System.out.println(TemporaryString);
                 TextFieldArray[i].setText(TemporaryString);
             }
         } catch (Exception ex) { }
@@ -4438,12 +4512,14 @@ public class Controller implements Initializable {
             }
         }
     }
+
     jobNode[] jobExtraEntry = {new jobNode("","","","","","","",
             "","",new DateValue(""), new DateValue(""), 0, null),
             new jobNode("","","","","","","",
                     "","",new DateValue(""), new DateValue(""), 0, null),
             new jobNode("","","","","","","",
                     "","",new DateValue(""), new DateValue(""), 0, null)};
+
     public void employmentAddendumFiller() throws Exception {
         if (jobForeign.Level <= 2) {
 
@@ -4453,7 +4529,6 @@ public class Controller implements Initializable {
         else {
             employmentAddendumHelper(WorkInfoEntry.Root.NextNode.NextNode, 0);
         }
-
 
         ETenantInfo3 = "E" + jobExtraEntry[0].AddressAddInfo.trim().toUpperCase() + "1";
         ETenantInfo4 = "E" + jobExtraEntry[1].AddressAddInfo.trim().toUpperCase() + "2";
@@ -4519,11 +4594,11 @@ public class Controller implements Initializable {
     }
 
     public void employmentAddendumHelper(jobNode Node, int increment) throws Exception {
-        if (Node.Level != jobForeign.Level && increment != 2) {
+        if (Node.Level != jobForeign.Level && increment != 3) {
             jobExtraEntry[increment] = Node;
             increment += 1;
         }
-        if(Node.NextNode != null && increment != 2) {
+        if(Node.NextNode != null && increment != 3) {
             employmentAddendumHelper(Node.NextNode, increment);
         }
     }
