@@ -428,6 +428,10 @@ public class Controller implements Initializable {
     public CheckBox Permission;
     public CheckBox Replacement;
     public CheckBox Renewal;
+    public CheckBox cardStolen;
+    public CheckBox cardReceived;
+    public CheckBox cardMutilated;
+    public CheckBox cardExpired;
 
     private Stage stage;
 
@@ -945,6 +949,8 @@ public class Controller implements Initializable {
     String ETenantInfo4 = "";
     String ETenantInfo5 = "";
 
+    static String reason = "A";
+
     jobNode jobForeign = new jobNode("","","","","","","",
             "","",new DateValue(""), new DateValue(""), 0, null);
 
@@ -956,6 +962,8 @@ public class Controller implements Initializable {
         try { ShowNameVars(); }
         catch (Exception ex) { }
         try { ShowI765Vars(); }
+        catch (Exception ex) { }
+        try { ShowI90Vars(); }
         catch (Exception ex) { }
         try { ShowC1InfoVars(); }
         catch (Exception ex) { }
@@ -1090,6 +1098,7 @@ public class Controller implements Initializable {
         buttonI485.setStyle("-fx-background-color: " + normalColor + ";");
         buttonI765.setStyle("-fx-background-color: " + normalColor + ";");
         fileShow.setText(" I-90");
+        immigrationStatus.setText("LPR");
     }
 
     public void i485Select(ActionEvent event) {
@@ -1098,6 +1107,17 @@ public class Controller implements Initializable {
         buttonI485.setStyle("-fx-background-color: " + pressedColor + ";");
         buttonI765.setStyle("-fx-background-color: " + normalColor + ";");
         fileShow.setText("I-485");
+        if(!ImmigrationStatus.trim().isEmpty()) {
+            if (ImmigrationStatus.trim().equals("Asylum")) {
+                immigrationStatus.setText(ImmigrationStatus + " Seeker");
+            }
+            else {
+
+            }
+        }
+        else {
+            immigrationStatus.setText("Current Status");
+        }
     }
 
     public void i765Select(ActionEvent event) {
@@ -1106,6 +1126,17 @@ public class Controller implements Initializable {
         buttonI485.setStyle("-fx-background-color: " + normalColor + ";");
         buttonI765.setStyle("-fx-background-color: " + pressedColor + ";");
         fileShow.setText("I-765");
+        if(!ImmigrationStatus.trim().isEmpty()) {
+            if (ImmigrationStatus.trim().equals("Asylum")) {
+                immigrationStatus.setText(ImmigrationStatus + " Seeker");
+            }
+            else {
+
+            }
+        }
+        else {
+            immigrationStatus.setText("Current Status");
+        }
     }
     public void goMainMenu(ActionEvent event) {
         addressButton.getStyleClass().remove("menuButtonChangeSelected");
@@ -1228,31 +1259,37 @@ public class Controller implements Initializable {
 
     }
     public void asyleeSelect(ActionEvent event) {
-        ImmigrationStatus = "Asylum";
-        immigrationStatus.setText("Asylum Seeker");
-        lastArrived = "NoStatus";
-        EntryI765 = "Asylum Seeker";
+        if (!immigrationStatus.getText().trim().equals("LPR")) {
+            ImmigrationStatus = "Asylum";
+            immigrationStatus.setText("Asylum Seeker");
+            lastArrived = "NoStatus";
+            EntryI765 = "Asylum Seeker";
+        }
     }
 
     public void refugeeSelect(ActionEvent event) {
-        ImmigrationStatus = "Refugee";
-        immigrationStatus.setText("Refugee");
-        EntryInspectionStatus = "";
-        EntryParoledStatus = "";
-        OtherStatus = "Refugee";
-        EntryI765 = "Refugee";
-        lastArrived = "Other";
+        if (!immigrationStatus.getText().trim().equals("LPR")) {
+            ImmigrationStatus = "Refugee";
+            immigrationStatus.setText("Refugee");
+            EntryInspectionStatus = "";
+            EntryParoledStatus = "";
+            OtherStatus = "Refugee";
+            EntryI765 = "Refugee";
+            lastArrived = "Other";
+        }
     }
 
     public void paroleeSelect(ActionEvent event) {
-        ImmigrationStatus = "Cuban1";
-        immigrationStatus.setText("Parolee");
-        lastArrived = "EntryParoled";
-        EntryInspectionStatus = "";
-        EntryParoledStatus = "Cuban Parole";
-        EntryI765 = "Cuban Parole";
-        OtherStatus = "";
-        I94Status = "Paroled";
+        if (!immigrationStatus.getText().trim().equals("LPR")) {
+            ImmigrationStatus = "Cuban1";
+            immigrationStatus.setText("Parolee");
+            lastArrived = "EntryParoled";
+            EntryInspectionStatus = "";
+            EntryParoledStatus = "Cuban Parole";
+            EntryI765 = "Cuban Parole";
+            OtherStatus = "";
+            I94Status = "Paroled";
+        }
     }
 
     public void yesLatinoSelect(ActionEvent event) {
@@ -1876,6 +1913,26 @@ public class Controller implements Initializable {
         Permission.setSelected(false);
         Replacement.setSelected(false);
     }
+    public void uncheckCardStolen(ActionEvent event) {
+        cardReceived.setSelected(false);
+        cardMutilated.setSelected(false);
+        cardExpired.setSelected(false);
+    }
+    public void uncheckCardReceived(ActionEvent event) {
+        cardStolen.setSelected(false);
+        cardMutilated.setSelected(false);
+        cardExpired.setSelected(false);
+    }
+    public void uncheckCardMutilated(ActionEvent event) {
+        cardStolen.setSelected(false);
+        cardReceived.setSelected(false);
+        cardExpired.setSelected(false);
+    }
+    public void uncheckCardExpired(ActionEvent event) {
+        cardStolen.setSelected(false);
+        cardReceived.setSelected(false);
+        cardMutilated.setSelected(false);
+    }
     public void uncheckMaleGender(ActionEvent event) {
         maleGender.setSelected(false);
     }
@@ -2028,6 +2085,8 @@ public class Controller implements Initializable {
         try { SaveC3InfoVars(); }
         catch (Exception ex) { }
         try { SaveI765InfoVars(); }
+        catch (Exception ex) { }
+        try { SaveI90InfoVars(); }
         catch (Exception ex) { }
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
@@ -2243,6 +2302,23 @@ public class Controller implements Initializable {
     }
 
     @FXML
+    public void ShowI90Vars() {
+        if (reason.equals("Aa")) {
+            cardStolen.setSelected(true);
+        }
+        else if (reason.equals("Ab")) {
+            cardReceived.setSelected(true);
+        }
+        else if(reason.equals("Ac")) {
+            cardMutilated.setSelected(true);
+        }
+        else if(reason.equals("Af")) {
+            cardExpired.setSelected(true);
+        }
+
+    }
+
+    @FXML
     public void SaveC1InfoVars() {
         if (ClientC1FamilyName1.getText() != null) {
             C1FamilyName1 = ClientC1FamilyName1.getText().trim();
@@ -2299,6 +2375,21 @@ public class Controller implements Initializable {
         }
         else if (Renewal.isSelected()) {
             applyI765 = "Renewal";
+        }
+    }
+
+    public void SaveI90InfoVars() {
+        if (cardStolen.isSelected()) {
+            reason = "Aa";
+        }
+        else if (cardReceived.isSelected()) {
+            reason = "Ab";
+        }
+        else if (cardMutilated.isSelected()) {
+            reason = "Ac";
+        }
+        else if (cardExpired.isSelected()) {
+            reason = "Af";
         }
     }
 
@@ -3873,7 +3964,7 @@ public class Controller implements Initializable {
                 "EyeColor", "HairColor", "OrgAnswer", "DisabilityAnswer", "InterpreterQuestion", "ITenantInfo", "PTenantInfo", "Q49", "Q55", "Q61", "Q62", "SocialSecurityBox","C4status","C5status","C6status","C7status"};
         String[] checkArray = {AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, WorkInfoEntry.Root.AddressAddInfo,
                 WorkInfoEntry.Root.NextNode.AddressAddInfo, WorkInfoEntry.Root.NextNode.NextNode.AddressAddInfo, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer,
-                DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status, applyI765, nameChange};
+                DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status, applyI765, nameChange,reason};
         if (fileType == "") {
             fileType = "i-485";
         }
@@ -4272,7 +4363,7 @@ public class Controller implements Initializable {
             SFamilyName = "";
             SFirstName = "";
             SMiddleName = "";
-            SDOBDate = new DateValue(null);
+            SDOBDate = new DateValue("");
             SApply = "";
             C1FamilyName = "";
             C1FirstName = "";
@@ -4345,22 +4436,22 @@ public class Controller implements Initializable {
             StateOrganization = "";
             CountryOrganization = "";
             NatureOrganization = "";
-            OrganizationStartDate = new DateValue(null);
-            OrganizationEndDate = new DateValue(null);
+            OrganizationStartDate = new DateValue("");
+            OrganizationEndDate = new DateValue("");
             NameOrganization1 = "";
             CityOrganization1 = "";
             StateOrganization1 = "";
             CountryOrganization1 = "";
             NatureOrganization1 = "";
-            OrganizationStartDate1 = new DateValue(null);
-            OrganizationEndDate1 = new DateValue(null);
+            OrganizationStartDate1 = new DateValue("");
+            OrganizationEndDate1 = new DateValue("");
             NameOrganization2 = "";
             CityOrganization2 = "";
             StateOrganization2 = "";
             CountryOrganization2 = "";
             NatureOrganization2 = "";
-            OrganizationStartDate2 = new DateValue(null);
-            OrganizationEndDate2 = new DateValue(null);
+            OrganizationStartDate2 = new DateValue("");
+            OrganizationEndDate2 = new DateValue("");
             MaritalStatus = "Single";
             USGuard = "Guard-NA";
             fileIteration += 1;
