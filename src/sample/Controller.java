@@ -954,6 +954,12 @@ public class Controller implements Initializable {
     jobNode jobForeign = new jobNode("","","","","","","",
             "","",new DateValue(""), new DateValue(""), 0, null);
 
+    jobNode[] jobExtraEntry = {new jobNode("","","","","","","",
+            "","",new DateValue(""), new DateValue(""), 0, null),
+            new jobNode("","","","","","","",
+                    "","",new DateValue(""), new DateValue(""), 0, null),
+            new jobNode("","","","","","","",
+                    "","",new DateValue(""), new DateValue(""), 0, null)};
 
     @Override
 
@@ -2609,6 +2615,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void SaveVars() throws Exception {
+
         fileIteration = 0;
         if (clientANumber.getText() != null) {
             String ANumTMP = clientANumber.getText().trim();
@@ -2653,21 +2660,18 @@ public class Controller implements Initializable {
         }
         if (clientSocialSecurity.getText().trim().isEmpty()) {
             SocialSecurityBox = "SS-no";
-        }
-        else {
+        } else {
             SocialSecurityBox = "SS-yes";
         }
 
         if (clientPassport.getText() != null) {
             PassportNum = clientPassport.getText().trim();
-        }
-        else  {
+        } else {
             PassportNum = "N/A";
         }
         if (clientTravelDoc.getText() != null) {
             TravelNum = clientTravelDoc.getText().trim();
-        }
-        else {
+        } else {
             TravelNum = "N/A";
         }
         if (clientPort.getText() != null) {
@@ -2728,8 +2732,8 @@ public class Controller implements Initializable {
 
                 Feet = C1HeightVar[0];
                 Inches = C1HeightVar[1];
+            } catch (Exception ex) {
             }
-            catch (Exception ex) {}
         }
         if (clientEmail.getText() != null) {
             AEmail = clientEmail.getText().trim();
@@ -2839,29 +2843,25 @@ public class Controller implements Initializable {
                 PN = "12";
                 PaN = "8";
                 IN = "55";
-            }
-            else if (Addendum1A.trim().isEmpty()) {
+            } else if (Addendum1A.trim().isEmpty()) {
                 Addendum1A = "When I was in " + CountryOrganization + ", I served in the";
                 Addendum1B = "military from " + OrganizationStartDate + " to " + OrganizationEndDate + ".";
                 PN1 = "12";
                 PaN1 = "8";
                 IN1 = "55";
-            }
-            else if (Addendum2A.trim().isEmpty()) {
+            } else if (Addendum2A.trim().isEmpty()) {
                 Addendum2A = "When I was in " + CountryOrganization + ", I served in the";
                 Addendum2B = "military from " + OrganizationStartDate + " to " + OrganizationEndDate + ".";
                 PN2 = "12";
                 PaN2 = "8";
                 IN2 = "55";
-            }
-            else if (Addendum3A.trim().isEmpty()) {
+            } else if (Addendum3A.trim().isEmpty()) {
                 Addendum3A = "When I was in " + CountryOrganization + ", I served in the";
                 Addendum3B = "military from " + OrganizationStartDate + " to " + OrganizationEndDate + ".";
                 PN3 = "12";
                 PaN3 = "8";
                 IN3 = "55";
-            }
-            else if (Addendum4A.trim().isEmpty()) {
+            } else if (Addendum4A.trim().isEmpty()) {
                 Addendum4A = "When I was in " + CountryOrganization + ", I served in the";
                 Addendum4B = "military from " + OrganizationStartDate + " to " + OrganizationEndDate + ".";
                 PN4 = "12";
@@ -2918,7 +2918,7 @@ public class Controller implements Initializable {
         if (AddressStartTime1.getText() != null) {
             StartDate1 = new DateValue(AddressStartTime1.getText());
         }
-        if (AddressEndTime1.getText() != null ) {
+        if (AddressEndTime1.getText() != null) {
             EndDate1 = new DateValue(AddressEndTime1.getText());
         }
         if (AddressStreetName2.getText() != null) {
@@ -2942,7 +2942,7 @@ public class Controller implements Initializable {
         if (AddressStartTime2.getText() != null) {
             StartDate2 = new DateValue(AddressStartTime2.getText());
         }
-        if (AddressEndTime2.getText() != null ) {
+        if (AddressEndTime2.getText() != null) {
             EndDate2 = new DateValue(AddressEndTime2.getText());
         }
         if (Address3Info.getText() != null) {
@@ -2962,11 +2962,9 @@ public class Controller implements Initializable {
                 AddressStreet3 = A3Info[0];
                 if (A3Info[1].toUpperCase().equals("APT")) {
                     TenantSelection3 = "Apt3";
-                }
-                else if (A3Info[1].toUpperCase().equals("STE")) {
+                } else if (A3Info[1].toUpperCase().equals("STE")) {
                     TenantSelection3 = "Ste3";
-                }
-                else if (A3Info[1].toUpperCase().equals("FLR")) {
+                } else if (A3Info[1].toUpperCase().equals("FLR")) {
                     TenantSelection3 = "Flr3";
                 }
                 AddInfoAddress3 = A3Info[2];
@@ -2980,8 +2978,7 @@ public class Controller implements Initializable {
                 if (AddressEndTime3.getText() != null) {
                     EndDate3 = new DateValue(AddressEndTime3.getText());
                 }
-            }
-            catch (ArrayIndexOutOfBoundsException ArrayEx) {
+            } catch (ArrayIndexOutOfBoundsException ArrayEx) {
             }
         }
         if (Address4Info.getText() != null) {
@@ -2998,11 +2995,9 @@ public class Controller implements Initializable {
                 AddressStreet4 = A4Info[0];
                 if (A4Info[1].toUpperCase().equals("APT")) {
                     TenantSelection4 = "Apt4";
-                }
-                else if (A4Info[1].toUpperCase().equals("STE")) {
+                } else if (A4Info[1].toUpperCase().equals("STE")) {
                     TenantSelection4 = "Ste4";
-                }
-                else if (A4Info[1].toUpperCase().equals("FLR")) {
+                } else if (A4Info[1].toUpperCase().equals("FLR")) {
                     TenantSelection4 = "Flr4";
                 }
                 AddInfoAddress4 = A4Info[2];
@@ -3016,8 +3011,7 @@ public class Controller implements Initializable {
                 if (AddressEndTime4.getText() != null) {
                     EndDate4 = new DateValue(AddressEndTime4.getText());
                 }
-            }
-            catch (ArrayIndexOutOfBoundsException ArrayEx) {
+            } catch (ArrayIndexOutOfBoundsException ArrayEx) {
 
             }
         }
@@ -3035,11 +3029,9 @@ public class Controller implements Initializable {
                 AddressStreet5 = A5Info[0];
                 if (A5Info[1].toUpperCase().equals("APT")) {
                     TenantSelection5 = "Apt5";
-                }
-                else if (A5Info[1].toUpperCase().equals("STE")) {
+                } else if (A5Info[1].toUpperCase().equals("STE")) {
                     TenantSelection5 = "Ste5";
-                }
-                else if (A5Info[1].toUpperCase().equals("FLR")) {
+                } else if (A5Info[1].toUpperCase().equals("FLR")) {
                     TenantSelection5 = "Flr5";
                 }
                 AddInfoAddress5 = A5Info[2];
@@ -3053,8 +3045,7 @@ public class Controller implements Initializable {
                 if (AddressEndTime5.getText() != null) {
                     EndDate5 = new DateValue(AddressEndTime5.getText());
                 }
-            }
-            catch (ArrayIndexOutOfBoundsException ArrayEx) {
+            } catch (ArrayIndexOutOfBoundsException ArrayEx) {
 
             }
         }
@@ -3074,11 +3065,9 @@ public class Controller implements Initializable {
                 AddressStreet6 = A6Info[0];
                 if (A6Info[1].toUpperCase().equals("APT")) {
                     TenantSelection6 = "Apt6";
-                }
-                else if (A6Info[1].toUpperCase().equals("STE")) {
+                } else if (A6Info[1].toUpperCase().equals("STE")) {
                     TenantSelection6 = "Ste6";
-                }
-                else if (A6Info[1].toUpperCase().equals("FLR")) {
+                } else if (A6Info[1].toUpperCase().equals("FLR")) {
                     TenantSelection6 = "Flr6";
                 }
                 AddInfoAddress6 = A6Info[2];
@@ -3092,8 +3081,7 @@ public class Controller implements Initializable {
                 if (AddressEndTime6.getText() != null) {
                     EndDate6 = new DateValue(AddressEndTime6.getText());
                 }
-            }
-            catch (ArrayIndexOutOfBoundsException ArrayEx) {
+            } catch (ArrayIndexOutOfBoundsException ArrayEx) {
 
             }
         }
@@ -3204,7 +3192,7 @@ public class Controller implements Initializable {
             methodEmployer2 = jobEmployer2.getText().trim();
         }
         //-------------------------------------------------------------------------
-        if (jobOccupation.getText().isEmpty()) {
+        /*if (jobOccupation.getText().isEmpty()) {
             methodOccupation = "NONE";
             dateJobStart = SignatureDate.StringMinusFiveValue;
         }
@@ -3223,7 +3211,15 @@ public class Controller implements Initializable {
             dateJobStart2 = SignatureDate.StringMinusFiveValue;
             methodEmployer2 = "UNEMPLOYED";
         }
-
+        WorkInfoEntry.addNode("36 Burnett Street","Apt","2","Maplewood",
+                "NJ","07040","USA","Myself","Programmer",new DateValue("12/20/2016"),
+                new DateValue("4/28/2018"));
+        WorkInfoEntry.addNode("1 Vern Street","","","Orange",
+                "NJ","07040","USA","Myself","Programmer",new DateValue("12/20/2015"),
+                new DateValue("12/20/2016"));
+        WorkInfoEntry.addNode("142 Bas Ave","","","Orange",
+                "NJ","07040","USA","Myself","Programmer",new DateValue("12/17/2014"), new DateValue("12/20/2014"));
+                */
         WorkInfoEntry.addNode(methodAddressStreet, ETenantInfo, methodAddressNumber, methodAddressNumber, methodState,
                 methodZipcode, methodCountry, methodEmployer, methodOccupation, new DateValue(dateJobStart),
                 new DateValue(dateJobEnd));
@@ -3233,93 +3229,84 @@ public class Controller implements Initializable {
         WorkInfoEntry.addNode(methodAddressStreet2, ETenantInfo2, methodAddressNumber2, methodAddressNumber2, methodState2,
                 methodZipcode2, methodCountry2, methodEmployer2, methodOccupation2, new DateValue(dateJobStart2),
                 new DateValue(dateJobEnd2));
-        if (WorkInfoEntry.getFirstForeignLevel() > 2) {
-            jobForeign = WorkInfoEntry.getNode(WorkInfoEntry.getFirstForeignLevel());
-        }
-        else if (WorkInfoEntry.getLastNode().Level == 2) {
-            jobForeign = WorkInfoEntry.Root.NextNode.NextNode;
-        }
-        else {
-            jobForeign = new jobNode("","","","","","","",
-                    "","",new DateValue(""), new DateValue(""), 0, null);
-        }
         //-----------------
         if (job3Info.getText() != null) {
             if (!job3Info.getText().trim().isEmpty()) {
-                needAddendum = true;
+                String[] TMPE3Info = {"", "", "", "", "", "", ""};
+                try {
+                    String TMPEmployment3 = job3Info.getText().trim();
+                    TMPE3Info = TMPEmployment3.split("\\|");
+                    System.out.println(Arrays.toString(TMPE3Info));
+                } catch (ArrayIndexOutOfBoundsException ArrayEx) {
+                }
+                WorkInfoEntry.addNode(TMPE3Info[0], TMPE3Info[1], TMPE3Info[2], TMPE3Info[3],
+                        TMPE3Info[4], TMPE3Info[5], TMPE3Info[6], Employer3.getText().trim(), Occupation3.getText().trim(),
+                        new DateValue(jobAddressStartTime3.getText().trim()), new DateValue(jobAddressEndTime3.getText().trim()));
             }
-            try {
-                String TMPEmployment3 = job3Info.getText().trim();
-                String[] TMPE3Info = TMPEmployment3.split("\\|");
-                E3Info[0] = TMPE3Info[0];
-                E3Info[1] = TMPE3Info[1];
-                E3Info[2] = TMPE3Info[2];
-                E3Info[3] = TMPE3Info[3];
-                E3Info[4] = TMPE3Info[4];
-                E3Info[5] = TMPE3Info[5];
-                E3Info[6] = jobAddressStartTime3.getText().trim();
-                E3Info[7] = jobAddressEndTime3.getText().trim();
-                E3Info[8] = Employer3.getText().trim();
-                E3Info[9] = Occupation3.getText().trim();
-            }
-            catch (ArrayIndexOutOfBoundsException ArrayEx) {
-            }
-        }
-        if (job4Info.getText() != null) {
-            try {
-                String TMPEmployment4 = job4Info.getText().trim();
-                String[] TMPE4Info = TMPEmployment4.split("\\|");
-                E4Info[0] = TMPE4Info[0];
-                E4Info[1] = TMPE4Info[1];
-                E4Info[2] = TMPE4Info[2];
-                E4Info[3] = TMPE4Info[3];
-                E4Info[4] = TMPE4Info[4];
-                E4Info[5] = TMPE4Info[5];
-                E4Info[6] = jobAddressStartTime4.getText().trim();
-                E4Info[7] = jobAddressEndTime4.getText().trim();
-                E4Info[8] = Employer4.getText().trim();
-                E4Info[9] = Occupation4.getText().trim();
-            }
-            catch (ArrayIndexOutOfBoundsException ArrayEx) {
-            }
-        }
-        if (job6Info.getText() != null) {
-            try {
-                String TMPEmployment6 = job6Info.getText().trim();
-                String[] TMPE6Info = TMPEmployment6.split("\\|");
-                E6Info[0] = TMPE6Info[0];
-                E6Info[1] = TMPE6Info[1];
-                E6Info[2] = TMPE6Info[2];
-                E6Info[3] = TMPE6Info[3];
-                E6Info[4] = TMPE6Info[4];
-                E6Info[5] = TMPE6Info[5];
-                E6Info[6] = jobAddressStartTime5.getText().trim();
-                E6Info[7] = jobAddressEndTime5.getText().trim();
-                E6Info[8] = Employer5.getText().trim();
-                E6Info[9] = Occupation5.getText().trim();
-            }
-            catch (ArrayIndexOutOfBoundsException ArrayEx) {
+            if (job4Info.getText() != null) {
+                if (!job4Info.getText().trim().isEmpty()) {
+                    String[] TMPE4Info = {"", "", "", "", "", "", ""};
+                    try {
+                        String TMPEmployment4 = job4Info.getText().trim();
+                        TMPE4Info = TMPEmployment4.split("\\|");
+                    } catch (ArrayIndexOutOfBoundsException ArrayEx) {
+                    }
+                    WorkInfoEntry.addNode(TMPE4Info[0], TMPE4Info[1], TMPE4Info[2], TMPE4Info[3],
+                            TMPE4Info[4], TMPE4Info[5], TMPE4Info[6], Employer4.getText().trim(), Occupation4.getText().trim(),
+                            new DateValue(jobAddressStartTime4.getText().trim()), new DateValue(jobAddressEndTime4.getText().trim()));
+                }
+                if (job5Info.getText() != null) {
+                    if (!job5Info.getText().trim().isEmpty()) {
+                        String[] TMPE5Info = {"", "", "", "", "", "", ""};
+                        try {
+                            String TMPEmployment5 = job5Info.getText().trim();
+                            TMPE5Info = TMPEmployment5.split("\\|");
+                        } catch (ArrayIndexOutOfBoundsException ArrayEx) {
+                        }
+                        WorkInfoEntry.addNode(TMPE5Info[0], TMPE5Info[1], TMPE5Info[2], TMPE5Info[3],
+                                TMPE5Info[4], TMPE5Info[5], TMPE5Info[6], Employer5.getText().trim(), Occupation5.getText().trim(),
+                                new DateValue(jobAddressStartTime5.getText().trim()), new DateValue(jobAddressEndTime5.getText().trim()));
+                    }
+                    if (job6Info.getText() != null) {
+                        if (!job6Info.getText().trim().isEmpty()) {
+                            String[] TMPE6Info = {"", "", "", "", "", "", ""};
+                            try {
+                                String TMPEmployment6 = job6Info.getText().trim();
+                                TMPE6Info = TMPEmployment6.split("\\|");
+                            } catch (ArrayIndexOutOfBoundsException ArrayEx) {
+                            }
+                            WorkInfoEntry.addNode(TMPE6Info[0], TMPE6Info[1], TMPE6Info[2], TMPE6Info[3],
+                                    TMPE6Info[4], TMPE6Info[5], TMPE6Info[6], Employer6.getText().trim(), Occupation6.getText().trim(),
+                                    new DateValue(jobAddressStartTime6.getText().trim()), new DateValue(jobAddressEndTime6.getText().trim()));
+                        }
+                    }
+                }
             }
         }
-        if (job6Info.getText() != null) {
-            try {
-                String TMPEmployment6 = job6Info.getText().trim();
-                String[] TMPE6Info = TMPEmployment6.split("\\|");
-                E6Info[0] = TMPE6Info[0];
-                E6Info[1] = TMPE6Info[1];
-                E6Info[2] = TMPE6Info[2];
-                E6Info[3] = TMPE6Info[3];
-                E6Info[4] = TMPE6Info[4];
-                E6Info[5] = TMPE6Info[5];
-                E6Info[6] = TMPE6Info[6];
-                E6Info[7] = TMPE6Info[7];
-                E6Info[8] = Employer6.getText().trim();
-                E6Info[9] = Occupation6.getText().trim();
-            }
-            catch (ArrayIndexOutOfBoundsException ArrayEx) {
-            }
+        if (WorkInfoEntry.getFirstForeignLevel() > 2) {
+            jobForeign = WorkInfoEntry.getNode(WorkInfoEntry.getFirstForeignLevel());
+        } else if (WorkInfoEntry.getLastNode().Level == 2) {
+            jobForeign = WorkInfoEntry.Root.NextNode.NextNode;
+        } else {
+            jobForeign = new jobNode("", "", "", "", "", "", "",
+                    "", "", new DateValue(""), new DateValue(""), 0, null);
         }
-
+        if(WorkInfoEntry.Root.Country.equals("") && WorkInfoEntry.Root.Employer.equals("") ) {
+            System.out.println("SDASDASD");
+            WorkInfoEntry.Root = new jobNode("", "", "", "", "",
+                    "", "", "UNEMPLOYED", "NONE", new DateValue(SignatureDate.StringMinusFiveValue), new DateValue("PRESENT"), 0, null);
+        }
+        if (WorkInfoEntry.Root.NextNode == null) {
+            WorkInfoEntry.Root.NextNode = new jobNode("", "", "", "", "",
+                    "", "", "", "", new DateValue(""), new DateValue(""), 1, null);
+        }
+        if (jobForeign == null) {
+            jobForeign = new jobNode("", "", "", "", "",
+                    "", "", "", "", new DateValue(""), new DateValue(""), 2, null);
+        }
+        if (WorkInfoEntry.lastNode.Level >= 3) {
+            needAddendum = true;
+        }
         if (SpouseFamilyName.getText() != null) {
             SFamilyName = SpouseFamilyName.getText().trim();
         }
@@ -3811,9 +3798,6 @@ public class Controller implements Initializable {
         CApplyList[0] = C1Files;
         CApplyList[1] = C2Files;
         CApplyList[2] = C3Files;
-        if (WorkInfoEntry.Root.NextNode.NextNode.NextNode != null) {
-            needAddendum = true;
-        }
     }
 
     public Scene getShadowScene(Parent p) {
@@ -3963,7 +3947,7 @@ public class Controller implements Initializable {
                 "lastArrived", "ImmigrationStatus", "TenantInfo1", "TenantInfo2", "ETenantInfo", "ETenantInfo1", "ETenantInfo2", "MaritalStatus", "USGuard", "SApply", "C1status", "C2status", "C3status", "Ethnicity", "Race",
                 "EyeColor", "HairColor", "OrgAnswer", "DisabilityAnswer", "InterpreterQuestion", "ITenantInfo", "PTenantInfo", "Q49", "Q55", "Q61", "Q62", "SocialSecurityBox","C4status","C5status","C6status","C7status"};
         String[] checkArray = {AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, WorkInfoEntry.Root.AddressAddInfo,
-                WorkInfoEntry.Root.NextNode.AddressAddInfo, WorkInfoEntry.Root.NextNode.NextNode.AddressAddInfo, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer,
+                WorkInfoEntry.Root.NextNode.AddressAddInfo, jobForeign.AddressAddInfo, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer,
                 DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status, applyI765, nameChange,reason};
         if (fileType == "") {
             fileType = "i-485";
@@ -3975,7 +3959,6 @@ public class Controller implements Initializable {
         for (int i = 0; i < fieldArray.length; i++) {
             String entryFieldArray = fieldArray[i];
             String entryNameArray = nameFieldArray[i];
-            //System.out.println(entryFieldArray + " : " + entryNameArray);
             try {
                 PDField fieldTemp = acroForm.getField(entryNameArray);
                 if (fieldTemp != null) {
@@ -4604,18 +4587,13 @@ public class Controller implements Initializable {
         }
     }
 
-    jobNode[] jobExtraEntry = {new jobNode("","","","","","","",
-            "","",new DateValue(""), new DateValue(""), 0, null),
-            new jobNode("","","","","","","",
-                    "","",new DateValue(""), new DateValue(""), 0, null),
-            new jobNode("","","","","","","",
-                    "","",new DateValue(""), new DateValue(""), 0, null)};
-
     public void employmentAddendumFiller() throws Exception {
         if (jobForeign.Level <= 2) {
-
-            jobExtraEntry = new jobNode[]{WorkInfoEntry.Root.NextNode.NextNode.NextNode,WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode,
-                    WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode};
+            if (WorkInfoEntry.Root.NextNode.NextNode.NextNode != null && WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode != null &&
+            WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode != null) {
+                jobExtraEntry = new jobNode[]{WorkInfoEntry.Root.NextNode.NextNode.NextNode, WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode,
+                        WorkInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode};
+            }
         }
         else {
             employmentAddendumHelper(WorkInfoEntry.Root.NextNode.NextNode, 0);
