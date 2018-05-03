@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="backAnchor" stylesheets="@design.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+        <children>
+            <Button fx:id="closeButton" layoutX="240.0" layoutY="333.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="33.0" prefWidth="78.0" styleClass="redButton" textFill="WHITE">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <graphic>
+                    <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Close">
+                        <font>
+                            <Font name="Ubuntu" size="19.0" />
+                        </font>
+                    </Text>
+                </graphic>
+            </Button>
+         <Text fill="#bec8cf" fontSmoothingType="LCD" layoutX="206.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I-765 Additional Options">
+            <font>
+               <Font name="Ubuntu" size="17.0" />
+            </font>
+         </Text>
+         <CheckBox fx:id="Permission" layoutX="163.0" layoutY="120.0" mnemonicParsing="false" onAction="#uncheckPermission" styleClass="checkBox" text="Permission to accept Employment " />
+         <CheckBox fx:id="Replacement" layoutX="163.0" layoutY="165.0" mnemonicParsing="false" onAction="#uncheckReplacement" styleClass="checkBox" text="Replacement" />
+         <CheckBox fx:id="Renewal" layoutX="163.0" layoutY="210.0" mnemonicParsing="false" onAction="#uncheckRenewal" styleClass="checkBox" text="Renewal" />
+         <AnchorPane layoutX="23.0" layoutY="71.0" prefHeight="2.0" prefWidth="560.0" style="-fx-background-color: #bec8cf;" />
+        </children>
+    </AnchorPane>
+</VBox>
