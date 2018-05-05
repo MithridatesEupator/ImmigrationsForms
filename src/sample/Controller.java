@@ -102,7 +102,7 @@ public class Controller implements Initializable {
     public MenuItem latinoYes;
     public MenuItem asyleeBox;
     public MenuItem refugeeBox;
-    public MenuItem paroleeBox;
+    public MenuItem paroleeCubanBox;
     public MenuItem LPRBox;
     public TextField clientWeight;
     public TextField clientHeight;
@@ -1287,14 +1287,27 @@ public class Controller implements Initializable {
         }
     }
 
-    public void paroleeSelect(ActionEvent event) {
+    public void paroleeCubanSelect(ActionEvent event) {
         if (!immigrationStatus.getText().trim().equals("LPR")) {
             ImmigrationStatus = "Cuban1";
-            immigrationStatus.setText("Parolee");
+            immigrationStatus.setText("Cuban Parolee");
             lastArrived = "EntryParoled";
             EntryInspectionStatus = "";
             EntryParoledStatus = "Cuban Parole";
             EntryI765 = "Cuban Parole";
+            OtherStatus = "";
+            I94Status = "Paroled";
+        }
+    }
+
+    public void paroleeHaitianSelect(ActionEvent event) {
+        if (!immigrationStatus.getText().trim().equals("LPR")) {
+            ImmigrationStatus = "Haitian1";
+            immigrationStatus.setText("Haitian Parolee");
+            lastArrived = "EntryParoled";
+            EntryInspectionStatus = "";
+            EntryParoledStatus = "Haitian Parole";
+            EntryI765 = "Haitian Parole";
             OtherStatus = "";
             I94Status = "Paroled";
         }
@@ -2823,13 +2836,15 @@ public class Controller implements Initializable {
         if (endDateMilitary.getText() != null) {
             OrganizationEndDate = new DateValue(endDateMilitary.getText());
         }
+        if (ImmigrationStatus.equals("Refugee")) {
+            addendumInfoEntry.addAddendum("A Transportation Letter from the US","Department of State: Bureau of population",
+                    ", refugees, and migration was used to","enter the country","2","1","16", true);
+        }
         if (CountryOrganization.trim().isEmpty()) {
-            System.out.println("----------222");
             OrgAnswer = "Org-no";
             Q49 = "49-no";
             Q55 = "55-no";
         } else {
-            System.out.println("----------");
             OrgAnswer = "Org-yes";
             int ethnicityIndexOrg = ArrayUtils.indexOf(ethnicityArray, CountryOrganization.toUpperCase()) + 1;
             NameOrganization = ethnicityArray[ethnicityIndexOrg] + " military";
@@ -3705,13 +3720,7 @@ public class Controller implements Initializable {
         else {
             C3status = "C3-no";
         }
-        System.out.println("Immigration status is: " + ImmigrationStatus);
-        if (ImmigrationStatus.equals("Refugee")) {
-            addendumInfoEntry.addAddendum("A Transportation Letter from the US","Department of State: Bureau of population",
-                    ", refugees, and migration was used to","enter the country","2","1","16", true);
-        }
         addendumInfoEntry.checkYourSelf();
-        addendumInfoEntry.printAll();
         CNameList[0] = C1FamilyName;
         CNameList[1] = C1FirstName;
         CNameList[2] = C1MiddleName;
@@ -4307,55 +4316,6 @@ public class Controller implements Initializable {
             Q55 = "55-no";
             Q61 = "61-no";
             Q62 = "62-no";
-            if (!protectAdd) {
-                AddendumA = "";
-                AddendumB = "";
-                AddendumC = "";
-                AddendumD = "";
-                AddendumE = "";
-                AddendumF = "";
-                AddendumG = "";
-                AddendumH = "";
-                AddendumI = "";
-            }
-            if (!protectAdd1) {
-                Addendum1A = "";
-                Addendum1B = "";
-                Addendum1C = "";
-                Addendum1D = "";
-                Addendum1E = "";
-                Addendum1F = "";
-                Addendum1G = "";
-                Addendum1H = "";
-                Addendum1I = "";
-            }
-            Addendum2A = "";
-            Addendum2B = "";
-            Addendum2C = "";
-            Addendum2D = "";
-            Addendum2E = "";
-            Addendum2F = "";
-            Addendum2G = "";
-            Addendum2H = "";
-            Addendum2I = "";
-            Addendum3A = "";
-            Addendum3B = "";
-            Addendum3C = "";
-            Addendum3D = "";
-            Addendum3E = "";
-            Addendum3F = "";
-            Addendum3G = "";
-            Addendum3H = "";
-            Addendum3I = "";
-            Addendum4A = "";
-            Addendum4B = "";
-            Addendum4C = "";
-            Addendum4D = "";
-            Addendum4E = "";
-            Addendum4F = "";
-            Addendum4G = "";
-            Addendum4H = "";
-            Addendum4I = "";
             CheckNum += 1;
             NameOrganization = "";
             CityOrganization = "";

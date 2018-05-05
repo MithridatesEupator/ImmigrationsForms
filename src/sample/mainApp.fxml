@@ -1404,7 +1404,8 @@
                     <items>
                        <MenuItem fx:id="asyleeBox" mnemonicParsing="false" onAction="#asyleeSelect" text="Asylum Seeker" />
                        <MenuItem fx:id="refugeeBox" mnemonicParsing="false" onAction="#refugeeSelect" text="Refugee" />
-                       <MenuItem fx:id="paroleeBox" mnemonicParsing="false" onAction="#paroleeSelect" text="Parolee" />
+                       <MenuItem fx:id="paroleeCubanBox" mnemonicParsing="false" onAction="#paroleeCubanSelect" text="Cuban Parolee" />
+                        <MenuItem fx:id="paroleeHaitianBox" mnemonicParsing="false" onAction="#paroleeHaitianSelect" text="Haitian Parolee" />
                     </items>
                      <font>
                         <Font size="1.0" />
