@@ -23,7 +23,6 @@ public class JobData {
                         String Zipcode, String Country, String Employer, String Occupation, DateValue StartDate, DateValue EndDate) {
         check = this.getLastNode();
         lastNode = this.getLastNode();
-        System.out.println("check is " + check.display());
         if (this.getLastNode().Level != 0 && this.getLastNode().Employer.toUpperCase().trim().equals("UNEMPLOYED")) {
             check = null;
         }

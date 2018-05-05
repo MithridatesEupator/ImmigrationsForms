@@ -2814,20 +2814,6 @@ public class Controller implements Initializable {
         else {
             Q62 = "62-no";
         }
-        if (CountryOrganization.trim().isEmpty()) {
-            OrgAnswer = "Org-no";
-            Q49 = "49-no";
-            Q55 = "55-no";
-        } else {
-            OrgAnswer = "Org-yes";
-            int ethnicityIndexOrg = ArrayUtils.indexOf(ethnicityArray, CountryOrganization.toUpperCase()) + 1;
-            NameOrganization = ethnicityArray[ethnicityIndexOrg] + " military";
-            NatureOrganization = "Military Service";
-            Q49 = "49-yes";
-            Q55 = "55-yes";
-            addendumInfoEntry.addAddendum("When I was in " + CountryOrganization + ", I served in the","military from " + OrganizationStartDate + " to " + OrganizationEndDate + ".",
-                    "","","12", "8", "55", false);
-        }
         if (cityMilitary.getText() != null) {
             CityOrganization = countryMilitary.getText().trim();
         }
@@ -2836,6 +2822,22 @@ public class Controller implements Initializable {
         }
         if (endDateMilitary.getText() != null) {
             OrganizationEndDate = new DateValue(endDateMilitary.getText());
+        }
+        if (CountryOrganization.trim().isEmpty()) {
+            System.out.println("----------222");
+            OrgAnswer = "Org-no";
+            Q49 = "49-no";
+            Q55 = "55-no";
+        } else {
+            System.out.println("----------");
+            OrgAnswer = "Org-yes";
+            int ethnicityIndexOrg = ArrayUtils.indexOf(ethnicityArray, CountryOrganization.toUpperCase()) + 1;
+            NameOrganization = ethnicityArray[ethnicityIndexOrg] + " military";
+            NatureOrganization = "Military Service";
+            Q49 = "49-yes";
+            Q55 = "55-yes";
+            addendumInfoEntry.addAddendum("When I was in " + CountryOrganization + ", I served in the","military from " + OrganizationStartDate.Value + " to " + OrganizationEndDate.Value + ".",
+                    "","","12", "8", "55", false);
         }
         if (AddressStreetName.getText() != null) {
             AddressStreet = AddressStreetName.getText().trim();
@@ -3167,7 +3169,6 @@ public class Controller implements Initializable {
                 try {
                     String TMPEmployment3 = job3Info.getText().trim();
                     TMPE3Info = TMPEmployment3.split("\\|");
-                    System.out.println(Arrays.toString(TMPE3Info));
                 } catch (ArrayIndexOutOfBoundsException ArrayEx) {
                 }
                 workInfoEntry.addNode(TMPE3Info[0], TMPE3Info[1], TMPE3Info[2], TMPE3Info[3],
@@ -3223,7 +3224,6 @@ public class Controller implements Initializable {
                     "", "", new DateValue(""), new DateValue(""), 0, null);
         }
         if(workInfoEntry.Root.Country.equals("") && workInfoEntry.Root.Employer.equals("") ) {
-            System.out.println("SDASDASD");
             workInfoEntry.Root = new JobNode("", "", "", "", "",
                     "", "", "UNEMPLOYED", "NONE", new DateValue(SignatureDate.StringMinusFiveValue), new DateValue("PRESENT"), 0, null);
         }
@@ -3705,11 +3705,13 @@ public class Controller implements Initializable {
         else {
             C3status = "C3-no";
         }
+        System.out.println("Immigration status is: " + ImmigrationStatus);
         if (ImmigrationStatus.equals("Refugee")) {
-            addendumInfoEntry.addAddendum("A Transportation Letter from the US Department of State:","Bureau of population, refugees, and migration was used to enter the country",
-                    "","","2","1","16", true);
+            addendumInfoEntry.addAddendum("A Transportation Letter from the US","Department of State: Bureau of population",
+                    ", refugees, and migration was used to","enter the country","2","1","16", true);
         }
         addendumInfoEntry.checkYourSelf();
+        addendumInfoEntry.printAll();
         CNameList[0] = C1FamilyName;
         CNameList[1] = C1FirstName;
         CNameList[2] = C1MiddleName;
@@ -3779,6 +3781,7 @@ public class Controller implements Initializable {
         addAddendums();
     }
     public void resetVars() throws Exception {
+        addendumInfoEntry = new AddendumGroup();
         String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3,
                 FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode,
                 PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState,
@@ -3844,20 +3847,15 @@ public class Controller implements Initializable {
                 ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState,
                 IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, addendumInfoEntry.Root.pageNum, addendumInfoEntry.Root.partNum, addendumInfoEntry.Root.itemNum,
                 addendumInfoEntry.Root.line1, addendumInfoEntry.Root.line2, addendumInfoEntry.Root.line3, addendumInfoEntry.Root.line4,
-                AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ,
-                addendumInfoEntry.Root.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.itemNum,
+                AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, addendumInfoEntry.Root.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.itemNum,
                 addendumInfoEntry.Root.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.line4,
-                Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J,
-                addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.itemNum,
+                Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.itemNum,
                 addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line4,
-                Addendum2E, Addendum2F, Addendum2G, Addendum2J,
-                addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum,
+                Addendum2E, Addendum2F, Addendum2G, Addendum2J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum,
                 addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4,
-                Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I,
-                addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum,
-                addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4,
-                Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J,
-                EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value,
+                Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum,
+                addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4,
+                Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value,
                 C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value,
                 C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo,
                 lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race,
