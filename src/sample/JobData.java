@@ -24,7 +24,7 @@ public class JobData {
         check = this.getLastNode();
         lastNode = this.getLastNode();
         if (this.getLastNode().Level != 0 && this.getLastNode().Employer.toUpperCase().trim().equals("UNEMPLOYED")) {
-            check = null;
+            this.deleteLastNode();
         }
         if (this.Root == null) {
             if (EndDate.Value.equals(TEMPORARYDATE.Value) || EndDate.Value.equals("PRESENT")) {
@@ -40,6 +40,10 @@ public class JobData {
                     Root.NextNode = new JobNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation,
                             StartDate, EndDate, 1, null);
                     NumLevels = 2;
+                    if (TEMPORARYDATE.IntMinusFiveValue < StartDate.IntValue) {
+                        Root.NextNode.NextNode = new JobNode("", "", "", "", "", "", "", "UNEMPLOYED", "NONE",
+                                new DateValue(TEMPORARYDATE.StringMinusFiveValue), StartDate, 2, null);
+                    }
                 }
             }
         } else {
@@ -48,8 +52,8 @@ public class JobData {
         }
     }
 
-    private void addNodeHelper(String AddressStreet, String AddressAddInfo, String AddressNumber, String AddressCity, String State,
-                               String Zipcode, String Country, String Employer, String Occupation, DateValue StartDate, DateValue EndDate, Integer Level, JobNode Node) {
+    public void addNodeHelper(String AddressStreet, String AddressAddInfo, String AddressNumber, String AddressCity, String State,
+                              String Zipcode, String Country, String Employer, String Occupation, DateValue StartDate, DateValue EndDate, Integer Level, JobNode Node) {
         if (Node.NextNode == null) {
             NumLevels = Level + 1;
             if (TEMPORARYDATE.IntMinusFiveValue > EndDate.IntValue) {
@@ -128,6 +132,40 @@ public class JobData {
             return this.getLastNodeHelper(Node.NextNode);
         }
     }
+
+    public void printAll() {
+        if (this.Root == null) {
+            System.out.println("THIS OBJECT IS EMPTY");
+        }
+        else {
+            this.printAllHelper(Root);
+        }
+    }
+
+    private void printAllHelper(JobNode Node) {
+        System.out.println(Node.display());
+        if (Node.NextNode != null) {
+            this.printAllHelper(Node.NextNode);
+        }
+    }
+
+    public void deleteLastNode() {
+        if(this.Root == null) {
+            System.out.println("THIS OBJECT IS EMPTY");
+        }
+        else {
+            this.deleteLastNodeHelper(Root);
+        }
+    }
+
+    private void deleteLastNodeHelper(JobNode Node) {
+        if(Node.NextNode.NextNode == null) {
+            Node.NextNode = null;
+        }
+        else {
+            deleteLastNodeHelper(Node.NextNode);
+        }
+    }
 }
 
 class JobNode {
@@ -160,6 +198,21 @@ class JobNode {
         this.EndDate = EndDate;
         this.Level = Level;
         this.NextNode = NextNode;
+    }
+    public JobNode() {
+        this.AddressStreet = "";
+        this.AddressAddInfo = "";
+        this.AddressNumber = "";
+        this.AddressCity = "";
+        this.State = "";
+        this.Zipcode = "";
+        this.Country = "";
+        this.Occupation = "";
+        this.StartDate = new DateValue("");
+        this.Employer = "";
+        this.EndDate = new DateValue("");
+        this.Level = 0;
+        this.NextNode = null;
     }
     public String display() {
         return (AddressStreet + " : " + AddressAddInfo + " : " + AddressCity + " : " + State + " : " + Zipcode + " : " + Country + " : " + Employer + " : " + Occupation + " : " + StartDate.Value + " : " + EndDate.Value + " : " + Level);
