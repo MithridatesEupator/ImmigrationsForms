@@ -166,6 +166,22 @@ public class JobData {
             deleteLastNodeHelper(Node.NextNode);
         }
     }
+
+    public void checkYourself(int Scale) {
+        if (this.Root == null) {
+            this.Root = new JobNode();
+        }
+        checkYourselfHelper(Root,1, Scale);
+    }
+
+    private void checkYourselfHelper(JobNode Node, int Level, int Scale) {
+        if(Node.NextNode == null) {
+            Node.NextNode = new JobNode(Level);
+        }
+        if (Node.Level < Scale) {
+            this.checkYourselfHelper(Node.NextNode, Level + 1, Scale);
+        }
+    }
 }
 
 class JobNode {
@@ -212,6 +228,21 @@ class JobNode {
         this.Employer = "";
         this.EndDate = new DateValue("");
         this.Level = 0;
+        this.NextNode = null;
+    }
+    public JobNode(int Level) {
+        this.AddressStreet = "";
+        this.AddressAddInfo = "";
+        this.AddressNumber = "";
+        this.AddressCity = "";
+        this.State = "";
+        this.Zipcode = "";
+        this.Country = "";
+        this.Occupation = "";
+        this.StartDate = new DateValue("");
+        this.Employer = "";
+        this.EndDate = new DateValue("");
+        this.Level = Level;
         this.NextNode = null;
     }
     public String display() {
