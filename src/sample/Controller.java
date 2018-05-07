@@ -1,6 +1,5 @@
 package sample;
 
-import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
@@ -68,7 +67,6 @@ public class Controller implements Initializable {
     public MenuItem asyleeBox;
     public MenuItem refugeeBox;
     public MenuItem paroleeCubanBox;
-    public MenuItem LPRBox;
     public TextField clientWeight;
     public TextField clientHeight;
     public TextField clientPhoneNum;
@@ -134,7 +132,6 @@ public class Controller implements Initializable {
     public CheckBox child1Apply;
     public CheckBox child2Apply;
     public CheckBox child3Apply;
-    public AnchorPane mainWindow;
     public TextField AddressEndTime3;
     public CheckBox AddressApt2;
     public TextField AddressNumber2;
@@ -226,27 +223,20 @@ public class Controller implements Initializable {
     public CheckBox child7Gender;
     public TextField Spouse3Info;
     public TextField Spouse4Info;
-    public TextField Spouse5Info;
     public TextField Spouse3MarriageDate;
     public TextField Spouse3DivorceDate;
     public TextField Spouse4MarriageDate;
     public TextField Spouse4DivorceDate;
-    public TextField Spouse5MarriageDate;
-    public TextField Spouse5DivorceDate;
     public TextField job4Info;
-    public TextField Occupation7;
     public TextField Occupation6;
-    public TextField Employer7;
     public TextField Employer6;
     public TextField Occupation5;
     public TextField Employer5;
     public TextField Occupation4;
     public TextField Employer4;
-    public TextField Address7Info;
     public TextField Address6Info;
     public TextField Address5Info;
     public TextField Address4Info;
-    public TextField job7Info;
     public TextField job6Info;
     public TextField job5Info;
     public TextField Spouse2Info;
@@ -270,7 +260,6 @@ public class Controller implements Initializable {
     public TextField clientI94Number;
     public TextField clientI94Status;
     public TextField clientPortState;
-    public TextField clientPortState1;
     public TextField clientI94Expiration;
     public TextField documentExpiration;
     public TextField clientPortDate;
@@ -529,6 +518,7 @@ public class Controller implements Initializable {
     String SCityMarriage = new String();
     String SCountryMarriage = new String();
     String ChildNum = new String();
+    static String ChildNumReference = new String();
     String C1FamilyName = new String();
     String C1MiddleName = new String();
     String C1FirstName = new String();
@@ -597,75 +587,29 @@ public class Controller implements Initializable {
     String IMobNum = new String();
     String IEmail = new String();
     String Language = new String();
-    String PFamilyName = new String();
-    String PFirstName = new String();
-    String POrganizationName = new String();
-    String PAddressStreet = new String();
-    String PAddInfoAddress = new String();
-    String PAddressCity = new String();
-    String PState = new String();
-    String PZipcode = new String();
-    String PDayTimeNum = new String();
-    String PMobNum = new String();
-    String PEmail = new String();
-    String PN = new String();
-    String PaN = new String();
-    String IN = new String();
-    String AddendumA = new String();
-    String AddendumB = new String();
-    String AddendumC = new String();
-    String AddendumD = new String();
     String AddendumE = new String();
     String AddendumF = new String();
     String AddendumG = new String();
     String AddendumH = new String();
     String AddendumI = new String();
     String AddendumJ = new String();
-    String PN1 = new String();
-    String PaN1 = new String();
-    String IN1 = new String();
-    String Addendum1A = new String();
-    String Addendum1B = new String();
-    String Addendum1C = new String();
-    String Addendum1D = new String();
     String Addendum1E = new String();
     String Addendum1F = new String();
     String Addendum1G = new String();
     String Addendum1H = new String();
     String Addendum1I = new String();
     String Addendum1J = new String();
-    String PN2 = new String();
-    String PaN2 = new String();
-    String IN2 = new String();
-    String Addendum2A = new String();
-    String Addendum2B = new String();
-    String Addendum2C = new String();
-    String Addendum2D = new String();
     String Addendum2E = new String();
     String Addendum2F = new String();
     String Addendum2G = new String();
     String Addendum2H = new String();
     String Addendum2I = new String();
     String Addendum2J = new String();
-    String PN3 = new String();
-    String PaN3 = new String();
-    String IN3 = new String();
-    String Addendum3A = new String();
-    String Addendum3B = new String();
-    String Addendum3C = new String();
-    String Addendum3D = new String();
     String Addendum3E = new String();
     String Addendum3F = new String();
     String Addendum3G = new String();
     String Addendum3H = new String();
     String Addendum3I = new String();
-    String PN4 = new String();
-    String PaN4 = new String();
-    String IN4 = new String();
-    String Addendum4A = new String();
-    String Addendum4B = new String();
-    String Addendum4C = new String();
-    String Addendum4D = new String();
     String Addendum4E = new String();
     String Addendum4F = new String();
     String Addendum4G = new String();
@@ -767,19 +711,13 @@ public class Controller implements Initializable {
     static String C1SpouseNumber = new String();
     static String C2SpouseNumber = new String();
     static String C3SpouseNumber = new String();
-    static String C4SpouseNumber = new String();
-    static String C5SpouseNumber = new String();
-
-    Boolean C1Files = false;
-    Boolean C2Files = false;
-    Boolean C3Files = false;
-    Boolean needAddendum = false;
 
     String[] CNameList = new String[9];
     String[] CANumList = new String[3];
     String[] CGenderList = new String[3];
     String[] CCountryList = new String[3];
-    Boolean[] CApplyList = new Boolean[3];
+    static Boolean[] CApplyList = new Boolean[3];
+    Boolean needAddendum = false;
 
     String[] C4Info = new String[7];
     String[] C5Info = new String[7];
@@ -806,7 +744,8 @@ public class Controller implements Initializable {
             "AFGHANISTAN","AFGHAN","PAKISTAN","PAKISTANI","LEBANON","LEBANESE","JORDAN","JORDANIAN","YEMEN","YEMENI","HONDURAS","HONDURAN","EL SALVADOR","SALVADORAN","GUATEMALAN","GUATEMALAN",
             "BRAZIL","BRAZILIAN","EGYPT","EGYPTIAN","BELIZE","BELIZEAN","NICARAGUA","NICARAGUAN","PANAMA","PANAMAN","ROMANIA","ROMANIAN","GREECE","GREEK","ALGERIA","ALGERIAN","LIBYA","LIBYAN",
             "ETHIOPIA","ETHIOPIAN","MYANMAR","MYANMARESE","VIETNAM","VIETNAMESE","LAOS","LAO","SOUTH AFRICA","SOUTH AFRICAN","COSTA RICA","COSTA RICAN","HAITI","HAITIAN","DOMINICAN REPUBLIC",
-            "DOMINICAN","ARMENIA","ARMENIAN","AZERBAIJAN","AZEBERBAIJANI","KAZAKHISTAN","KAZAKHISTANI"};
+            "DOMINICAN","ARMENIA","ARMENIAN","AZERBAIJAN","AZEBERBAIJANI","KAZAKHISTAN","KAZAKHISTANI","SAUDI ARABIA","SAUDI","TANZANIA","TANZIAN","CENTRAL AFRICAN REPUBLIC","CENTRAL AFRICAN REPUBLICAN",
+            "COLOMBIA","COLOMBIAN","UKRAINE","UKRAINIAN","PHILIPPINES","FILIPINO","MOROCCO","MOROCCAN"};
 
     static String C4FamilyName = "";
     static String C4FirstName = "";
@@ -3524,6 +3463,7 @@ public class Controller implements Initializable {
         if (C1FamilyName.trim().isEmpty()) {
             ChildNum = "0";
         }
+        ChildNumReference = ChildNum;
         if (fatherFamilyName.getText() != null) {
             FFamilyName = fatherFamilyName.getText().trim();
         }
@@ -3619,13 +3559,24 @@ public class Controller implements Initializable {
         }
         if (child1Apply.isSelected()) {
             C1status = "C1-yes";
-        } else if (child1FamilyName.getText() != null) {
+            CApplyList[0] = true;
+        }
+        else if(!child1Apply.isSelected() && !child1FamilyName.getText().trim().isEmpty()) {
             C1status = "C1-no";
         }
         if (child2Apply.isSelected()) {
             C2status = "C2-yes";
-        } else if (child2FamilyName.getText() != null) {
+            CApplyList[1] = true;
+        }
+        else if(!child2Apply.isSelected() && !child2FamilyName.getText().trim().isEmpty()) {
             C2status = "C2-no";
+        }
+        if (child3Apply.isSelected()) {
+            C3status = "C3-yes";
+            CApplyList[2] = true;
+        }
+        else if(!child3Apply.isSelected() && !child3FamilyName.getText().trim().isEmpty()) {
+            C3status = "C3-no";
         }
         if (child3Apply.isSelected()) {
             C3status = "C3-yes";
@@ -3675,27 +3626,6 @@ public class Controller implements Initializable {
         else {
             C3Gender = "Female";
         }
-        if (child1Apply.isSelected()) {
-            C1status = "C1-yes";
-            C1Files = true;
-        }
-        else {
-            C1status = "C1-no";
-        }
-        if (child2Apply.isSelected()) {
-            C2status = "C2-yes";
-            C2Files = true;
-        }
-        else {
-            C2status = "C2-no";
-        }
-        if (child3Apply.isSelected()) {
-            C3status = "C3-yes";
-            C3Files = true;
-        }
-        else {
-            C3status = "C3-no";
-        }
         addendumInfoEntry.checkYourSelf();
         CNameList[0] = C1FamilyName;
         CNameList[1] = C1FirstName;
@@ -3715,9 +3645,6 @@ public class Controller implements Initializable {
         CCountryList[0] = C1CountryBirth;
         CCountryList[1] = C2CountryBirth;
         CCountryList[2] = C3CountryBirth;
-        CApplyList[0] = C1Files;
-        CApplyList[1] = C2Files;
-        CApplyList[2] = C3Files;
     }
 
     public void resetVars() throws Exception {
@@ -3796,7 +3723,7 @@ public class Controller implements Initializable {
         if (C1SpouseNumber.trim().isEmpty()) {
             C1SpouseNumber = "1";
         }
-        if (fileIteration < Integer.valueOf(ChildNum) && CApplyList[fileIteration]) {
+        if (fileIteration < Integer.valueOf(ChildNumReference) && CApplyList[fileIteration]) {
             if (AGender == "Male") {
                 FFamilyName = FamilyName;
                 FFirstName = FirstName;
@@ -4130,6 +4057,16 @@ public class Controller implements Initializable {
                 FamilyName1 = C1FamilyName1;
                 FirstName1 = C1FirstName1;
                 MiddleName1 = C1MiddleName1;
+            }
+            ChildNum = "0";
+            if (!C1status.trim().isEmpty()) {
+                C1status = "";
+            }
+            if (!C2status.trim().isEmpty()) {
+                C2status = "";
+            }
+            if (!C3status.trim().isEmpty()) {
+                C3status = "";
             }
             ANum = CANumList[fileIteration];
             Feet = C1Feet;
