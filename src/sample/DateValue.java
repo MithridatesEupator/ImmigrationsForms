@@ -53,16 +53,30 @@ public class DateValue {
             this.Value = DateVar.trim();
         }
     }
+
+    DateValue() {
+        this.Month = 0;
+        this.Day = 0;
+        this.Year = 0;
+        this.IntValue = 0;
+        this.IntMinusFiveValue = 0;
+        this.StringMinusFiveValue = "";
+        this.Value = "";
+    }
+
     public void PrintMonth() {
         String[] Monthes = {"January","February","March","April","May","June","July","August","September","October","November","December"};
         System.out.println(Monthes[this.Month - 1]);
     }
+
     public void PrintDay() {
         System.out.println(this.Day);
     }
+
     public void PrintYear() {
         System.out.println(this.Year);
     }
+
     public static void main(String[] args) {
         DateValue v = new DateValue("12/20/2013");
         String[] b = {"a", "b", v.Value};

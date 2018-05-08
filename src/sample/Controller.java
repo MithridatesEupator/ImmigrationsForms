@@ -46,7 +46,6 @@ import static javafx.scene.effect.BlurType.GAUSSIAN;
 public class Controller implements Initializable {
 
     @FXML
-    public Button processButton;
     public TextField clientMiddleName;
     public TextField clientFamilyName;
     public TextField clientFirstName;
@@ -314,14 +313,7 @@ public class Controller implements Initializable {
     public MenuButton ClientC2Parent;
     public MenuButton ClientC2HairColor;
     public MenuButton ClientC2EyeColor;
-    public MenuItem C2pacific;
-    public MenuItem C2amerindian;
-    public MenuItem C2black;
-    public MenuItem C2asian;
-    public MenuItem C2white;
     public MenuButton ClientC2Race;
-    public MenuItem C2latinoNo;
-    public MenuItem C2latinoYes;
     public MenuButton ClientC2Ethnicity;
     public TextField ClientC2Height;
     public TextField ClientC2Weight;
@@ -333,8 +325,6 @@ public class Controller implements Initializable {
     public TextField ClientC3Weight;
     public TextField ClientC3Height;
     public MenuButton ClientC3Ethnicity;
-    public MenuItem C3latinoYes;
-    public MenuItem C3latinoNo;
     public MenuButton ClientC3Race;
     public MenuButton ClientC3EyeColor;
     public MenuButton ClientC3HairColor;
@@ -349,9 +339,6 @@ public class Controller implements Initializable {
     public CheckBox C6Female;
     public CheckBox C7Female;
     public CheckBox SpouseFemale;
-    public CheckBox jobUnemployed;
-    public CheckBox jobUnemployed1;
-    public CheckBox jobUnemployed2;
     public Button minimizeButton;
     public AnchorPane mainMenu;
     public AnchorPane AddressMenu;
@@ -384,7 +371,6 @@ public class Controller implements Initializable {
     public CheckBox cardReceived;
     public CheckBox cardMutilated;
     public CheckBox cardExpired;
-
     private Stage stage;
 
     static String ANum = new String();
@@ -402,8 +388,8 @@ public class Controller implements Initializable {
     static String MiddleName3 = new String();
     String Name = new String();
     String CityBirth = new String();
-    DateValue DOBDate = new DateValue("");
-    String CountryBirth = new String();
+    DateValue DOBDate = new DateValue();
+    static String CountryBirth = new String();
     String Nationality = new String();
     String SocialSecurity = new String();
     String AddressStreet = new String();
@@ -413,73 +399,43 @@ public class Controller implements Initializable {
     String Zipcode = new String();
     String PassportNum = new String();
     String TravelNum = new String();
-    DateValue ExpirationDate = new DateValue("");
+    DateValue ExpirationDate = new DateValue();
     String PassportCountry = new String();
     String EntryCity = new String();
     String EntryState = new String();
-    DateValue LastArrivalDate = new DateValue("");
+    DateValue LastArrivalDate = new DateValue();
     String I94Num = new String();
-    DateValue ExpirationDate1 = new DateValue("");
+    DateValue ExpirationDate1 = new DateValue();
     String I94Status = new String();
     String CurrentImmigrationStatus = new String();
     String I94FamilyName = new String();
     String I94FirstName = new String();
     String I94MiddleName = new String();
-    DateValue StartDate = new DateValue("");
-    DateValue EndDate = new DateValue("");
+    DateValue StartDate = new DateValue();
+    DateValue EndDate = new DateValue();
     String AddressStreet1 = new String();
     String AddInfoAddress1 = new String();
     String AddressCity1 = new String();
     String State1 = new String();
     String Zipcode1 = new String();
     String Country1 = new String();
-    DateValue StartDate1 = new DateValue("");
-    DateValue EndDate1 = new DateValue("");
+    DateValue StartDate1 = new DateValue();
+    DateValue EndDate1 = new DateValue();
     String AddressStreet2 = new String();
     String AddInfoAddress2 = new String();
     String AddressCity2 = new String();
     String State2 = new String();
     String Zipcode2 = new String();
     String Country2 = new String();
-    DateValue StartDate2 = new DateValue("");
-    DateValue EndDate2 = new DateValue("");
-    String Employer = new String();
-    String WorkAddressStreet = new String();
-    String WorkAddInfoAddress = new String();
-    String WorkAddressCity = new String();
-    String WorkState = new String();
-    String WorkZipcode = new String();
-    String WorkCountry = new String();
-    String WorkOccupation = new String();
-    DateValue WorkStartDate = new DateValue("");
-    DateValue WorkEndDate = new DateValue("");
-    String Employer1 = new String();
-    String WorkAddressStreet1 = new String();
-    String WorkAddInfoAddress1 = new String();
-    String WorkAddressCity1 = new String();
-    String WorkState1 = new String();
-    String WorkZipcode1 = new String();
-    String WorkCountry1 = new String();
-    String WorkOccupation1 = new String();
-    DateValue WorkStartDate1 = new DateValue("");
-    DateValue WorkEndDate1 = new DateValue("");
-    String Employer2 = new String();
-    String WorkAddressStreet2 = new String();
-    String WorkAddInfoAddress2 = new String();
-    String WorkAddressCity2 = new String();
-    String WorkState2 = new String();
-    String WorkZipcode2 = new String();
-    String WorkCountry2 = new String();
-    String WorkOccupation2 = new String();
-    DateValue WorkStartDate2 = new DateValue("");
-    DateValue WorkEndDate2 = new DateValue("");
+    DateValue StartDate2 = new DateValue();
+    DateValue EndDate2 = new DateValue();
     String FFamilyName = new String();
     String FFirstName = new String();
     String FMiddleName = new String();
     String FFamilyNameB = new String();
     String FFirstNameB = new String();
     String FMiddleNameB = new String();
-    DateValue FDOB = new DateValue("");
+    DateValue FDOB = new DateValue();
     String FCityBirth = new String();
     String FCountryBirth = new String();
     String FCityCurrent = new String();
@@ -490,7 +446,7 @@ public class Controller implements Initializable {
     String MFamilyNameB = new String();
     String MFirstNameB = new String();
     String MMiddleNameB = new String();
-    DateValue MDOB = new DateValue("");
+    DateValue MDOB = new DateValue();
     String MCityBirth = new String();
     String MCountryBirth = new String();
     String MCityCurrent = new String();
@@ -500,18 +456,18 @@ public class Controller implements Initializable {
     String SMiddleName = new String();
     String SFirstName = new String();
     String SANum = new String();
-    DateValue SDOBDate = new DateValue("");
+    DateValue SDOBDate = new DateValue();
     String SMarriageDate = new String();
     String SCityBirth = new String();
     String SCountryBirth = new String();
     String DFamilyName = new String();
     String DFirstName = new String();
     String DMiddleName = new String();
-    DateValue DDOBDate = new DateValue("");
-    DateValue DMarriageDate = new DateValue("");
+    DateValue DDOBDate = new DateValue();
+    DateValue DMarriageDate = new DateValue();
     String DCityMarriage = new String();
     String DStateMarriage = new String();
-    DateValue DMarriageEndDate = new DateValue("");
+    DateValue DMarriageEndDate = new DateValue();
     String SCityEnd = new String();
     String SStateEnd = new String();
     String SCountryEnd = new String();
@@ -523,24 +479,24 @@ public class Controller implements Initializable {
     String C1MiddleName = new String();
     String C1FirstName = new String();
     String C1ANum = new String();
-    DateValue C1DOBDate = new DateValue("");
-    DateValue C1MarriageDate = new DateValue("");
+    static DateValue C1DOBDate = new DateValue();
+    DateValue C1MarriageDate = new DateValue();
     String C1CityBirth = new String();
     String C1CountryBirth = new String();
     String C2FamilyName = new String();
     String C2MiddleName = new String();
     String C2FirstName = new String();
     String C2ANum = new String();
-    DateValue C2DOBDate = new DateValue("");
-    DateValue C2MarriageDate = new DateValue("");
+    static DateValue C2DOBDate = new DateValue();
+    DateValue C2MarriageDate = new DateValue();
     String C2CityBirth = new String();
     String C2CountryBirth = new String();
     String C3FamilyName = new String();
     String C3MiddleName = new String();
     String C3FirstName = new String();
     String C3ANum = new String();
-    DateValue C3DOBDate = new DateValue("");
-    DateValue C3MarriageDate = new DateValue("");
+    static DateValue C3DOBDate = new DateValue();
+    DateValue C3MarriageDate = new DateValue();
     String C3CityBirth = new String();
     String C3CountryBirth = new String();
     String Feet = new String();
@@ -553,26 +509,26 @@ public class Controller implements Initializable {
     String StateOrganization = new String();
     String CountryOrganization = new String();
     String NatureOrganization = new String();
-    DateValue OrganizationStartDate = new DateValue("");
-    DateValue OrganizationEndDate = new DateValue("");
+    DateValue OrganizationStartDate = new DateValue();
+    DateValue OrganizationEndDate = new DateValue();
     String NameOrganization1 = new String();
     String CityOrganization1 = new String();
     String StateOrganization1 = new String();
     String CountryOrganization1 = new String();
     String NatureOrganization1 = new String();
-    DateValue OrganizationStartDate1 = new DateValue("");
-    DateValue OrganizationEndDate1 = new DateValue("");
+    DateValue OrganizationStartDate1 = new DateValue();
+    DateValue OrganizationEndDate1 = new DateValue();
     String NameOrganization2 = new String();
     String CityOrganization2 = new String();
     String StateOrganization2 = new String();
     String CountryOrganization2 = new String();
     String NatureOrganization2 = new String();
-    DateValue OrganizationStartDate2 = new DateValue("");
-    DateValue OrganizationEndDate2 = new DateValue("");
+    DateValue OrganizationStartDate2 = new DateValue();
+    DateValue OrganizationEndDate2 = new DateValue();
     String ADayTimeNum = new String();
     String AMobNum = new String();
     String AEmail = new String();
-    DateValue SignatureDate = new DateValue("");
+    DateValue SignatureDate = new DateValue();
     String IFamilyName = new String();
     String IMiddleName = new String();
     String IFirstName = new String();
@@ -602,8 +558,6 @@ public class Controller implements Initializable {
     String Addendum2E = new String();
     String Addendum2F = new String();
     String Addendum2G = new String();
-    String Addendum2H = new String();
-    String Addendum2I = new String();
     String Addendum2J = new String();
     String Addendum3E = new String();
     String Addendum3F = new String();
@@ -738,38 +692,40 @@ public class Controller implements Initializable {
     static int fileIteration = 0;
 
     String NameTitle;
+    static DateValue[] CDOBDate;
 
     String[] ethnicityArray = {"","","ARGENTINA","ARGENTINIAN","URUGUAY","URUGUAYANS","PARAGUAY","PARAGUAYANS","TUNIS","TUNISIAN","IRAQ","IRAQI","JORDAN","JORDANIAN","SYRIA","SYRIAN","CUBA","CUBAN",
             "TURKEY","TURKISH","DEM REP OF CONGO","CONGOLESE","DEMOCRATIC REPUBLIC OF CONGO","CONGOLESE","NIGER","NIGERIEN","NIGERIA","NIGERIAN","IRAN","IRANIAN",
             "AFGHANISTAN","AFGHAN","PAKISTAN","PAKISTANI","LEBANON","LEBANESE","JORDAN","JORDANIAN","YEMEN","YEMENI","HONDURAS","HONDURAN","EL SALVADOR","SALVADORAN","GUATEMALAN","GUATEMALAN",
             "BRAZIL","BRAZILIAN","EGYPT","EGYPTIAN","BELIZE","BELIZEAN","NICARAGUA","NICARAGUAN","PANAMA","PANAMAN","ROMANIA","ROMANIAN","GREECE","GREEK","ALGERIA","ALGERIAN","LIBYA","LIBYAN",
             "ETHIOPIA","ETHIOPIAN","MYANMAR","MYANMARESE","VIETNAM","VIETNAMESE","LAOS","LAO","SOUTH AFRICA","SOUTH AFRICAN","COSTA RICA","COSTA RICAN","HAITI","HAITIAN","DOMINICAN REPUBLIC",
-            "DOMINICAN","ARMENIA","ARMENIAN","AZERBAIJAN","AZEBERBAIJANI","KAZAKHISTAN","KAZAKHISTANI","SAUDI ARABIA","SAUDI","TANZANIA","TANZIAN","CENTRAL AFRICAN REPUBLIC","CENTRAL AFRICAN REPUBLICAN",
-            "COLOMBIA","COLOMBIAN","UKRAINE","UKRAINIAN","PHILIPPINES","FILIPINO","MOROCCO","MOROCCAN"};
+            "DOMINICAN","ARMENIA","ARMENIAN","AZERBAIJAN","AZEBERBAIJANI","KAZAKHISTAN","KAZAKHISTANI","SAUDI ARABIA","SAUDI","TANZANIA","TANZIAN","CENTRAL AFRICAN REPUBLIC","CENTRAL AFRICAN",
+            "COLOMBIA","COLOMBIAN","UKRAINE","UKRAINIAN","PHILIPPINES","FILIPINO","MOROCCO","MOROCCAN","ERITREA","ERITREAN","DJIBOUTI","DJIBOUTIAN","PALESTINE","PALESTINIAN","ECUARDOR","ECUADORIAN",
+            "PERU","PERUVIAN"};
 
     static String C4FamilyName = "";
     static String C4FirstName = "";
     static String C4MiddleName = "";
     static String C4ANum = "";
-    static DateValue C4DOBDate = new DateValue("");
+    static DateValue C4DOBDate = new DateValue();
     static String C4CountryBirth;
     static String C5FamilyName = "";
     static String C5FirstName = "";
     static String C5MiddleName = "";
     static String C5ANum = "";
-    static DateValue C5DOBDate = new DateValue("");
+    static DateValue C5DOBDate = new DateValue();
     static String C5CountryBirth = "";
     static String C6FamilyName = "";
     static String C6FirstName = "";
     static String C6MiddleName = "";
     static String C6ANum = "";
-    static DateValue C6DOBDate = new DateValue("");
+    static DateValue C6DOBDate = new DateValue();
     static String C6CountryBirth = "";
     static String C7FamilyName = "";
     static String C7FirstName = "";
     static String C7MiddleName = "";
     static String C7ANum = "";
-    static DateValue C7DOBDate = new DateValue("");
+    static DateValue C7DOBDate = new DateValue();
     static String C7CountryBirth = "";
 
     static String AddressStreet3 = "";
@@ -779,8 +735,8 @@ public class Controller implements Initializable {
     static String State3 = "";
     static String Zipcode3 = "";
     static String Country3 = "";
-    static DateValue StartDate3 = new DateValue("");
-    static DateValue EndDate3 = new DateValue("");
+    static DateValue StartDate3 = new DateValue();
+    static DateValue EndDate3 = new DateValue();
 
     static String AddressStreet4 = "";
     static String TenantSelection4 = "";
@@ -789,8 +745,8 @@ public class Controller implements Initializable {
     static String State4 = "";
     static String Zipcode4 = "";
     static String Country4 = "";
-    static DateValue StartDate4 = new DateValue("");
-    static DateValue EndDate4 = new DateValue("");
+    static DateValue StartDate4 = new DateValue();
+    static DateValue EndDate4 = new DateValue();
 
     static String AddressStreet5 = "";
     static String TenantSelection5 = "";
@@ -799,8 +755,8 @@ public class Controller implements Initializable {
     static String State5 = "";
     static String Zipcode5 = "";
     static String Country5 = "";
-    static DateValue StartDate5 = new DateValue("");
-    static DateValue EndDate5 = new DateValue("");
+    static DateValue StartDate5 = new DateValue();
+    static DateValue EndDate5 = new DateValue();
 
     static String AddressStreet6 = "";
     static String TenantSelection6 = "";
@@ -809,14 +765,14 @@ public class Controller implements Initializable {
     static String State6 = "";
     static String Zipcode6 = "";
     static String Country6 = "";
-    static DateValue StartDate6 = new DateValue("");
-    static DateValue EndDate6 = new DateValue("");
+    static DateValue StartDate6 = new DateValue();
+    static DateValue EndDate6 = new DateValue();
 
+    JobNode jobForeign = new JobNode();
+    JobNode[] jobExtraEntry = {new JobNode(), new JobNode(), new JobNode()};
     static JobData workInfoEntry = new JobData();
     static AddendumGroup addendumInfoEntry = new AddendumGroup();
-
     static String methodAddressStreet = "";
-    static String methodAddressAddInfo = "";
     static String methodAddressNumber = "";
     static String methodAddressCity = "";
     static String methodState = "";
@@ -825,7 +781,6 @@ public class Controller implements Initializable {
     static String methodEmployer = "";
     static String methodOccupation = "";
     static String methodAddressStreet1 = "";
-    static String methodAddressAddInfo1 = "";
     static String methodAddressNumber1 = "";
     static String methodAddressCity1 = "";
     static String methodState1 = "";
@@ -834,7 +789,6 @@ public class Controller implements Initializable {
     static String methodEmployer1 = "";
     static String methodOccupation1 = "";
     static String methodAddressStreet2 = "";
-    static String methodAddressAddInfo2 = "";
     static String methodAddressNumber2 = "";
     static String methodAddressCity2 = "";
     static String methodState2 = "";
@@ -846,21 +800,10 @@ public class Controller implements Initializable {
     String ETenantInfo3 = "";
     String ETenantInfo4 = "";
     String ETenantInfo5 = "";
-
     static String reason = "";
 
     private double xOffset = 0;
     private double yOffset = 0;
-
-    JobNode jobForeign = new JobNode("","","","","","","",
-            "","",new DateValue(""), new DateValue(""), 0, null);
-
-    JobNode[] jobExtraEntry = {new JobNode("","","","","","","",
-            "","",new DateValue(""), new DateValue(""), 0, null),
-            new JobNode("","","","","","","",
-                    "","",new DateValue(""), new DateValue(""), 0, null),
-            new JobNode("","","","","","","",
-                    "","",new DateValue(""), new DateValue(""), 0, null)};
 
     @Override
 
@@ -1196,6 +1139,8 @@ public class Controller implements Initializable {
             EntryI765 = "Cuban Parole";
             OtherStatus = "";
             I94Status = "Paroled";
+            CountryBirth = "Cuba";
+            Nationality = "Cuban";
         }
     }
 
@@ -1209,6 +1154,8 @@ public class Controller implements Initializable {
             EntryI765 = "Haitian Parole";
             OtherStatus = "";
             I94Status = "Paroled";
+            CountryBirth = "Haiti";
+            Nationality = "Haitian";
         }
     }
 
@@ -2583,7 +2530,7 @@ public class Controller implements Initializable {
             String TEMPORARY = clientDOB.getText().trim();
             DOBDate = new DateValue(TEMPORARY);
         }
-        if (clientBirthCountry.getText() != null) {
+        if (clientBirthCountry.getText() != null && CountryBirth.trim().equals("Cuba") && CountryBirth.trim().equals("Haiti")) {
             CountryBirth = clientBirthCountry.getText().trim();
             int ethnicityIndex = ArrayUtils.indexOf(ethnicityArray, CountryBirth.toUpperCase()) + 1;
             Nationality = ethnicityArray[ethnicityIndex];
@@ -3153,17 +3100,17 @@ public class Controller implements Initializable {
             }
         }
         catch(NullPointerException ex) {
-            jobForeign = new JobNode("", "", "", "", "", "", "", "SEE ABOVE", "", new DateValue(""), new DateValue(""), 0, null);
+            jobForeign = new JobNode("", "", "", "", "", "", "", "SEE ABOVE", "", new DateValue(), new DateValue(), 0, null);
         }
         workInfoEntry.checkYourself(1);
         if(workInfoEntry.Root.Country.equals("") && workInfoEntry.Root.Employer.equals("") ) {
             workInfoEntry.Root = new JobNode("", "", "", "", "", "", "", "UNEMPLOYED", "NONE", new DateValue(SignatureDate.StringMinusFiveValue), new DateValue("PRESENT"), 0, null);
         }
         if (workInfoEntry.Root.NextNode == null) {
-            workInfoEntry.Root.NextNode = new JobNode("", "", "", "", "", "", "", "", "", new DateValue(""), new DateValue(""), 1, null);
+            workInfoEntry.Root.NextNode = new JobNode("", "", "", "", "", "", "", "", "", new DateValue(), new DateValue(), 1, null);
         }
         if (jobForeign == null) {
-            jobForeign = new JobNode("", "", "", "", "", "", "", "", "", new DateValue(""), new DateValue(""), 2, null);
+            jobForeign = new JobNode("", "", "", "", "", "", "", "", "", new DateValue(), new DateValue(), 2, null);
         }
         if (workInfoEntry.getLastNode().Level >= 3) {
             needAddendum = true;
@@ -3663,6 +3610,7 @@ public class Controller implements Initializable {
     }
 
     public void fillAppHelper() throws Exception {
+        CDOBDate = new DateValue[]{C1DOBDate, C2DOBDate, C3DOBDate};
         NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
         Name = NameTitle.replace("_"," ");
         String[] fieldArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode, PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value, EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, workInfoEntry.Root.Employer, workInfoEntry.Root.AddressStreet, workInfoEntry.Root.AddressAddInfo, workInfoEntry.Root.AddressCity, workInfoEntry.Root.State, workInfoEntry.Root.Zipcode, workInfoEntry.Root.Country, workInfoEntry.Root.Occupation, workInfoEntry.Root.StartDate.Value, workInfoEntry.Root.EndDate.Value, workInfoEntry.Root.NextNode.Employer, workInfoEntry.Root.NextNode.AddressStreet, workInfoEntry.Root.NextNode.AddressAddInfo, workInfoEntry.Root.NextNode.AddressCity, workInfoEntry.Root.NextNode.State, workInfoEntry.Root.NextNode.Zipcode, workInfoEntry.Root.NextNode.Country, workInfoEntry.Root.NextNode.Occupation, workInfoEntry.Root.NextNode.StartDate.Value, workInfoEntry.Root.NextNode.EndDate.Value, jobForeign.Employer, jobForeign.AddressStreet, jobForeign.AddressAddInfo, jobForeign.AddressCity, jobForeign.State, jobForeign.Zipcode, jobForeign.Country, jobForeign.Occupation, jobForeign.StartDate.Value, jobForeign.EndDate.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate, SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value, SCityEnd, SStateEnd, SCountryEnd,  SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value, ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, addendumInfoEntry.Root.pageNum, addendumInfoEntry.Root.partNum, addendumInfoEntry.Root.itemNum, addendumInfoEntry.Root.line1, addendumInfoEntry.Root.line2, addendumInfoEntry.Root.line3, addendumInfoEntry.Root.line4, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, addendumInfoEntry.Root.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.line4, Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line4, Addendum2E, Addendum2F, Addendum2G, Addendum2J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4, Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4, Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value, C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value, C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox,C4status,C5status,C6status,C7status};
@@ -3720,6 +3668,7 @@ public class Controller implements Initializable {
 
     public void fileAddApplication() throws Exception {
         addendumInfoEntry.clearObject();
+        CDOBDate = new DateValue[]{C1DOBDate, C2DOBDate, C3DOBDate};
         if (C1SpouseNumber.trim().isEmpty()) {
             C1SpouseNumber = "1";
         }
@@ -3728,7 +3677,7 @@ public class Controller implements Initializable {
                 FFamilyName = FamilyName;
                 FFirstName = FirstName;
                 FMiddleName = MiddleName;
-                FDOB = DOBDate = new DateValue("");
+                FDOB = DOBDate = new DateValue();
                 FCountryBirth = CountryBirth;
                 FCityBirth = CityBirth;
                 FCountryCurrent = "USA";
@@ -3738,7 +3687,7 @@ public class Controller implements Initializable {
                     MFamilyName = SFamilyName;
                     MFirstName = SFirstName;
                     MMiddleName = SMiddleName;
-                    MDOB = SDOBDate = new DateValue("");
+                    MDOB = SDOBDate = new DateValue();
                     MCountryBirth = SCountryBirth;
                     MCityBirth = SCityBirth;
                     MCountryCurrent = "USA";
@@ -3788,7 +3737,7 @@ public class Controller implements Initializable {
                     MFamilyName = SFamilyName;
                     MFirstName = SFirstName;
                     MMiddleName = SMiddleName;
-                    MDOB = SDOBDate = new DateValue("");
+                    MDOB = SDOBDate = new DateValue();
                     MCountryBirth = SCountryBirth;
                     MCityBirth = SCityBirth;
                     MCountryCurrent = "USA";
@@ -3838,7 +3787,7 @@ public class Controller implements Initializable {
                     MFamilyName = SFamilyName;
                     MFirstName = SFirstName;
                     MMiddleName = SMiddleName;
-                    MDOB = SDOBDate = new DateValue("");
+                    MDOB = SDOBDate = new DateValue();
                     MCountryBirth = SCountryBirth;
                     MCityBirth = SCityBirth;
                     MCountryCurrent = "USA";
@@ -3890,7 +3839,7 @@ public class Controller implements Initializable {
                 MFamilyName = FamilyName;
                 MFirstName = FirstName;
                 MMiddleName = MiddleName;
-                MDOB = DOBDate = new DateValue("");
+                MDOB = DOBDate = new DateValue();
                 MCountryBirth = CountryBirth;
                 MCityBirth = CityBirth;
                 MCountryCurrent = "USA";
@@ -3899,7 +3848,7 @@ public class Controller implements Initializable {
                     FFamilyName = SFamilyName;
                     FFirstName = SFirstName;
                     FMiddleName = SMiddleName;
-                    FDOB = SDOBDate = new DateValue("");
+                    FDOB = SDOBDate = new DateValue();
                     FCountryBirth = SCountryBirth;
                     FCityBirth = SCityBirth;
                     FCountryCurrent = "USA";
@@ -3949,7 +3898,7 @@ public class Controller implements Initializable {
                     FFamilyName = SFamilyName;
                     FFirstName = SFirstName;
                     FMiddleName = SMiddleName;
-                    FDOB = SDOBDate = new DateValue("");
+                    FDOB = SDOBDate = new DateValue();
                     FCountryBirth = SCountryBirth;
                     FCityBirth = SCityBirth;
                     FCountryCurrent = "USA";
@@ -3999,7 +3948,7 @@ public class Controller implements Initializable {
                     FFamilyName = SFamilyName;
                     FFirstName = SFirstName;
                     FMiddleName = SMiddleName;
-                    FDOB = SDOBDate = new DateValue("");
+                    FDOB = SDOBDate = new DateValue();
                     FCountryBirth = SCountryBirth;
                     FCityBirth = SCityBirth;
                     FCountryCurrent = "USA";
@@ -4076,7 +4025,8 @@ public class Controller implements Initializable {
             SFamilyName = "";
             SFirstName = "";
             SMiddleName = "";
-            SDOBDate = new DateValue("");
+            SDOBDate = new DateValue();
+            DOBDate = CDOBDate[fileIteration];
             SApply = "";
             C1FamilyName = "";
             C1FirstName = "";
@@ -4100,22 +4050,22 @@ public class Controller implements Initializable {
             StateOrganization = "";
             CountryOrganization = "";
             NatureOrganization = "";
-            OrganizationStartDate = new DateValue("");
-            OrganizationEndDate = new DateValue("");
+            OrganizationStartDate = new DateValue();
+            OrganizationEndDate = new DateValue();
             NameOrganization1 = "";
             CityOrganization1 = "";
             StateOrganization1 = "";
             CountryOrganization1 = "";
             NatureOrganization1 = "";
-            OrganizationStartDate1 = new DateValue("");
-            OrganizationEndDate1 = new DateValue("");
+            OrganizationStartDate1 = new DateValue();
+            OrganizationEndDate1 = new DateValue();
             NameOrganization2 = "";
             CityOrganization2 = "";
             StateOrganization2 = "";
             CountryOrganization2 = "";
             NatureOrganization2 = "";
-            OrganizationStartDate2 = new DateValue("");
-            OrganizationEndDate2 = new DateValue("");
+            OrganizationStartDate2 = new DateValue();
+            OrganizationEndDate2 = new DateValue();
             MaritalStatus = "Single";
             USGuard = "Guard-NA";
             fileIteration += 1;
@@ -4177,6 +4127,7 @@ public class Controller implements Initializable {
             }
         }
     }
+
     public void LoadJsonData(ActionEvent event) throws Exception {
         FileChooser openJSON = new FileChooser();
         openJSON.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
@@ -4184,21 +4135,18 @@ public class Controller implements Initializable {
         File jsondest = openJSON.showOpenDialog(null);
         String pathFile = new String();
         JSONParser parser = new JSONParser();
-
         try {
             pathFile = jsondest.getAbsolutePath();
             Object obj = parser.parse(new FileReader(pathFile));
-            String[] JSONStringArray = {"ApplicantAlienNumber","FamilyName","FirstName","MiddleName","CityBirth","DOBDate","CountryBirth","SocialSecurity",
-                    "WorkAddressStreet","WorkAddressCity","WorkState","WorkZipcode"};
-
-
+            String[] JSONStringArray = {"ApplicantAlienNumber","FamilyName","FirstName","MiddleName","CityBirth","DOBDate","CountryBirth","SocialSecurity", "WorkAddressStreet","WorkAddressCity","WorkState","WorkZipcode"};
             TextField[] TextFieldArray = {clientANumber, clientFamilyName, clientFirstName, clientMiddleName, clientBirthCity, clientDOB, clientBirthCountry,clientSocialSecurity};
             JSONObject jsonObject = (JSONObject) obj;
             for (int i = 0; i < JSONStringArray.length; i++) {
                 String TemporaryString = (String) jsonObject.get(JSONStringArray[i]);
                 TextFieldArray[i].setText(TemporaryString);
             }
-        } catch (Exception ex) { }
+        }
+        catch (Exception ex) { }
     }
 
     public void addressAddendumFiller() throws Exception {
@@ -4207,16 +4155,8 @@ public class Controller implements Initializable {
             PDDocument addressAddendum = PDDocument.load(addressAdd);
             PDDocumentCatalog docCatalog = addressAddendum.getDocumentCatalog();
             PDAcroForm acroForm = docCatalog.getAcroForm();
-            String[] fieldArray = {ANum, AddressStreet3, AddInfoAddress3, AddressCity3, State3,
-                    Zipcode3, Country3, StartDate3.Value, EndDate3.Value, AddressStreet4, AddInfoAddress4, AddressCity4, State4,
-                    Zipcode4, Country4, StartDate4.Value, EndDate4.Value, AddressStreet5, AddInfoAddress5, AddressCity5, State5,
-                    Zipcode5, Country5, StartDate5.Value, EndDate5.Value, AddressStreet6, AddInfoAddress6, AddressCity6, State6,
-                    Zipcode6, Country6, StartDate6.Value, EndDate6.Value};
-            String[] nameFieldArray = {"ANum", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3",
-                    "Zipcode3", "Country3", "StartDate3", "EndDate3", "AddressStreet4", "AddInfoAddress4", "AddressCity4", "State4",
-                    "Zipcode4", "Country4", "StartDate4", "EndDate4", "AddressStreet5", "AddInfoAddress5", "AddressCity5", "State5",
-                    "Zipcode5", "Country5", "StartDate5", "EndDate5", "AddressStreet6", "AddInfoAddress6", "AddressCity6", "State6",
-                    "Zipcode6", "Country6", "StartDate6", "EndDate6"};
+            String[] fieldArray = {ANum, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value, AddressStreet4, AddInfoAddress4, AddressCity4, State4, Zipcode4, Country4, StartDate4.Value, EndDate4.Value, AddressStreet5, AddInfoAddress5, AddressCity5, State5, Zipcode5, Country5, StartDate5.Value, EndDate5.Value, AddressStreet6, AddInfoAddress6, AddressCity6, State6, Zipcode6, Country6, StartDate6.Value, EndDate6.Value};
+            String[] nameFieldArray = {"ANum", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3", "Zipcode3", "Country3", "StartDate3", "EndDate3", "AddressStreet4", "AddInfoAddress4", "AddressCity4", "State4", "Zipcode4", "Country4", "StartDate4", "EndDate4", "AddressStreet5", "AddInfoAddress5", "AddressCity5", "State5", "Zipcode5", "Country5", "StartDate5", "EndDate5", "AddressStreet6", "AddInfoAddress6", "AddressCity6", "State6", "Zipcode6", "Country6", "StartDate6", "EndDate6"};
             String[] checkArray = {TenantSelection3, TenantSelection4, TenantSelection5, TenantSelection6};
             for (int i = 0; i < fieldArray.length; i++) {
                 String entryFieldArray = fieldArray[i];
