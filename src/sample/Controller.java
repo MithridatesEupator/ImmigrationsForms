@@ -811,6 +811,7 @@ public class Controller implements Initializable {
     String ETenantInfo4 = "";
     String ETenantInfo5 = "";
     static String reason = "";
+    String[][] CWeight = new String[3][3];
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -2331,6 +2332,9 @@ public class Controller implements Initializable {
         if (!C1SpouseNumber.trim().equals("")) {
             ClientC1Parent.setText("Spouse " + C1SpouseNumber);
         }
+        if(!C1Weight.trim().isEmpty()) {
+            ClientC1Weight.setText(C1PD1 + C1PD2 + C1PD3);
+        }
     }
     
     public void SaveC2InfoVars() {
@@ -2417,6 +2421,9 @@ public class Controller implements Initializable {
         if (!C2SpouseNumber.trim().equals("")) {
             ClientC2Parent.setText("Spouse " + C2SpouseNumber);
         }
+        if(!C2Weight.trim().isEmpty()) {
+            ClientC2Weight.setText(C2PD1 + C2PD2 + C2PD3);
+        }
     }
 
     public void SaveC3InfoVars() {
@@ -2464,7 +2471,6 @@ public class Controller implements Initializable {
             }
             catch (Exception ex) {}
         }
-
     }
 
     public void ShowC3InfoVars() {
@@ -2504,6 +2510,9 @@ public class Controller implements Initializable {
         }
         if (!C3SpouseNumber.trim().equals("")) {
             ClientC3Parent.setText("Spouse " + C3SpouseNumber);
+        }
+        if(!C3Weight.trim().isEmpty()) {
+            ClientC3Weight.setText(C3PD1 + C3PD2 + C3PD3);
         }
     }
 
@@ -3322,7 +3331,6 @@ public class Controller implements Initializable {
         if (child2FamilyName.getText() != null) {
             C2FamilyName = child2FamilyName.getText().trim();
         }
-
         if (child2FirstName.getText() != null) {
             C2FirstName = child2FirstName.getText().trim();
         }
@@ -3659,6 +3667,7 @@ public class Controller implements Initializable {
         CCountryList[0] = C1CountryBirth;
         CCountryList[1] = C2CountryBirth;
         CCountryList[2] = C3CountryBirth;
+        CWeight = new String[][]{{C1PD1,C1PD2,C1PD3},{C2PD1,C2PD2,C2PD3},{C3PD1,C3PD2,C3PD3}};
     }
 
     public void resetVars() throws Exception {
@@ -4141,6 +4150,12 @@ public class Controller implements Initializable {
             fileIteration += 1;
             disability = "Accom-no";
             disabilityExtra = "";
+            System.out.println(Arrays.toString(CWeight));
+            System.out.println(CWeight[0][1]);
+            System.out.println("FILE ITERATION IS " + fileIteration);
+            PD1 = CWeight[fileIteration - 1][0];
+            PD2 = CWeight[fileIteration - 1][1];
+            PD3 = CWeight[fileIteration - 1][2];
             needAddendum = false;
             fillAppHelper();
         }
