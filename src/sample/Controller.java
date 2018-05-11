@@ -77,7 +77,6 @@ public class Controller implements Initializable {
     public MenuButton immigrationStatus;
     public TextField interpreterLanguage;
     public TextField interpreterFirstName;
-    public TextField interpreterMiddleName;
     public TextField interpreterFamilyName;
     public TextField interpreterEmail;
     public TextField todayDate;
@@ -377,6 +376,7 @@ public class Controller implements Initializable {
     public TextField Spouse4Country;
     public CheckBox deaf;
     public CheckBox blind;
+    public MenuButton interpreterLanguageMenu;
     private Stage stage;
 
     static String ANum = new String();
@@ -540,7 +540,6 @@ public class Controller implements Initializable {
     String AEmail = new String();
     DateValue SignatureDate = new DateValue();
     String IFamilyName = new String();
-    String IMiddleName = new String();
     String IFirstName = new String();
     String IOrganizationName = new String();
     String IAddressStreet = new String();
@@ -782,7 +781,10 @@ public class Controller implements Initializable {
 
     JobNode jobForeign = new JobNode();
     JobNode[] jobExtraEntry = {new JobNode(), new JobNode(), new JobNode()};
+    AddressNode addressForeign = new AddressNode();
+    AddressNode[] addressExtraEntry = {new AddressNode(), new AddressNode(), new AddressNode(), new AddressNode()};
     static JobData workInfoEntry = new JobData();
+    static AddressData addressInfoEntry = new AddressData();
     static AddendumGroup addendumInfoEntry = new AddendumGroup();
     static String methodAddressStreet = "";
     static String methodAddressNumber = "";
@@ -954,6 +956,37 @@ public class Controller implements Initializable {
 
     String pressedColor = "#1570c0";
     String normalColor = "#2196f3";
+
+    public void fixAlignment(ActionEvent event) {
+        interpreterEmail.setStyle("-fx-alignment: CENTER;");
+    }
+
+    public void selectSpanish(ActionEvent event) {
+        interpreterFamilyName.setText("Castro De La Mata");
+        interpreterFirstName.setText("Marjorie");
+        interpreterEmail.setText("Marjorie.Castrodelamata@rescue.org");
+        //interpreterEmail.setStyle("-fx-alignment: CENTER_LEFT;");
+        interpreterLanguage.setText("Spanish");
+        interpreterLanguageMenu.setText("Spanish");
+    }
+
+    public void selectArabic(ActionEvent event) {
+        interpreterFamilyName.setText("Guirguis");
+        interpreterFirstName.setText("Joseph");
+        interpreterEmail.setText("Joseph.Guirguis@rescue.org");
+        //interpreterEmail.setStyle("-fx-alignment: CENTER_LEFT;");
+        interpreterLanguage.setText("Arabic");
+        interpreterLanguageMenu.setText("Arabic");
+    }
+
+    public void switchInterpreter(ActionEvent event) {
+        interpreterFamilyName.setText("");
+        interpreterFirstName.setText("");
+        interpreterEmail.setText("");
+        interpreterLanguage.setText("");
+        interpreterLanguageMenu.setStyle("-fx-background-color: transparent;");
+        interpreterLanguage.toFront();
+    }
 
     public void i90Select(ActionEvent event) {
         fileType = "i-90";
@@ -2352,7 +2385,7 @@ public class Controller implements Initializable {
             ClientC1Weight.setText(C1PD1 + C1PD2 + C1PD3);
         }
     }
-    
+
     public void SaveC2InfoVars() {
         if (ClientC2FamilyName1.getText() != null) {
             C2FamilyName1 = ClientC2FamilyName1.getText().trim();
@@ -2676,9 +2709,6 @@ public class Controller implements Initializable {
         if (interpreterFamilyName.getText() != null) {
             IFamilyName = interpreterFamilyName.getText().trim();
         }
-        if (interpreterMiddleName.getText() != null) {
-            IMiddleName = interpreterMiddleName.getText().trim();
-        }
         if (interpreterFirstName.getText() != null) {
             IFirstName = interpreterFirstName.getText().trim();
         }
@@ -2770,72 +2800,35 @@ public class Controller implements Initializable {
             Q55 = "55-yes";
             addendumInfoEntry.addAddendum("When I was in " + CountryOrganization + ", I served in the", "military from " + OrganizationStartDate.Value + " to " + OrganizationEndDate.Value + ".", "", "", "12", "8", "55", false);
         }
-        if (AddressStreetName.getText() != null) {
-            AddressStreet = AddressStreetName.getText().trim();
+        if (AddressApt.isSelected()) {
+            TenantInfo = "Apt";
+        } else if (AddressSte.isSelected()) {
+            TenantInfo = "Ste";
+        } else if (AddressFlr.isSelected()) {
+            TenantInfo = "Flr";
         }
-        if (AddressNumber.getText() != null) {
-            AddInfoAddress = AddressNumber.getText().trim();
+        if (AddressApt1.isSelected()) {
+            TenantInfo1 = "Apt1";
+        } else if (AddressSte1.isSelected()) {
+            TenantInfo1 = "Ste1";
+        } else if (AddressFlr1.isSelected()) {
+            TenantInfo1 = "Flr1";
         }
-        if (AddressCityTown.getText() != null) {
-            AddressCity = AddressCityTown.getText().trim();
+        if (AddressApt2.isSelected()) {
+            TenantInfo2 = "Apt2";
+        } else if (AddressSte2.isSelected()) {
+            TenantInfo2 = "Ste2";
+        } else if (AddressFlr2.isSelected()) {
+            TenantInfo2 = "Flr2";
         }
-        if (AddressState.getText() != null) {
-            State = AddressState.getText().trim();
+        if(!AddressStreetName.getText().trim().isEmpty() && !AddressStartTime.getText().trim().isEmpty()) {
+            addressInfoEntry.addNode(AddressStreetName.getText(), TenantInfo, AddressNumber.getText(), AddressCityTown.getText(), AddressState.getText(), AddressZipcode.getText(), "USA", new DateValue(AddressStartTime.getText()), new DateValue("PRESENT"));
         }
-        if (AddressZipcode.getText() != null) {
-            Zipcode = AddressZipcode.getText().trim();
+        if(!AddressStreetName1.getText().trim().isEmpty() && !AddressStartTime1.getText().trim().isEmpty()) {
+            addressInfoEntry.addNode(AddressStreetName1.getText(), TenantInfo1, AddressNumber1.getText(), AddressCityTown1.getText(), AddressState1.getText(), AddressZipcode1.getText(), AddressCountry1.getText(), new DateValue(AddressStartTime1.getText()), new DateValue(AddressStartTime.getText()));
         }
-        if (AddressStartTime.getText() != null) {
-            StartDate = new DateValue(AddressStartTime.getText());
-        }
-        EndDate = new DateValue("PRESENT");
-        if (AddressStreetName1.getText() != null) {
-            AddressStreet1 = AddressStreetName1.getText().trim();
-        }
-        if (AddressNumber1.getText() != null) {
-            AddInfoAddress1 = AddressNumber1.getText().trim();
-        }
-        if (AddressCityTown1.getText() != null) {
-            AddressCity1 = AddressCityTown1.getText().trim();
-        }
-        if (AddressState1.getText() != null) {
-            State1 = AddressState1.getText().trim();
-        }
-        if (AddressZipcode1.getText() != null) {
-            Zipcode1 = AddressZipcode1.getText().trim();
-        }
-        if (AddressCountry1.getText() != null) {
-            Country1 = AddressCountry1.getText().trim();
-        }
-        if (AddressStartTime1.getText() != null) {
-            StartDate1 = new DateValue(AddressStartTime1.getText());
-        }
-        if (AddressEndTime1.getText() != null) {
-            EndDate1 = new DateValue(AddressEndTime1.getText());
-        }
-        if (AddressStreetName2.getText() != null) {
-            AddressStreet2 = AddressStreetName2.getText().trim();
-        }
-        if (AddressNumber2.getText() != null) {
-            AddInfoAddress2 = AddressNumber2.getText().trim();
-        }
-        if (AddressCityTown2.getText() != null) {
-            AddressCity2 = AddressCityTown2.getText().trim();
-        }
-        if (AddressState2.getText() != null) {
-            State2 = AddressState2.getText().trim();
-        }
-        if (AddressZipcode2.getText() != null) {
-            Zipcode2 = AddressZipcode2.getText().trim();
-        }
-        if (AddressCountry2.getText() != null) {
-            Country2 = AddressCountry2.getText().trim();
-        }
-        if (AddressStartTime2.getText() != null) {
-            StartDate2 = new DateValue(AddressStartTime2.getText());
-        }
-        if (AddressEndTime2.getText() != null) {
-            EndDate2 = new DateValue(AddressEndTime2.getText());
+        if(!AddressStreetName2.getText().trim().isEmpty() && !AddressStartTime2.getText().trim().isEmpty()) {
+            addressInfoEntry.addNode(AddressStreetName2.getText(), TenantInfo2, AddressNumber2.getText(), AddressCityTown2.getText(), AddressState2.getText(), AddressZipcode2.getText(), AddressCountry2.getText(), new DateValue(AddressStartTime2.getText()), new DateValue(AddressStartTime1.getText()));
         }
         if (Address3Info.getText() != null) {
             if (!Address3Info.getText().trim().isEmpty()) {
@@ -2844,132 +2837,84 @@ public class Controller implements Initializable {
             try {
                 String TMPAddress3 = Address3Info.getText().trim();
                 String[] TMPA3Info = TMPAddress3.split("\\|");
-                A3Info[0] = TMPA3Info[0].trim();
-                A3Info[1] = TMPA3Info[1].trim();
-                A3Info[2] = TMPA3Info[2].trim();
-                A3Info[3] = TMPA3Info[3].trim();
-                A3Info[4] = TMPA3Info[4].trim();
-                A3Info[5] = TMPA3Info[5].trim();
-                A3Info[6] = TMPA3Info[6].trim();
-                AddressStreet3 = A3Info[0];
-                if (A3Info[1].toUpperCase().equals("APT")) {
+                if (TMPA3Info[1].toUpperCase().equals("APT")) {
                     TenantSelection3 = "Apt3";
-                } else if (A3Info[1].toUpperCase().equals("STE")) {
+                } else if (TMPA3Info[1].toUpperCase().equals("STE")) {
                     TenantSelection3 = "Ste3";
-                } else if (A3Info[1].toUpperCase().equals("FLR")) {
+                } else if (TMPA3Info[1].toUpperCase().equals("FLR")) {
                     TenantSelection3 = "Flr3";
                 }
-                AddInfoAddress3 = A3Info[2];
-                AddressCity3 = A3Info[3];
-                State3 = A3Info[4];
-                Country3 = A3Info[5];
-                Zipcode3 = A3Info[6];
                 if (AddressStartTime3.getText() != null) {
                     StartDate3 = new DateValue(AddressEndTime2.getText());
                 }
                 if (AddressEndTime3.getText() != null) {
                     EndDate3 = new DateValue(AddressEndTime3.getText());
                 }
+                addressInfoEntry.addNode(TMPA3Info[0].trim(), TenantSelection3, TMPA3Info[2].trim(), TMPA3Info[3].trim(),TMPA3Info[4].trim(),TMPA3Info[5].trim(), TMPA3Info[6].trim(), new DateValue(AddressStartTime3.getText().trim()), new DateValue(AddressStartTime2.getText().trim()));
             } catch (ArrayIndexOutOfBoundsException ArrayEx) { }
         }
         if (Address4Info.getText() != null) {
             try {
                 String TMPAddress4 = Address4Info.getText().trim();
                 String[] TMPA4Info = TMPAddress4.split("\\|");
-                A4Info[0] = TMPA4Info[0];
-                A4Info[1] = TMPA4Info[1];
-                A4Info[2] = TMPA4Info[2];
-                A4Info[3] = TMPA4Info[3];
-                A4Info[4] = TMPA4Info[4];
-                A4Info[5] = TMPA4Info[5];
-                A4Info[6] = TMPA4Info[6];
-                AddressStreet4 = A4Info[0];
-                if (A4Info[1].toUpperCase().equals("APT")) {
+                if (TMPA4Info[1].toUpperCase().equals("APT")) {
                     TenantSelection4 = "Apt4";
-                } else if (A4Info[1].toUpperCase().equals("STE")) {
+                } else if (TMPA4Info[1].toUpperCase().equals("STE")) {
                     TenantSelection4 = "Ste4";
-                } else if (A4Info[1].toUpperCase().equals("FLR")) {
+                } else if (TMPA4Info[1].toUpperCase().equals("FLR")) {
                     TenantSelection4 = "Flr4";
                 }
-                AddInfoAddress4 = A4Info[2];
-                AddressCity4 = A4Info[3];
-                State4 = A4Info[4];
-                Country4 = A4Info[5];
-                Zipcode4 = A4Info[6];
-                if (AddressStartTime4.getText() != null) {
-                    StartDate4 = new DateValue(AddressEndTime2.getText());
-                }
-                if (AddressEndTime4.getText() != null) {
-                    EndDate4 = new DateValue(AddressEndTime4.getText());
-                }
+                addressInfoEntry.addNode(TMPA4Info[0].trim(), TenantSelection4, TMPA4Info[2].trim(), TMPA4Info[3].trim(),TMPA4Info[4].trim(),TMPA4Info[5].trim(), TMPA4Info[6].trim(), new DateValue(AddressStartTime3.getText().trim()), new DateValue(AddressStartTime2.getText().trim()));
             } catch (ArrayIndexOutOfBoundsException ArrayEx) { }
         }
         if (Address5Info.getText() != null) {
             try {
                 String TMPAddress5 = Address5Info.getText().trim();
                 String[] TMPA5Info = TMPAddress5.split("\\|");
-                A5Info[0] = TMPA5Info[0];
-                A5Info[1] = TMPA5Info[1];
-                A5Info[2] = TMPA5Info[2];
-                A5Info[3] = TMPA5Info[3];
-                A5Info[4] = TMPA5Info[4];
-                A5Info[5] = TMPA5Info[5];
-                A5Info[6] = TMPA5Info[6];
-                AddressStreet5 = A5Info[0];
-                if (A5Info[1].toUpperCase().equals("APT")) {
+                if (TMPA5Info[1].toUpperCase().equals("APT")) {
                     TenantSelection5 = "Apt5";
-                } else if (A5Info[1].toUpperCase().equals("STE")) {
+                } else if (TMPA5Info[1].toUpperCase().equals("STE")) {
                     TenantSelection5 = "Ste5";
-                } else if (A5Info[1].toUpperCase().equals("FLR")) {
+                } else if (TMPA5Info[1].toUpperCase().equals("FLR")) {
                     TenantSelection5 = "Flr5";
                 }
-                AddInfoAddress5 = A5Info[2];
-                AddressCity5 = A5Info[3];
-                State5 = A5Info[4];
-                Country5 = A5Info[5];
-                Zipcode5 = A5Info[6];
-                if (AddressStartTime5.getText() != null) {
-                    StartDate5 = new DateValue(AddressEndTime2.getText());
-                }
-                if (AddressEndTime5.getText() != null) {
-                    EndDate5 = new DateValue(AddressEndTime5.getText());
-                }
+                addressInfoEntry.addNode(TMPA5Info[0].trim(), TenantSelection3, TMPA5Info[2].trim(), TMPA5Info[3].trim(),TMPA5Info[4].trim(),TMPA5Info[5].trim(), TMPA5Info[6].trim(), new DateValue(AddressStartTime3.getText().trim()), new DateValue(AddressStartTime2.getText().trim()));
             } catch (ArrayIndexOutOfBoundsException ArrayEx) { }
         }
         if (Address6Info.getText() != null) {
             try {
                 String TMPAddress6 = Address6Info.getText().trim();
                 String[] TMPA6Info = TMPAddress6.split("\\|");
-                A6Info[0] = TMPA6Info[0];
-                A6Info[1] = TMPA6Info[1];
-                A6Info[2] = TMPA6Info[2];
-                A6Info[3] = TMPA6Info[3];
-                A6Info[4] = TMPA6Info[4];
-                A6Info[5] = TMPA6Info[5];
-                A6Info[6] = TMPA6Info[6];
-                A6Info[7] = AddressStartTime6.getText().trim();
-                A6Info[8] = AddressEndTime6.getText().trim();
-                AddressStreet6 = A6Info[0];
-                if (A6Info[1].toUpperCase().equals("APT")) {
+                if (TMPA6Info[1].toUpperCase().equals("APT")) {
                     TenantSelection6 = "Apt6";
-                } else if (A6Info[1].toUpperCase().equals("STE")) {
+                } else if (TMPA6Info[1].toUpperCase().equals("STE")) {
                     TenantSelection6 = "Ste6";
-                } else if (A6Info[1].toUpperCase().equals("FLR")) {
+                } else if (TMPA6Info[1].toUpperCase().equals("FLR")) {
                     TenantSelection6 = "Flr6";
                 }
-                AddInfoAddress6 = A6Info[2];
-                AddressCity6 = A6Info[3];
-                State6 = A6Info[4];
-                Country6 = A6Info[5];
-                Zipcode6 = A6Info[6];
-                if (AddressStartTime6.getText() != null) {
-                    StartDate6 = new DateValue(AddressEndTime2.getText());
-                }
-                if (AddressEndTime6.getText() != null) {
-                    EndDate6 = new DateValue(AddressEndTime6.getText());
-                }
+                addressInfoEntry.addNode(TMPA6Info[0].trim(), TenantSelection3, TMPA6Info[2].trim(), TMPA6Info[3].trim(),TMPA6Info[4].trim(),TMPA6Info[5].trim(), TMPA6Info[6].trim(), new DateValue(AddressStartTime3.getText().trim()), new DateValue(AddressStartTime2.getText().trim()));
             } catch (ArrayIndexOutOfBoundsException ArrayEx) { }
         }
+        try {
+            if (addressInfoEntry.getFirstForeignLevel() == -1 ) {
+                addressForeign = addressInfoEntry.Root.NextNode.NextNode;
+            }
+            else if (addressInfoEntry.getFirstForeignLevel() > 2) {
+                addressForeign = addressInfoEntry.getNode(workInfoEntry.getFirstForeignLevel());
+            }
+            else if (addressInfoEntry.getLastNode().Level == 2) {
+                addressForeign = addressInfoEntry.Root.NextNode.NextNode;
+            }
+            else if (addressInfoEntry.getLastNode().Level > 0) {
+                addressForeign = new AddressNode("SEE ABOVE", "", "", "", "", "", "", new DateValue(), new DateValue(), 0, null);
+            }
+        }
+        catch(NullPointerException ex) {
+            addressInfoEntry.checkYourself(1);
+            addressForeign = addressInfoEntry.Root.NextNode.NextNode;
+        }
+        addressInfoEntry.checkYourself(1);
+
         if (jobAddressApt.isSelected()) {
             ETenantInfo = "Apt";
         } else if (jobAddressSte.isSelected()) {
@@ -3147,9 +3092,13 @@ public class Controller implements Initializable {
             else if (workInfoEntry.getLastNode().Level == 2) {
                 jobForeign = workInfoEntry.Root.NextNode.NextNode;
             }
+            else if (addressInfoEntry.getLastNode().Level > 0) {
+                jobForeign = new JobNode("", "", "", "", "", "", "", "SEE ABOVE", "", new DateValue(), new DateValue(), 0, null);
+            }
         }
         catch(NullPointerException ex) {
-            jobForeign = new JobNode("", "", "", "", "", "", "", "SEE ABOVE", "", new DateValue(), new DateValue(), 0, null);
+            workInfoEntry.checkYourself(1);
+            jobForeign = workInfoEntry.Root.NextNode.NextNode;
         }
         workInfoEntry.checkYourself(1);
         if(workInfoEntry.Root.Country.equals("") && workInfoEntry.Root.Employer.equals("") ) {
@@ -3211,9 +3160,7 @@ public class Controller implements Initializable {
                 S1Info[5] = TMPS1Info[5];
                 S1Info[6] = TMPS1Info[6];
                 S1Info[7] = Spouse1MarriageDate.getText().trim();
-                System.out.println(Spouse1MarriageDate.getText().trim());
                 S1Info[8] = Spouse1DivorceDate.getText().trim();
-                System.out.println(Arrays.toString(S1Info));
             }
             catch (ArrayIndexOutOfBoundsException ArrayEx) {
             }
@@ -3311,7 +3258,6 @@ public class Controller implements Initializable {
             }
         }
         if (!Spouse1Info.getText().trim().isEmpty()) {
-            System.out.println(Arrays.toString(S1Info));
             DFamilyName = S1Info[0].trim();
             DFirstName = S1Info[1].trim();
             DMiddleName = S1Info[2].trim();
@@ -3553,27 +3499,7 @@ public class Controller implements Initializable {
             MCityCurrent = "DECEASED";
         }
         //---------------------------------------------------------
-        if (AddressApt.isSelected()) {
-            TenantInfo = "Apt";
-        } else if (AddressSte.isSelected()) {
-            TenantInfo = "Ste";
-        } else if (AddressFlr.isSelected()) {
-            TenantInfo = "Flr";
-        }
-        if (AddressApt1.isSelected()) {
-            TenantInfo1 = "Apt1";
-        } else if (AddressSte1.isSelected()) {
-            TenantInfo1 = "Ste1";
-        } else if (AddressFlr1.isSelected()) {
-            TenantInfo1 = "Flr1";
-        }
-        if (AddressApt2.isSelected()) {
-            TenantInfo2 = "Apt2";
-        } else if (AddressSte2.isSelected()) {
-            TenantInfo2 = "Ste2";
-        } else if (AddressFlr2.isSelected()) {
-            TenantInfo2 = "Flr2";
-        }
+
         if (SpouseGender.isSelected()) {
             SGender = "Male";
         }
@@ -3688,10 +3614,8 @@ public class Controller implements Initializable {
         if (!TenantInfo.trim().isEmpty()) {
             TenantInfoLine += TenantInfo + " #" + AddInfoAddress;
         }
-        System.out.println(TenantInfo);
         AddressLine1 = AddressStreet + " " + TenantInfoLine;
         AddressLine2 = AddressCity + ", " + State + " " + Zipcode;
-        System.out.println(AddressLine1 + "\n" + AddressLine2);
     }
 
     public void resetVars() throws Exception {
@@ -3715,8 +3639,8 @@ public class Controller implements Initializable {
         CDOBDate = new DateValue[]{C1DOBDate, C2DOBDate, C3DOBDate};
         NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
         Name = NameTitle.replace("_"," ");
-        String[] fieldArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode, PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value, EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, workInfoEntry.Root.Employer, workInfoEntry.Root.AddressStreet, workInfoEntry.Root.AddressAddInfo, workInfoEntry.Root.AddressCity, workInfoEntry.Root.State, workInfoEntry.Root.Zipcode, workInfoEntry.Root.Country, workInfoEntry.Root.Occupation, workInfoEntry.Root.StartDate.Value, workInfoEntry.Root.EndDate.Value, workInfoEntry.Root.NextNode.Employer, workInfoEntry.Root.NextNode.AddressStreet, workInfoEntry.Root.NextNode.AddressAddInfo, workInfoEntry.Root.NextNode.AddressCity, workInfoEntry.Root.NextNode.State, workInfoEntry.Root.NextNode.Zipcode, workInfoEntry.Root.NextNode.Country, workInfoEntry.Root.NextNode.Occupation, workInfoEntry.Root.NextNode.StartDate.Value, workInfoEntry.Root.NextNode.EndDate.Value, jobForeign.Employer, jobForeign.AddressStreet, jobForeign.AddressAddInfo, jobForeign.AddressCity, jobForeign.State, jobForeign.Zipcode, jobForeign.Country, jobForeign.Occupation, jobForeign.StartDate.Value, jobForeign.EndDate.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate, SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DBirthCountry, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value, DCityDivorced, DStateDivorced, DCountryDivorced, DCountryMarriage, SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value, ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, addendumInfoEntry.Root.pageNum, addendumInfoEntry.Root.partNum, addendumInfoEntry.Root.itemNum, addendumInfoEntry.Root.line1, addendumInfoEntry.Root.line2, addendumInfoEntry.Root.line3, addendumInfoEntry.Root.line4, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, addendumInfoEntry.Root.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.line4, Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line4, Addendum2E, Addendum2F, Addendum2G, Addendum2J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4, Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4, Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value, C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value, C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status,  AddressLine1, AddressLine2};
-        String[] nameFieldArray = {"ANum", "FamilyName", "FirstName", "MiddleName", "FamilyName1", "MiddleName1", "FirstName1", "FamilyName2", "FirstName2", "MiddleName2", "FamilyName3", "MiddleName3", "FirstName3", "Name", "DOBDate", "CityBirth", "CountryBirth", "Nationality", "SocialSecurity", "AddressStreet", "AddInfoAddress", "AddressCity", "State", "Zipcode", "PassportNum", "TravelNum", "ExpirationDate", "PassportCountry", "EntryInspectionStatus", "EntryParoledStatus", "OtherStatus", "EntryCity", "EntryState", "LastArrivalDate", "I94Num", "ExpirationDate1", "I94Status", "CurrentImmigrationStatus", "I94FamilyName", "I94FirstName", "I94MiddleName", "StartDate", "EndDate", "AddressStreet1", "AddInfoAddress1", "AddressCity1", "State1", "Zipcode1", "Country1", "StartDate1", "EndDate", "AddressStreet2", "AddInfoAddress2", "AddressCity2", "State2", "Zipcode2", "Country2", "StartDate2", "EndDate2", "Employer", "WorkAddressStreet", "WorkAddInfoAddress", "WorkAddressCity", "WorkState", "WorkZipcode", "WorkCountry", "WorkOccupation", "WorkStartDate", "WorkEndDate", "Employer1", "WorkAddressStreet1", "WorkAddInfoAddress1", "WorkAddressCity1", "WorkState1", "WorkZipcode1", "WorkCountry1", "WorkOccupation1", "WorkStartDate1", "WorkEndDate1", "Employer2", "WorkAddressStreet2", "WorkAddInfoAddress2", "WorkAddressCity2", "WorkState2", "WorkZipcode2", "WorkCountry2", "WorkOccupation2", "WorkStartDate2", "WorkEndDate2", "FFamilyName", "FFirstName", "FMiddleName", "FFamilyNameB", "FFirstNameB", "FMiddleNameB", "FDOB", "FCityBirth", "FCountryBirth", "FCityCurrent", "FCountryCurrent", "MFamilyName", "MFirstName", "MMiddleName", "MFamilyNameB", "MFirstNameB", "MMiddleNameB", "MDOB", "MCityBirth", "MCountryBirth", "MCityCurrent", "MCountryCurrent", "MarriageNum", "SFamilyName", "SMiddleName", "SFirstName", "SANum", "SDOBDate", "SMarriageDate", "SCityBirth", "SCountryBirth", "DFamilyName", "DFirstName", "DMiddleName", "DBirthCountry", "DDOBDate", "DMarriageDate", "DCityMarriage", "DStateMarriage", "DMarriageEndDate", "DCityDivorced", "DStateDivorced", "DCountryDivorced", "DCountryMarriage", "SCityMarriage", "SCountryMarriage", "ChildNum", "C1FamilyName", "C1MiddleName", "C1FirstName", "C1ANum", "C1DOBDate", "C1MarriageDate", "C1CityBirth", "C1CountryBirth", "C2FamilyName", "C2MiddleName", "C2FirstName", "C2ANum", "C2DOBDate", "C2MarriageDate", "C2CityBirth", "C2CountryBirth", "C3FamilyName", "C3MiddleName", "C3FirstName", "C3ANum", "C3DOBDate", "C3MarriageDate", "C3CityBirth", "C3CountryBirth", "Feet", "Inches", "PD1", "PD2", "PD3", "NameOrganization", "CityOrganization", "StateOrganization", "CountryOrganization", "NatureOrganization", "OrganizationStartDate", "OrganizationEndDate", "NameOrganization1", "CityOrganization1", "StateOrganization1", "CountryOrganization1", "NatureOrganization1", "OrganizationStartDate1", "OrganizationEndDate1", "NameOrganization2", "CityOrganization2", "StateOrganization2", "CountryOrganization2", "NatureOrganization2", "OrganizationStartDate2", "OrganizationEndDate2", "ADayTimeNum", "AMobNum", "AEmail", "SignatureDate", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress", "IAddressCity", "IState", "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language", "PN", "PaN", "IN", "AddendumA", "AddendumB", "AddendumC", "AddendumD", "AddendumE", "AddendumF", "AddendumG", "AddendumH", "AddendumI", "AddendumJ", "PN1", "PaN1", "IN1", "Addendum1A", "Addendum1B", "Addendum1C", "Addendum1D", "Addendum1E", "Addendum1F", "Addendum1G", "Addendum1H", "Addendum1I", "Addendum1J", "PN2", "PaN2", "IN2", "Addendum2A", "Addendum2B", "Addendum2C", "Addendum2D", "Addendum2E", "Addendum2F", "Addendum2G", "Addendum2J", "PN3", "PaN3", "IN3", "Addendum3A", "Addendum3B", "Addendum3C", "Addendum3D", "Addendum3E", "Addendum3F", "Addendum3G", "Addendum3H", "Addendum3I", "PN4", "PaN4", "IN4", "Addendum4A", "Addendum4B", "Addendum4C", "Addendum4D", "Addendum4E", "Addendum4F", "Addendum4G", "Addendum4H","Addendum4I", "Addendum4J", "EntryI765","C4FamilyName","C4FirstName","C4MiddleName","C4ANum","C4DOBDate","C4CountryBirth","C5FamilyName","C5FirstName", "C5MiddleName","C5ANum","C5DOBDate", "C5CountryBirth","C6FamilyName","C6FirstName","C6MiddleName","C6ANum","C6DOBDate","C6CountryBirth","C7FamilyName","C7FirstName","C7MiddleName","C7ANum","C7DOBDate", "C7CountryBirth", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3", "Zipcode3", "Country3", "StartDate3", "EndDate3","AGender", "TenantInfo", "AltTenantInfo", "lastArrived", "ImmigrationStatus", "TenantInfo1", "TenantInfo2", "ETenantInfo", "ETenantInfo1", "ETenantInfo2", "MaritalStatus", "USGuard", "SApply", "C1status", "C2status", "C3status", "Ethnicity", "Race", "EyeColor", "HairColor", "OrgAnswer", "DisabilityAnswer", "InterpreterQuestion", "ITenantInfo", "PTenantInfo", "Q49", "Q55", "Q61", "Q62", "SocialSecurityBox", "C4status", "C5status", "C6status", "C7status", "AddressLine1", "AddressLine2"};
+        String[] fieldArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, addressInfoEntry.Root.AddressStreet, addressInfoEntry.Root.AddressNumber, addressInfoEntry.Root.AddressCity, addressInfoEntry.Root.State, addressInfoEntry.Root.Zipcode, PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, addressInfoEntry.Root.StartDate.Value, addressInfoEntry.Root.EndDate.Value, addressInfoEntry.Root.NextNode.AddressStreet, addressInfoEntry.Root.NextNode.AddressNumber, addressInfoEntry.Root.NextNode.AddressCity, addressInfoEntry.Root.NextNode.State, addressInfoEntry.Root.NextNode.Zipcode, addressInfoEntry.Root.NextNode.Country, addressInfoEntry.Root.NextNode.StartDate.Value, addressInfoEntry.Root.NextNode.EndDate.Value, addressForeign.AddressStreet, addressForeign.AddressNumber, addressForeign.AddressCity, addressForeign.State, addressForeign.Zipcode, addressForeign.Country, addressForeign.StartDate.Value, addressForeign.EndDate.Value, workInfoEntry.Root.Employer, workInfoEntry.Root.AddressStreet, workInfoEntry.Root.AddressAddInfo, workInfoEntry.Root.AddressCity, workInfoEntry.Root.State, workInfoEntry.Root.Zipcode, workInfoEntry.Root.Country, workInfoEntry.Root.Occupation, workInfoEntry.Root.StartDate.Value, workInfoEntry.Root.EndDate.Value, workInfoEntry.Root.NextNode.Employer, workInfoEntry.Root.NextNode.AddressStreet, workInfoEntry.Root.NextNode.AddressAddInfo, workInfoEntry.Root.NextNode.AddressCity, workInfoEntry.Root.NextNode.State, workInfoEntry.Root.NextNode.Zipcode, workInfoEntry.Root.NextNode.Country, workInfoEntry.Root.NextNode.Occupation, workInfoEntry.Root.NextNode.StartDate.Value, workInfoEntry.Root.NextNode.EndDate.Value, jobForeign.Employer, jobForeign.AddressStreet, jobForeign.AddressAddInfo, jobForeign.AddressCity, jobForeign.State, jobForeign.Zipcode, jobForeign.Country, jobForeign.Occupation, jobForeign.StartDate.Value, jobForeign.EndDate.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate, SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DBirthCountry, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value, DCityDivorced, DStateDivorced, DCountryDivorced, DCountryMarriage, SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value, ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, addendumInfoEntry.Root.pageNum, addendumInfoEntry.Root.partNum, addendumInfoEntry.Root.itemNum, addendumInfoEntry.Root.line1, addendumInfoEntry.Root.line2, addendumInfoEntry.Root.line3, addendumInfoEntry.Root.line4, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, addendumInfoEntry.Root.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.line4, Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line4, Addendum2E, Addendum2F, Addendum2G, Addendum2J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4, Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4, Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value, C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value, C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status,  AddressLine1, AddressLine2};
+        String[] nameFieldArray = {"ANum", "FamilyName", "FirstName", "MiddleName", "FamilyName1", "MiddleName1", "FirstName1", "FamilyName2", "FirstName2", "MiddleName2", "FamilyName3", "MiddleName3", "FirstName3", "Name", "DOBDate", "CityBirth", "CountryBirth", "Nationality", "SocialSecurity", "AddressStreet", "AddInfoAddress", "AddressCity", "State", "Zipcode", "PassportNum", "TravelNum", "ExpirationDate", "PassportCountry", "EntryInspectionStatus", "EntryParoledStatus", "OtherStatus", "EntryCity", "EntryState", "LastArrivalDate", "I94Num", "ExpirationDate1", "I94Status", "CurrentImmigrationStatus", "I94FamilyName", "I94FirstName", "I94MiddleName", "StartDate", "EndDate", "AddressStreet1", "AddInfoAddress1", "AddressCity1", "State1", "Zipcode1", "Country1", "StartDate1", "EndDate1", "AddressStreet2", "AddInfoAddress2", "AddressCity2", "State2", "Zipcode2", "Country2", "StartDate2", "EndDate2", "Employer", "WorkAddressStreet", "WorkAddInfoAddress", "WorkAddressCity", "WorkState", "WorkZipcode", "WorkCountry", "WorkOccupation", "WorkStartDate", "WorkEndDate", "Employer1", "WorkAddressStreet1", "WorkAddInfoAddress1", "WorkAddressCity1", "WorkState1", "WorkZipcode1", "WorkCountry1", "WorkOccupation1", "WorkStartDate1", "WorkEndDate1", "Employer2", "WorkAddressStreet2", "WorkAddInfoAddress2", "WorkAddressCity2", "WorkState2", "WorkZipcode2", "WorkCountry2", "WorkOccupation2", "WorkStartDate2", "WorkEndDate2", "FFamilyName", "FFirstName", "FMiddleName", "FFamilyNameB", "FFirstNameB", "FMiddleNameB", "FDOB", "FCityBirth", "FCountryBirth", "FCityCurrent", "FCountryCurrent", "MFamilyName", "MFirstName", "MMiddleName", "MFamilyNameB", "MFirstNameB", "MMiddleNameB", "MDOB", "MCityBirth", "MCountryBirth", "MCityCurrent", "MCountryCurrent", "MarriageNum", "SFamilyName", "SMiddleName", "SFirstName", "SANum", "SDOBDate", "SMarriageDate", "SCityBirth", "SCountryBirth", "DFamilyName", "DFirstName", "DMiddleName", "DBirthCountry", "DDOBDate", "DMarriageDate", "DCityMarriage", "DStateMarriage", "DMarriageEndDate", "DCityDivorced", "DStateDivorced", "DCountryDivorced", "DCountryMarriage", "SCityMarriage", "SCountryMarriage", "ChildNum", "C1FamilyName", "C1MiddleName", "C1FirstName", "C1ANum", "C1DOBDate", "C1MarriageDate", "C1CityBirth", "C1CountryBirth", "C2FamilyName", "C2MiddleName", "C2FirstName", "C2ANum", "C2DOBDate", "C2MarriageDate", "C2CityBirth", "C2CountryBirth", "C3FamilyName", "C3MiddleName", "C3FirstName", "C3ANum", "C3DOBDate", "C3MarriageDate", "C3CityBirth", "C3CountryBirth", "Feet", "Inches", "PD1", "PD2", "PD3", "NameOrganization", "CityOrganization", "StateOrganization", "CountryOrganization", "NatureOrganization", "OrganizationStartDate", "OrganizationEndDate", "NameOrganization1", "CityOrganization1", "StateOrganization1", "CountryOrganization1", "NatureOrganization1", "OrganizationStartDate1", "OrganizationEndDate1", "NameOrganization2", "CityOrganization2", "StateOrganization2", "CountryOrganization2", "NatureOrganization2", "OrganizationStartDate2", "OrganizationEndDate2", "ADayTimeNum", "AMobNum", "AEmail", "SignatureDate", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress", "IAddressCity", "IState", "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language", "PN", "PaN", "IN", "AddendumA", "AddendumB", "AddendumC", "AddendumD", "AddendumE", "AddendumF", "AddendumG", "AddendumH", "AddendumI", "AddendumJ", "PN1", "PaN1", "IN1", "Addendum1A", "Addendum1B", "Addendum1C", "Addendum1D", "Addendum1E", "Addendum1F", "Addendum1G", "Addendum1H", "Addendum1I", "Addendum1J", "PN2", "PaN2", "IN2", "Addendum2A", "Addendum2B", "Addendum2C", "Addendum2D", "Addendum2E", "Addendum2F", "Addendum2G", "Addendum2J", "PN3", "PaN3", "IN3", "Addendum3A", "Addendum3B", "Addendum3C", "Addendum3D", "Addendum3E", "Addendum3F", "Addendum3G", "Addendum3H", "Addendum3I", "PN4", "PaN4", "IN4", "Addendum4A", "Addendum4B", "Addendum4C", "Addendum4D", "Addendum4E", "Addendum4F", "Addendum4G", "Addendum4H","Addendum4I", "Addendum4J", "EntryI765","C4FamilyName","C4FirstName","C4MiddleName","C4ANum","C4DOBDate","C4CountryBirth","C5FamilyName","C5FirstName", "C5MiddleName","C5ANum","C5DOBDate", "C5CountryBirth","C6FamilyName","C6FirstName","C6MiddleName","C6ANum","C6DOBDate","C6CountryBirth","C7FamilyName","C7FirstName","C7MiddleName","C7ANum","C7DOBDate", "C7CountryBirth", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3", "Zipcode3", "Country3", "StartDate3", "EndDate3","AGender", "TenantInfo", "AltTenantInfo", "lastArrived", "ImmigrationStatus", "TenantInfo1", "TenantInfo2", "ETenantInfo", "ETenantInfo1", "ETenantInfo2", "MaritalStatus", "USGuard", "SApply", "C1status", "C2status", "C3status", "Ethnicity", "Race", "EyeColor", "HairColor", "OrgAnswer", "DisabilityAnswer", "InterpreterQuestion", "ITenantInfo", "PTenantInfo", "Q49", "Q55", "Q61", "Q62", "SocialSecurityBox", "C4status", "C5status", "C6status", "C7status", "AddressLine1", "AddressLine2"};
         String[] checkArray = {AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ("E" + workInfoEntry.Root.AddressAddInfo), ("E" + workInfoEntry.Root.NextNode.AddressAddInfo + "1"), ("E" + jobForeign.AddressAddInfo + "2"), MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status, applyI765, nameChange, reason, disability, disabilityExtra};
         if (fileType == "") {
             fileType = "i-485";
@@ -3738,7 +3662,6 @@ public class Controller implements Initializable {
         }
         for (int b = 0; b < checkArray.length; b++) {
             String entryCheckArray = checkArray[b];
-            System.out.println(b);
             if (entryCheckArray.trim() != "") {
                 try {
                     PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
@@ -4175,9 +4098,6 @@ public class Controller implements Initializable {
             fileIteration += 1;
             disability = "Accom-no";
             disabilityExtra = "";
-            System.out.println(Arrays.toString(CWeight));
-            System.out.println(CWeight[0][1]);
-            System.out.println("FILE ITERATION IS " + fileIteration);
             PD1 = CWeight[fileIteration - 1][0];
             PD2 = CWeight[fileIteration - 1][1];
             PD3 = CWeight[fileIteration - 1][2];
@@ -4261,13 +4181,23 @@ public class Controller implements Initializable {
         catch (Exception ex) { }
     }
 
+
     public void addressAddendumFiller() throws Exception {
+        if (addressForeign.Level <= 2) {
+            addressInfoEntry.checkYourself(6);
+            if (addressInfoEntry.Root.NextNode.NextNode.NextNode != null && addressInfoEntry.Root.NextNode.NextNode.NextNode.NextNode != null && addressInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode != null) {
+                addressExtraEntry = new AddressNode[]{addressInfoEntry.Root.NextNode.NextNode.NextNode, addressInfoEntry.Root.NextNode.NextNode.NextNode.NextNode, addressInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode, addressInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode.NextNode};
+            }
+        }
+        else {
+            addressAddendumHelper(addressInfoEntry.Root.NextNode.NextNode, 0);
+        }
         if (!Address3Info.getText().trim().isEmpty()) {
             InputStream addressAdd = getClass().getResourceAsStream("resources/pdf/addendum_addresses.pdf");
             PDDocument addressAddendum = PDDocument.load(addressAdd);
             PDDocumentCatalog docCatalog = addressAddendum.getDocumentCatalog();
             PDAcroForm acroForm = docCatalog.getAcroForm();
-            String[] fieldArray = {ANum, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value, AddressStreet4, AddInfoAddress4, AddressCity4, State4, Zipcode4, Country4, StartDate4.Value, EndDate4.Value, AddressStreet5, AddInfoAddress5, AddressCity5, State5, Zipcode5, Country5, StartDate5.Value, EndDate5.Value, AddressStreet6, AddInfoAddress6, AddressCity6, State6, Zipcode6, Country6, StartDate6.Value, EndDate6.Value};
+            String[] fieldArray = {ANum, addressExtraEntry[0].AddressStreet, addressExtraEntry[0].AddressNumber, addressExtraEntry[0].AddressCity, addressExtraEntry[0].State, addressExtraEntry[0].Zipcode, addressExtraEntry[0].Country, addressExtraEntry[0].StartDate.Value, addressExtraEntry[0].EndDate.Value, addressExtraEntry[1].AddressStreet, addressExtraEntry[1].AddressNumber, addressExtraEntry[1].AddressCity, addressExtraEntry[1].State, addressExtraEntry[1].Zipcode, addressExtraEntry[1].Country, addressExtraEntry[1].StartDate.Value, addressExtraEntry[1].EndDate.Value, addressExtraEntry[2].AddressStreet, addressExtraEntry[2].AddressNumber, addressExtraEntry[2].AddressCity, addressExtraEntry[2].State, addressExtraEntry[2].Zipcode, addressExtraEntry[2].Country, addressExtraEntry[2].StartDate.Value, addressExtraEntry[2].EndDate.Value, addressExtraEntry[3].AddressStreet, addressExtraEntry[3].AddressNumber, addressExtraEntry[3].AddressCity, addressExtraEntry[3].State, addressExtraEntry[3].Zipcode, addressExtraEntry[3].Country, addressExtraEntry[3].StartDate.Value, addressExtraEntry[3].EndDate.Value};
             String[] nameFieldArray = {"ANum", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3", "Zipcode3", "Country3", "StartDate3", "EndDate3", "AddressStreet4", "AddInfoAddress4", "AddressCity4", "State4", "Zipcode4", "Country4", "StartDate4", "EndDate4", "AddressStreet5", "AddInfoAddress5", "AddressCity5", "State5", "Zipcode5", "Country5", "StartDate5", "EndDate5", "AddressStreet6", "AddInfoAddress6", "AddressCity6", "State6", "Zipcode6", "Country6", "StartDate6", "EndDate6"};
             String[] checkArray = {TenantSelection3, TenantSelection4, TenantSelection5, TenantSelection6};
             for (int i = 0; i < fieldArray.length; i++) {
@@ -4311,10 +4241,19 @@ public class Controller implements Initializable {
         }
     }
 
+    public void addressAddendumHelper(AddressNode Node, int increment) throws Exception {
+        if (Node.Level != jobForeign.Level && increment != 3) {
+            addressExtraEntry[increment] = Node;
+            increment += 1;
+        }
+        if(Node.NextNode != null && increment != 3) {
+            addressAddendumHelper(Node.NextNode, increment);
+        }
+    }
+
     public void employmentAddendumFiller() throws Exception {
         if (jobForeign.Level <= 2) {
             workInfoEntry.checkYourself(6);
-
             if (workInfoEntry.Root.NextNode.NextNode.NextNode != null && workInfoEntry.Root.NextNode.NextNode.NextNode.NextNode != null && workInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode != null) {
                 jobExtraEntry = new JobNode[]{workInfoEntry.Root.NextNode.NextNode.NextNode, workInfoEntry.Root.NextNode.NextNode.NextNode.NextNode, workInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode};
             }

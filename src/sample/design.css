@@ -181,6 +181,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(155,155,155,.3), 6.0, 0, -5.0, 0.0);
 }
 .menuBar {
+    -fx-alignment: CENTER-RIGHT;
     -fx-background-color: #eef9fd;
     -fx-background-radius: 6px;
     -fx-border-color: #b9c3cb;
@@ -268,7 +269,7 @@
     -fx-alignment: CENTER;
 }
 .textFieldLoose {
-    -fx-background-color: #eef9fd;
+    -fx-background-color: #eef9fd;;
     -fx-border-color: #b9c3cb;
     -fx-border-radius: 4px;
     -fx-border-width: 2px;
