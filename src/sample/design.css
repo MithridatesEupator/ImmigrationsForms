@@ -160,8 +160,8 @@
     -fx-border-radius: 20px;
     -fx-text-fill: black;
     -fx-border-width: 2px;
-    -fx-pref-height: 32px;
-    -fx-min-width: 36px;
+    -fx-pref-height: 26px;
+    -fx-pref-width: 44px;
     -fx-font-size: 15px;
 }
 .plusButton: hover {
