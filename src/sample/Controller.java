@@ -1,8 +1,6 @@
 package sample;
 
-import javafx.event.EventHandler;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import javafx.event.ActionEvent;
@@ -54,8 +52,6 @@ public class Controller implements Initializable {
     public TextField clientBirthCity;
     public TextField clientBirthCountry;
     public TextField clientDOB;
-    public CheckBox maleGender;
-    public CheckBox femaleGender;
     public MenuItem pacific;
     public MenuItem amerindian;
     public MenuItem black;
@@ -689,11 +685,6 @@ public class Controller implements Initializable {
     String[] C6Info = new String[7];
     String[] C7Info = new String[7];
 
-    String[] A3Info = new String[7];
-    String[] A4Info = new String[7];
-    String[] A5Info = new String[7];
-    String[] A6Info = new String[7];
-
     String[] S1Info = new String[9];
     String[] S2Info = new String[9];
     String[] S3Info = new String[9];
@@ -749,35 +740,9 @@ public class Controller implements Initializable {
     static DateValue StartDate3 = new DateValue();
     static DateValue EndDate3 = new DateValue();
 
-    static String AddressStreet4 = "";
     static String TenantSelection4 = "";
-    static String AddInfoAddress4 = "";
-    static String AddressCity4 = "";
-    static String State4 = "";
-    static String Zipcode4 = "";
-    static String Country4 = "";
-    static DateValue StartDate4 = new DateValue();
-    static DateValue EndDate4 = new DateValue();
-
-    static String AddressStreet5 = "";
     static String TenantSelection5 = "";
-    static String AddInfoAddress5 = "";
-    static String AddressCity5 = "";
-    static String State5 = "";
-    static String Zipcode5 = "";
-    static String Country5 = "";
-    static DateValue StartDate5 = new DateValue();
-    static DateValue EndDate5 = new DateValue();
-
-    static String AddressStreet6 = "";
     static String TenantSelection6 = "";
-    static String AddInfoAddress6 = "";
-    static String AddressCity6 = "";
-    static String State6 = "";
-    static String Zipcode6 = "";
-    static String Country6 = "";
-    static DateValue StartDate6 = new DateValue();
-    static DateValue EndDate6 = new DateValue();
 
     JobNode jobForeign = new JobNode();
     JobNode[] jobExtraEntry = {new JobNode(), new JobNode(), new JobNode()};
@@ -786,30 +751,6 @@ public class Controller implements Initializable {
     static JobData workInfoEntry = new JobData();
     static AddressData addressInfoEntry = new AddressData();
     static AddendumGroup addendumInfoEntry = new AddendumGroup();
-    static String methodAddressStreet = "";
-    static String methodAddressNumber = "";
-    static String methodAddressCity = "";
-    static String methodState = "";
-    static String methodZipcode = "";
-    static String methodCountry = "";
-    static String methodEmployer = "";
-    static String methodOccupation = "";
-    static String methodAddressStreet1 = "";
-    static String methodAddressNumber1 = "";
-    static String methodAddressCity1 = "";
-    static String methodState1 = "";
-    static String methodZipcode1 = "";
-    static String methodCountry1 = "";
-    static String methodEmployer1 = "";
-    static String methodOccupation1 = "";
-    static String methodAddressStreet2 = "";
-    static String methodAddressNumber2 = "";
-    static String methodAddressCity2 = "";
-    static String methodState2 = "";
-    static String methodZipcode2 = "";
-    static String methodCountry2 = "";
-    static String methodEmployer2 = "";
-    static String methodOccupation2 = "";
 
     String ETenantInfo3 = "";
     String ETenantInfo4 = "";
@@ -861,26 +802,24 @@ public class Controller implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("BugReportingMenu.fxml"));
         stage.setTitle("Bug Reporting");
         stage.setResizable(false);
-        Scene scene = null;
+        Scene scene;
         stage.setScene(new Scene(root, 600, 400));
         stage.initStyle(StageStyle.TRANSPARENT);
         scene = (getShadowScene(root));
         scene.setFill(Color.TRANSPARENT);
         stage.setScene( scene );
         stage.show();
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
+        root.setOnMousePressed(eventApp -> {
+            try {
+                xOffset = eventApp.getSceneX();
+                yOffset = eventApp.getSceneY();
+            } catch (Exception ex) { }
         });
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() - xOffset);
-                stage.setY(event.getScreenY() - yOffset);
-            }
+        root.setOnMouseDragged(eventApp -> {
+            try {
+                stage.setX(eventApp.getScreenX() - xOffset);
+                stage.setY(eventApp.getScreenY() - yOffset);
+            } catch (Exception ex) { }
         });
     }
 
@@ -889,26 +828,144 @@ public class Controller implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource(fileType + ".fxml"));
         stage.setTitle(fileType + " Unique Options");
         stage.setResizable(false);
-        Scene scene = null;
+        Scene scene;
         stage.setScene(new Scene(root, 600, 400));
         stage.initStyle(StageStyle.TRANSPARENT);
         scene = (getShadowScene(root));
         scene.setFill(Color.TRANSPARENT);
         stage.setScene( scene );
         stage.show();
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
+        root.setOnMousePressed(eventApp -> {
+            try {
+                xOffset = eventApp.getSceneX();
+                yOffset = eventApp.getSceneY();
+            } catch (Exception ex) { }
         });
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() - xOffset);
-                stage.setY(event.getScreenY() - yOffset);
-            }
+        root.setOnMouseDragged(eventApp -> {
+            try {
+                stage.setX(eventApp.getScreenX() - xOffset);
+                stage.setY(eventApp.getScreenY() - yOffset);
+            } catch (Exception ex) { }
+        });
+    }
+
+    @FXML
+    public Scene getShadowScene(Parent p) {
+        Scene scene;
+        VBox outer = new VBox();
+        outer.getChildren().add( p );
+        outer.setPadding(new Insets(20.0d));
+        outer.setBackground( new Background(new BackgroundFill( Color.rgb(0,0,0,0), new CornerRadii(0), new Insets(0))));
+        p.setEffect(new DropShadow(GAUSSIAN, Color.rgb(0,0,0,.65), 15, 0, 0, 0));
+        ((VBox) p).setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, new CornerRadii(0), new Insets(0))));
+        scene = new Scene( outer );
+        scene.setFill( Color.rgb(0,255,0,0) );
+        return scene;
+    }
+
+    @FXML
+    public void openAdditionalNamesWindow(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("AdditionalNames.fxml"));
+        stage.setTitle("Former Names");
+        stage.setResizable(false);
+        Scene scene;
+        stage.setScene(new Scene(root, 600, 400));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene = (getShadowScene(root));
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene( scene );
+        stage.show();
+        root.setOnMousePressed(eventApp -> {
+            try {
+                xOffset = eventApp.getSceneX();
+                yOffset = eventApp.getSceneY();
+            } catch (Exception ex) { }
+        });
+        root.setOnMouseDragged(eventApp -> {
+            try {
+                stage.setX(eventApp.getScreenX() - xOffset);
+                stage.setY(eventApp.getScreenY() - yOffset);
+            } catch (Exception ex) { }
+        });
+    }
+
+    @FXML
+    public void openC1InfoWindow(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("AdditionalC1Info.fxml"));
+        stage.setTitle("Former Names");
+        stage.setResizable(false);
+        Scene scene;
+        stage.setScene(new Scene(root, 600, 400));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene = (getShadowScene(root));
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene( scene );
+        stage.show();
+        root.setOnMousePressed(eventApp -> {
+            try {
+                xOffset = eventApp.getSceneX();
+                yOffset = eventApp.getSceneY();
+            } catch (Exception ex) { }
+        });
+        root.setOnMouseDragged(eventApp -> {
+            try {
+                stage.setX(eventApp.getScreenX() - xOffset);
+                stage.setY(eventApp.getScreenY() - yOffset);
+            } catch (Exception ex) { }
+        });
+    }
+
+    public void openC2InfoWindow(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("AdditionalC2Info.fxml"));
+        stage.setTitle("Former Names");
+        stage.setResizable(false);
+        Scene scene;
+        stage.setScene(new Scene(root, 600, 400));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene = (getShadowScene(root));
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene( scene );
+        stage.show();
+        root.setOnMousePressed(eventApp -> {
+            try {
+                xOffset = eventApp.getSceneX();
+                yOffset = eventApp.getSceneY();
+            } catch (Exception ex) { }
+        });
+        root.setOnMouseDragged(eventApp -> {
+            try {
+                stage.setX(eventApp.getScreenX() - xOffset);
+                stage.setY(eventApp.getScreenY() - yOffset);
+            } catch (Exception ex) { }
+        });
+    }
+
+    public void openC3InfoWindow(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("AdditionalC3Info.fxml"));
+        stage.setTitle("Former Names");
+        stage.setResizable(false);
+        Scene scene;
+        stage.setScene(new Scene(root, 600, 400));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene = (getShadowScene(root));
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene( scene );
+        stage.show();
+        root.setOnMousePressed(eventApp -> {
+            try {
+                xOffset = eventApp.getSceneX();
+                yOffset = eventApp.getSceneY();
+            } catch (Exception ex) { }
+        });
+        root.setOnMouseDragged(eventApp -> {
+            try {
+                stage.setX(eventApp.getScreenX() - xOffset);
+                stage.setY(eventApp.getScreenY() - yOffset);
+            } catch (Exception ex) { }
         });
     }
 
@@ -918,10 +975,8 @@ public class Controller implements Initializable {
             String user = "bugreportingircapp@gmail.com";
             String pass = "AppianShallParthia222";
             String to = "fsaulean@gmail.com";
-            String from = user;
             String subject = "Bug Report";
             String bugMessage = bugText.getText().trim();
-            boolean sessionDebug = false;
 
             Properties properties = System.getProperties();
 
@@ -934,9 +989,9 @@ public class Controller implements Initializable {
             java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
 
             Session session = Session.getDefaultInstance(properties,null);
-            session.setDebug(sessionDebug);
+            session.setDebug(false);
             MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
+            message.setFrom(new InternetAddress(user));
             InternetAddress[] address = {new InternetAddress(to)};
             message.setRecipients(Message.RecipientType.TO, address);
             message.setSubject(subject);
@@ -965,7 +1020,6 @@ public class Controller implements Initializable {
         interpreterFamilyName.setText("Castro De La Mata");
         interpreterFirstName.setText("Marjorie");
         interpreterEmail.setText("Marjorie.Castrodelamata@rescue.org");
-        //interpreterEmail.setStyle("-fx-alignment: CENTER_LEFT;");
         interpreterLanguage.setText("Spanish");
         interpreterLanguageMenu.setText("Spanish");
     }
@@ -974,7 +1028,6 @@ public class Controller implements Initializable {
         interpreterFamilyName.setText("Guirguis");
         interpreterFirstName.setText("Joseph");
         interpreterEmail.setText("Joseph.Guirguis@rescue.org");
-        //interpreterEmail.setStyle("-fx-alignment: CENTER_LEFT;");
         interpreterLanguage.setText("Arabic");
         interpreterLanguageMenu.setText("Arabic");
     }
@@ -1016,7 +1069,6 @@ public class Controller implements Initializable {
             else if(ImmigrationStatus.trim().equals("Haiti1")) {
                 immigrationStatus.setText("Haitian Parolee");
             }
-
         }
         else {
             immigrationStatus.setText("Current Status");
@@ -1042,12 +1094,12 @@ public class Controller implements Initializable {
             else if(ImmigrationStatus.trim().equals("Haiti1")) {
                 immigrationStatus.setText("Haitian Parolee");
             }
-
         }
         else {
             immigrationStatus.setText("Current Status");
         }
     }
+
     public void goMainMenu(ActionEvent event) {
         addressButton.getStyleClass().remove("menuButtonChangeSelected");
         miscButton.getStyleClass().remove("menuButtonChangeSelected");
@@ -1763,23 +1815,28 @@ public class Controller implements Initializable {
         ClientC3EyeColor.setText("Hazel");
         eyeIdentifier = "Hazel";
     }
+
     public void C3unknownEyesSelect(ActionEvent event) {
         C3EyeColor = "UnknownEyes";
         ClientC3EyeColor.setText("Other");
         eyeIdentifier = "Other";
     }
+
     public void C1selectSpouse1(ActionEvent event) {
         C1SpouseNumber = "1";
         ClientC1Parent.setText("Spouse " + C1SpouseNumber);
     }
+
     public void C1selectSpouse2(ActionEvent event) {
         C1SpouseNumber = "2";
         ClientC1Parent.setText("Spouse " + C1SpouseNumber);
     }
+
     public void C1selectSpouse3(ActionEvent event) {
         C1SpouseNumber = "3";
         ClientC1Parent.setText("Spouse " + C1SpouseNumber);
     }
+
     public void C1selectSpouse4(ActionEvent event) {
         C1SpouseNumber = "4";
         ClientC1Parent.setText("Spouse " + C1SpouseNumber);
@@ -1788,214 +1845,263 @@ public class Controller implements Initializable {
         C1SpouseNumber = "5";
         ClientC1Parent.setText("Spouse " + C1SpouseNumber);
     }
+
     public void C2selectSpouse1(ActionEvent event) {
         C2SpouseNumber = "1";
         ClientC2Parent.setText("Spouse " + C2SpouseNumber);
     }
+
     public void C2selectSpouse2(ActionEvent event) {
         C2SpouseNumber = "2";
         ClientC2Parent.setText("Spouse " + C2SpouseNumber);
     }
+
     public void C2selectSpouse3(ActionEvent event) {
         C2SpouseNumber = "3";
         ClientC2Parent.setText("Spouse " + C2SpouseNumber);
     }
+
     public void C2selectSpouse4(ActionEvent event) {
         C2SpouseNumber = "4";
         ClientC2Parent.setText("Spouse " + C2SpouseNumber);
     }
+
     public void C2selectSpouse5(ActionEvent event) {
         C2SpouseNumber = "5";
         ClientC2Parent.setText("Spouse " + C2SpouseNumber);
     }
+
     public void C3selectSpouse1(ActionEvent event) {
         C3SpouseNumber = "1";
         ClientC3Parent.setText("Spouse " + C3SpouseNumber);
     }
+
     public void C3selectSpouse2(ActionEvent event) {
         C3SpouseNumber = "2";
         ClientC3Parent.setText("Spouse " + C3SpouseNumber);
     }
+
     public void C3selectSpouse3(ActionEvent event) {
         C3SpouseNumber = "3";
         ClientC3Parent.setText("Spouse " + C3SpouseNumber);
     }
+
     public void C3selectSpouse4(ActionEvent event) {
         C3SpouseNumber = "4";
         ClientC3Parent.setText("Spouse " + C3SpouseNumber);
     }
+
     public void C3selectSpouse5(ActionEvent event) {
         C3SpouseNumber = "5";
         ClientC3Parent.setText("Spouse " + C3SpouseNumber);
     }
+
     public void uncheckDeaf(ActionEvent event) {
         blind.setSelected(false);
     }
+
     public void uncheckBlind(ActionEvent event) {
         deaf.setSelected(false);
     }
+
     public void uncheckPermission(ActionEvent event) {
         Replacement.setSelected(false);
         Renewal.setSelected(false);
     }
+
     public void uncheckReplacement(ActionEvent event) {
         Permission.setSelected(false);
         Renewal.setSelected(false);
     }
+
     public void uncheckRenewal(ActionEvent event) {
         Permission.setSelected(false);
         Replacement.setSelected(false);
     }
+
     public void uncheckCardStolen(ActionEvent event) {
         cardReceived.setSelected(false);
         cardMutilated.setSelected(false);
         cardExpired.setSelected(false);
     }
+
     public void uncheckCardReceived(ActionEvent event) {
         cardStolen.setSelected(false);
         cardMutilated.setSelected(false);
         cardExpired.setSelected(false);
     }
+
     public void uncheckCardMutilated(ActionEvent event) {
         cardStolen.setSelected(false);
         cardReceived.setSelected(false);
         cardExpired.setSelected(false);
     }
+
     public void uncheckCardExpired(ActionEvent event) {
         cardStolen.setSelected(false);
         cardReceived.setSelected(false);
         cardMutilated.setSelected(false);
     }
-    public void uncheckMaleGender(ActionEvent event) {
-        maleGender.setSelected(false);
-    }
-    public void uncheckFemaleGender(ActionEvent event) {
-        femaleGender.setSelected(false);
-    }
+
     public void uncheckOtherApt(ActionEvent event) {
         AddressSte.setSelected(false);
         AddressFlr.setSelected(false);
     }
+
     public void uncheckOtherSte(ActionEvent event) {
         AddressApt.setSelected(false);
         AddressFlr.setSelected(false);
     }
+
     public void uncheckOtherFlr(ActionEvent event) {
         AddressApt.setSelected(false);
         AddressSte.setSelected(false);
     }
+
     public void uncheckOtherApt1(ActionEvent event) {
         AddressSte1.setSelected(false);
         AddressFlr1.setSelected(false);
     }
+
     public void uncheckOtherSte1(ActionEvent event) {
         AddressApt1.setSelected(false);
         AddressFlr1.setSelected(false);
     }
+
     public void uncheckOtherFlr1(ActionEvent event) {
         AddressApt1.setSelected(false);
         AddressSte1.setSelected(false);
     }
+
     public void uncheckOtherApt2(ActionEvent event) {
         AddressSte2.setSelected(false);
         AddressFlr2.setSelected(false);
     }
+
     public void uncheckOtherSte2(ActionEvent event) {
         AddressApt2.setSelected(false);
         AddressFlr2.setSelected(false);
     }
+
     public void uncheckOtherFlr2(ActionEvent event) {
         AddressApt2.setSelected(false);
         AddressSte2.setSelected(false);
     }
+
     public void uncheckJobOtherApt(ActionEvent event) {
         jobAddressSte.setSelected(false);
         jobAddressFlr.setSelected(false);
     }
+
     public void uncheckJobOtherSte(ActionEvent event) {
         jobAddressApt.setSelected(false);
         jobAddressFlr.setSelected(false);
     }
+
     public void uncheckJobOtherFlr(ActionEvent event) {
         jobAddressApt.setSelected(false);
         jobAddressSte.setSelected(false);
     }
+
     public void uncheckJobOtherApt1(ActionEvent event) {
         jobAddressSte1.setSelected(false);
         jobAddressFlr1.setSelected(false);
     }
+
     public void uncheckJobOtherSte1(ActionEvent event) {
         jobAddressApt1.setSelected(false);
         jobAddressFlr1.setSelected(false);
     }
+
     public void uncheckJobOtherFlr1(ActionEvent event) {
         jobAddressApt1.setSelected(false);
         jobAddressSte1.setSelected(false);
     }
+
     public void uncheckJobOtherApt2(ActionEvent event) {
         jobAddressSte2.setSelected(false);
         jobAddressFlr2.setSelected(false);
     }
+
     public void uncheckJobOtherSte2(ActionEvent event) {
         jobAddressApt2.setSelected(false);
         jobAddressFlr2.setSelected(false);
     }
+
     public void uncheckJobOtherFlr2(ActionEvent event) {
         jobAddressApt2.setSelected(false);
         jobAddressSte2.setSelected(false);
     }
+
     public void uncheckC1MaleGender(ActionEvent event) {
         child1Gender.setSelected(false);
     }
+
     public void uncheckC1FemaleGender(ActionEvent event) {
         C1Female.setSelected(false);
     }
+
     public void uncheckC2MaleGender(ActionEvent event) {
         child2Gender.setSelected(false);
     }
+
     public void uncheckC2FemaleGender(ActionEvent event) {
         C2Female.setSelected(false);
     }
+
     public void uncheckC3MaleGender(ActionEvent event) {
         child3Gender.setSelected(false);
     }
+
     public void uncheckC3FemaleGender(ActionEvent event) {
         C3Female.setSelected(false);
     }
+
     public void uncheckC4MaleGender(ActionEvent event) {
         child4Gender.setSelected(false);
     }
+
     public void uncheckC4FemaleGender(ActionEvent event) {
         C4Female.setSelected(false);
     }
+
     public void uncheckC5MaleGender(ActionEvent event) {
         child5Gender.setSelected(false);
     }
+
     public void uncheckC5FemaleGender(ActionEvent event) {
         C5Female.setSelected(false);
     }
+
     public void uncheckC6MaleGender(ActionEvent event) {
         child6Gender.setSelected(false);
     }
+
     public void uncheckC6FemaleGender(ActionEvent event) {
         C6Female.setSelected(false);
     }
+
     public void uncheckC7MaleGender(ActionEvent event) {
         child7Gender.setSelected(false);
     }
+
     public void uncheckC7FemaleGender(ActionEvent event) {
         C7Female.setSelected(false);
     }
+
     public void uncheckSpouseMaleGender(ActionEvent event) {
         SpouseGender.setSelected(false);
     }
+
     public void uncheckSpouseFemaleGender(ActionEvent event) {
         SpouseFemale.setSelected(false);
     }
+
     public void maleSelect(ActionEvent event) throws Exception {
         AGender = "Male";
         sex.setText(AGender);
     }
+
     public void femaleSelect(ActionEvent event) throws Exception {
         AGender = "Female";
         sex.setText(AGender);
@@ -2006,9 +2112,8 @@ public class Controller implements Initializable {
         java.awt.Desktop.getDesktop().browse(u);
     }
 
-
     @FXML
-    public void closeWindow(ActionEvent event) {
+    public void closeWindow(ActionEvent event) throws Exception {
         try { SaveAdditionalNameVars(); }
         catch (Exception ex) { }
         try { SaveC1InfoVars(); }
@@ -2033,143 +2138,6 @@ public class Controller implements Initializable {
     public void minimizeGeneralWindow(ActionEvent event) {
         Stage stage = (Stage) minimizeButton.getScene().getWindow();
         stage.setIconified(true);
-    }
-
-    public Scene getShadowScene(Parent p) {
-        Scene scene;
-        VBox outer = new VBox();
-        outer.getChildren().add( p );
-        outer.setPadding(new javafx.geometry.Insets(20.0d));
-        outer.setBackground( new Background(new BackgroundFill( javafx.scene.paint.Color.rgb(0,0,0,0), new CornerRadii(0), new
-                javafx.geometry.Insets(0))));
-
-        p.setEffect(new DropShadow(GAUSSIAN, javafx.scene.paint.Color.rgb(0,0,0,.25), 15, 0, 0, 0));
-        ((VBox) p).setBackground(
-                new Background(
-                        new BackgroundFill( javafx.scene.paint.Color.TRANSPARENT, new CornerRadii(0), new Insets(0)
-                        )));
-
-        scene = new Scene( outer );
-        scene.setFill( Color.rgb(0,255,0,0) );
-        return scene;
-    }
-
-    @FXML
-    public void openAdditionalNamesWindow(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("AdditionalNames.fxml"));
-        stage.setTitle("Former Names");
-        stage.setResizable(false);
-        Scene scene = null;
-        stage.setScene(new Scene(root, 600, 400));
-        stage.initStyle(StageStyle.TRANSPARENT);
-        scene = (getShadowScene(root));
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene( scene );
-        stage.show();
-
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() - xOffset);
-                stage.setY(event.getScreenY() - yOffset);
-            }
-        });
-    }
-
-    @FXML
-    public void openC1InfoWindow(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("AdditionalC1Info.fxml"));
-        stage.setTitle("Former Names");
-        stage.setResizable(false);
-        Scene scene = null;
-        stage.setScene(new Scene(root, 600, 400));
-        stage.initStyle(StageStyle.TRANSPARENT);
-        scene = (getShadowScene(root));
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene( scene );
-        stage.show();
-
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() - xOffset);
-                stage.setY(event.getScreenY() - yOffset);
-            }
-        });
-    }
-
-    public void openC2InfoWindow(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("AdditionalC2Info.fxml"));
-        stage.setTitle("Former Names");
-        stage.setResizable(false);
-        Scene scene = null;
-        stage.setScene(new Scene(root, 600, 400));
-        stage.initStyle(StageStyle.TRANSPARENT);
-        scene = (getShadowScene(root));
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene( scene );
-        stage.show();
-
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() - xOffset);
-                stage.setY(event.getScreenY() - yOffset);
-            }
-        });
-    }
-
-    public void openC3InfoWindow(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("AdditionalC3Info.fxml"));
-        stage.setTitle("Former Names");
-        stage.setResizable(false);
-        Scene scene = null;
-        stage.setScene(new Scene(root, 600, 400));
-        stage.initStyle(StageStyle.TRANSPARENT);
-        scene = (getShadowScene(root));
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene( scene );
-        stage.show();
-
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() - xOffset);
-                stage.setY(event.getScreenY() - yOffset);
-            }
-        });
     }
 
     @FXML
@@ -2264,7 +2232,6 @@ public class Controller implements Initializable {
         else if(reason.equals("Af")) {
             cardExpired.setSelected(true);
         }
-
     }
 
     @FXML
@@ -2345,15 +2312,15 @@ public class Controller implements Initializable {
     @FXML
     public void ShowC1InfoVars() {
         if (!C1Ethnicity.trim().isEmpty()) {
-            if (C1Ethnicity == "Hispanic-yes") {
+            if (C1Ethnicity.equals("Hispanic-yes")) {
                 ClientC1Ethnicity.setText("Latino");
             }
-            else if (C1Ethnicity == "Hispanic-no") {
+            else if (C1Ethnicity.equals("Hispanic-no")) {
                 ClientC1Ethnicity.setText("Not Latino");
             }
         }
         if (!C1Race.trim().isEmpty()) {
-            if (C1Race == "Hawaii") {
+            if (C1Race.equals("Hawaii")) {
                 ClientC1Race.setText("Pacific Islander");
             }
             else {
@@ -2434,15 +2401,15 @@ public class Controller implements Initializable {
     }
     public void ShowC2InfoVars() {
         if (!C2Ethnicity.trim().isEmpty()) {
-            if (C2Ethnicity == "Hispanic-yes") {
+            if (C2Ethnicity.equals("Hispanic-yes")) {
                 ClientC2Ethnicity.setText("Latino");
             }
-            else if (C2Ethnicity == "Hispanic-no") {
+            else if (C2Ethnicity.equals("Hispanic-no")) {
                 ClientC2Ethnicity.setText("Not Latino");
             }
         }
         if (!C2Race.trim().isEmpty()) {
-            if (C2Race == "Hawaii") {
+            if (C2Race.equals("Hawaii")) {
                 ClientC2Race.setText("Pacific Islander");
             }
             else {
@@ -2524,15 +2491,15 @@ public class Controller implements Initializable {
 
     public void ShowC3InfoVars() {
         if (!C3Ethnicity.trim().isEmpty()) {
-            if (C3Ethnicity == "Hispanic-yes") {
+            if (C3Ethnicity.equals("Hispanic-yes")) {
                 ClientC3Ethnicity.setText("Latino");
             }
-            else if (C3Ethnicity == "Hispanic-no") {
+            else if (C3Ethnicity.equals("Hispanic-no")) {
                 ClientC3Ethnicity.setText("Not Latino");
             }
         }
         if (!C3Race.trim().isEmpty()) {
-            if (C3Race == "Hawaii") {
+            if (C3Race.equals("Hawaii")) {
                 ClientC3Race.setText("Pacific Islander");
             }
             else {
@@ -2573,9 +2540,25 @@ public class Controller implements Initializable {
         addAddendums();
     }
 
+    public void resetVars() throws Exception {
+        addendumInfoEntry = new AddendumGroup();
+        String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode, PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value, EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate, SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DBirthCountry, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value, DCityDivorced, DStateDivorced, DCountryDivorced, DCountryMarriage, SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value, ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value, C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value, C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status,  AddressLine1, AddressLine2};
+        for (int j = 0; j < resetArray.length; j++) {
+            resetArray[j] = "";
+        }
+        for (int b = 0; b < CApplyList.length; b++) {
+            CApplyList[b] = false;
+        }
+        workInfoEntry = new JobData();
+        nameChange = "Name-NA";
+        disability = "Accom-no";
+        disabilityExtra = "";
+        fileIteration = 0;
+        needAddendum = false;
+    }
+
     @FXML
     public void SaveVars() throws Exception {
-
         if (clientANumber.getText() != null) {
             String ANumTMP = clientANumber.getText().trim();
             if (ANumTMP.length() > 9) {
@@ -2604,7 +2587,7 @@ public class Controller implements Initializable {
             String TEMPORARY = clientDOB.getText().trim();
             DOBDate = new DateValue(TEMPORARY);
         }
-        if (clientBirthCountry.getText() != null && CountryBirth.trim().equals("Cuba") && CountryBirth.trim().equals("Haiti")) {
+        if (clientBirthCountry.getText() != null && !CountryBirth.trim().equals("Cuba") && !CountryBirth.trim().equals("Haiti")) {
             CountryBirth = clientBirthCountry.getText().trim();
             int ethnicityIndex = ArrayUtils.indexOf(ethnicityArray, CountryBirth.toUpperCase()) + 1;
             Nationality = ethnicityArray[ethnicityIndex];
@@ -2622,7 +2605,6 @@ public class Controller implements Initializable {
         } else {
             SocialSecurityBox = "SS-yes";
         }
-
         if (clientPassport.getText() != null) {
             PassportNum = clientPassport.getText().trim();
         } else {
@@ -2743,7 +2725,6 @@ public class Controller implements Initializable {
         if (interpreterEmail.getText() != null) {
             IEmail = interpreterEmail.getText().trim();
         }
-
         if (todayDate.getText() != null) {
             String TEMPORARY = todayDate.getText().trim();
             SignatureDate = new DateValue(TEMPORARY);
@@ -2914,7 +2895,6 @@ public class Controller implements Initializable {
             addressForeign = addressInfoEntry.Root.NextNode.NextNode;
         }
         addressInfoEntry.checkYourself(1);
-
         if (jobAddressApt.isSelected()) {
             ETenantInfo = "Apt";
         } else if (jobAddressSte.isSelected()) {
@@ -2937,98 +2917,17 @@ public class Controller implements Initializable {
             ETenantInfo2 = "Flr";
         }
         String dateJobEnd = jobAddressEndTime.getText().trim();
-        String dateJobStart = jobAddressStartTime.getText().trim();
-        String dateJobEnd1 = jobAddressEndTime1.getText().trim();
-        String dateJobStart1 = jobAddressStartTime1.getText().trim();
-        String dateJobEnd2 = jobAddressEndTime2.getText().trim();
-        String dateJobStart2 = jobAddressStartTime2.getText().trim();
         if (dateJobEnd.isEmpty()) {
             dateJobEnd = "PRESENT";
         }
-
-        if (jobAddressStreetName.getText() != null) {
-            methodAddressStreet = jobAddressStreetName.getText().trim();
+        if (!jobAddressStreetName.getText().trim().isEmpty() && !jobAddressCountry.getText().trim().isEmpty() && !jobEmployer.getText().trim().isEmpty()) {
+            workInfoEntry.addNode(jobAddressStreetName.getText().trim(), ETenantInfo, jobAddressNumber.getText().trim(), jobAddressCityTown.getText().trim(), jobAddressState.getText().trim(), jobAddressZipcode.getText().trim(), jobAddressCountry.getText().trim(), jobEmployer.getText().trim(), jobOccupation.getText().trim(), new DateValue(jobAddressStartTime.getText().trim()), new DateValue(dateJobEnd));
         }
-        if (jobAddressNumber.getText() != null) {
-            methodAddressNumber = jobAddressNumber.getText().trim();
+        if (!jobAddressStreetName1.getText().trim().isEmpty() && !jobAddressCountry1.getText().trim().isEmpty() && !jobEmployer1.getText().trim().isEmpty()) {
+            workInfoEntry.addNode(jobAddressStreetName1.getText().trim(), ETenantInfo1, jobAddressNumber1.getText().trim(), jobAddressCityTown1.getText().trim(), jobAddressState1.getText().trim(), jobAddressZipcode1.getText().trim(), jobAddressCountry1.getText().trim(), jobEmployer1.getText().trim(), jobOccupation1.getText().trim(), new DateValue(jobAddressStartTime1.getText().trim()), new DateValue(jobAddressEndTime1.getText().trim()));
         }
-        if (jobAddressCityTown.getText() != null) {
-            methodAddressCity = jobAddressCityTown.getText().trim();
-        }
-        if (jobAddressState.getText() != null) {
-            methodState = jobAddressState.getText().trim();
-        }
-        if (jobAddressZipcode.getText() != null) {
-            methodZipcode = jobAddressZipcode.getText().trim();
-        }
-        if (jobAddressCountry.getText() != null) {
-            methodCountry = jobAddressCountry.getText().trim();
-        }
-        if (jobOccupation.getText() != null) {
-            methodOccupation = jobOccupation.getText().trim();
-        }
-        if (jobEmployer.getText() != null) {
-            methodEmployer = jobEmployer.getText().trim();
-        }
-        if (jobAddressStreetName1.getText() != null) {
-            methodAddressStreet1 = jobAddressStreetName1.getText().trim();
-        }
-        if (jobAddressNumber1.getText() != null) {
-            methodAddressNumber1 = jobAddressNumber1.getText().trim();
-        }
-        if (jobAddressCityTown1.getText() != null) {
-            methodAddressCity1 = jobAddressCityTown1.getText().trim();
-        }
-        if (jobAddressState1.getText() != null) {
-            methodState1 = jobAddressState1.getText().trim();
-        }
-        if (jobAddressZipcode1.getText() != null) {
-            methodZipcode1 = jobAddressZipcode1.getText().trim();
-        }
-        if (jobAddressCountry1.getText() != null) {
-            methodCountry1 = jobAddressCountry1.getText().trim();
-        }
-        if (jobOccupation1.getText() != null) {
-            methodOccupation1 = jobOccupation1.getText().trim();
-        }
-        if (jobEmployer1.getText() != null) {
-            methodEmployer1 = jobEmployer1.getText().trim();
-        }
-        if (jobAddressStreetName2.getText() != null) {
-            methodAddressStreet2 = jobAddressStreetName2.getText().trim();
-        }
-        if (jobAddressNumber2.getText() != null) {
-            methodAddressNumber2 = jobAddressNumber2.getText().trim();
-        }
-        if (jobAddressCityTown2.getText() != null) {
-            methodAddressCity2 = jobAddressCityTown2.getText().trim();
-        }
-        if (jobAddressState2.getText() != null) {
-            methodState2 = jobAddressState2.getText().trim();
-        }
-        if (jobAddressZipcode2.getText() != null) {
-            methodZipcode2 = jobAddressZipcode2.getText().trim();
-        }
-        if (jobAddressCountry2.getText() != null) {
-            methodCountry2 = jobAddressCountry2.getText().trim();
-        }
-        if (jobOccupation2.getText() != null) {
-            methodOccupation2 = jobOccupation2.getText().trim();
-        }
-        if (jobOccupation2.getText() != null) {
-            methodOccupation2 = jobOccupation2.getText().trim();
-        }
-        if (jobEmployer2.getText() != null) {
-            methodEmployer2 = jobEmployer2.getText().trim();
-        }
-        if (!methodAddressNumber.trim().isEmpty() && !methodCountry.trim().isEmpty() && !methodEmployer.trim().isEmpty()) {
-            workInfoEntry.addNode(methodAddressStreet, ETenantInfo, methodAddressNumber, methodAddressCity, methodState, methodZipcode, methodCountry, methodEmployer, methodOccupation, new DateValue(dateJobStart), new DateValue(dateJobEnd));
-        }
-        if (!methodAddressNumber1.trim().isEmpty() && !methodCountry1.trim().isEmpty() && !methodEmployer1.trim().isEmpty()) {
-            workInfoEntry.addNode(methodAddressStreet1, ETenantInfo1, methodAddressNumber1, methodAddressCity1, methodState1, methodZipcode1, methodCountry1, methodEmployer1, methodOccupation1, new DateValue(dateJobStart1), new DateValue(dateJobEnd1));
-        }
-        if (!methodAddressNumber2.trim().isEmpty() && !methodCountry2.trim().isEmpty() && !methodEmployer2.trim().isEmpty()) {
-            workInfoEntry.addNode(methodAddressStreet2, ETenantInfo2, methodAddressNumber2, methodAddressCity2, methodState2, methodZipcode2, methodCountry2, methodEmployer2, methodOccupation2, new DateValue(dateJobStart2), new DateValue(dateJobEnd2));
+        if (!jobAddressStreetName2.getText().trim().isEmpty() && !jobAddressCountry2.getText().trim().isEmpty() && !jobEmployer2.getText().trim().isEmpty()) {
+            workInfoEntry.addNode(jobAddressStreetName2.getText().trim(), ETenantInfo2, jobAddressNumber2.getText().trim(), jobAddressCityTown2.getText().trim(), jobAddressState2.getText().trim(), jobAddressZipcode2.getText().trim(), jobAddressCountry2.getText().trim(), jobEmployer2.getText().trim(), jobOccupation2.getText().trim(), new DateValue(jobAddressStartTime2.getText().trim()), new DateValue(jobAddressEndTime2.getText().trim()));
         }
         if (job3Info.getText() != null) {
             if (!job3Info.getText().trim().isEmpty()) {
@@ -3270,8 +3169,7 @@ public class Controller implements Initializable {
             String[] TMPINFO = Spouse1Country.getText().trim().split("\\|");
             DCountryMarriage = TMPINFO[0].trim();
             DCountryDivorced = TMPINFO[1].trim();
-
-    }
+        }
         if (child1FamilyName.getText() != null) {
             C1FamilyName = child1FamilyName.getText().trim();
         }
@@ -3353,8 +3251,7 @@ public class Controller implements Initializable {
                 C4DOBDate = new DateValue(C4Info[6]);
                 C4CountryBirth = C4Info[5];
             }
-            catch (ArrayIndexOutOfBoundsException ArrayEx) {
-            }
+            catch (ArrayIndexOutOfBoundsException ArrayEx) { }
         }
         if (child5Info.getText() != null) {
             try {
@@ -3374,9 +3271,7 @@ public class Controller implements Initializable {
                 C5DOBDate = new DateValue(C5Info[6]);
                 C5CountryBirth = C5Info[5];
             }
-
-            catch (ArrayIndexOutOfBoundsException ArrayEx) {
-            }
+            catch (ArrayIndexOutOfBoundsException ArrayEx) { }
         }
         if (child6Info.getText() != null) {
             try {
@@ -3498,8 +3393,6 @@ public class Controller implements Initializable {
             MCountryCurrent = "DECEASED";
             MCityCurrent = "DECEASED";
         }
-        //---------------------------------------------------------
-
         if (SpouseGender.isSelected()) {
             SGender = "Male";
         }
@@ -3618,23 +3511,6 @@ public class Controller implements Initializable {
         AddressLine2 = AddressCity + ", " + State + " " + Zipcode;
     }
 
-    public void resetVars() throws Exception {
-        addendumInfoEntry = new AddendumGroup();
-        String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode, PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value, EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate, SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DBirthCountry, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value, DCityDivorced, DStateDivorced, DCountryDivorced, DCountryMarriage, SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value, ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value, C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value, C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status,  AddressLine1, AddressLine2};
-        for (int j = 0; j < resetArray.length; j++) {
-            resetArray[j] = "";
-        }
-        for (int b = 0; b < CApplyList.length; b++) {
-            CApplyList[b] = false;
-        }
-        workInfoEntry = new JobData();
-        nameChange = "Name-NA";
-        disability = "Accom-no";
-        disabilityExtra = "";
-        fileIteration = 0;
-        needAddendum = false;
-    }
-
     public void fillAppHelper() throws Exception {
         CDOBDate = new DateValue[]{C1DOBDate, C2DOBDate, C3DOBDate};
         NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
@@ -3642,7 +3518,7 @@ public class Controller implements Initializable {
         String[] fieldArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, addressInfoEntry.Root.AddressStreet, addressInfoEntry.Root.AddressNumber, addressInfoEntry.Root.AddressCity, addressInfoEntry.Root.State, addressInfoEntry.Root.Zipcode, PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, addressInfoEntry.Root.StartDate.Value, addressInfoEntry.Root.EndDate.Value, addressInfoEntry.Root.NextNode.AddressStreet, addressInfoEntry.Root.NextNode.AddressNumber, addressInfoEntry.Root.NextNode.AddressCity, addressInfoEntry.Root.NextNode.State, addressInfoEntry.Root.NextNode.Zipcode, addressInfoEntry.Root.NextNode.Country, addressInfoEntry.Root.NextNode.StartDate.Value, addressInfoEntry.Root.NextNode.EndDate.Value, addressForeign.AddressStreet, addressForeign.AddressNumber, addressForeign.AddressCity, addressForeign.State, addressForeign.Zipcode, addressForeign.Country, addressForeign.StartDate.Value, addressForeign.EndDate.Value, workInfoEntry.Root.Employer, workInfoEntry.Root.AddressStreet, workInfoEntry.Root.AddressAddInfo, workInfoEntry.Root.AddressCity, workInfoEntry.Root.State, workInfoEntry.Root.Zipcode, workInfoEntry.Root.Country, workInfoEntry.Root.Occupation, workInfoEntry.Root.StartDate.Value, workInfoEntry.Root.EndDate.Value, workInfoEntry.Root.NextNode.Employer, workInfoEntry.Root.NextNode.AddressStreet, workInfoEntry.Root.NextNode.AddressAddInfo, workInfoEntry.Root.NextNode.AddressCity, workInfoEntry.Root.NextNode.State, workInfoEntry.Root.NextNode.Zipcode, workInfoEntry.Root.NextNode.Country, workInfoEntry.Root.NextNode.Occupation, workInfoEntry.Root.NextNode.StartDate.Value, workInfoEntry.Root.NextNode.EndDate.Value, jobForeign.Employer, jobForeign.AddressStreet, jobForeign.AddressAddInfo, jobForeign.AddressCity, jobForeign.State, jobForeign.Zipcode, jobForeign.Country, jobForeign.Occupation, jobForeign.StartDate.Value, jobForeign.EndDate.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate, SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DBirthCountry, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value, DCityDivorced, DStateDivorced, DCountryDivorced, DCountryMarriage, SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value, ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, addendumInfoEntry.Root.pageNum, addendumInfoEntry.Root.partNum, addendumInfoEntry.Root.itemNum, addendumInfoEntry.Root.line1, addendumInfoEntry.Root.line2, addendumInfoEntry.Root.line3, addendumInfoEntry.Root.line4, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, addendumInfoEntry.Root.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.line4, Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line4, Addendum2E, Addendum2F, Addendum2G, Addendum2J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4, Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4, Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value, C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value, C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status,  AddressLine1, AddressLine2};
         String[] nameFieldArray = {"ANum", "FamilyName", "FirstName", "MiddleName", "FamilyName1", "MiddleName1", "FirstName1", "FamilyName2", "FirstName2", "MiddleName2", "FamilyName3", "MiddleName3", "FirstName3", "Name", "DOBDate", "CityBirth", "CountryBirth", "Nationality", "SocialSecurity", "AddressStreet", "AddInfoAddress", "AddressCity", "State", "Zipcode", "PassportNum", "TravelNum", "ExpirationDate", "PassportCountry", "EntryInspectionStatus", "EntryParoledStatus", "OtherStatus", "EntryCity", "EntryState", "LastArrivalDate", "I94Num", "ExpirationDate1", "I94Status", "CurrentImmigrationStatus", "I94FamilyName", "I94FirstName", "I94MiddleName", "StartDate", "EndDate", "AddressStreet1", "AddInfoAddress1", "AddressCity1", "State1", "Zipcode1", "Country1", "StartDate1", "EndDate1", "AddressStreet2", "AddInfoAddress2", "AddressCity2", "State2", "Zipcode2", "Country2", "StartDate2", "EndDate2", "Employer", "WorkAddressStreet", "WorkAddInfoAddress", "WorkAddressCity", "WorkState", "WorkZipcode", "WorkCountry", "WorkOccupation", "WorkStartDate", "WorkEndDate", "Employer1", "WorkAddressStreet1", "WorkAddInfoAddress1", "WorkAddressCity1", "WorkState1", "WorkZipcode1", "WorkCountry1", "WorkOccupation1", "WorkStartDate1", "WorkEndDate1", "Employer2", "WorkAddressStreet2", "WorkAddInfoAddress2", "WorkAddressCity2", "WorkState2", "WorkZipcode2", "WorkCountry2", "WorkOccupation2", "WorkStartDate2", "WorkEndDate2", "FFamilyName", "FFirstName", "FMiddleName", "FFamilyNameB", "FFirstNameB", "FMiddleNameB", "FDOB", "FCityBirth", "FCountryBirth", "FCityCurrent", "FCountryCurrent", "MFamilyName", "MFirstName", "MMiddleName", "MFamilyNameB", "MFirstNameB", "MMiddleNameB", "MDOB", "MCityBirth", "MCountryBirth", "MCityCurrent", "MCountryCurrent", "MarriageNum", "SFamilyName", "SMiddleName", "SFirstName", "SANum", "SDOBDate", "SMarriageDate", "SCityBirth", "SCountryBirth", "DFamilyName", "DFirstName", "DMiddleName", "DBirthCountry", "DDOBDate", "DMarriageDate", "DCityMarriage", "DStateMarriage", "DMarriageEndDate", "DCityDivorced", "DStateDivorced", "DCountryDivorced", "DCountryMarriage", "SCityMarriage", "SCountryMarriage", "ChildNum", "C1FamilyName", "C1MiddleName", "C1FirstName", "C1ANum", "C1DOBDate", "C1MarriageDate", "C1CityBirth", "C1CountryBirth", "C2FamilyName", "C2MiddleName", "C2FirstName", "C2ANum", "C2DOBDate", "C2MarriageDate", "C2CityBirth", "C2CountryBirth", "C3FamilyName", "C3MiddleName", "C3FirstName", "C3ANum", "C3DOBDate", "C3MarriageDate", "C3CityBirth", "C3CountryBirth", "Feet", "Inches", "PD1", "PD2", "PD3", "NameOrganization", "CityOrganization", "StateOrganization", "CountryOrganization", "NatureOrganization", "OrganizationStartDate", "OrganizationEndDate", "NameOrganization1", "CityOrganization1", "StateOrganization1", "CountryOrganization1", "NatureOrganization1", "OrganizationStartDate1", "OrganizationEndDate1", "NameOrganization2", "CityOrganization2", "StateOrganization2", "CountryOrganization2", "NatureOrganization2", "OrganizationStartDate2", "OrganizationEndDate2", "ADayTimeNum", "AMobNum", "AEmail", "SignatureDate", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress", "IAddressCity", "IState", "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language", "PN", "PaN", "IN", "AddendumA", "AddendumB", "AddendumC", "AddendumD", "AddendumE", "AddendumF", "AddendumG", "AddendumH", "AddendumI", "AddendumJ", "PN1", "PaN1", "IN1", "Addendum1A", "Addendum1B", "Addendum1C", "Addendum1D", "Addendum1E", "Addendum1F", "Addendum1G", "Addendum1H", "Addendum1I", "Addendum1J", "PN2", "PaN2", "IN2", "Addendum2A", "Addendum2B", "Addendum2C", "Addendum2D", "Addendum2E", "Addendum2F", "Addendum2G", "Addendum2J", "PN3", "PaN3", "IN3", "Addendum3A", "Addendum3B", "Addendum3C", "Addendum3D", "Addendum3E", "Addendum3F", "Addendum3G", "Addendum3H", "Addendum3I", "PN4", "PaN4", "IN4", "Addendum4A", "Addendum4B", "Addendum4C", "Addendum4D", "Addendum4E", "Addendum4F", "Addendum4G", "Addendum4H","Addendum4I", "Addendum4J", "EntryI765","C4FamilyName","C4FirstName","C4MiddleName","C4ANum","C4DOBDate","C4CountryBirth","C5FamilyName","C5FirstName", "C5MiddleName","C5ANum","C5DOBDate", "C5CountryBirth","C6FamilyName","C6FirstName","C6MiddleName","C6ANum","C6DOBDate","C6CountryBirth","C7FamilyName","C7FirstName","C7MiddleName","C7ANum","C7DOBDate", "C7CountryBirth", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3", "Zipcode3", "Country3", "StartDate3", "EndDate3","AGender", "TenantInfo", "AltTenantInfo", "lastArrived", "ImmigrationStatus", "TenantInfo1", "TenantInfo2", "ETenantInfo", "ETenantInfo1", "ETenantInfo2", "MaritalStatus", "USGuard", "SApply", "C1status", "C2status", "C3status", "Ethnicity", "Race", "EyeColor", "HairColor", "OrgAnswer", "DisabilityAnswer", "InterpreterQuestion", "ITenantInfo", "PTenantInfo", "Q49", "Q55", "Q61", "Q62", "SocialSecurityBox", "C4status", "C5status", "C6status", "C7status", "AddressLine1", "AddressLine2"};
         String[] checkArray = {AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ("E" + workInfoEntry.Root.AddressAddInfo), ("E" + workInfoEntry.Root.NextNode.AddressAddInfo + "1"), ("E" + jobForeign.AddressAddInfo + "2"), MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status, applyI765, nameChange, reason, disability, disabilityExtra};
-        if (fileType == "") {
+        if (fileType.trim().isEmpty()) {
             fileType = "i-485";
         }
         InputStream in = getClass().getResourceAsStream("resources/pdf/" + fileType + ".pdf");
@@ -3662,7 +3538,7 @@ public class Controller implements Initializable {
         }
         for (int b = 0; b < checkArray.length; b++) {
             String entryCheckArray = checkArray[b];
-            if (entryCheckArray.trim() != "") {
+            if (!entryCheckArray.trim().isEmpty()) {
                 try {
                     PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
                     boxTemp.check();
@@ -3676,7 +3552,7 @@ public class Controller implements Initializable {
         pdfFile.setTitle("Save " + fileType.toUpperCase());
         pdfFile.setInitialFileName(fileType + "-" + NameTitle + ".pdf");
         File dest = pdfFile.showSaveDialog(null);
-        String pathFile = new String();
+        String pathFile;
         if (dest != null) {
             try {
                 pathFile = dest.getAbsolutePath();
@@ -3699,7 +3575,7 @@ public class Controller implements Initializable {
             C1SpouseNumber = "1";
         }
         if (fileIteration < Integer.valueOf(ChildNumReference) && CApplyList[fileIteration]) {
-            if (AGender == "Male") {
+            if (AGender.equals("Male")) {
                 FFamilyName = FamilyName;
                 FFirstName = FirstName;
                 FMiddleName = MiddleName;
@@ -3861,7 +3737,7 @@ public class Controller implements Initializable {
                 }
 
             }
-            else if (AGender == "Female") {
+            else if (AGender.equals("Female")) {
                 MFamilyName = FamilyName;
                 MFirstName = FirstName;
                 MMiddleName = MiddleName;
@@ -4132,7 +4008,7 @@ public class Controller implements Initializable {
             }
             for (int b = 0; b < checkArray.length; b++) {
                 String entryCheckArray = checkArray[b];
-                if (entryCheckArray.trim() != "") {
+                if (!entryCheckArray.trim().isEmpty()) {
                     PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
                     try {
                         boxTemp.check();
@@ -4145,7 +4021,7 @@ public class Controller implements Initializable {
             pdfFile.setTitle("Save Addendum?");
             pdfFile.setInitialFileName(fileType + "-" + NameTitle + "_children_addendum.pdf");
             File dest = pdfFile.showSaveDialog(null);
-            String pathFile = new String();
+            String pathFile;
             if (dest != null) {
                 try {
                     pathFile = dest.getAbsolutePath();
@@ -4165,7 +4041,7 @@ public class Controller implements Initializable {
         openJSON.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
         openJSON.setTitle("Select the Appropriate JSON file");
         File jsondest = openJSON.showOpenDialog(null);
-        String pathFile = new String();
+        String pathFile;
         JSONParser parser = new JSONParser();
         try {
             pathFile = jsondest.getAbsolutePath();
@@ -4213,7 +4089,7 @@ public class Controller implements Initializable {
             }
             for (int b = 0; b < checkArray.length; b++) {
                 String entryCheckArray = checkArray[b];
-                if (entryCheckArray.trim() != "") {
+                if (!entryCheckArray.trim().isEmpty()) {
                     PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
                     try {
                         boxTemp.check();
@@ -4226,7 +4102,7 @@ public class Controller implements Initializable {
             pdfFile.setTitle("Save Addendum?");
             pdfFile.setInitialFileName(fileType + "-" + NameTitle + "_address_addendum.pdf");
             File dest = pdfFile.showSaveDialog(null);
-            String pathFile = new String();
+            String pathFile;
             if (dest != null) {
                 try {
                     pathFile = dest.getAbsolutePath();
@@ -4279,12 +4155,11 @@ public class Controller implements Initializable {
                 if (fieldTemp != null) {
                     fieldTemp.setValue(entryFieldArray.toUpperCase());
                 }
-            } catch (Exception ex) {
-            }
+            } catch (Exception ex) { }
         }
         for (int b = 0; b < checkArray.length; b++) {
             String entryCheckArray = checkArray[b];
-            if (entryCheckArray.trim() != "") {
+            if (!entryCheckArray.trim().isEmpty()) {
                 PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
                 try {
                     boxTemp.check();
@@ -4297,7 +4172,7 @@ public class Controller implements Initializable {
         pdfFile.setTitle("Save Addendum?");
         pdfFile.setInitialFileName(fileType + "-" + NameTitle + "_employment_addendum.pdf");
         File dest = pdfFile.showSaveDialog(null);
-        String pathFile = new String();
+        String pathFile;
         if (dest != null) {
             try {
                 pathFile = dest.getAbsolutePath();
