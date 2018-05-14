@@ -757,8 +757,8 @@ public class Controller implements Initializable {
     static String reason = "";
     String[][] CWeight = new String[3][3];
 
-    private double xOffset = 0;
-    private double yOffset = 0;
+    private double horizontalCoord = 0;
+    private double verticalCoord = 0;
 
     @Override
 
@@ -810,14 +810,14 @@ public class Controller implements Initializable {
         stage.show();
         root.setOnMousePressed(eventApp -> {
             try {
-                xOffset = eventApp.getSceneX();
-                yOffset = eventApp.getSceneY();
+                horizontalCoord = eventApp.getSceneX();
+                verticalCoord = eventApp.getSceneY();
             } catch (Exception ex) { }
         });
         root.setOnMouseDragged(eventApp -> {
             try {
-                stage.setX(eventApp.getScreenX() - xOffset);
-                stage.setY(eventApp.getScreenY() - yOffset);
+                stage.setX(eventApp.getScreenX() - horizontalCoord);
+                stage.setY(eventApp.getScreenY() - verticalCoord);
             } catch (Exception ex) { }
         });
     }
@@ -836,14 +836,14 @@ public class Controller implements Initializable {
         stage.show();
         root.setOnMousePressed(eventApp -> {
             try {
-                xOffset = eventApp.getSceneX();
-                yOffset = eventApp.getSceneY();
+                horizontalCoord = eventApp.getSceneX();
+                verticalCoord = eventApp.getSceneY();
             } catch (Exception ex) { }
         });
         root.setOnMouseDragged(eventApp -> {
             try {
-                stage.setX(eventApp.getScreenX() - xOffset);
-                stage.setY(eventApp.getScreenY() - yOffset);
+                stage.setX(eventApp.getScreenX() - horizontalCoord);
+                stage.setY(eventApp.getScreenY() - verticalCoord);
             } catch (Exception ex) { }
         });
     }
@@ -877,14 +877,14 @@ public class Controller implements Initializable {
         stage.show();
         root.setOnMousePressed(eventApp -> {
             try {
-                xOffset = eventApp.getSceneX();
-                yOffset = eventApp.getSceneY();
+                horizontalCoord = eventApp.getSceneX();
+                verticalCoord = eventApp.getSceneY();
             } catch (Exception ex) { }
         });
         root.setOnMouseDragged(eventApp -> {
             try {
-                stage.setX(eventApp.getScreenX() - xOffset);
-                stage.setY(eventApp.getScreenY() - yOffset);
+                stage.setX(eventApp.getScreenX() - horizontalCoord);
+                stage.setY(eventApp.getScreenY() - verticalCoord);
             } catch (Exception ex) { }
         });
     }
@@ -904,14 +904,14 @@ public class Controller implements Initializable {
         stage.show();
         root.setOnMousePressed(eventApp -> {
             try {
-                xOffset = eventApp.getSceneX();
-                yOffset = eventApp.getSceneY();
+                horizontalCoord = eventApp.getSceneX();
+                verticalCoord = eventApp.getSceneY();
             } catch (Exception ex) { }
         });
         root.setOnMouseDragged(eventApp -> {
             try {
-                stage.setX(eventApp.getScreenX() - xOffset);
-                stage.setY(eventApp.getScreenY() - yOffset);
+                stage.setX(eventApp.getScreenX() - horizontalCoord);
+                stage.setY(eventApp.getScreenY() - verticalCoord);
             } catch (Exception ex) { }
         });
     }
@@ -930,14 +930,14 @@ public class Controller implements Initializable {
         stage.show();
         root.setOnMousePressed(eventApp -> {
             try {
-                xOffset = eventApp.getSceneX();
-                yOffset = eventApp.getSceneY();
+                horizontalCoord = eventApp.getSceneX();
+                verticalCoord = eventApp.getSceneY();
             } catch (Exception ex) { }
         });
         root.setOnMouseDragged(eventApp -> {
             try {
-                stage.setX(eventApp.getScreenX() - xOffset);
-                stage.setY(eventApp.getScreenY() - yOffset);
+                stage.setX(eventApp.getScreenX() - horizontalCoord);
+                stage.setY(eventApp.getScreenY() - verticalCoord);
             } catch (Exception ex) { }
         });
     }
@@ -956,14 +956,14 @@ public class Controller implements Initializable {
         stage.show();
         root.setOnMousePressed(eventApp -> {
             try {
-                xOffset = eventApp.getSceneX();
-                yOffset = eventApp.getSceneY();
+                horizontalCoord = eventApp.getSceneX();
+                verticalCoord = eventApp.getSceneY();
             } catch (Exception ex) { }
         });
         root.setOnMouseDragged(eventApp -> {
             try {
-                stage.setX(eventApp.getScreenX() - xOffset);
-                stage.setY(eventApp.getScreenY() - yOffset);
+                stage.setX(eventApp.getScreenX() - horizontalCoord);
+                stage.setY(eventApp.getScreenY() - verticalCoord);
             } catch (Exception ex) { }
         });
     }
@@ -1003,9 +1003,7 @@ public class Controller implements Initializable {
             transport.close();
             sentText.setText("Sent!");
         }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        catch (Exception ex) { }
     }
 
     String pressedColor = "#1570c0";
@@ -1059,13 +1057,13 @@ public class Controller implements Initializable {
             if (ImmigrationStatus.trim().equals("Asylum")) {
                 immigrationStatus.setText(ImmigrationStatus + " Seeker");
             }
-            else if(ImmigrationStatus.trim().equals("Refugee")) {
+            if(ImmigrationStatus.trim().equals("Refugee")) {
                 immigrationStatus.setText("Refugee");
             }
-            else if(ImmigrationStatus.trim().equals("Cuban1")) {
+            if(ImmigrationStatus.trim().equals("Cuban1")) {
                 immigrationStatus.setText("Cuban Parolee");
             }
-            else if(ImmigrationStatus.trim().equals("Haiti1")) {
+            if(ImmigrationStatus.trim().equals("Haitian1")) {
                 immigrationStatus.setText("Haitian Parolee");
             }
         }
@@ -1084,13 +1082,13 @@ public class Controller implements Initializable {
             if (ImmigrationStatus.trim().equals("Asylum")) {
                 immigrationStatus.setText(ImmigrationStatus + " Seeker");
             }
-            else if(ImmigrationStatus.trim().equals("Refugee")) {
+            if(ImmigrationStatus.trim().equals("Refugee")) {
                 immigrationStatus.setText("Refugee");
             }
-            else if(ImmigrationStatus.trim().equals("Cuban1")) {
+            if(ImmigrationStatus.trim().equals("Cuban1")) {
                 immigrationStatus.setText("Cuban Parolee");
             }
-            else if(ImmigrationStatus.trim().equals("Haiti1")) {
+            if(ImmigrationStatus.trim().equals("Haitian1")) {
                 immigrationStatus.setText("Haitian Parolee");
             }
         }
@@ -2806,7 +2804,6 @@ public class Controller implements Initializable {
             addressInfoEntry.addNode(AddressStreetName.getText(), TenantInfo, AddressNumber.getText(), AddressCityTown.getText(), AddressState.getText(), AddressZipcode.getText(), "USA", new DateValue(AddressStartTime.getText()), new DateValue("PRESENT"));
         }
         if(!AddressStreetName1.getText().trim().isEmpty()) {
-            System.out.println("WORKS");
             addressInfoEntry.addNode(AddressStreetName1.getText(), TenantInfo1, AddressNumber1.getText(), AddressCityTown1.getText(), AddressState1.getText(), AddressZipcode1.getText(), AddressCountry1.getText(), new DateValue(AddressStartTime1.getText()), new DateValue(AddressStartTime.getText()));
         }
         if(!AddressStreetName2.getText().trim().isEmpty()) {
@@ -3480,11 +3477,6 @@ public class Controller implements Initializable {
         CDOBDate = new DateValue[]{C1DOBDate, C2DOBDate, C3DOBDate};
         NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
         Name = NameTitle.replace("_"," ");
-        workInfoEntry.printAll();
-        if (workInfoEntry.Root.NextNode.NextNode == null) {
-            System.out.println("it is null");
-        }
-
         String[] fieldArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2,
                 MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity,
                 addressInfoEntry.Root.AddressStreet, addressInfoEntry.Root.AddressNumber, addressInfoEntry.Root.AddressCity, addressInfoEntry.Root.State,
@@ -4108,6 +4100,7 @@ public class Controller implements Initializable {
 
     public void employmentAddendumFiller() throws Exception {
         if (workInfoEntry.getLastNode().Level > 2) {
+            workInfoEntry.checkYourself(6);
             jobExtraEntry = new JobNode[]{workInfoEntry.Root.NextNode.NextNode.NextNode, workInfoEntry.Root.NextNode.NextNode.NextNode.NextNode, workInfoEntry.Root.NextNode.NextNode.NextNode.NextNode.NextNode};
             ETenantInfo3 = "E" + jobExtraEntry[0].AddressAddInfo.trim() + "3";
             ETenantInfo4 = "E" + jobExtraEntry[1].AddressAddInfo.trim() + "4";

@@ -19,8 +19,8 @@ import static javafx.scene.effect.BlurType.GAUSSIAN;
 
 public class Main extends Application  {
 
-    private double xOffset = 0;
-    private double yOffset = 0;
+    private double horizontalCoord = 0;
+    private double verticalCoord = 0;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -40,14 +40,14 @@ public class Main extends Application  {
         primaryStage.show();
         root.setOnMousePressed(eventApp -> {
             try {
-                xOffset = eventApp.getSceneX();
-                yOffset = eventApp.getSceneY();
+                horizontalCoord = eventApp.getSceneX();
+                verticalCoord = eventApp.getSceneY();
             } catch (Exception ex) { }
         });
         root.setOnMouseDragged(eventApp -> {
             try {
-                primaryStage.setX(eventApp.getScreenX() - xOffset);
-                primaryStage.setY(eventApp.getScreenY() - yOffset);
+                primaryStage.setX(eventApp.getScreenX() - horizontalCoord);
+                primaryStage.setY(eventApp.getScreenY() - verticalCoord);
             } catch (Exception ex) { }
             });
     }

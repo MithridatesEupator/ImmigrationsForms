@@ -24,7 +24,7 @@ public class JobData {
             this.deleteLastNode();
         }
         if(this.Root == null) {
-            if(EndDate.Value.equals(TEMPORARYDATE.StringMinusFiveValue) || EndDate.Value.equals("PRESENT")) {
+            if(EndDate.Value.equals(TEMPORARYDATE.Value) || EndDate.Value.equals("PRESENT")) {
                 if (!Country.equals("USA") && FirstForeignLevel == -1) {
                     FirstForeignLevel = 0;
                 }
@@ -73,6 +73,7 @@ public class JobData {
                         this.Root.NextNode.NextNode.Level = 2;
                     }
                     else {
+                        Level += 1;
                         this.addNodePure(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level, Node.NextNode);
                     }
                     Level += 1;
@@ -262,9 +263,9 @@ class JobNode {
         this.Zipcode = "";
         this.Country = "";
         this.Occupation = "";
-        this.StartDate = new DateValue();
+        this.StartDate = new DateValue("");
         this.Employer = "";
-        this.EndDate = new DateValue();
+        this.EndDate = new DateValue("");
         this.Level = Level;
         this.NextNode = null;
     }
