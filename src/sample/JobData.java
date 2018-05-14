@@ -20,7 +20,7 @@ public class JobData {
 
     public void addNode(String AddressStreet, String AddressAddInfo, String AddressNumber, String AddressCity, String State,
                         String Zipcode, String Country, String Employer, String Occupation, DateValue StartDate, DateValue EndDate) {
-        if(this.getLastNode().Employer.toUpperCase().trim().equals("UNEMPLOYED")) {
+        if(this.getLastNode().Employer.toUpperCase().trim().equals("UNEMPLOYED") && this.getLastNode().Level != 0) {
             this.deleteLastNode();
         }
         if(this.Root == null) {
@@ -36,8 +36,12 @@ public class JobData {
                 }
                 this.Root = new JobNode("", "", "", "", "", "", "", "UNEMPLOYED", "NONE",
                         EndDate, new DateValue("PRESENT"), 0, null);
-                this.addNodeHelper(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State,
-                        Zipcode, Country, Employer, Occupation, StartDate, EndDate, 1, Root);
+                this.addNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State,
+                        Zipcode, Country, Employer, Occupation, StartDate, EndDate);
+                if (TEMPORARYDATE.IntMinusFiveValue < StartDate.IntValue) {
+                    this.addNode("","","","","","","","UNEMPLOYED","NONE",
+                            new DateValue(TEMPORARYDATE.StringMinusFiveValue), StartDate);
+                }
             }
         }
         else {
@@ -49,26 +53,44 @@ public class JobData {
     public void addNodeHelper(String AddressStreet, String AddressAddInfo, String AddressNumber, String AddressCity, String State,
                               String Zipcode, String Country, String Employer, String Occupation, DateValue StartDate, DateValue EndDate, Integer Level, JobNode Node) {
         if(Node.NextNode == null) {
-            if (!Country.equals("USA") && FirstForeignLevel == -1) {
-                System.out.println("SADSADA");
-                FirstForeignLevel = Level;
-            }
-            if (!Node.StartDate.Value.equals(EndDate.Value)) {
+
+            if (!Node.StartDate.Value.equals(EndDate.Value) && !Node.StartDate.Value.trim().isEmpty()) {
                 this.addNodePure("", "", "", "", "",
                         "", "", "UNEMPLOYED", "NONE", EndDate, Node.StartDate, Level, Node);
-                if (Level + 1 != 3) {
+                if (Level != 2) {
+                    if(this.getLastNode().Level > 2 && !Country.toUpperCase().trim().equals("USA") && !Country.toUpperCase().isEmpty() && this.Root.NextNode.NextNode.Occupation.trim().isEmpty()) {
+                        this.Root.NextNode.NextNode.AddressStreet = AddressStreet;
+                        this.Root.NextNode.NextNode.AddressAddInfo = AddressAddInfo;
+                        this.Root.NextNode.NextNode.AddressNumber = AddressNumber;
+                        this.Root.NextNode.NextNode.AddressCity = AddressCity;
+                        this.Root.NextNode.NextNode.State = State;
+                        this.Root.NextNode.NextNode.Zipcode = Zipcode;
+                        this.Root.NextNode.NextNode.Country = Country;
+                        this.Root.NextNode.NextNode.Employer = Employer;
+                        this.Root.NextNode.NextNode.Occupation = Occupation;
+                        this.Root.NextNode.NextNode.StartDate = StartDate;
+                        this.Root.NextNode.NextNode.EndDate = EndDate;
+                        this.Root.NextNode.NextNode.Level = 2;
+                    }
+                    else {
+                        this.addNodePure(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level, Node.NextNode);
+                    }
                     Level += 1;
-                    this.addNodePure(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level, Node.NextNode);
+                    if (!Country.equals("USA") && FirstForeignLevel == -1) {
+                        FirstForeignLevel = Level;
+                    }
                 }
                 else {
                     Level += 2;
+                    if (!Country.equals("USA") && FirstForeignLevel == -1) {
+                        FirstForeignLevel = Level;
+                    }
                     this.addNodePure(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level, Node.NextNode.NextNode);
                 }
                 if (TEMPORARYDATE.IntMinusFiveValue < StartDate.IntValue) {
                     this.addNode("","","","","","","","UNEMPLOYED","NONE",
                             new DateValue(TEMPORARYDATE.StringMinusFiveValue), StartDate);
                 }
-
             } else {
                 this.addNodePure(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level, Node);
             }
@@ -77,12 +99,10 @@ public class JobData {
         else {
             this.addNodeHelper(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level + 1, Node.NextNode);
         }
-
     }
 
     public void addNodePure(String AddressStreet, String AddressAddInfo, String AddressNumber, String AddressCity, String State,
                             String Zipcode, String Country, String Employer, String Occupation, DateValue StartDate, DateValue EndDate, Integer Level, JobNode Node) {
-        System.out.println("First Foreign Level is " + this.FirstForeignLevel);
         if ((Level != 2) || (Level == 2 && !(Country.toUpperCase().trim().equals("USA") || Country.trim().isEmpty()) && FirstForeignLevel < 2) || (Level == 2 && !(Country.toUpperCase().trim().equals("USA") || Country.trim().isEmpty()) && FirstForeignLevel < 2)) {
             Node.NextNode = new JobNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level, null);
         }
@@ -91,7 +111,6 @@ public class JobData {
             this.addNodeHelper(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level + 1, Node.NextNode);
         }
         else if (Level == 2 && (Country.toUpperCase().trim().equals("USA") || Country.trim().isEmpty()) && FirstForeignLevel < 2) {
-            System.out.println("ASDASDA");
             Node.NextNode = new JobNode("", "", "", "", "", "", "", "SEE ABOVE", "", new DateValue(), new DateValue(), 2, null);
             this.addNodeHelper(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level + 1, Node.NextNode);
         }
@@ -99,9 +118,6 @@ public class JobData {
             Node.NextNode = new JobNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, 2, Node.NextNode);
         }
         else {
-            System.out.println(Level);
-            System.out.println(FirstForeignLevel);
-            System.out.println("COUNTRY IS " + Country);
             Node.NextNode = new JobNode(AddressStreet, AddressAddInfo, AddressNumber, AddressCity, State, Zipcode, Country, Employer, Occupation, StartDate, EndDate, Level, null);
         }
     }
@@ -246,9 +262,9 @@ class JobNode {
         this.Zipcode = "";
         this.Country = "";
         this.Occupation = "";
-        this.StartDate = new DateValue("");
+        this.StartDate = new DateValue();
         this.Employer = "";
-        this.EndDate = new DateValue("");
+        this.EndDate = new DateValue();
         this.Level = Level;
         this.NextNode = null;
     }
