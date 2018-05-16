@@ -27,7 +27,7 @@ public class Main extends Application  {
         Parent root = FXMLLoader.load(getClass().getResource("mainApp.fxml"));
         primaryStage.setTitle("PDF Filler Application");
         primaryStage.setResizable(false);
-        Scene scene = null;
+        Scene scene;
         try {
             primaryStage.getIcons().add(new Image(ClassLoader.getSystemResourceAsStream("sample/resources/images/icon.png")));
         }

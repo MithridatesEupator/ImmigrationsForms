@@ -132,7 +132,6 @@ public class Controller implements Initializable {
     public CheckBox AddressFlr2;
     public CheckBox AddressSte2;
     public TextField AddressStreetName2;
-    public TextField AddressEndTime1;
     public TextField AddressStartTime2;
     public TextField AddressCountry2;
     public TextField AddressZipcode2;
@@ -356,7 +355,6 @@ public class Controller implements Initializable {
     public AnchorPane addMenu;
     public AnchorPane parentsMenu;
     public Button parentButton;
-    public Button JSONButton;
     public TextArea bugText;
     public Text sentText;
     public CheckBox Permission;
@@ -422,7 +420,6 @@ public class Controller implements Initializable {
     String Zipcode1 = new String();
     String Country1 = new String();
     DateValue StartDate1 = new DateValue();
-    DateValue EndDate1 = new DateValue();
     String AddressStreet2 = new String();
     String AddInfoAddress2 = new String();
     String AddressCity2 = new String();
@@ -704,7 +701,8 @@ public class Controller implements Initializable {
             "DOMINICAN","ARMENIA","ARMENIAN","AZERBAIJAN","AZEBERBAIJANI","KAZAKHISTAN","KAZAKHISTANI","SAUDI ARABIA","SAUDI","TANZANIA","TANZIAN","CENTRAL AFRICAN REPUBLIC","CENTRAL AFRICAN",
             "COLOMBIA","COLOMBIAN","UKRAINE","UKRAINIAN","PHILIPPINES","FILIPINO","MOROCCO","MOROCCAN","ERITREA","ERITREAN","DJIBOUTI","DJIBOUTIAN","PALESTINE","PALESTINIAN","ECUARDOR","ECUADORIAN",
             "PERU","PERUVIAN","ITALY","ITALIAN","GERMANY","GERMAN","SPAIN","SPANISH","FRANCE","FRENCH","IRELAND","IRISH","NETHERLANDS","DUTCH","DENMARK","DANISH","SWEDEN","SWEDISH",
-            "SUDAN","SUDANESE","SOUTH SUDAN","SOUTH SUDANESE","GUINEA","GUINEAN","INDONESIA","INDONESIA","MALAY","MALAYSIAN"};
+            "SUDAN","SUDANESE","SOUTH SUDAN","SOUTH SUDANESE","GUINEA","GUINEAN","INDONESIA","INDONESIA","MALAYSIA","MALAYSIAN","ALBANIA","ALBANIAN","TURKMENISTAN","TURKMEN","UZBEKISTAN","UZBEK","BENGLADESH",
+            "BENGALI","UGANDA","UGANDANS","RWANDA","RWANDAN","BURUNDI","BURUNDIAN"};
 
     static String C4FamilyName = "";
     static String C4FirstName = "";
@@ -2588,7 +2586,12 @@ public class Controller implements Initializable {
         if (clientBirthCountry.getText() != null && !CountryBirth.trim().equals("Cuba") && !CountryBirth.trim().equals("Haiti")) {
             CountryBirth = clientBirthCountry.getText().trim();
             int ethnicityIndex = ArrayUtils.indexOf(ethnicityArray, CountryBirth.toUpperCase()) + 1;
-            Nationality = ethnicityArray[ethnicityIndex];
+            if (ethnicityIndex == 0) {
+                Nationality = CountryBirth;
+            }
+            else {
+                Nationality = ethnicityArray[ethnicityIndex];
+            }
         }
         if (clientSocialSecurity.getText() != null) {
             String SocialSecurityTMP = clientSocialSecurity.getText().trim();
