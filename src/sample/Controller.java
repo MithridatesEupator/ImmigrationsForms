@@ -407,7 +407,7 @@ public class Controller implements Initializable {
     String I94Num = new String();
     DateValue ExpirationDate1 = new DateValue();
     String I94Status = new String();
-    String CurrentImmigrationStatus = new String();
+    String CurrentImmigrationStatus = "N/A";
     String I94FamilyName = new String();
     String I94FirstName = new String();
     String I94MiddleName = new String();
@@ -693,7 +693,7 @@ public class Controller implements Initializable {
     String NameTitle;
     static DateValue[] CDOBDate;
 
-    String[] ethnicityArray = {"","","ARGENTINA","ARGENTINIAN","URUGUAY","URUGUAYANS","PARAGUAY","PARAGUAYANS","TUNIS","TUNISIAN","IRAQ","IRAQI","JORDAN","JORDANIAN","SYRIA","SYRIAN","CUBA","CUBAN",
+    String[] ethnicityArray = {"ARGENTINA","ARGENTINIAN","URUGUAY","URUGUAYANS","PARAGUAY","PARAGUAYANS","TUNIS","TUNISIAN","IRAQ","IRAQI","JORDAN","JORDANIAN","SYRIA","SYRIAN","CUBA","CUBAN",
             "TURKEY","TURKISH","DEM REP OF CONGO","CONGOLESE","DEMOCRATIC REPUBLIC OF CONGO","CONGOLESE","NIGER","NIGERIEN","NIGERIA","NIGERIAN","IRAN","IRANIAN",
             "AFGHANISTAN","AFGHAN","PAKISTAN","PAKISTANI","LEBANON","LEBANESE","JORDAN","JORDANIAN","YEMEN","YEMENI","HONDURAS","HONDURAN","EL SALVADOR","SALVADORAN","GUATEMALAN","GUATEMALAN",
             "BRAZIL","BRAZILIAN","EGYPT","EGYPTIAN","BELIZE","BELIZEAN","NICARAGUA","NICARAGUAN","PANAMA","PANAMAN","ROMANIA","ROMANIAN","GREECE","GREEK","ALGERIA","ALGERIAN","LIBYA","LIBYAN",
@@ -702,7 +702,7 @@ public class Controller implements Initializable {
             "COLOMBIA","COLOMBIAN","UKRAINE","UKRAINIAN","PHILIPPINES","FILIPINO","MOROCCO","MOROCCAN","ERITREA","ERITREAN","DJIBOUTI","DJIBOUTIAN","PALESTINE","PALESTINIAN","ECUARDOR","ECUADORIAN",
             "PERU","PERUVIAN","ITALY","ITALIAN","GERMANY","GERMAN","SPAIN","SPANISH","FRANCE","FRENCH","IRELAND","IRISH","NETHERLANDS","DUTCH","DENMARK","DANISH","SWEDEN","SWEDISH",
             "SUDAN","SUDANESE","SOUTH SUDAN","SOUTH SUDANESE","GUINEA","GUINEAN","INDONESIA","INDONESIA","MALAYSIA","MALAYSIAN","ALBANIA","ALBANIAN","TURKMENISTAN","TURKMEN","UZBEKISTAN","UZBEK","BENGLADESH",
-            "BENGALI","UGANDA","UGANDANS","RWANDA","RWANDAN","BURUNDI","BURUNDIAN"};
+            "BENGALI","UGANDA","UGANDAN","RWANDA","RWANDAN","BURUNDI","BURUNDIAN"};
 
     static String C4FamilyName = "";
     static String C4FirstName = "";
@@ -1061,9 +1061,6 @@ public class Controller implements Initializable {
             if(ImmigrationStatus.trim().equals("Cuban1")) {
                 immigrationStatus.setText("Cuban Parolee");
             }
-            if(ImmigrationStatus.trim().equals("Haitian1")) {
-                immigrationStatus.setText("Haitian Parolee");
-            }
         }
         else {
             immigrationStatus.setText("Current Status");
@@ -1085,9 +1082,6 @@ public class Controller implements Initializable {
             }
             if(ImmigrationStatus.trim().equals("Cuban1")) {
                 immigrationStatus.setText("Cuban Parolee");
-            }
-            if(ImmigrationStatus.trim().equals("Haitian1")) {
-                immigrationStatus.setText("Haitian Parolee");
             }
         }
         else {
@@ -1251,20 +1245,6 @@ public class Controller implements Initializable {
         }
     }
 
-    public void paroleeHaitianSelect(ActionEvent event) {
-        if (!immigrationStatus.getText().trim().equals("LPR")) {
-            ImmigrationStatus = "Haitian1";
-            immigrationStatus.setText("Haitian Parolee");
-            lastArrived = "EntryParoled";
-            EntryInspectionStatus = "";
-            EntryParoledStatus = "Haitian Parole";
-            EntryI765 = "Haitian Parole";
-            OtherStatus = "";
-            I94Status = "Paroled";
-            CountryBirth = "Haiti";
-            Nationality = "Haitian";
-        }
-    }
 
     public void yesLatinoSelect(ActionEvent event) {
         Ethnicity = "Hispanic-yes";
@@ -2583,7 +2563,7 @@ public class Controller implements Initializable {
             String TEMPORARY = clientDOB.getText().trim();
             DOBDate = new DateValue(TEMPORARY);
         }
-        if (clientBirthCountry.getText() != null && !CountryBirth.trim().equals("Cuba") && !CountryBirth.trim().equals("Haiti")) {
+        if (clientBirthCountry.getText() != null && !CountryBirth.trim().equals("Cuba")) {
             CountryBirth = clientBirthCountry.getText().trim();
             int ethnicityIndex = ArrayUtils.indexOf(ethnicityArray, CountryBirth.toUpperCase()) + 1;
             if (ethnicityIndex == 0) {
@@ -2607,14 +2587,20 @@ public class Controller implements Initializable {
             SocialSecurityBox = "SS-yes";
         }
         if (clientPassport.getText() != null) {
-            PassportNum = clientPassport.getText().trim();
-        } else {
-            PassportNum = "N/A";
+            if(!clientPassport.getText().trim().isEmpty()) {
+                PassportNum = clientPassport.getText().trim();
+            }
+            else {
+                PassportNum = "N/A";
+            }
         }
         if (clientTravelDoc.getText() != null) {
+            if(!clientTravelDoc.getText().trim().isEmpty()) {
             TravelNum = clientTravelDoc.getText().trim();
-        } else {
-            TravelNum = "N/A";
+            }
+            else {
+                TravelNum = "N/A";
+            }
         }
         if (clientPort.getText() != null) {
             EntryCity = clientPort.getText().trim();
@@ -2626,7 +2612,7 @@ public class Controller implements Initializable {
             I94Num = clientI94Number.getText().trim();
         }
         if (clientI94Status.getText() != null) {
-            if (I94Status.trim().isEmpty()) {
+            if (!I94Status.trim().isEmpty() && !ImmigrationStatus.equals("Cuban1")) {
                 I94Status = clientI94Status.getText().trim();
             }
         }
@@ -2781,6 +2767,12 @@ public class Controller implements Initializable {
             Q49 = "49-yes";
             Q55 = "55-yes";
             addendumInfoEntry.addAddendum("When I was in " + CountryOrganization + ", I served in the", "military from " + OrganizationStartDate.Value + " to " + OrganizationEndDate.Value + ".", "", "", "12", "8", "55", false);
+        }
+        if(motherDOB.getText() != null) {
+            MDOB = new DateValue(motherDOB.getText().trim());
+        }
+        if(fatherDOB.getText() != null) {
+            FDOB = new DateValue(motherDOB.getText().trim());
         }
         if (AddressApt.isSelected()) {
             TenantInfo = "Apt";
@@ -3371,7 +3363,12 @@ public class Controller implements Initializable {
             SApply = "SApply-yes";
         }
         else {
-            SApply = "SApply-no";
+            if (!SpouseFamilyName.getText().trim().isEmpty()) {
+                SApply = "SApply-no";
+            }
+            else {
+                SApply = "";
+            }
         }
         if (child1Apply.isSelected()) {
             C1status = "C1-yes";
@@ -3392,10 +3389,13 @@ public class Controller implements Initializable {
             CApplyList[2] = true;
         }
         else if(!child3Apply.isSelected() && !child3FamilyName.getText().trim().isEmpty()) {
+
             C3status = "C3-no";
         }
         if (child3Apply.isSelected()) {
-            C3status = "C3-yes";
+            if (!child3FamilyName.getText().trim().isEmpty()) {
+                C3status = "C3-yes";
+            }
             if(!child4Info.getText().trim().isEmpty()) {
                 C4status = "C4-yes";
                 if (!child5Info.getText().trim().isEmpty()) {
@@ -3410,7 +3410,12 @@ public class Controller implements Initializable {
             }
         }
         else if (child3FamilyName.getText() != null) {
-            C3status = "C3-no";
+            if (!child3FamilyName.getText().trim().isEmpty()) {
+                C3status = "C3-no";
+            }
+            else {
+                C3status = "";
+            }
             if(!child4Info.getText().trim().isEmpty()) {
                 C4status = "C4-no";
                 if (!child5Info.getText().trim().isEmpty()) {
