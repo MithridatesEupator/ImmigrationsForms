@@ -29,18 +29,13 @@
             </font>
          </Text>
          <AnchorPane layoutX="15.0" layoutY="71.0" prefHeight="2.0" prefWidth="570.0" style="-fx-background-color: #bec8cf;" />
-         <CheckBox fx:id="cardStolen" layoutX="23.0" layoutY="130.0" mnemonicParsing="false" onAction="#uncheckCardStolen" styleClass="checkBox" text="It was lost, stolen, or destroyed" />
-         <CheckBox fx:id="cardReceived" layoutX="23.0" layoutY="175.0" mnemonicParsing="false" onAction="#uncheckCardReceived" styleClass="checkBox" text="I never received my card" />
+         <CheckBox fx:id="cardStolen" layoutX="15.0" layoutY="130.0" mnemonicParsing="false" onAction="#uncheckCardStolen" styleClass="checkBox" text="Card was lost, stolen, or destroyed" />
+         <CheckBox fx:id="cardReceived" layoutX="15.0" layoutY="175.0" mnemonicParsing="false" onAction="#uncheckCardReceived" styleClass="checkBox" text="I never received my card" />
          <CheckBox fx:id="cardMutilated" layoutX="298.0" layoutY="130.0" mnemonicParsing="false" onAction="#uncheckCardMutilated" styleClass="checkBox" text="My existing card has been mutilated" />
          <CheckBox fx:id="cardExpired" layoutX="298.0" layoutY="175.0" mnemonicParsing="false" onAction="#uncheckCardExpired" styleClass="checkBox" text="My card is about to expire" />
-         <Text fill="#bec8cf" fontSmoothingType="LCD" layoutX="233.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reason for New Card">
-            <font>
-               <Font name="Ubuntu" size="14.0" />
-            </font>
-         </Text>
-         <TextField fx:id="clientDestination" layoutX="15.0" layoutY="270.0" promptText="Destination" styleClass="textField" />
-         <TextField fx:id="locationGranted" layoutX="210.0" layoutY="270.0" promptText="Location Granted" styleClass="textField" />
-         <TextField fx:id="locationApplied" layoutX="405.0" layoutY="270.0" promptText="Location Applied" styleClass="textField" />
+         <TextField fx:id="clientDestination" layoutX="15.0" layoutY="250.0" promptText="Destination" styleClass="textField" />
+         <TextField fx:id="locationGranted" layoutX="210.0" layoutY="250.0" promptText="Location Granted" styleClass="textField" />
+         <TextField fx:id="locationApplied" layoutX="405.0" layoutY="250.0" promptText="Location Applied" styleClass="textField" />
         </children>
     </AnchorPane>
 </VBox>
