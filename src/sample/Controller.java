@@ -272,10 +272,7 @@ public class Controller implements Initializable {
     public TextField AddressStartTime3;
     public TextField AddressStartTime4;
     public TextField AddressStartTime5;
-    public TextField AddressEndTime5;
-    public TextField AddressEndTime4;
     public TextField AddressStartTime6;
-    public TextField AddressEndTime6;
     public TextField Address3Info;
     public TextField job3Info;
     public TextField Spouse1Info;
@@ -2645,11 +2642,11 @@ public class Controller implements Initializable {
         if (documentExpiration.getText() != null) {
             ExpirationDate = new DateValue(documentExpiration.getText());
         }
-        if (ImmigrationStatus.trim().toUpperCase().equals("REFUGEE")) {
-            ExpirationDate1 = new DateValue("INDEFINITE");
-        }
-        else if (clientI94Expiration.getText() != null) {
+        if (!clientI94Expiration.getText().trim().isEmpty()) {
             ExpirationDate1 = new DateValue(clientI94Expiration.getText());
+        }
+        else if (ImmigrationStatus.trim().toUpperCase().equals("REFUGEE")) {
+            ExpirationDate1 = new DateValue("INDEFINITE");
         }
         if (documentCountry.getText() != null) {
             PassportCountry = documentCountry.getText().trim();
