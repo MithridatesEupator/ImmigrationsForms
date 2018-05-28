@@ -371,6 +371,16 @@ public class Controller implements Initializable {
     public TextField clientDestination;
     public TextField locationGranted;
     public TextField locationApplied;
+    public TextField clientIncome;
+    public Text Benefit1;
+    public Text Benefit2;
+    public Text Benefit3;
+    public Text[] BenefitsList = new Text[3];
+    public TextField clientBenefitDate;
+    public Text BenefitDate1;
+    public Text BenefitDate2;
+    public Text BenefitDate3;
+    public Text[] BenefitsDateList = new Text[3];
     private Stage stage;
 
     static String ANum = new String();
@@ -759,6 +769,16 @@ public class Controller implements Initializable {
     static String reason = "";
     String[][] CWeight = new String[3][3];
 
+    boolean needI912 = false;
+    static double baseIncome = 0.0;
+    String AnnualIncome = "";
+    String EmploymentStatus = "";
+    String Reason = "";
+    int benefitsNum = -1;
+    String NameB = "";
+    String NameB1 = "";
+    String NameB2 = "";
+
     private double horizontalCoord = 0;
     private double verticalCoord = 0;
 
@@ -766,6 +786,12 @@ public class Controller implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
+        BenefitsList[0] = Benefit1;
+        BenefitsList[1] = Benefit2;
+        BenefitsList[2] = Benefit3;
+        BenefitsDateList[0] = BenefitDate1;
+        BenefitsDateList[1] = BenefitDate2;
+        BenefitsDateList[2] = BenefitDate3;
         try { ShowNameVars(); }
         catch (Exception ex) { }
         try { ShowI765Vars(); }
@@ -851,7 +877,6 @@ public class Controller implements Initializable {
                 } catch (Exception ex) { }
             });
         }
-
     }
 
     @FXML
@@ -1253,6 +1278,31 @@ public class Controller implements Initializable {
         }
     }
 
+    public void addSSI(ActionEvent event) {
+        benefitsNum++;
+        BenefitsList[benefitsNum].setText("SSI");
+    }
+    public void addMedicaid(ActionEvent event) {
+        benefitsNum++;
+        BenefitsList[benefitsNum].setText("Medicaid");
+    }
+    public void addFoodStamps(ActionEvent event) {
+        benefitsNum++;
+        BenefitsList[benefitsNum].setText("Food Stamps");
+    }
+    public void setClear(ActionEvent event) {
+        benefitsNum = -1;
+        BenefitsList[0].setText("");
+        BenefitsList[1].setText("");
+        BenefitsList[2].setText("");
+        BenefitsDateList[0].setText("");
+        BenefitsDateList[1].setText("");
+        BenefitsDateList[2].setText("");
+    }
+
+    public void addBenefitsDate(ActionEvent event) {
+        BenefitsDateList[benefitsNum].setText(clientBenefitDate.getText().trim());
+    }
 
     public void yesLatinoSelect(ActionEvent event) {
         Ethnicity = "Hispanic-yes";
@@ -2531,13 +2581,14 @@ public class Controller implements Initializable {
     public void fillApp(ActionEvent event)  throws Exception {
         resetVars();
         SaveVars();
+        fileI912();
         fillAppHelper();
         addAddendums();
     }
 
     public void resetVars() throws Exception {
         addendumInfoEntry = new AddendumGroup();
-        String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode, PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value, EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate, SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DBirthCountry, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value, DCityDivorced, DStateDivorced, DCountryDivorced, DCountryMarriage, SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value, ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value, C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value, C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status,  AddressLine1, AddressLine2, Destination, LocationApplied, LocationGranted};
+        String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode, PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value, EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate, SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DBirthCountry, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value, DCityDivorced, DStateDivorced, DCountryDivorced, DCountryMarriage, SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value, ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value, C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value, C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status,  AddressLine1, AddressLine2, Destination, LocationApplied, LocationGranted, AnnualIncome};
         for (int j = 0; j < resetArray.length; j++) {
             resetArray[j] = "";
         }
@@ -2546,7 +2597,9 @@ public class Controller implements Initializable {
         }
         workInfoEntry = new JobData();
         addressInfoEntry = new AddressData();
+        needI912 = false;
         nameChange = "Name-NA";
+        baseIncome = 0.0;
         disability = "Accom-no";
         disabilityExtra = "";
         fileIteration = 0;
@@ -2752,6 +2805,7 @@ public class Controller implements Initializable {
         if (welfarePresent.isSelected()) {
             Q62 = "62-yes";
             addendumInfoEntry.addAddendum("I intend to keep receiving mean tested", "benefits until otherwise terminated.", "", "", "13", "8", "62", true);
+            needI912 = true;
         } else {
             Q62 = "62-no";
         }
@@ -3498,13 +3552,23 @@ public class Controller implements Initializable {
         if (addressInfoEntry.getLastNode().Level > 2) {
             needAddendum = true;
         }
-
+        if(!clientIncome.getText().trim().isEmpty()) {
+            try {
+                baseIncome = (double) Integer.parseInt(clientIncome.getText().trim());
+            }
+            catch (NumberFormatException ex) {
+                baseIncome = (double) Integer.parseInt(clientIncome.getText().trim().replace(",",""));
+            }
+            needI912 = true;
+        }
+        NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
+        Name = NameTitle.replace("_"," ");
     }
 
     public void fillAppHelper() throws Exception {
         CDOBDate = new DateValue[]{C1DOBDate, C2DOBDate, C3DOBDate};
-        NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
-        Name = NameTitle.replace("_"," ");
+        //NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
+        //Name = NameTitle.replace("_"," ");
         String[] fieldArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, addressInfoEntry.Root.AddressStreet, addressInfoEntry.Root.AddressNumber, addressInfoEntry.Root.AddressCity, addressInfoEntry.Root.State, addressInfoEntry.Root.Zipcode, PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, addressInfoEntry.Root.StartDate.Value, addressInfoEntry.Root.EndDate.Value, addressInfoEntry.Root.NextNode.AddressStreet, addressInfoEntry.Root.NextNode.AddressNumber, addressInfoEntry.Root.NextNode.AddressCity, addressInfoEntry.Root.NextNode.State, addressInfoEntry.Root.NextNode.Zipcode, addressInfoEntry.Root.NextNode.Country, addressInfoEntry.Root.NextNode.StartDate.Value, addressInfoEntry.Root.NextNode.EndDate.Value, addressInfoEntry.Root.NextNode.NextNode.AddressStreet, addressInfoEntry.Root.NextNode.NextNode.AddressNumber, addressInfoEntry.Root.NextNode.NextNode.AddressCity, addressInfoEntry.Root.NextNode.NextNode.State, addressInfoEntry.Root.NextNode.NextNode.Zipcode, addressInfoEntry.Root.NextNode.NextNode.Country, addressInfoEntry.Root.NextNode.NextNode.StartDate.Value, addressInfoEntry.Root.NextNode.NextNode.EndDate.Value, workInfoEntry.Root.Employer, workInfoEntry.Root.AddressStreet, workInfoEntry.Root.AddressAddInfo, workInfoEntry.Root.AddressCity, workInfoEntry.Root.State, workInfoEntry.Root.Zipcode, workInfoEntry.Root.Country, workInfoEntry.Root.Occupation, workInfoEntry.Root.StartDate.Value, workInfoEntry.Root.EndDate.Value, workInfoEntry.Root.NextNode.Employer, workInfoEntry.Root.NextNode.AddressStreet, workInfoEntry.Root.NextNode.AddressAddInfo, workInfoEntry.Root.NextNode.AddressCity, workInfoEntry.Root.NextNode.State, workInfoEntry.Root.NextNode.Zipcode, workInfoEntry.Root.NextNode.Country, workInfoEntry.Root.NextNode.Occupation, workInfoEntry.Root.NextNode.StartDate.Value, workInfoEntry.Root.NextNode.EndDate.Value, workInfoEntry.Root.NextNode.NextNode.Employer, workInfoEntry.Root.NextNode.NextNode.AddressStreet, workInfoEntry.Root.NextNode.NextNode.AddressAddInfo, workInfoEntry.Root.NextNode.NextNode.AddressCity, workInfoEntry.Root.NextNode.NextNode.State, workInfoEntry.Root.NextNode.NextNode.Zipcode, workInfoEntry.Root.NextNode.NextNode.Country, workInfoEntry.Root.NextNode.NextNode.Occupation, workInfoEntry.Root.NextNode.NextNode.StartDate.Value, workInfoEntry.Root.NextNode.NextNode.EndDate.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate, SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DBirthCountry, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value, DCityDivorced, DStateDivorced, DCountryDivorced, DCountryMarriage, SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value, ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, addendumInfoEntry.Root.pageNum, addendumInfoEntry.Root.partNum, addendumInfoEntry.Root.itemNum, addendumInfoEntry.Root.line1, addendumInfoEntry.Root.line2, addendumInfoEntry.Root.line3, addendumInfoEntry.Root.line4, AddendumE, AddendumF, AddendumG, AddendumH, AddendumI, AddendumJ, addendumInfoEntry.Root.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.line4, Addendum1E, Addendum1F, Addendum1G, Addendum1H, Addendum1I, Addendum1J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.line4, Addendum2E, Addendum2F, Addendum2G, Addendum2J, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4, Addendum3E, Addendum3F, Addendum3G, Addendum3H, Addendum3I, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.pageNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.partNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.itemNum, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line1, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line2, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line3, addendumInfoEntry.Root.nextAddendumObject.nextAddendumObject.nextAddendumObject.nextAddendumObject.line4, Addendum4E, Addendum4F, Addendum4G, Addendum4H, Addendum4I, Addendum4J, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value, C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value, C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status, Destination, LocationApplied, LocationGranted};
         String[] nameFieldArray = {"ANum", "FamilyName", "FirstName", "MiddleName", "FamilyName1", "MiddleName1", "FirstName1", "FamilyName2", "FirstName2", "MiddleName2", "FamilyName3", "MiddleName3", "FirstName3", "Name", "DOBDate", "CityBirth", "CountryBirth", "Nationality", "SocialSecurity", "AddressStreet", "AddInfoAddress", "AddressCity", "State", "Zipcode", "PassportNum", "TravelNum", "ExpirationDate", "PassportCountry", "EntryInspectionStatus", "EntryParoledStatus", "OtherStatus", "EntryCity", "EntryState", "LastArrivalDate", "I94Num", "ExpirationDate1", "I94Status", "CurrentImmigrationStatus", "I94FamilyName", "I94FirstName", "I94MiddleName", "StartDate", "EndDate", "AddressStreet1", "AddInfoAddress1", "AddressCity1", "State1", "Zipcode1", "Country1", "StartDate1", "EndDate1", "AddressStreet2", "AddInfoAddress2", "AddressCity2", "State2", "Zipcode2", "Country2", "StartDate2", "EndDate2", "Employer", "WorkAddressStreet", "WorkAddInfoAddress", "WorkAddressCity", "WorkState", "WorkZipcode", "WorkCountry", "WorkOccupation", "WorkStartDate", "WorkEndDate", "Employer1", "WorkAddressStreet1", "WorkAddInfoAddress1", "WorkAddressCity1", "WorkState1", "WorkZipcode1", "WorkCountry1", "WorkOccupation1", "WorkStartDate1", "WorkEndDate1", "Employer2", "WorkAddressStreet2", "WorkAddInfoAddress2", "WorkAddressCity2", "WorkState2", "WorkZipcode2", "WorkCountry2", "WorkOccupation2", "WorkStartDate2", "WorkEndDate2", "FFamilyName", "FFirstName", "FMiddleName", "FFamilyNameB", "FFirstNameB", "FMiddleNameB", "FDOB", "FCityBirth", "FCountryBirth", "FCityCurrent", "FCountryCurrent", "MFamilyName", "MFirstName", "MMiddleName", "MFamilyNameB", "MFirstNameB", "MMiddleNameB", "MDOB", "MCityBirth", "MCountryBirth", "MCityCurrent", "MCountryCurrent", "MarriageNum", "SFamilyName", "SMiddleName", "SFirstName", "SANum", "SDOBDate", "SMarriageDate", "SCityBirth", "SCountryBirth", "DFamilyName", "DFirstName", "DMiddleName", "DBirthCountry", "DDOBDate", "DMarriageDate", "DCityMarriage", "DStateMarriage", "DMarriageEndDate", "DCityDivorced", "DStateDivorced", "DCountryDivorced", "DCountryMarriage", "SCityMarriage", "SCountryMarriage", "ChildNum", "C1FamilyName", "C1MiddleName", "C1FirstName", "C1ANum", "C1DOBDate", "C1MarriageDate", "C1CityBirth", "C1CountryBirth", "C2FamilyName", "C2MiddleName", "C2FirstName", "C2ANum", "C2DOBDate", "C2MarriageDate", "C2CityBirth", "C2CountryBirth", "C3FamilyName", "C3MiddleName", "C3FirstName", "C3ANum", "C3DOBDate", "C3MarriageDate", "C3CityBirth", "C3CountryBirth", "Feet", "Inches", "PD1", "PD2", "PD3", "NameOrganization", "CityOrganization", "StateOrganization", "CountryOrganization", "NatureOrganization", "OrganizationStartDate", "OrganizationEndDate", "NameOrganization1", "CityOrganization1", "StateOrganization1", "CountryOrganization1", "NatureOrganization1", "OrganizationStartDate1", "OrganizationEndDate1", "NameOrganization2", "CityOrganization2", "StateOrganization2", "CountryOrganization2", "NatureOrganization2", "OrganizationStartDate2", "OrganizationEndDate2", "ADayTimeNum", "AMobNum", "AEmail", "SignatureDate", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress", "IAddressCity", "IState", "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language", "PN", "PaN", "IN", "AddendumA", "AddendumB", "AddendumC", "AddendumD", "AddendumE", "AddendumF", "AddendumG", "AddendumH", "AddendumI", "AddendumJ", "PN1", "PaN1", "IN1", "Addendum1A", "Addendum1B", "Addendum1C", "Addendum1D", "Addendum1E", "Addendum1F", "Addendum1G", "Addendum1H", "Addendum1I", "Addendum1J", "PN2", "PaN2", "IN2", "Addendum2A", "Addendum2B", "Addendum2C", "Addendum2D", "Addendum2E", "Addendum2F", "Addendum2G", "Addendum2J", "PN3", "PaN3", "IN3", "Addendum3A", "Addendum3B", "Addendum3C", "Addendum3D", "Addendum3E", "Addendum3F", "Addendum3G", "Addendum3H", "Addendum3I", "PN4", "PaN4", "IN4", "Addendum4A", "Addendum4B", "Addendum4C", "Addendum4D", "Addendum4E", "Addendum4F", "Addendum4G", "Addendum4H","Addendum4I", "Addendum4J", "EntryI765","C4FamilyName","C4FirstName","C4MiddleName","C4ANum","C4DOBDate","C4CountryBirth","C5FamilyName","C5FirstName", "C5MiddleName","C5ANum","C5DOBDate", "C5CountryBirth","C6FamilyName","C6FirstName","C6MiddleName","C6ANum","C6DOBDate","C6CountryBirth","C7FamilyName","C7FirstName","C7MiddleName","C7ANum","C7DOBDate", "C7CountryBirth", "AddressStreet3", "AddInfoAddress3", "AddressCity3", "State3", "Zipcode3", "Country3", "StartDate3", "EndDate3","AGender", "TenantInfo", "AltTenantInfo", "lastArrived", "ImmigrationStatus", "TenantInfo1", "TenantInfo2", "ETenantInfo", "ETenantInfo1", "ETenantInfo2", "MaritalStatus", "USGuard", "SApply", "C1status", "C2status", "C3status", "Ethnicity", "Race", "EyeColor", "HairColor", "OrgAnswer", "DisabilityAnswer", "InterpreterQuestion", "ITenantInfo", "PTenantInfo", "Q49", "Q55", "Q61", "Q62", "SocialSecurityBox", "C4status", "C5status", "C6status", "C7status", "Destination", "LocationApplied", "LocationGranted"};
         String[] checkArray = {AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ("E" + workInfoEntry.Root.AddressAddInfo), ("E" + workInfoEntry.Root.NextNode.AddressAddInfo + "1"), ("E" + workInfoEntry.Root.NextNode.NextNode.AddressAddInfo + "2"), MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status, applyI765, nameChange, reason, disability, disabilityExtra};
@@ -4026,27 +4090,102 @@ public class Controller implements Initializable {
         }
     }
 
-    public void LoadJsonData(ActionEvent event) throws Exception {
-        FileChooser openJSON = new FileChooser();
-        openJSON.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
-        openJSON.setTitle("Select the Appropriate JSON file");
-        File jsondest = openJSON.showOpenDialog(null);
-        String pathFile;
-        JSONParser parser = new JSONParser();
-        try {
-            pathFile = jsondest.getAbsolutePath();
-            Object obj = parser.parse(new FileReader(pathFile));
-            String[] JSONStringArray = {"ApplicantAlienNumber","FamilyName","FirstName","MiddleName","CityBirth","DOBDate","CountryBirth","SocialSecurity", "WorkAddressStreet","WorkAddressCity","WorkState","WorkZipcode"};
-            TextField[] TextFieldArray = {clientANumber, clientFamilyName, clientFirstName, clientMiddleName, clientBirthCity, clientDOB, clientBirthCountry,clientSocialSecurity};
-            JSONObject jsonObject = (JSONObject) obj;
-            for (int i = 0; i < JSONStringArray.length; i++) {
-                String TemporaryString = (String) jsonObject.get(JSONStringArray[i]);
-                TextFieldArray[i].setText(TemporaryString);
+    public void fileI912() throws Exception {
+        if(needI912) {
+            if (workInfoEntry.Root.Employer.trim().toUpperCase().equals("UNEMPLOYED")) {
+                EmploymentStatus = "Unemployed";
             }
-        }
-        catch (Exception ex) { }
-    }
+            else {
+                EmploymentStatus = "Employed";
+            }
+            if(!clientIncome.getText().trim().isEmpty()) {
+                Reason = "Income";
+            }
+            else {
+                Reason = "Benefit";
+            }
 
+            String[] benefitsListName = new String[]{"","",""};
+            String[] benefitsListRelationship = new String[]{"","",""};
+            String[] benefitsListAgency = new String[]{"","",""};
+            for(int i = 0; i < (benefitsNum + 1); i++) {
+                benefitsListRelationship[i] = "Self";
+                benefitsListName[i] = Name;
+                benefitsListAgency[i] = "Social Services";
+            }
+            System.out.println(Arrays.toString(benefitsListAgency));
+            AnnualIncome = String.valueOf(baseIncome);
+            String[] fieldArrayMain = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, FirstName1, MiddleName1, FamilyName2, FirstName2, MiddleName2, Name, SocialSecurity, DOBDate.Value, fileType};
+            String[] fieldArrayIncome = {};
+            String[] fieldArrayBenefit = {benefitsListName[0], benefitsListName[1], benefitsListName[2], benefitsListRelationship[0], benefitsListRelationship[1], benefitsListRelationship[2], benefitsListAgency[0], benefitsListAgency[1], benefitsListAgency[2], BenefitsList[0].getText().trim(), BenefitsList[1].getText().trim(), BenefitsList[2].getText().trim()};
+            String[] nameFieldArrayMain = {"ANum", "FamilyName", "FirstName", "MiddleName", "FamilyName1", "FirstName1", "MiddleName1", "FamilyName2", "FirstName2", "MiddleName2", "Name", "SocialSecurity", "DateDOB", "Forms"};
+            String[] nameFieldArrayIncome = {};
+            String[] nameFieldArrayBenefit = {"NameB", "NameB1", "NameB2", "RelationshipB", "RelationshipB1", "RelationshipB2", "BenefitAgency", "BenefitAgency1", "BenefitAgency2", "BenefitType", "BenefitType1", "BenefitType2"};
+            String[] checkArrayMain = {Reason, MaritalStatus};
+            String[] checkArrayIncome = {EmploymentStatus};
+            String[] checkArrayBenefit = {};
+            if(Reason.equals("Income")) {
+                fieldArrayMain = functions.extend(fieldArrayMain, fieldArrayIncome);
+                nameFieldArrayMain = functions.extend(nameFieldArrayMain, nameFieldArrayIncome);
+            }
+            else {
+                fieldArrayMain = functions.extend(fieldArrayMain, fieldArrayBenefit);
+                nameFieldArrayMain = functions.extend(nameFieldArrayMain, nameFieldArrayBenefit);
+                System.out.println(Arrays.toString(fieldArrayMain));
+                System.out.println(Arrays.toString(nameFieldArrayMain));
+            }
+            if(Reason.equals("Income")) {
+                checkArrayMain = functions.extend(checkArrayMain, checkArrayIncome);
+            }
+            else {
+                checkArrayMain = functions.extend(checkArrayMain, checkArrayBenefit);
+            }
+            InputStream in = getClass().getResourceAsStream("resources/pdf/i-912.pdf");
+            PDDocument document = PDDocument.load(in);
+            PDDocumentCatalog docCatalog = document.getDocumentCatalog();
+            PDAcroForm acroForm = docCatalog.getAcroForm();
+            for (int i = 0; i < fieldArrayMain.length; i++) {
+                String entryFieldArray = fieldArrayMain[i];
+                String entryNameArray = nameFieldArrayMain[i];
+                try {
+                    PDField fieldTemp = acroForm.getField(entryNameArray);
+                    if (fieldTemp != null) {
+                        fieldTemp.setValue(entryFieldArray.toUpperCase());
+                    }
+                }
+                catch (Exception ex){ }
+            }
+            for (int b = 0; b < checkArrayMain.length; b++) {
+                String entryCheckArray = checkArrayMain[b];
+                if (!entryCheckArray.trim().isEmpty()) {
+                    try {
+                        PDCheckBox boxTemp = (PDCheckBox) acroForm.getField(entryCheckArray);
+                        boxTemp.check();
+                    }
+                    catch (Exception ex) {
+                    }
+                }
+            }
+            FileChooser pdfFile = new FileChooser();
+            pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+            pdfFile.setTitle("Save I-912");
+            pdfFile.setInitialFileName("I-912-" + NameTitle + ".pdf");
+            File dest = pdfFile.showSaveDialog(null);
+            String pathFile;
+            if (dest != null) {
+                try {
+                    pathFile = dest.getAbsolutePath();
+                    document.save(pathFile);
+                    document.close();
+                }
+                catch (IOException ex) {
+                    alertMessage();
+                    document.close();
+                }
+            }
+            document.close();
+        }
+    }
 
     public void addressAddendumFiller() throws Exception {
         if (addressInfoEntry.getLastNode().Level > 2) {
