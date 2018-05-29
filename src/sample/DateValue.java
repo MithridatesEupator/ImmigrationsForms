@@ -1,6 +1,7 @@
 package sample;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.stream.Stream;
 
 public class DateValue {
@@ -54,6 +55,42 @@ public class DateValue {
         }
     }
 
+    DateValue(int monthEntry, int dayEntry, int yearEntry) {
+        this.Month = monthEntry;
+        this.Day = dayEntry;
+        this.Year = yearEntry;
+        this.IntValue = Day + (Month * 100) + +(Year * 10000);
+        this.IntMinusFiveValue = this.IntValue - 50000;
+        if (0 < this.Month && this.Month < 10) {
+
+            if (0 < this.Day && this.Day < 10) {
+                this.StringMinusFiveValue = ("0" + this.Month + "/" + "0" + this.Day + "/" + (this.Year - 5));
+            } else {
+                this.StringMinusFiveValue = ("0" + this.Month + "/" + this.Day + "/" + (this.Year - 5));
+            }
+        } else {
+            if (0 < this.Day && this.Day < 10) {
+                this.StringMinusFiveValue = (this.Month + "/" + "0" + this.Day + "/" + (this.Year - 5));
+            } else {
+                this.StringMinusFiveValue = (this.Month + "/" + this.Day + "/" + (this.Year - 5));
+            }
+        }
+        if (0 < this.Month && this.Month < 10) {
+
+            if (0 < this.Day && this.Day < 10) {
+                this.Value = ("0" + this.Month + "/" + "0" + this.Day + "/" + this.Year);
+            } else {
+                this.Value = ("0" + this.Month + "/" + this.Day + "/" + this.Year);
+            }
+        } else {
+            if (0 < this.Day && this.Day < 10) {
+                this.Value = (this.Month + "/" + "0" + this.Day + "/" + this.Year);
+            } else {
+                this.Value = (this.Month + "/" + this.Day + "/" + this.Year);
+            }
+        }
+    }
+
     DateValue() {
         this.Month = 0;
         this.Day = 0;
@@ -62,6 +99,11 @@ public class DateValue {
         this.IntMinusFiveValue = 0;
         this.StringMinusFiveValue = "";
         this.Value = "";
+    }
+
+    public DateValue addYear(int addYearAmount) {
+        Year += addYearAmount;
+        return new DateValue(Month, Day, Year);
     }
 
     public void PrintMonth() {
