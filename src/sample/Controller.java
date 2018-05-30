@@ -396,7 +396,7 @@ public class Controller implements Initializable {
     static String FamilyName3 = new String();
     static String FirstName3 = new String();
     static String MiddleName3 = new String();
-    String Name = new String();
+    static String Name = new String();
     String CityBirth = new String();
     DateValue DOBDate = new DateValue();
     static String CountryBirth = new String();
@@ -700,7 +700,7 @@ public class Controller implements Initializable {
     static int CheckNum = 0;
     static int fileIteration = 0;
 
-    String NameTitle;
+    static String NameTitle;
     static DateValue[] CDOBDate;
 
     String[] ethnicityArray = {"ARGENTINA","ARGENTINIAN","URUGUAY","URUGUAYANS","PARAGUAY","PARAGUAYANS","TUNIS","TUNISIAN","IRAQ","IRAQI","JORDAN","JORDANIAN","SYRIA","SYRIAN","CUBA","CUBAN",
@@ -782,6 +782,7 @@ public class Controller implements Initializable {
     String BenefitsUnemployed = "";
     int benefitsNum = -1;
     String TaxChange = "";
+    String marriedStatusI912 = "";
 
     private double horizontalCoord = 0;
     private double verticalCoord = 0;
@@ -2630,6 +2631,8 @@ public class Controller implements Initializable {
         if (clientMiddleName.getText() != null) {
             MiddleName = clientMiddleName.getText().trim();
         }
+        NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
+        Name = NameTitle.replace("_"," ");
         if (FamilyName1.trim().isEmpty()) {
             FamilyName1 = "NONE";
             nameChange = "Name-no";
@@ -3075,9 +3078,7 @@ public class Controller implements Initializable {
         }
         if (SpouseMarriageCountry.getText() != null) {
             SCountryMarriage = SpouseMarriageDate.getText().trim();
-            if (!SFamilyName.trim().isEmpty() && !SFirstName.trim().isEmpty()) {
-                I912HouseholdDate.addNode(SFirstName + " " + SMiddleName + " " + SFamilyName, SDOBDate, "SPOUSE", "Married-yes", "Student-no", "Count-no");
-            }
+
         }
         if (Spouse1Info.getText() != null) {
             if (!Spouse1Info.getText().trim().isEmpty()) {
@@ -3153,13 +3154,16 @@ public class Controller implements Initializable {
         }
         if (Widow.isSelected()) {
             MaritalStatus = "Widowed";
+            marriedStatusI912 = "Married-no";
         }
         if (SFamilyName.trim().isEmpty() && Spouse1Info.getText().trim().isEmpty()) {
             MaritalStatus = "Single";
+            marriedStatusI912 = "Married-no";
             MarriageNum = "0";
         }
         else if (!SFamilyName.trim().isEmpty()) {
             MaritalStatus = "Married";
+            marriedStatusI912 = "Married-yes";
             if(!SpouseFamilyName.getText().trim().isEmpty()) {
                 MarriageNum = "1";
                 if (!Spouse1Info.getText().trim().isEmpty()) {
@@ -3175,6 +3179,11 @@ public class Controller implements Initializable {
                     }
                 }
             }
+        }
+
+        I912HouseholdDate.addNode(Name, DOBDate, "SELF", marriedStatusI912, "Student-no", "Count-yes");
+        if (!SFamilyName.trim().isEmpty() && !SFirstName.trim().isEmpty()) {
+            I912HouseholdDate.addNode(SFirstName + " " + SMiddleName + " " + SFamilyName, SDOBDate, "SPOUSE", "Married-yes", "Student-no", "Count-no");
         }
         else if (SFamilyName.trim().isEmpty() && !Spouse1Info.getText().trim().isEmpty()) {
             MaritalStatus = "Divorced";
@@ -3588,8 +3597,6 @@ public class Controller implements Initializable {
             }
             needI912 = true;
         }
-        NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
-        Name = NameTitle.replace("_"," ");
     }
 
     public void fillAppHelper() throws Exception {
@@ -4143,24 +4150,22 @@ public class Controller implements Initializable {
                 benefitsListAgency[i] = "Social Services";
                 DateValue TEMPDATE = new DateValue(BenefitsDateList[i].getText().trim());
                 benefitsListDates[i] = TEMPDATE;
-                System.out.println(TEMPDATE.Value);
                 TEMPDATE = TEMPDATE.addYear(1);
-                System.out.println(TEMPDATE.Value);
                 benefitsListEndDates[i] = TEMPDATE;
             }
             AnnualIncome = String.valueOf(baseIncome);
             FamilyIncome = "0";
             FinancialSupport = "0";
             TotalIncome = AnnualIncome;
-            String[] fieldArrayMain = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, FirstName1, MiddleName1, FamilyName2, FirstName2, MiddleName2, Name, SocialSecurity, DOBDate.Value, fileType, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language};
-            String[] fieldArrayIncome = {AnnualIncome, FamilyIncome, FinancialSupport, TotalIncome};
-            System.out.println(BenefitsUnemployed);
-            String[] fieldArrayBenefit = {benefitsListName[0], benefitsListName[1], benefitsListName[2], benefitsListRelationship[0], benefitsListRelationship[1], benefitsListRelationship[2], benefitsListAgency[0], benefitsListAgency[1], benefitsListAgency[2], BenefitsList[0].getText().trim(), BenefitsList[1].getText().trim(), BenefitsList[2].getText().trim(), benefitsListDates[0].Value, benefitsListDates[1].Value, benefitsListDates[2].Value, benefitsListEndDates[0].Value, benefitsListEndDates[1].Value, benefitsListEndDates[2].Value};
-            String[] nameFieldArrayMain = {"ANum", "FamilyName", "FirstName", "MiddleName", "FamilyName1", "FirstName1", "MiddleName1", "FamilyName2", "FirstName2", "MiddleName2", "Name", "SocialSecurity", "DateDOB", "Forms", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress", "IAddressCity", "IState", "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language"};
-            String[] nameFieldArrayIncome = {"AnnualIncome", "FamilyIncome", "FinancialSupport", "TotalIncome",};
-            String[] nameFieldArrayBenefit = {"NameB", "NameB1", "NameB2", "RelationshipB", "RelationshipB1", "RelationshipB2", "BenefitAgency", "BenefitAgency1", "BenefitAgency2", "BenefitType", "BenefitType1", "BenefitType2", "BenefitStartDate", "BenefitStartDate1", "BenefitStartDate2", "BenefitEndDate", "BenefitEndDate1", "BenefitEndDate2"};
+            I912HouseholdDate.checkYourself(3);
+            String[] fieldArrayMain = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, FirstName1, MiddleName1, FamilyName2, FirstName2, MiddleName2, Name, SocialSecurity, DOBDate.Value, fileType, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, ADayTimeNum, AMobNum, AEmail};
+            String[] fieldArrayIncome = {AnnualIncome, FamilyIncome, FinancialSupport, TotalIncome, I912HouseholdDate.Root.Name, I912HouseholdDate.Root.DOBDate.Value, I912HouseholdDate.Root.NextNode.Name, I912HouseholdDate.Root.NextNode.DOBDate.Value, I912HouseholdDate.Root.NextNode.Relationship, I912HouseholdDate.Root.NextNode.NextNode.Name, I912HouseholdDate.Root.NextNode.NextNode.DOBDate.Value, I912HouseholdDate.Root.NextNode.NextNode.Relationship, I912HouseholdDate.Root.NextNode.NextNode.NextNode.Name, I912HouseholdDate.Root.NextNode.NextNode.NextNode.DOBDate.Value, I912HouseholdDate.Root.NextNode.NextNode.NextNode.Relationship};
+            String[] fieldArrayBenefit = {benefitsListName[0], benefitsListName[1], benefitsListName[2], benefitsListRelationship[0], benefitsListRelationship[1], benefitsListRelationship[2], benefitsListAgency[0], benefitsListAgency[1], benefitsListAgency[2], BenefitsList[0].getText().trim(), BenefitsList[1].getText().trim(), BenefitsList[2].getText().trim(), benefitsListDates[0].Value, benefitsListDates[1].Value, benefitsListDates[2].Value, benefitsListEndDates[0].Value, benefitsListEndDates[1].Value, benefitsListEndDates[2].Value, Name, DOBDate.Value,};
+            String[] nameFieldArrayMain = {"ANum", "FamilyName", "FirstName", "MiddleName", "FamilyName1", "FirstName1", "MiddleName1", "FamilyName2", "FirstName2", "MiddleName2", "Name", "SocialSecurity", "DateDOB", "Forms", "IFamilyName", "FamilyName", "IFirstName", "IOrganizationName", "IAddressStreet", "IAddInfoAddress", "IAddressCity", "IState", "IZipcode", "ICountry", "IDayTimeNum", "IMobNum", "IEmail", "Language", "ADayTimeNum", "AMobNum", "AEmail"};
+            String[] nameFieldArrayIncome = {"AnnualIncome", "FamilyIncome", "FinancialSupport", "TotalIncome", "NameH", "DateDOBH", "NameH1", "DateDOBH1", "RelationshipH1", "NameH2", "DateDOBH2", "RelationshipH2", "NameH3", "DateDOBH3", "RelationshipH3"};
+            String[] nameFieldArrayBenefit = {"NameB", "NameB1", "NameB2", "RelationshipB", "RelationshipB1", "RelationshipB2", "BenefitAgency", "BenefitAgency1", "BenefitAgency2", "BenefitType", "BenefitType1", "BenefitType2", "BenefitStartDate", "BenefitStartDate1", "BenefitStartDate2", "BenefitEndDate", "BenefitEndDate1", "BenefitEndDate2",};
             String[] checkArrayMain = {Reason, MaritalStatus, InterpreterQuestion, ITenantInfo};
-            String[] checkArrayIncome = {EmploymentStatus, TaxChange, PrimaryStatus, BenefitsUnemployed};
+            String[] checkArrayIncome = {EmploymentStatus, TaxChange, PrimaryStatus, BenefitsUnemployed, I912HouseholdDate.Root.MarriedStatus, I912HouseholdDate.Root.FullStudent, I912HouseholdDate.Root.IncomeContribution, I912HouseholdDate.Root.NextNode.MarriedStatus, I912HouseholdDate.Root.NextNode.FullStudent, I912HouseholdDate.Root.NextNode.IncomeContribution, I912HouseholdDate.Root.NextNode.NextNode.MarriedStatus, I912HouseholdDate.Root.NextNode.NextNode.FullStudent, I912HouseholdDate.Root.NextNode.NextNode.IncomeContribution };
             String[] checkArrayBenefit = {};
             if(Reason.equals("Income")) {
                 fieldArrayMain = functions.extend(fieldArrayMain, fieldArrayIncome);

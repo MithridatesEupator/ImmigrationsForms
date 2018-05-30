@@ -41,6 +41,21 @@ public class HouseholdData {
             this.printAllHelper(Node.NextNode);
         }
     }
+    public void checkYourself(int Scale) {
+        if (this.Root == null) {
+            this.Root = new HouseholdNode(0);
+        }
+        checkYourselfHelper(Root,1, Scale);
+    }
+
+    private void checkYourselfHelper(HouseholdNode Node, int Level, int Scale) {
+        if(Node.NextNode == null) {
+            Node.NextNode = new HouseholdNode(Level);
+        }
+        if (Node.Level < Scale) {
+            this.checkYourselfHelper(Node.NextNode, Level + 1, Scale);
+        }
+    }
 }
 
 
@@ -62,6 +77,15 @@ class HouseholdNode {
         this.MarriedStatus = MarriedStatus;
         this.FullStudent = FullStudent;
         this.IncomeContribution = IncomeContribution;
+        this.Level = Level;
+    }
+    HouseholdNode(int Level) {
+        this.Name = "";
+        this.DOBDate = new DateValue();
+        this.Relationship = "";
+        this.MarriedStatus = "";
+        this.FullStudent = "";
+        this.IncomeContribution = "";
         this.Level = Level;
     }
     public String display() {
