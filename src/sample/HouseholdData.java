@@ -12,6 +12,7 @@ public class HouseholdData {
                         String IncomeContribution) {
         if (this.Root == null) {
             this.Root = new HouseholdNode(Name, DOBDate, Relationship, MarriedStatus, FullStudent, IncomeContribution, 0);
+            householdSize++;
         }
         else {
             this.addNodeHelper(Name, DOBDate, Relationship, MarriedStatus, FullStudent, IncomeContribution, Root, 1);
@@ -21,6 +22,7 @@ public class HouseholdData {
                                String IncomeContribution, HouseholdNode Node, int Level ) {
         if(Node.NextNode == null) {
             Node.NextNode = new HouseholdNode(Name, DOBDate, Relationship, MarriedStatus, FullStudent, IncomeContribution, Level);
+            householdSize++;
         }
         else {
             this.addNodeHelper(Name, DOBDate, Relationship, MarriedStatus, FullStudent, IncomeContribution, Node.NextNode, Level + 1);
