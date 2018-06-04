@@ -1245,11 +1245,11 @@ public class Controller implements Initializable {
         if (!immigrationStatus.getText().trim().equals("LPR")) {
             ImmigrationStatus = "Refugee";
             immigrationStatus.setText("Refugee");
-            EntryInspectionStatus = "";
+            EntryInspectionStatus = "Refugee";
             EntryParoledStatus = "";
-            OtherStatus = "Refugee";
+            OtherStatus = "";
             EntryI765 = "Refugee";
-            lastArrived = "Other";
+            lastArrived = "EntryInspection";
         }
     }
 
@@ -2616,7 +2616,16 @@ public class Controller implements Initializable {
         if (clientMiddleName.getText() != null) {
             MiddleName = clientMiddleName.getText().trim();
         }
+        try { FirstName = FirstName.substring(0, 1).toUpperCase() + FirstName.substring(1).toLowerCase(); }
+        catch (StringIndexOutOfBoundsException ex) {}
+        try { MiddleName = MiddleName.substring(0, 1).toUpperCase() + MiddleName.substring(1).toLowerCase(); }
+        catch (StringIndexOutOfBoundsException ex) {}
+        try { FamilyName = FamilyName.substring(0, 1).toUpperCase() + FamilyName.substring(1).toLowerCase(); }
+        catch (StringIndexOutOfBoundsException ex) {}
         NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace(" ","_");
+        if (NameTitle.contains("__")) {
+            NameTitle = (FirstName + "_" + MiddleName + "_" + FamilyName).replace("__","_");
+        }
         Name = NameTitle.replace("_"," ");
         if (FamilyName1.trim().isEmpty()) {
             FamilyName1 = "NONE";
@@ -2788,9 +2797,15 @@ public class Controller implements Initializable {
         if (countryMilitary.getText() != null) {
             CountryOrganization = countryMilitary.getText().trim();
         }
+        String BenefitAddendumList = "";
+        for(int i = 0; i < BenefitsList.length; i++) {
+            if (!BenefitsList[i].getText().trim().isEmpty()) {
+                BenefitAddendumList += " " + BenefitsList[i].getText().trim();
+            }
+        }
         if (welfarePast.isSelected()) {
             Q61 = "61-yes";
-            addendumInfoEntry.addAddendum("After I was admitted into the US, I", "did receive means tested benefits.", "", "", "13", "8", "61", true);
+            addendumInfoEntry.addAddendum("After I was admitted into the US, I", "did receive means tested benefits", "in the form of" + BenefitAddendumList + ".", "", "13", "8", "61", true);
 
         } else {
             Q61 = "61-no";
@@ -3621,7 +3636,7 @@ public class Controller implements Initializable {
         FileChooser pdfFile = new FileChooser();
         pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
         pdfFile.setTitle("Save " + fileType.toUpperCase());
-        pdfFile.setInitialFileName(fileType + "-" + NameTitle + ".pdf");
+        pdfFile.setInitialFileName(fileType.toUpperCase() + "-" + NameTitle + ".pdf");
         File dest = pdfFile.showSaveDialog(null);
         String pathFile;
         if (dest != null) {
@@ -4090,7 +4105,7 @@ public class Controller implements Initializable {
             FileChooser pdfFile = new FileChooser();
             pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
             pdfFile.setTitle("Save Addendum?");
-            pdfFile.setInitialFileName(fileType + "-" + NameTitle + "_children_addendum.pdf");
+            pdfFile.setInitialFileName(fileType.toUpperCase() + "-" + NameTitle + "_children_addendum.pdf");
             File dest = pdfFile.showSaveDialog(null);
             String pathFile;
             if (dest != null) {
@@ -4248,7 +4263,7 @@ public class Controller implements Initializable {
             FileChooser pdfFile = new FileChooser();
             pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
             pdfFile.setTitle("Save Addendum?");
-            pdfFile.setInitialFileName(fileType + "-" + NameTitle + "_address_addendum.pdf");
+            pdfFile.setInitialFileName(fileType.toUpperCase() + "-" + NameTitle + "_address_addendum.pdf");
             File dest = pdfFile.showSaveDialog(null);
             String pathFile;
             if (dest != null) {
@@ -4303,7 +4318,7 @@ public class Controller implements Initializable {
             FileChooser pdfFile = new FileChooser();
             pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
             pdfFile.setTitle("Save Addendum?");
-            pdfFile.setInitialFileName(fileType + "-" + NameTitle + "_employment_addendum.pdf");
+            pdfFile.setInitialFileName(fileType.toUpperCase() + "-" + NameTitle + "_employment_addendum.pdf");
             File dest = pdfFile.showSaveDialog(null);
             String pathFile;
             if (dest != null) {
