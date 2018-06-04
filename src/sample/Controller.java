@@ -1,8 +1,6 @@
 package sample;
 
 import javafx.scene.control.TextArea;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +27,6 @@ import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
 import org.apache.pdfbox.pdmodel.interactive.form.PDCheckBox;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 import java.io.*;
-import java.net.URI;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -37,7 +34,6 @@ import java.util.*;
 import org.apache.commons.lang3.ArrayUtils;
 import javax.mail.*;
 import javax.mail.internet.*;
-
 import static javafx.scene.effect.BlurType.GAUSSIAN;
 
 
@@ -870,14 +866,14 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public Scene getShadowScene(Parent p) {
+    public Scene getShadowScene(Parent parent) {
         Scene scene;
         VBox outer = new VBox();
-        outer.getChildren().add( p );
+        outer.getChildren().add(parent);
         outer.setPadding(new Insets(20.0d));
         outer.setBackground( new Background(new BackgroundFill( Color.rgb(0,0,0,0), new CornerRadii(0), new Insets(0))));
-        p.setEffect(new DropShadow(GAUSSIAN, Color.rgb(0,0,0,.65), 15, 0, 0, 0));
-        ((VBox) p).setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, new CornerRadii(0), new Insets(0))));
+        parent.setEffect(new DropShadow(GAUSSIAN, Color.rgb(0,0,0,.65), 15, 0, 0, 0));
+        ((VBox) parent).setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, new CornerRadii(0), new Insets(0))));
         scene = new Scene( outer );
         scene.setFill( Color.rgb(0,255,0,0) );
         return scene;
@@ -2130,11 +2126,6 @@ public class Controller implements Initializable {
         sex.setText(AGender);
     }
 
-    public void visitGithub(ActionEvent event) throws Exception {
-        URI u = new URI("https://github.com/MithridatesEupator/ImmigrationsForms");
-        java.awt.Desktop.getDesktop().browse(u);
-    }
-
     @FXML
     public void closeWindow(ActionEvent event) throws Exception {
         try { SaveAdditionalNameVars(); }
@@ -2800,7 +2791,14 @@ public class Controller implements Initializable {
         String BenefitAddendumList = "";
         for(int i = 0; i < BenefitsList.length; i++) {
             if (!BenefitsList[i].getText().trim().isEmpty()) {
-                BenefitAddendumList += " " + BenefitsList[i].getText().trim();
+                if (i == 0) {
+                    BenefitAddendumList += " " + BenefitsList[i].getText().trim();
+                } else if (i == 1) {
+                    BenefitAddendumList += ", " + BenefitsList[i].getText().trim() + "and ";
+                }
+                else if (i == 2) {
+                    BenefitAddendumList += ", " + BenefitsList[i].getText().trim() + "and ";
+                }
             }
         }
         if (welfarePast.isSelected()) {
@@ -3081,9 +3079,6 @@ public class Controller implements Initializable {
 
         }
         if (Spouse1Info.getText() != null) {
-            if (!Spouse1Info.getText().trim().isEmpty()) {
-                //needAddendum = true;
-            }
             try {
                 String TMPSpouse1 = Spouse1Info.getText().trim();
                 String[] TMPS1Info = TMPSpouse1.split("\\|");
