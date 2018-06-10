@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="backAnchor" stylesheets="@design.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+        <children>
+            <TextField fx:id="ClientC3FamilyName1" alignment="CENTER" layoutX="20.0" layoutY="139.0" prefWidth="180.0" promptText="Family Name " styleClass="textField">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+            <TextField fx:id="ClientC3FirstName1" alignment="CENTER" layoutX="210.0" layoutY="139.0" prefWidth="180.0" promptText="First Name " styleClass="textField">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+            <TextField fx:id="ClientC3MiddleName1" alignment="CENTER" layoutX="400.0" layoutY="139.0" prefWidth="180.0" promptText="Middle Name" styleClass="textField">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+            <TextField fx:id="ClientC3Weight" alignment="CENTER" layoutX="20.0" layoutY="199.0" prefWidth="180.0" promptText="Weight" styleClass="textField">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+            <TextField fx:id="ClientC3Height" alignment="CENTER" layoutX="210.0" layoutY="199.0" prefWidth="180.0" promptText="Height" styleClass="textField">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+            <Text fill="#bec8cf" fontSmoothingType="LCD" layoutX="211.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use &quot;|&quot; to separate feet from inches">
+                <font>
+                    <Font name="Ubuntu" size="11.0" />
+                </font>
+            </Text>
+            <MenuButton fx:id="ClientC3Parent" layoutX="400.0" layoutY="199.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" styleClass="menuBar" text="Other Parent" textFill="#515151">
+                <items>
+                    <MenuItem fx:id="Spouse1Select" mnemonicParsing="false" onAction="#C3selectSpouse1" text="Spouse 1" />
+                    <MenuItem fx:id="Spouse2Select" mnemonicParsing="false" onAction="#C3selectSpouse2" text="Spouse 2" />
+                    <MenuItem fx:id="Spouse3Select" mnemonicParsing="false" onAction="#C3selectSpouse3" text="Spouse 3" />
+                    <MenuItem fx:id="Spouse4Select" mnemonicParsing="false" onAction="#C3selectSpouse4" text="Spouse 4" />
+                    <MenuItem fx:id="Spouse5Select" mnemonicParsing="false" onAction="#C3selectSpouse5" text="Spouse 5" />
+                </items>
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </MenuButton>
+            <MenuButton fx:id="ClientC3Ethnicity" layoutX="20.0" layoutY="269.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" styleClass="menuBar" text="Ethnicity" textFill="#515151">
+                <items>
+                    <MenuItem fx:id="C3latinoYes" mnemonicParsing="false" onAction="#C3yesLatinoSelect" text="Latino" />
+                    <MenuItem fx:id="C3latinoNo" mnemonicParsing="false" onAction="#C3noLatinoSelect" text="Not Latino" />
+                </items>
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </MenuButton>
+            <MenuButton fx:id="ClientC3Race" layoutX="210.0" layoutY="269.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" styleClass="menuBar" text="Race" textFill="#515151">
+                <items>
+                    <MenuItem fx:id="C3white" mnemonicParsing="false" onAction="#C3whiteSelect" text="White" />
+                    <MenuItem fx:id="C3asian" mnemonicParsing="false" onAction="#C3asianSelect" text="Asian" />
+                    <MenuItem fx:id="C3black" mnemonicParsing="false" onAction="#C3blackSelect" text="Black" />
+                    <MenuItem fx:id="C3amerindian" mnemonicParsing="false" onAction="#C3amerindianSelect" text="Amerindian" />
+                    <MenuItem fx:id="C3pacific" mnemonicParsing="false" onAction="#C3pacificSelect" text="Pacific Islander" />
+                </items>
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </MenuButton>
+            <MenuButton fx:id="ClientC3EyeColor" layoutX="400.0" layoutY="269.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" styleClass="menuBarLoose" text="Eye" textFill="#515151">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#C3blackEyesSelect" text="Black" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3grayEyesSelect" text="Gray" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3maroonEyesSelect" text="Maroon" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3blueEyesSelect" text="Blue" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3greenEyesSelect" text="Green" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3pinkEyesSelect" text="Pink" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3brownEyesSelect" text="Brown" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3hazelEyesSelect" text="Hazel" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3unknownEyesSelect" text="Other" />
+                </items>
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </MenuButton>
+            <MenuButton fx:id="ClientC3HairColor" layoutX="500.0" layoutY="269.0" mnemonicParsing="false" prefWidth="80.0" styleClass="menuBarLoose" text="Hair" textFill="#515151">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#C3baldHairSelect" text="Bald" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3brownHairSelect" text="Brown" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3sandyHairSelect" text="Sandy" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3blackHairSelect" text="Black" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3grayHairSelect" text="Gray" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3whiteHairSelect" text="White" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3blondHairSelect" text="Blond" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3redHairSelect" text="Red" />
+                    <MenuItem mnemonicParsing="false" onAction="#C3unknownHairSelect" text="Other" />
+                </items>
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </MenuButton>
+            <Text fill="#bec8cf" fontSmoothingType="LCD" layoutX="246.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Former Names">
+                <font>
+                    <Font name="Ubuntu" size="15.0" />
+                </font>
+            </Text>
+            <Button fx:id="closeButton" layoutX="240.0" layoutY="333.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="33.0" prefWidth="78.0" styleClass="redButton" textFill="WHITE">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <graphic>
+                    <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Close">
+                        <font>
+                            <Font name="Ubuntu" size="19.0" />
+                        </font>
+                    </Text>
+                </graphic>
+            </Button>
+         <AnchorPane layoutX="20.0" layoutY="88.0" prefHeight="2.0" prefWidth="560.0" style="-fx-background-color: #bec8cf;" />
+         <Text fill="#bec8cf" fontSmoothingType="LCD" layoutX="178.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Child 3's Additional Information">
+            <font>
+               <Font name="Ubuntu" size="17.0" />
+            </font>
+         </Text>
+        </children>
+    </AnchorPane>
+</VBox>
