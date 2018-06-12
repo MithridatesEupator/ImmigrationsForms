@@ -1,0 +1,20 @@
+{
+	"Preparer": {
+		"FamilyName": "Vazquez Rojas",
+		"FirstName": "Alejandro",
+		"Email": "nj.immigration @rescue.org ",
+		"PhoneNumber": "9083515116"
+	},
+	"InterpreterSpanish": {
+		"FamilyName": "Castro de la Mata",
+		"FirstName": "Marjorie",
+		"Email": "marjorie.castrodelamata@rescue.org",
+		"PhoneNumber": ""
+	},
+	"InterpreterArabic": {
+		"FamilyName": "Guirguis",
+		"FirstName": "Joseph",
+		"Email": "joseph.guirguis@rescue.org",
+		"PhoneNumber": ""
+	}
+}

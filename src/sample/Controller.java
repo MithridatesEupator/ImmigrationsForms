@@ -34,7 +34,13 @@ import java.util.*;
 import org.apache.commons.lang3.ArrayUtils;
 import javax.mail.*;
 import javax.mail.internet.*;
+import org.json.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import static javafx.scene.effect.BlurType.GAUSSIAN;
+
 
 
 public class Controller implements Initializable {
@@ -754,6 +760,19 @@ public class Controller implements Initializable {
     String TaxChange = "";
     String marriedStatusI912 = "";
 
+    static String arabicFamilyName = "";
+    static String arabicFirstName = "";
+    static String arabicEmail = "";
+    static String spanishFamilyName = "";
+    static String spanishFirstName = "";
+    static String spanishEmail = "";
+    static String PFamilyName = "";
+    static String PFirstName = "";
+    static String PEmail = "";
+    static String PMobNum = "";
+    static String PDayTimeNum = "";
+
+
     String[] ethnicityArray = {"ARGENTINA","ARGENTINIAN","URUGUAY","URUGUAYANS","PARAGUAY","PARAGUAYANS","TUNIS","TUNISIAN","IRAQ","IRAQI","JORDAN","JORDANIAN","SYRIA","SYRIAN","CUBA","CUBAN",
             "TURKEY","TURKISH","DEM REP OF CONGO","CONGOLESE","DEMOCRATIC REPUBLIC OF CONGO","CONGOLESE","NIGER","NIGERIEN","NIGERIA","NIGERIAN","IRAN","IRANIAN",
             "AFGHANISTAN","AFGHAN","PAKISTAN","PAKISTANI","LEBANON","LEBANESE","JORDAN","JORDANIAN","YEMEN","YEMENI","HONDURAS","HONDURAN","EL SALVADOR","SALVADORAN","GUATEMALAN","GUATEMALAN",
@@ -778,6 +797,8 @@ public class Controller implements Initializable {
         BenefitsDateList[0] = BenefitDate1;
         BenefitsDateList[1] = BenefitDate2;
         BenefitsDateList[2] = BenefitDate3;
+        try { readJSON(); }
+        catch (Exception ex) { }
         try { ShowNameVars(); }
         catch (Exception ex) { }
         try { ShowI765Vars(); }
@@ -803,8 +824,6 @@ public class Controller implements Initializable {
         catch (Exception ex) { }
 
     }
-
-    private BorderPane mainLayout;
 
     @FXML
     public void main(String[] args) {
@@ -985,6 +1004,30 @@ public class Controller implements Initializable {
         });
     }
 
+    public void readJSON() throws org.json.simple.parser.ParseException, IOException {
+
+        Object object = new JSONParser().parse(new FileReader("src\\sample\\resources\\json\\settings.json"));
+        JSONObject objectJSON = (JSONObject) object;
+
+        JSONObject preparerList = (JSONObject) objectJSON.get("Preparer");
+        PFamilyName = preparerList.get("FamilyName").toString();
+        PFirstName = preparerList.get("FirstName").toString();
+        PEmail = preparerList.get("Email").toString();
+        PMobNum = preparerList.get("PhoneNumber").toString();
+        PDayTimeNum = PMobNum;
+
+        JSONObject spanishList = (JSONObject) objectJSON.get("InterpreterSpanish");
+        spanishFamilyName = spanishList.get("FamilyName").toString();
+        spanishFirstName = spanishList.get("FirstName").toString();
+        spanishEmail = spanishList.get("Email").toString();
+
+        JSONObject arabicList = (JSONObject) objectJSON.get("InterpreterArabic");
+        arabicFamilyName = arabicList.get("FamilyName").toString();
+        arabicFirstName = arabicList.get("FirstName").toString();
+        arabicEmail = arabicList.get("Email").toString();
+
+    }
+
     public void sendBugReport(ActionEvent event) throws Exception {
         try {
             String host = "smtp.gmail.com";
@@ -1002,7 +1045,7 @@ public class Controller implements Initializable {
             properties.put("mail.smtp.auth","true");
             properties.put("mail.smtp.starttls.required","true");
 
-            java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+            //java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
 
             Session session = Session.getDefaultInstance(properties,null);
             session.setDebug(false);
@@ -1031,17 +1074,17 @@ public class Controller implements Initializable {
     }
 
     public void selectSpanish(ActionEvent event) {
-        interpreterFamilyName.setText("Castro De La Mata");
-        interpreterFirstName.setText("Marjorie");
-        interpreterEmail.setText("Marjorie.Castrodelamata@rescue.org");
+        interpreterFamilyName.setText(spanishFamilyName);
+        interpreterFirstName.setText(spanishFirstName);
+        interpreterEmail.setText(spanishEmail);
         interpreterLanguage.setText("Spanish");
         interpreterLanguageMenu.setText("Spanish");
     }
 
     public void selectArabic(ActionEvent event) {
-        interpreterFamilyName.setText("Guirguis");
-        interpreterFirstName.setText("Joseph");
-        interpreterEmail.setText("Joseph.Guirguis@rescue.org");
+        interpreterFamilyName.setText(arabicFamilyName);
+        interpreterFirstName.setText(arabicFirstName);
+        interpreterEmail.setText(arabicEmail);
         interpreterLanguage.setText("Arabic");
         interpreterLanguageMenu.setText("Arabic");
     }
