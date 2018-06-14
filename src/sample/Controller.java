@@ -36,8 +36,6 @@ import org.json.simple.parser.JSONParser;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-import javafx.scene.effect.BlurType;
-
 public class Controller implements Initializable {
 
     @FXML
@@ -767,6 +765,8 @@ public class Controller implements Initializable {
     static String PMobNum = "";
     static String PDayTimeNum = "";
     String PreparerName = "";
+    String line2 = "";
+    String line3 = "";
 
 
     String[] ethnicityArray = {"ARGENTINA","ARGENTINIAN","URUGUAY","URUGUAYANS","PARAGUAY","PARAGUAYANS","TUNIS","TUNISIAN","IRAQ","IRAQI","JORDAN","JORDANIAN","SYRIA","SYRIAN","CUBA","CUBAN",
@@ -1001,8 +1001,15 @@ public class Controller implements Initializable {
     }
 
     public void readJSON() throws org.json.simple.parser.ParseException, IOException {
-
-        Object object = new JSONParser().parse(new FileReader("src\\sample\\resources\\json\\settings.json"));
+        Object object;
+        try
+        {
+            object = new JSONParser().parse(new FileReader("src\\sample\\resources\\json\\settings.json"));
+        }
+        catch (Exception ex)
+        {
+            object = new JSONParser().parse(new FileReader(".\\settings.json"));
+        }
         JSONObject objectJSON = (JSONObject) object;
 
         JSONObject preparerList = (JSONObject) objectJSON.get("Preparer");
@@ -1041,8 +1048,6 @@ public class Controller implements Initializable {
             properties.put("mail.smtp.port","587");
             properties.put("mail.smtp.auth","true");
             properties.put("mail.smtp.starttls.required","true");
-
-            //Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
 
             Session session = Session.getDefaultInstance(properties,null);
             session.setDebug(false);
@@ -2609,7 +2614,7 @@ public class Controller implements Initializable {
 
     public void resetVars() throws Exception {
         addendumInfoEntry = new AddendumGroup();
-        String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode, PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value, EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate, SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DBirthCountry, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value, DCityDivorced, DStateDivorced, DCountryDivorced, DCountryMarriage, SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value, ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value, C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value, C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status,  AddressLine1, AddressLine2, Destination, LocationApplied, LocationGranted, AnnualIncome, TaxChange, PrimaryStatus, EmploymentStatus, TotalIncome, BenefitsUnemployed, PFamilyName, PFirstName, PMobNum, PDayTimeNum, PEmail, PreparerName};
+        String[] resetArray = {ANum, FamilyName, FirstName, MiddleName, FamilyName1, MiddleName1, FirstName1, FamilyName2, FirstName2, MiddleName2, FamilyName3, MiddleName3, FirstName3, Name, DOBDate.Value, CityBirth, CountryBirth, Nationality, SocialSecurity, AddressStreet, AddInfoAddress, AddressCity, State, Zipcode, PassportNum, TravelNum, ExpirationDate.Value, PassportCountry, EntryInspectionStatus, EntryParoledStatus, OtherStatus, EntryCity, EntryState, LastArrivalDate.Value, I94Num, ExpirationDate1.Value, I94Status, CurrentImmigrationStatus, I94FamilyName, I94FirstName, I94MiddleName, StartDate.Value, EndDate.Value, AddressStreet1, AddInfoAddress1, AddressCity1, State1, Zipcode1, Country1, StartDate1.Value, EndDate.Value, AddressStreet2, AddInfoAddress2, AddressCity2, State2, Zipcode2, Country2, StartDate2.Value, EndDate2.Value, FFamilyName, FFirstName, FMiddleName, FFamilyNameB, FFirstNameB, FMiddleNameB, FDOB.Value, FCityBirth, FCountryBirth, FCityCurrent, FCountryCurrent, MFamilyName, MFirstName, MMiddleName, MFamilyNameB, MFirstNameB, MMiddleNameB, MDOB.Value, MCityBirth, MCountryBirth, MCityCurrent, MCountryCurrent, MarriageNum, SFamilyName, SMiddleName, SFirstName, SANum, SDOBDate.Value, SMarriageDate, SCityBirth, SCountryBirth, DFamilyName, DFirstName, DMiddleName, DBirthCountry, DDOBDate.Value, DMarriageDate.Value, DCityMarriage, DStateMarriage, DMarriageEndDate.Value, DCityDivorced, DStateDivorced, DCountryDivorced, DCountryMarriage, SCityMarriage, SCountryMarriage, ChildNum, C1FamilyName, C1MiddleName, C1FirstName, C1ANum, C1DOBDate.Value, C1MarriageDate.Value, C1CityBirth, C1CountryBirth, C2FamilyName, C2MiddleName, C2FirstName, C2ANum, C2DOBDate.Value, C2MarriageDate.Value, C2CityBirth, C2CountryBirth, C3FamilyName, C3MiddleName, C3FirstName, C3ANum, C3DOBDate.Value, C3MarriageDate.Value, C3CityBirth, C3CountryBirth, Feet, Inches, PD1, PD2, PD3, NameOrganization, CityOrganization, StateOrganization, CountryOrganization, NatureOrganization, OrganizationStartDate.Value, OrganizationEndDate.Value, NameOrganization1, CityOrganization1, StateOrganization1, CountryOrganization1, NatureOrganization1, OrganizationStartDate1.Value, OrganizationEndDate1.Value, NameOrganization2, CityOrganization2, StateOrganization2, CountryOrganization2, NatureOrganization2, OrganizationStartDate2.Value, OrganizationEndDate2.Value, ADayTimeNum, AMobNum, AEmail, SignatureDate.Value, IFamilyName, FamilyName, IFirstName, IOrganizationName, IAddressStreet, IAddInfoAddress, IAddressCity, IState, IZipcode, ICountry, IDayTimeNum, IMobNum, IEmail, Language, EntryI765,C4FamilyName,C4FirstName,C4MiddleName,C4ANum,C4DOBDate.Value,C4CountryBirth,C5FamilyName,C5FirstName, C5MiddleName,C5ANum,C5DOBDate.Value, C5CountryBirth,C6FamilyName,C6FirstName,C6MiddleName,C6ANum,C6DOBDate.Value,C6CountryBirth,C7FamilyName,C7FirstName,C7MiddleName,C7ANum,C7DOBDate.Value, C7CountryBirth, AddressStreet3, AddInfoAddress3, AddressCity3, State3, Zipcode3, Country3, StartDate3.Value, EndDate3.Value,AGender, TenantInfo, AltTenantInfo, lastArrived, ImmigrationStatus, TenantInfo1, TenantInfo2, ETenantInfo, ETenantInfo1, ETenantInfo2, MaritalStatus, USGuard, SApply, C1status, C2status, C3status, Ethnicity, Race, EyeColor, HairColor, OrgAnswer, DisabilityAnswer, InterpreterQuestion, ITenantInfo, PTenantInfo, Q49, Q55, Q61, Q62, SocialSecurityBox, C4status, C5status, C6status, C7status,  AddressLine1, AddressLine2, Destination, LocationApplied, LocationGranted, AnnualIncome, TaxChange, PrimaryStatus, EmploymentStatus, TotalIncome, BenefitsUnemployed, PFamilyName, PFirstName, PMobNum, PDayTimeNum, PEmail, PreparerName, line2, line3};
         for (int j = 0; j < resetArray.length; j++) {
             resetArray[j] = "";
         }
@@ -2828,22 +2833,28 @@ public class Controller implements Initializable {
         if (countryMilitary.getText() != null) {
             CountryOrganization = countryMilitary.getText().trim();
         }
-        String BenefitAddendumList = "";
+
+        int benefitsNum = 0;
         for(int i = 0; i < BenefitsList.length; i++) {
             if (!BenefitsList[i].getText().trim().isEmpty()) {
-                if (i == 0) {
-                    BenefitAddendumList += " " + BenefitsList[i].getText().trim();
-                } else if (i == 1) {
-                    BenefitAddendumList += ", " + BenefitsList[i].getText().trim() + "and ";
-                }
-                else if (i == 2) {
-                    BenefitAddendumList += ", " + BenefitsList[i].getText().trim() + "and ";
-                }
+                benefitsNum++;
             }
+        }
+        if (benefitsNum == 1) {
+            line2 = "did receive means tested benefit";
+            line3 = "in the form of " + BenefitsList[0].getText().trim() + ".";
+        }
+        else if (benefitsNum == 2) {
+            line2 = "did receive means tested benefits";
+            line3 = "in the forms of " + BenefitsList[0].getText().trim() + ", and "  + BenefitsList[1].getText().trim() + ".";
+        }
+        else if (benefitsNum == 3) {
+            line2 = "did receive means tested benefits";
+            line3 = "in the forms of " + BenefitsList[0].getText().trim() + ", " + BenefitsList[1].getText().trim() + ", and " + BenefitsList[2].getText().trim() + ".";
         }
         if (welfarePast.isSelected()) {
             Q61 = "61-yes";
-            addendumInfoEntry.addAddendum("After I was admitted into the US, I", "did receive means tested benefits", "in the form of" + BenefitAddendumList + ".", "", "13", "8", "61", true);
+            addendumInfoEntry.addAddendum("After I was admitted into the US, I", line2, line3, "", "13", "8", "61", true);
 
         } else {
             Q61 = "61-no";
@@ -3671,7 +3682,9 @@ public class Controller implements Initializable {
         FileChooser pdfFile = new FileChooser();
         pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
         pdfFile.setTitle("Save " + fileType.toUpperCase());
-        pdfFile.setInitialFileName(fileType.toUpperCase() + "-" + NameTitle + ".pdf");
+        String fileTitle = fileType.toUpperCase() + "-" + NameTitle + ".pdf";
+        fileTitle = fileTitle.replace("-_","");
+        pdfFile.setInitialFileName(fileTitle);
         File dest = pdfFile.showSaveDialog(null);
         String pathFile;
         if (dest != null) {
@@ -4140,7 +4153,9 @@ public class Controller implements Initializable {
             FileChooser pdfFile = new FileChooser();
             pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
             pdfFile.setTitle("Save Addendum?");
-            pdfFile.setInitialFileName(fileType.toUpperCase() + "-" + NameTitle + "_children_addendum.pdf");
+            String fileTitle = fileType.toUpperCase() + "-" + NameTitle + "_children_addendum.pdf";
+            fileTitle = fileTitle.replace("-_","-");
+            pdfFile.setInitialFileName(fileTitle);
             File dest = pdfFile.showSaveDialog(null);
             String pathFile;
             if (dest != null) {
@@ -4245,7 +4260,9 @@ public class Controller implements Initializable {
             FileChooser pdfFile = new FileChooser();
             pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
             pdfFile.setTitle("Save I-912");
-            pdfFile.setInitialFileName("I-912-" + NameTitle + ".pdf");
+            String fileTitle = "I-912-" + NameTitle + ".pdf";
+            fileTitle = fileTitle.replace("-_","");
+            pdfFile.setInitialFileName(fileTitle);
             File dest = pdfFile.showSaveDialog(null);
             String pathFile;
             if (dest != null) {
@@ -4298,7 +4315,9 @@ public class Controller implements Initializable {
             FileChooser pdfFile = new FileChooser();
             pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
             pdfFile.setTitle("Save Addendum?");
-            pdfFile.setInitialFileName(fileType.toUpperCase() + "-" + NameTitle + "_address_addendum.pdf");
+            String fileTitle = fileType.toUpperCase() + "-" + NameTitle + "_address_addendum.pdf";
+            fileTitle = fileTitle.replace("-_","");
+            pdfFile.setInitialFileName(fileTitle);
             File dest = pdfFile.showSaveDialog(null);
             String pathFile;
             if (dest != null) {
@@ -4353,7 +4372,9 @@ public class Controller implements Initializable {
             FileChooser pdfFile = new FileChooser();
             pdfFile.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
             pdfFile.setTitle("Save Addendum?");
-            pdfFile.setInitialFileName(fileType.toUpperCase() + "-" + NameTitle + "_employment_addendum.pdf");
+            String fileTitle = fileType.toUpperCase() + "-" + NameTitle + "_employment_addendum.pdf";
+            fileTitle = fileTitle.replace("-_","");
+            pdfFile.setInitialFileName(fileTitle);
             File dest = pdfFile.showSaveDialog(null);
             String pathFile;
             if (dest != null) {
